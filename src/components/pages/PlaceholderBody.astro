@@ -1,0 +1,48 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+interface Props {
+  page: "guides" | "team" | "events" | "contact";
+}
+
+const { page } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Base title={t.meta[page].title}>
+  <SiteHeader />
+
+  <main class="wip">
+    <p class="wip__mark">WIP</p>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .wip {
+    display: grid;
+    place-items: center;
+    min-height: 60vh;
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .wip__mark {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 18vw, 12rem);
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin: 0;
+    transform: rotate(-2deg);
+    -webkit-text-stroke: 8px var(--navy);
+    paint-order: stroke fill;
+    text-shadow: 8px 8px 0 var(--navy);
+  }
+</style>

@@ -1,0 +1,631 @@
+---
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Control labels kept local rather than in the global i18n dictionary.
+const lightboxTranslations = {
+  en: { zoomIn: "Zoom in", zoomOut: "Zoom out", reset: "Reset zoom" },
+  fr: { zoomIn: "Zoomer", zoomOut: "Dézoomer", reset: "Réinitialiser le zoom" },
+  es: { zoomIn: "Acercar", zoomOut: "Alejar", reset: "Restablecer zoom" },
+  "pt-BR": { zoomIn: "Mais zoom", zoomOut: "Menos zoom", reset: "Redefinir zoom" },
+  "zh-CN": { zoomIn: "放大", zoomOut: "缩小", reset: "重置缩放" },
+  "zh-TW": { zoomIn: "放大", zoomOut: "縮小", reset: "重置縮放" },
+  hi: { zoomIn: "ज़ूम इन", zoomOut: "ज़ूम आउट", reset: "ज़ूम रीसेट" },
+  vi: { zoomIn: "Phóng to", zoomOut: "Thu nhỏ", reset: "Đặt lại phóng to" },
+  ar: { zoomIn: "تكبير", zoomOut: "تصغير", reset: "إعادة ضبط التكبير" },
+};
+
+const keys = lightboxTranslations[lang] || lightboxTranslations.en;
+const closeText = t.nav.closeMenu; // Reusing "Close menu"
+---
+
+<div id="image-lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="lightbox__backdrop" data-close-lightbox></div>
+  
+  <div class="lightbox__container">
+    <!-- Close button -->
+    <button class="lightbox__close-btn" aria-label={closeText} data-close-lightbox>
+      <svg class="lightbox__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <!-- Image frame -->
+    <div class="lightbox__frame">
+      <div class="lightbox__view-wrapper" id="lightbox-wrapper">
+        <img id="lightbox-img" class="lightbox__image" src="" alt="" draggable="false" />
+      </div>
+    </div>
+    
+    <!-- Caption below -->
+    <div id="lightbox-caption" class="lightbox__caption"></div>
+    
+    <!-- Zoom Control Toolbar -->
+    <div class="lightbox__toolbar">
+      <button class="lightbox__tool-btn" id="lightbox-zoom-out" aria-label={keys.zoomOut}>
+        <svg class="lightbox__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+      
+      <span class="lightbox__zoom-indicator" id="lightbox-zoom-val">100%</span>
+      
+      <button class="lightbox__tool-btn" id="lightbox-zoom-in" aria-label={keys.zoomIn}>
+        <svg class="lightbox__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+      
+      <button class="lightbox__tool-btn" id="lightbox-reset" aria-label={keys.reset}>
+        <svg class="lightbox__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const selectors = [
+    '.orga__wrapper img',
+    '.president__polaroid img',
+    '.photo-strip__polaroid img',
+    '.zoomable-image',
+    '.zoomable'
+  ];
+
+  function initLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    if (!lightbox) return;
+
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const zoomVal = document.getElementById('lightbox-zoom-val');
+    const zoomInBtn = document.getElementById('lightbox-zoom-in');
+    const zoomOutBtn = document.getElementById('lightbox-zoom-out');
+    const resetBtn = document.getElementById('lightbox-reset');
+    const wrapper = document.getElementById('lightbox-wrapper');
+    const closeElements = document.querySelectorAll('[data-close-lightbox]');
+
+    if (!lightboxImg || !lightboxCaption || !zoomVal || !zoomInBtn || !zoomOutBtn || !resetBtn || !wrapper) return;
+
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let wasDragging = false;
+    let startX = 0;
+    let startY = 0;
+    
+    // Pinch / zoom state
+    let isPinching = false;
+    let initialTouchDist = 0;
+    let initialScale = 1;
+    let pinchCenterX = 0;
+    let pinchCenterY = 0;
+    let initialTranslateX = 0;
+    let initialTranslateY = 0;
+
+    const minScale = 1;
+    const maxScale = 6;
+    const zoomStep = 0.3;
+
+    // Retrieve caption text based on target element's markup container
+    function getCaption(img: HTMLImageElement): string {
+      if (img.closest('.orga')) {
+        const captionEl = img.closest('.orga')!.querySelector('figcaption');
+        return captionEl ? captionEl.textContent || '' : '';
+      }
+      if (img.closest('.president__polaroid')) {
+        const labelEl = img.closest('.president__polaroid')!.querySelector('.president__polaroid-label');
+        return labelEl ? labelEl.textContent || '' : '';
+      }
+      if (img.closest('.photo-strip__polaroid')) {
+        const captionEl = img.closest('.photo-strip__polaroid')!.querySelector('.photo-strip__caption');
+        return captionEl ? captionEl.textContent || '' : '';
+      }
+      return img.alt || '';
+    }
+
+    function updateTransform() {
+      if (!lightboxImg || !zoomVal) return;
+      lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      zoomVal.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function resetZoom(smooth = true) {
+      if (!lightboxImg) return;
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      if (smooth) {
+        lightboxImg.classList.add('lightbox__image--smooth');
+      } else {
+        lightboxImg.classList.remove('lightbox__image--smooth');
+      }
+      updateTransform();
+    }
+
+    function openLightbox(img: HTMLImageElement) {
+      if (!lightbox || !lightboxImg || !lightboxCaption) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = getCaption(img);
+      
+      resetZoom(false); // Reset coordinates without smooth transition for immediate setup
+
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // Stop background scrolling
+
+      // Add smooth transition class shortly after opening so setup is instant
+      setTimeout(() => {
+        if (lightboxImg) lightboxImg.classList.add('lightbox__image--smooth');
+      }, 50);
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Set interactive hover states and click events on source photos
+    function setupTriggers() {
+      selectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(element => {
+          const img = element as HTMLImageElement;
+          img.style.cursor = 'zoom-in';
+          
+          // Add click trigger
+          img.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLightbox(img);
+          });
+        });
+      });
+    }
+
+    setupTriggers();
+
+    // Bind close handlers
+    closeElements.forEach(el => {
+      el.addEventListener('click', closeLightbox);
+    });
+
+    // Close lightbox on click outside the image / controls
+    lightbox.addEventListener('click', (e) => {
+      if (wasDragging) {
+        wasDragging = false;
+        return;
+      }
+      const target = e.target as HTMLElement;
+      const clickedImage = target.closest('#lightbox-img');
+      const clickedToolbar = target.closest('.lightbox__toolbar');
+      const clickedCloseBtn = target.closest('.lightbox__close-btn');
+
+      if (!clickedImage && !clickedToolbar && !clickedCloseBtn) {
+        closeLightbox();
+      }
+    });
+
+    // Escape key closes lightbox
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
+        closeLightbox();
+      }
+    });
+
+    // --- BTN CONTROLS ---
+    zoomInBtn.addEventListener('click', () => {
+      if (!lightboxImg) return;
+      lightboxImg.classList.add('lightbox__image--smooth');
+      scale = Math.min(scale + zoomStep * 2, maxScale);
+      updateTransform();
+    });
+
+    zoomOutBtn.addEventListener('click', () => {
+      if (!lightboxImg) return;
+      lightboxImg.classList.add('lightbox__image--smooth');
+      scale = Math.max(scale - zoomStep * 2, minScale);
+      if (scale === 1) {
+        translateX = 0;
+        translateY = 0;
+      }
+      updateTransform();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      resetZoom(true);
+    });
+
+    // --- MOUSE WHEEL ZOOM ---
+    wrapper.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (!lightboxImg) return;
+      lightboxImg.classList.remove('lightbox__image--smooth');
+
+      const rect = wrapper.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      
+      const mouseX = e.clientX - originX;
+      const mouseY = e.clientY - originY;
+
+      const delta = -e.deltaY;
+      const factor = delta > 0 ? 1.25 : 1 / 1.25;
+      const newScale = Math.min(Math.max(scale * factor, minScale), maxScale);
+
+      // Zoom centered on the cursor
+      translateX = mouseX - (mouseX - translateX) * (newScale / scale);
+      translateY = mouseY - (mouseY - translateY) * (newScale / scale);
+
+      if (newScale === 1) {
+        translateX = 0;
+        translateY = 0;
+      }
+
+      scale = newScale;
+      updateTransform();
+    }, { passive: false });
+
+    // --- MOUSE DRAG TO PAN ---
+    wrapper.addEventListener('mousedown', (e) => {
+      if (e.button !== 0 || scale === 1) return; // Only left click and when zoomed
+      e.preventDefault();
+      
+      if (!lightboxImg) return;
+      lightboxImg.classList.remove('lightbox__image--smooth');
+      isDragging = true;
+      wasDragging = false;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      wasDragging = true;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform();
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // --- TOUCH MULTI-GESTURE (PINCH & PAN) ---
+    wrapper.addEventListener('touchstart', (e) => {
+      if (!lightboxImg) return;
+      lightboxImg.classList.remove('lightbox__image--smooth');
+      
+      wasDragging = false;
+      if (e.touches.length === 1) {
+        if (scale > 1) {
+          isDragging = true;
+          isPinching = false;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+        }
+      } else if (e.touches.length === 2) {
+        isDragging = false;
+        isPinching = true;
+        initialTouchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        initialScale = scale;
+        
+        pinchCenterX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        pinchCenterY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        initialTranslateX = translateX;
+        initialTranslateY = translateY;
+      }
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches.length === 1) {
+        wasDragging = true;
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+        updateTransform();
+      } else if (isPinching && e.touches.length === 2) {
+        e.preventDefault(); // Prevent native zoom/scroll
+        wasDragging = true;
+        
+        const currentDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const newScale = Math.min(Math.max(initialScale * (currentDist / initialTouchDist), minScale), maxScale);
+        
+        const currentCenterX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const currentCenterY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        
+        const rect = wrapper.getBoundingClientRect();
+        const originX = rect.left + rect.width / 2;
+        const originY = rect.top + rect.height / 2;
+
+        const relPinchCenterX = pinchCenterX - originX;
+        const relPinchCenterY = pinchCenterY - originY;
+        const relCurrentCenterX = currentCenterX - originX;
+        const relCurrentCenterY = currentCenterY - originY;
+
+        translateX = relCurrentCenterX - (relPinchCenterX - initialTranslateX) * (newScale / initialScale);
+        translateY = relCurrentCenterY - (relPinchCenterY - initialTranslateY) * (newScale / initialScale);
+
+        if (newScale === 1) {
+          translateX = 0;
+          translateY = 0;
+        }
+
+        scale = newScale;
+        updateTransform();
+      }
+    }, { passive: false });
+
+    wrapper.addEventListener('touchend', (e) => {
+      isDragging = false;
+      if (e.touches.length < 2) {
+        isPinching = false;
+      }
+      
+      // Auto-snap back to default scale if user pinched smaller than scale 1
+      if (scale < 1.05) {
+        resetZoom(true);
+      }
+    });
+
+    // --- DOUBLE CLICK / TAP TO QUICK-ZOOM ---
+    let lastTap = 0;
+    wrapper.addEventListener('click', (e) => {
+      const now = Date.now();
+      const DOUBLE_TAP_DELAY = 300;
+      
+      if (now - lastTap < DOUBLE_TAP_DELAY) {
+        e.preventDefault();
+        if (!lightboxImg) return;
+        
+        lightboxImg.classList.add('lightbox__image--smooth');
+        if (scale > 1.5) {
+          resetZoom(true);
+        } else {
+          // Zoom in directly to 2.5x at click coordinates
+          const rect = wrapper.getBoundingClientRect();
+          const originX = rect.left + rect.width / 2;
+          const originY = rect.top + rect.height / 2;
+          const mouseX = e.clientX - originX;
+          const mouseY = e.clientY - originY;
+
+          scale = 2.5;
+          translateX = mouseX - mouseX * 2.5;
+          translateY = mouseY - mouseY * 2.5;
+          updateTransform();
+        }
+      }
+      lastTap = now;
+    });
+  }
+
+  // Handle standard loading and Astro View Transitions
+  document.addEventListener('DOMContentLoaded', initLightbox);
+  document.addEventListener('astro:after-swap', initLightbox);
+</script>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+  }
+
+  .lightbox:not([aria-hidden="true"]) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 42, 61, 0.9); /* Curated navy with heavy transparency */
+    backdrop-filter: blur(10px);
+  }
+
+  .lightbox__container {
+    position: relative;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: var(--space-5);
+    box-sizing: border-box;
+  }
+
+  .lightbox__frame {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: calc(100vh - 160px);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .lightbox__view-wrapper {
+    position: relative;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .lightbox__view-wrapper:active {
+    cursor: grabbing;
+  }
+
+  .lightbox__image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: 5px solid var(--navy);
+    background: var(--cream);
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    transform-origin: center center;
+    user-select: none;
+    pointer-events: auto;
+  }
+
+  .lightbox__image--smooth {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Close button */
+  .lightbox__close-btn {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    width: 48px;
+    height: 48px;
+    background: var(--cream);
+    color: var(--navy);
+    border: 3px solid var(--navy);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1002;
+    transition:
+      transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+      box-shadow 0.15s ease-out,
+      background-color 0.15s ease-out;
+  }
+
+  .lightbox__close-btn:hover {
+    background: var(--honey);
+    transform: translate(-3px, -3px) scale(1.05);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+
+  .lightbox__close-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+  }
+
+  .lightbox__icon-svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* Caption */
+  .lightbox__caption {
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 var(--navy);
+    margin-block: var(--space-4) var(--space-3);
+    text-align: center;
+    pointer-events: none;
+    max-width: 80%;
+  }
+
+  /* Toolbar */
+  .lightbox__toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-pill);
+    padding: var(--space-2) var(--space-4);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    z-index: 1002;
+  }
+
+  .lightbox__tool-btn {
+    width: 38px;
+    height: 38px;
+    background: var(--cream);
+    color: var(--navy);
+    border: 3px solid var(--navy);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--navy), 2px 2px 0 var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+      box-shadow 0.15s ease-out,
+      background-color 0.15s ease-out;
+  }
+
+  .lightbox__tool-btn:hover {
+    background: var(--honey);
+    transform: translate(-2px, -2px) scale(1.05);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+
+  .lightbox__tool-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+  }
+
+  .lightbox__zoom-indicator {
+    font-family: var(--font-accent);
+    font-size: 1.15rem;
+    color: var(--navy);
+    min-width: 68px;
+    text-align: center;
+    user-select: none;
+  }
+  
+  @media (max-width: 640px) {
+    .lightbox__close-btn {
+      top: var(--space-3);
+      right: var(--space-3);
+      width: 42px;
+      height: 42px;
+    }
+    .lightbox__caption {
+      font-size: 1.05rem;
+      margin-block: var(--space-3) var(--space-2);
+    }
+    .lightbox__toolbar {
+      padding: var(--space-2) var(--space-3);
+    }
+    .lightbox__tool-btn {
+      width: 34px;
+      height: 34px;
+    }
+    .lightbox__zoom-indicator {
+      font-size: 1rem;
+      min-width: 55px;
+    }
+  }
+</style>

@@ -1,0 +1,401 @@
+---
+/* Language selector: a pill that opens a dropdown linking to the same page in each locale. */
+import { locales, localeMeta } from "../i18n/config";
+import { getLangFromUrl, stripLocale, localizedPath } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+import Flag from "./Flag.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const canonical = stripLocale(Astro.url.pathname);
+const current = localeMeta[lang];
+---
+
+<div class="langsel" data-langsel>
+  <button
+    class="langsel__btn"
+    type="button"
+    data-langsel-toggle
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label={t.nav.language}
+  >
+    <Flag lang={lang} />
+    <span class="langsel__current">{current.label}</span>
+    <svg
+      class="langsel__chev"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <ul class="langsel__menu" role="menu">
+    {
+      locales.map((l) => {
+        const meta = localeMeta[l];
+        const isCurrent = l === lang;
+        return (
+          <li role="none">
+            <a
+              class="langsel__item"
+              role="menuitem"
+              href={localizedPath(canonical, l)}
+              hreflang={meta.htmlLang}
+              lang={meta.htmlLang}
+              aria-current={isCurrent ? "true" : undefined}
+            >
+              <Flag lang={l} />
+              <span class="langsel__label">{meta.label}</span>
+              <span class="langsel__cell" aria-hidden="true" />
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<style>
+  .langsel {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ── Trigger pill (echoes the old CTA: cream, chunky border, hard shadow) ── */
+  .langsel__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--ink);
+    background: var(--cream);
+    cursor: pointer;
+    padding: 0.5em 0.85em;
+    border-radius: var(--radius-pill);
+    border: 2.5px solid var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    transition:
+      transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background-color 0.16s ease;
+  }
+  .langsel__btn:hover {
+    background: var(--honey);
+    transform: translate(-2px, -2px);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+  }
+  .langsel__btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy);
+  }
+  .langsel__current {
+    padding-top: 0.08em; /* optical centring against the flag box */
+  }
+  .langsel__chev {
+    width: 15px;
+    height: 15px;
+    color: var(--navy);
+    transition: transform 0.2s ease;
+  }
+  .langsel.is-open .langsel__chev {
+    transform: rotate(180deg);
+  }
+
+  /* ── Dropdown comb-block ──────────────────────────────────────── */
+  .langsel__menu {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    inset-inline-end: 0;
+    z-index: 60;
+    min-width: 12.5rem;
+    margin: 0;
+    padding: var(--space-2);
+    list-style: none;
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    display: none;
+  }
+  .langsel.is-open .langsel__menu {
+    display: block;
+    animation: langDrop 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .langsel__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 0.55em 0.7em;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--navy);
+    transition: background-color 0.15s ease;
+  }
+  .langsel__label {
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    line-height: 1;
+    padding-top: 0.08em;
+    flex-grow: 1;
+  }
+  .langsel__item:hover,
+  .langsel__item:focus-visible {
+    background: var(--honey-wash);
+    outline: none;
+  }
+
+  /* Active locale: the signature honey-filled hexagon cell */
+  .langsel__cell {
+    width: 13px;
+    height: 11px;
+    flex-shrink: 0;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    opacity: 0;
+  }
+  .langsel__item[aria-current="true"] {
+    background: var(--cream-deep);
+  }
+  .langsel__item[aria-current="true"] .langsel__cell {
+    opacity: 1;
+  }
+
+  @keyframes langDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .langsel__btn,
+    .langsel__chev,
+    .langsel__item {
+      transition: none;
+    }
+    .langsel.is-open .langsel__menu {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  /* Preserve scroll across a locale switch: anchor to the content block at the
+     viewport top (locales differ in height), then re-find it by structural selector. */
+  const SCROLL_KEY = "welcom:locale-scroll";
+
+  // Block-level anchors present identically across locales.
+  const ANCHOR_SELECTOR =
+    "#top, main, main section, main figure, main img, main h1, main h2, main h3, main p, main li, footer";
+
+  /** Document-relative top of an element, or null if it isn't rendered (zero-rect). */
+  const renderedTop = (el: Element): number | null => {
+    const rect = el.getBoundingClientRect();
+    if (rect.width === 0 && rect.height === 0) return null;
+    return rect.top + window.scrollY;
+  };
+
+  const maxScroll = () =>
+    Math.max(
+      0,
+      document.documentElement.scrollHeight - window.innerHeight,
+    );
+
+  /** A structural selector stable across locales (prefers a nearby id). */
+  function buildSelector(el: Element): string {
+    if (el.id) return "#" + CSS.escape(el.id);
+    const parts: string[] = [];
+    let node: Element | null = el;
+    while (node && node !== document.body && node.parentElement) {
+      if (node.id) {
+        parts.unshift("#" + CSS.escape(node.id));
+        break;
+      }
+      const tag = node.tagName.toLowerCase();
+      const siblings = Array.from(node.parentElement.children).filter(
+        (c) => c.tagName === node!.tagName,
+      );
+      parts.unshift(
+        siblings.length > 1
+          ? `${tag}:nth-of-type(${siblings.indexOf(node) + 1})`
+          : tag,
+      );
+      node = node.parentElement;
+    }
+    return parts.join(" > ");
+  }
+
+  /** Record the block at the viewport top + offset within it, before nav. */
+  function captureScroll() {
+    const y = window.scrollY;
+    const probe = y + 4; // a hair below the viewport's top edge
+    let anchor: Element | null = null;
+    let anchorTop = -Infinity;
+    document.querySelectorAll(ANCHOR_SELECTOR).forEach((el) => {
+      const top = renderedTop(el);
+      if (top === null) return; // not rendered at this breakpoint
+      // The lowest block whose top is still at/above the viewport top.
+      if (top <= probe && top > anchorTop) {
+        anchor = el;
+        anchorTop = top;
+      }
+    });
+    const payload = {
+      selector: anchor ? buildSelector(anchor) : null,
+      offset: anchor ? y - anchorTop : 0,
+      fraction: y / Math.max(1, maxScroll()), // coarse fallback
+    };
+    try {
+      sessionStorage.setItem(SCROLL_KEY, JSON.stringify(payload));
+    } catch {
+      /* storage unavailable; fall back to top-of-page */
+    }
+  }
+
+  /** Re-apply the saved position on the freshly loaded translated page. */
+  function restoreScroll() {
+    let raw: string | null = null;
+    try {
+      raw = sessionStorage.getItem(SCROLL_KEY);
+    } catch {
+      return;
+    }
+    if (!raw) return;
+    // Consume immediately: a manual refresh must not re-trigger this.
+    try {
+      sessionStorage.removeItem(SCROLL_KEY);
+    } catch {}
+    // An explicit in-page #hash target wins over restoration.
+    if (location.hash && document.querySelector(location.hash)) return;
+
+    let data: { selector: string | null; offset: number; fraction: number };
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      return;
+    }
+
+    const targetFor = () => {
+      let target: number | null = null;
+      if (data.selector) {
+        const el = document.querySelector(data.selector);
+        const top = el ? renderedTop(el) : null;
+        if (top !== null) target = top + data.offset;
+      }
+      if (target == null) target = (data.fraction || 0) * maxScroll();
+      return Math.min(Math.max(0, target), maxScroll());
+    };
+
+    const jumpTo = (target: number) => {
+      // Force an instant jump despite the global `scroll-behavior: smooth`.
+      const root = document.documentElement;
+      const prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      window.scrollTo(0, target);
+      root.style.scrollBehavior = prev;
+    };
+
+    // Override the browser's own scroll restoration.
+    const hist = window.history;
+    const prevRestore = hist.scrollRestoration;
+    if (prevRestore) hist.scrollRestoration = "manual";
+
+    // Layout keeps shifting after load (font swap, lazy images), so re-anchor
+    // each frame for a short window, but bail the instant the user scrolls.
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      if (prevRestore) hist.scrollRestoration = prevRestore;
+      removeEventListener("wheel", onUserScroll);
+      removeEventListener("touchmove", onUserScroll);
+      removeEventListener("keydown", onUserScroll);
+    };
+    const onUserScroll = () => finish();
+    addEventListener("wheel", onUserScroll, { passive: true });
+    addEventListener("touchmove", onUserScroll, { passive: true });
+    addEventListener("keydown", onUserScroll);
+
+    const start = performance.now();
+    let stable = 0;
+    const tick = () => {
+      if (done) return;
+      const target = targetFor();
+      jumpTo(target);
+      // Settled once the spot holds for several frames; hard-cap at 1.5s.
+      stable = Math.abs(window.scrollY - target) <= 1 ? stable + 1 : 0;
+      if (stable >= 10 || performance.now() - start > 1500) finish();
+      else requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function initLangSwitchers() {
+    document.querySelectorAll<HTMLElement>("[data-langsel]").forEach((root) => {
+      if (root.dataset.langselReady) return;
+      root.dataset.langselReady = "true";
+
+      const toggle = root.querySelector<HTMLButtonElement>("[data-langsel-toggle]");
+      if (!toggle) return;
+
+      const setOpen = (open: boolean) => {
+        root.classList.toggle("is-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+      };
+
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setOpen(!root.classList.contains("is-open"));
+      });
+
+      // Remember scroll position right before the locale link navigates away.
+      root.querySelectorAll<HTMLAnchorElement>(".langsel__item").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          // Only for a plain same-tab navigation.
+          if (
+            e.defaultPrevented ||
+            e.button !== 0 ||
+            e.metaKey ||
+            e.ctrlKey ||
+            e.shiftKey ||
+            e.altKey
+          ) {
+            return;
+          }
+          captureScroll();
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (root.classList.contains("is-open") && !root.contains(e.target as Node)) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && root.classList.contains("is-open")) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    });
+  }
+
+  restoreScroll();
+  initLangSwitchers();
+  document.addEventListener("astro:after-swap", initLangSwitchers);
+</script>

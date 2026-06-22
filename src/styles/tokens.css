@@ -1,0 +1,162 @@
+/* WELCOM 2026: design tokens (framework-agnostic). See CLAUDE.md §3-§5. */
+
+@font-face {
+  font-family: "Informal 011 BT";
+  src: url("/fonts/Informal011BlackBT.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lilita One";
+  src: url("/fonts/LilitaOne.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-Variable.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Script faces for non-Latin locales ─────────────────────────
+   The brand display/accent faces (Informal, Lilita) are Latin-only, so
+   Vietnamese diacritics and Arabic fall back to mismatched system fonts.
+   These keep the chunky, warm vibe in each script. Declared across the
+   full weight range so default-weight display text (hierarchy is built
+   with size, never weight; see CLAUDE.md §3) still renders bold. */
+
+/* Vietnamese: Baloo 2 (Latin + Vietnamese), split by unicode-range. */
+@font-face {
+  font-family: "Baloo 2";
+  src: url("/fonts/Baloo2-latin-800.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Baloo 2";
+  src: url("/fonts/Baloo2-vietnamese-800.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169,
+    U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+/* Arabic display/accent: Baloo's Arabic sibling, same friendly round weight. */
+@font-face {
+  font-family: "Baloo Bhaijaan 2";
+  src: url("/fonts/BalooBhaijaan2-arabic-800.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arabic body: Cairo, tuned for readable running text. */
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-arabic-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-arabic-600.woff2") format("woff2");
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Backgrounds */
+  --cream:        #fbf4e6; /* primary reading field */
+  --cream-deep:   #f5e9ce; /* subtle raised surface / alt rows */
+  --honey-wash:   #fbe3b0; /* soft comb tints */
+
+  /* Hive map specific pastel fills for high-contrast & visual rhythm */
+  --hive-blue:    #b4cde6; /* soft periwinkle sky blue */
+  --hive-yellow:  #fcd797; /* warm sunny honey yellow */
+  --hive-green:   #c7e0c0; /* clean sage green */
+  --hive-peach:   #f8c0ad; /* friendly pastel coral/peach */
+
+  /* Brand fields (hero & section bands only) */
+  --honey: #efab43; /* SIGNATURE accent */
+  --honey-deep: #db8d28; /* depth / hover / active */
+
+  /* Text & structure */
+  --navy: #293a55; /* primary text + structure (NOT pure black) */
+  --navy-soft: #4c5c75; /* secondary text */
+  --ink: #1e2a3d; /* max-contrast text where needed */
+
+  /* World / action + calm */
+  --green:        #3ab54a; /* CTAs, success, "world" moments */
+  --green-deep:   #2b9338; /* green hover */
+  --sky: #91b0cc; /* calm info, soft accents, links on navy */
+
+  /* Lines */
+  --line: #e6d5ac; /* warm divider on cream */
+
+  /* Type families */
+  --font-display: "Informal 011 BT", "Noto Sans SC", "Noto Sans TC", sans-serif;
+  --font-accent: "Lilita One", "Noto Sans SC", "Noto Sans TC", sans-serif;
+  --font-body: "Nunito", "Noto Sans SC", "Noto Sans TC", sans-serif;
+
+  /* Spacing scale (base 8px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Layout */
+  --container: 1200px;
+  --measure: 68ch;
+  --section-y: clamp(4rem, 8vw, 7rem);
+
+  /* Radius (interactive containers only) */
+  --radius: 16px;
+  --radius-pill: 999px;
+  --radius-button: 12px;
+}
+
+/* ── Per-locale type families ──────────────────────────────────
+   Vietnamese headings render entirely in Baloo 2 (mixing Informal for
+   plain letters + a fallback for accented ones looks broken). Arabic keeps
+   the Latin brand word in Informal/Lilita and renders Arabic glyphs in the
+   Baloo Arabic / Cairo faces via per-glyph fallback. */
+:root:lang(vi) {
+  --font-display: "Baloo 2", sans-serif;
+  --font-accent: "Baloo 2", sans-serif;
+  /* body stays Nunito; it already covers Vietnamese */
+}
+:root:lang(ar) {
+  --font-display: "Informal 011 BT", "Baloo Bhaijaan 2", sans-serif;
+  --font-accent: "Lilita One", "Baloo Bhaijaan 2", sans-serif;
+  --font-body: "Nunito", "Cairo", sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

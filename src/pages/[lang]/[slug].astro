@@ -1,0 +1,19 @@
+---
+import PlaceholderBody from "../../components/pages/PlaceholderBody.astro";
+import { prefixedLocales } from "../../i18n/config";
+
+type PageSlug = "guides" | "team" | "events" | "contact";
+
+// Each placeholder page per non-default locale: /fr/guides, /es/team, …
+// (getStaticPaths runs in an isolated scope, so its data lives inside it.)
+export function getStaticPaths() {
+  const pages: PageSlug[] = ["guides", "team", "events", "contact"];
+  return prefixedLocales.flatMap((lang) =>
+    pages.map((slug) => ({ params: { lang, slug } })),
+  );
+}
+
+const { slug } = Astro.params;
+---
+
+<PlaceholderBody page={slug as PageSlug} />

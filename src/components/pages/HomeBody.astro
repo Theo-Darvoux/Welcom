@@ -1,0 +1,1785 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import HiveMap from "../HiveMap.astro";
+import RichText from "../RichText.astro";
+import HexBg from "../HexBg.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import CloudTransition from "../CloudTransition.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const partners = [
+  {
+    name: "Télécom SudParis",
+    img: "/imgs/assoc/partner-tsp.webp",
+    body: t.partners.items.tsp,
+    url: "https://www.telecom-sudparis.eu/",
+  },
+  {
+    name: "IMT-BS",
+    img: "/imgs/assoc/partner-imtbs.webp",
+    body: t.partners.items.imtbs,
+    url: "https://www.imt-bs.eu/",
+  },
+  {
+    name: "Société Générale",
+    img: "/imgs/assoc/partner-sg.webp",
+    body: t.partners.items.sg,
+    url: "https://www.societegenerale.fr/",
+  },
+];
+---
+
+<Base title={t.meta.home.title} description={t.meta.home.description}>
+  <span id="top"></span>
+  <SiteHeader />
+  <main>
+    <!-- ── Hero: the hive that has everything you need ──────────── -->
+    <section class="hero">
+      <!-- Honeycomb hive-wall texture, low-opacity navy lines -->
+      <HexBg
+        radius={46}
+        gap={6}
+        opacity={0.1}
+        color="var(--navy)"
+        strokeWidth={2}
+        hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 70% 35%, white 30%, transparent 85%)"
+      />
+      <!-- Bee mascot: warm 3D character flying in on a dashed pollen path -->
+      <div class="hero__bee" aria-hidden="true">
+        <svg
+          class="hero__bee-path"
+          viewBox="0 0 220 160"
+          fill="none"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M6 150 C 54 150, 70 92, 122 74"
+            stroke="var(--navy)"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-dasharray="1 13"
+            opacity="0.5"></path>
+        </svg>
+        <img
+          class="hero__bee-img"
+          src="/imgs/bee.svg"
+          alt=""
+          width="260"
+          height="260"
+        />
+      </div>
+
+      <div class="container hero__container">
+        <div class="hero__intro">
+          <h1 class="hero__title">
+            {t.hero.titleLead}
+            <span class="hero__title-accent">{t.hero.titleAccent}</span>
+          </h1>
+          <p class="hero__lede">
+            <RichText text={t.hero.lede} />
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#about">
+              {t.hero.ctaTeam}
+              <svg
+                class="btn__arrow btn__arrow--down"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </a>
+            <a
+              class="btn btn--ghost"
+              href="https://www.instagram.com/welcom_int"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.hero.ctaFollow}
+              <svg
+                class="btn__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__map">
+          <HiveMap />
+        </div>
+      </div>
+
+      <!-- Signature: honey pouring into the cream page -->
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── About the association ─────────────────────────────────── -->
+    <section id="about" class="band band--about">
+      <div class="container split">
+        <div class="split__text">
+          <p class="eyebrow">{t.about.eyebrow}</p>
+          <h2><RichText text={t.about.h2} /></h2>
+          <p class="lede">{t.about.lede}</p>
+          <ul class="checklist">
+            {t.about.checklist.map((item) => <li>{item}</li>)}
+          </ul>
+          <p>{t.about.closing}</p>
+        </div>
+        <div class="split__visual">
+          <div class="mascot-frame">
+            <img
+              src="/imgs/bee3d_cartoony.webp"
+              alt="Welcom' bee mascot"
+              class="mascot-frame__img"
+              width="360"
+              height="360"
+            />
+            <div class="mascot-frame__label" aria-hidden="true">
+              <span class="mascot-frame__label-hex"></span>
+              Bzzzt! 🐝
+            </div>
+          </div>
+        </div>
+      </div>
+      <figure class="orga">
+        <div class="orga__wrapper">
+          <span class="orga__tape-left" aria-hidden="true"></span>
+          <span class="orga__tape-right" aria-hidden="true"></span>
+          <img
+            src="/imgs/assoc/organigramme-2026.webp"
+            alt={t.about.orgaAlt}
+            width="1400"
+            height="788"
+            loading="lazy"
+          />
+        </div>
+        <figcaption>{t.about.orgaCaption}</figcaption>
+      </figure>
+
+      <!-- Transition drip: cream pouring into the cream-deep president page -->
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Word of the president ─────────────────────────────────── -->
+    <section class="band band--president">
+      <div class="container president">
+        <figure class="president__photo">
+          <div class="president__polaroid">
+            <img
+              src="/imgs/assoc/president.webp"
+              alt={t.president.photoAlt}
+              width="300"
+              height="300"
+              loading="lazy"
+            />
+            <span class="president__polaroid-label">{t.president.sign}</span>
+          </div>
+        </figure>
+        <div class="president__words">
+          <span class="president__quote-icon" aria-hidden="true">“</span>
+          <p class="eyebrow">{t.president.eyebrow}</p>
+          <blockquote>
+            <p><RichText text={t.president.p1} /></p>
+            <p><RichText text={t.president.p2} /></p>
+            <p>{t.president.p3}</p>
+          </blockquote>
+          <p class="president__sign">{t.president.sign}</p>
+        </div>
+      </div>
+
+      <!-- Transition drip: cream-deep pouring back into the cream events page -->
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Events ────────────────────────────────────────────────── -->
+    <section id="events" class="band band--events">
+      <div class="container">
+        <p class="eyebrow">{t.events.eyebrow}</p>
+        <h2>{t.events.h2}</h2>
+        <p class="lede">{t.events.lede}</p>
+
+        <div class="photo-strip">
+          <div class="photo-strip__polaroid">
+            <img
+              src="/imgs/assoc/event-global-village.webp"
+              alt={t.events.photoAlt1}
+              width="1200"
+              height="800"
+              loading="lazy"
+            />
+            <span class="photo-strip__caption">{t.events.photoCaption1}</span>
+          </div>
+          <div class="photo-strip__polaroid">
+            <img
+              src="/imgs/assoc/event-valentines.webp"
+              alt={t.events.photoAlt2}
+              width="1200"
+              height="854"
+              loading="lazy"
+            />
+            <span class="photo-strip__caption">{t.events.photoCaption2}</span>
+          </div>
+        </div>
+
+        <div class="events">
+          <a class="events__item" href={localizedPath("/events", lang)}>
+            <span class="events__item-hex" aria-hidden="true"></span>
+            <h3>{t.events.items.bbq.title}</h3>
+            <p><RichText text={t.events.items.bbq.body} /></p>
+            <span class="events__item-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="events__item" href={localizedPath("/events", lang)}>
+            <span class="events__item-hex" aria-hidden="true"></span>
+            <h3>{t.events.items.trip.title}</h3>
+            <p>{t.events.items.trip.body}</p>
+            <span class="events__item-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="events__item" href={localizedPath("/events", lang)}>
+            <span class="events__item-hex" aria-hidden="true"></span>
+            <h3><RichText text={t.events.items.absinthe.title} /></h3>
+            <p><RichText text={t.events.items.absinthe.body} /></p>
+            <span class="events__item-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="events__item" href={localizedPath("/events", lang)}>
+            <span class="events__item-hex" aria-hidden="true"></span>
+            <h3>{t.events.items.cultural.title}</h3>
+            <p>{t.events.items.cultural.body}</p>
+            <span class="events__item-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Transition drip: cream pouring into the cream-deep partners page -->
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Partners ──────────────────────────────────────────────── -->
+    <section class="band band--partners">
+      <div class="container">
+        <p class="eyebrow">{t.partners.eyebrow}</p>
+        <h2>{t.partners.h2}</h2>
+        <div class="partners">
+          {
+            partners.map((p) => (
+              <a
+                class="partners__item"
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="partners__logo">
+                  <img
+                    src={p.img}
+                    alt={t.partners.logoAlt.replace("{name}", p.name)}
+                    loading="lazy"
+                  />
+                </div>
+                <h3>{p.name}</h3>
+                <p>{p.body}</p>
+                <span class="partners__item-link-icon" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Transition drip into the navy contact band (honey-deep line for contrast). -->
+    </section>
+
+    <!-- ── Contact / closing band ────────────────────────────────── -->
+    <section id="say-hi" class="band band--contact">
+      <HoneyDrip fill="var(--cream-deep)" stroke="var(--honey-deep)" anchor="top-inside" />
+      <HexBg
+        radius={44}
+        gap={2}
+        opacity={0.28}
+        color="var(--honey)"
+        strokeWidth={2}
+        hexagons={[
+          [2, 1],
+          [5, 3],
+          [8, 2],
+          [3, 5],
+          [1, 4],
+          [6, 1],
+          [4, 4],
+          [0, 2],
+          [3, 0],
+          [1, 6],
+          [13, 2],
+          [15, 4],
+          [14, 1],
+          [12, 5],
+          [11, 3],
+          [22, 0],
+          [24, 3],
+          [21, 2],
+          [25, 5],
+          [23, 4],
+          [26, 1],
+          [20, 6],
+        ]}
+        highlightOpacity={0.1}
+        class="contact-hex-bg"
+        maskImage="radial-gradient(ellipse clamp(300px, 88vw, 1100px) clamp(260px, 65vh, 560px) at center, white, transparent)"
+      />
+      <div class="container contact">
+        <div class="contact__intro">
+        <div class="contact__title-container">
+          <h2 class="contact__title">
+            {t.contactBand.title}
+            <span class="contact__decor-bee" aria-hidden="true">
+              <img src="/imgs/bee.svg" alt="" width="56" height="56" />
+            </span>
+          </h2>
+        </div>
+        <p class="contact__lede">{t.contactBand.lede}</p>
+        <p class="contact__foyer"><RichText text={t.contactBand.foyer} /></p>
+        </div>
+        <div class="contact__actions">
+        <div class="contact__links">
+          <a
+            class="btn btn--primary"
+            href="https://www.instagram.com/welcom_int"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              class="btn__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            {t.contactBand.instagram}
+          </a>
+          <a
+            class="btn btn--ghost-light"
+            href="mailto:association.welcom@imtbs-tsp.eu"
+          >
+            <svg
+              class="btn__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            association.welcom@imtbs-tsp.eu
+          </a>
+          <button
+            type="button"
+            class="btn btn--green"
+            id="foyer-map-btn"
+            data-alert={t.contactBand.foyerAlert}
+          >
+            <svg
+              class="btn__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+              <line x1="9" y1="3" x2="9" y2="18"></line>
+              <line x1="15" y1="6" x2="15" y2="21"></line>
+            </svg>
+            {t.contactBand.foyerBtn}
+          </button>
+        </div>
+        <p class="contact__bises"><RichText text={t.contactBand.bises} /></p>
+        </div>
+      </div>
+      <CloudTransition class="contact-clouds" />
+    </section>
+
+    <script>
+      function initFoyerMapButton() {
+        const btn = document.getElementById('foyer-map-btn');
+        if (!btn) return;
+
+        btn.addEventListener('click', () => {
+          const alertMsg = btn.getAttribute('data-alert');
+          if (alertMsg) {
+            // Remove existing toast if clicked again quickly
+            const existing = document.querySelector('.foyer-toast');
+            if (existing) {
+              existing.remove();
+            }
+
+            // Create a cartoonish popup toast
+            const toast = document.createElement('div');
+            toast.className = 'foyer-toast';
+            toast.innerHTML = `
+              <div class="foyer-toast__card"></div>
+              <span class="foyer-toast__text">${alertMsg}</span>
+            `;
+            document.body.appendChild(toast);
+
+            // Animate in
+            requestAnimationFrame(() => {
+              toast.classList.add('is-visible');
+            });
+
+            // Auto-remove after 3s
+            setTimeout(() => {
+              toast.classList.remove('is-visible');
+              setTimeout(() => {
+                toast.remove();
+              }, 300);
+            }, 3000);
+          }
+        });
+      }
+
+      initFoyerMapButton();
+      document.addEventListener('astro:after-swap', initFoyerMapButton);
+    </script>
+
+    <Footer />
+  </main>
+</Base>
+
+<style>
+  /* ── Shared bits ───────────────────────────────────────────── */
+  .container {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+  }
+
+  .band {
+    padding-block: var(--section-y);
+  }
+
+  /* Anchors the HoneyDrip pouring down into the next section. */
+  .band--about,
+  .band--events {
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--honey-deep);
+    margin-bottom: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .eyebrow__hex {
+    display: inline-block;
+    width: 13px;
+    height: 11px;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+  }
+
+  .lede {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-top: var(--space-4);
+  }
+
+  h2 {
+    max-width: 20ch;
+  }
+
+  /* ── Buttons ───────────────────────────────────────────────── */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-accent);
+    font-size: 1.0625rem;
+    text-decoration: none;
+    padding: 0.8em 1.4em;
+    border-radius: var(--radius-button);
+    border: 3px solid var(--navy);
+    min-height: 44px;
+    transition:
+      transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+      box-shadow 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+      background-color 0.15s ease-out;
+  }
+  .btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  .btn:hover::after {
+    bottom: -15px;
+    right: -15px;
+  }
+
+  .btn__arrow {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+  .btn:hover .btn__arrow {
+    transform: translateX(4px);
+  }
+  .btn:hover .btn__arrow--down {
+    transform: none;
+  }
+
+  .btn__icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+  .btn:hover .btn__icon {
+    transform: scale(1.18) rotate(-8deg);
+  }
+
+  .btn--primary {
+    background: var(--honey);
+    color: var(--ink);
+    border-color: var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+  .btn--primary:hover {
+    background: var(--honey-deep);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+  .btn--primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+  }
+
+  .btn--ghost {
+    background: var(--cream);
+    color: var(--navy);
+    border-color: var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+  .btn--ghost:hover {
+    background: var(--cream-deep);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+  .btn--ghost:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+  }
+
+  .btn--ghost-light {
+    background: var(--cream);
+    color: var(--navy);
+    border-color: var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+  .btn--ghost-light:hover {
+    background: var(--cream-deep);
+    color: var(--navy);
+    border-color: var(--navy);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+  .btn--ghost-light:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+  }
+
+  /* ── Hero ──────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--honey);
+    /* Pull the honey up behind the floating nav so the bar floats on it. */
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+  }
+
+  .hero__container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    align-items: center;
+    min-height: calc(100svh - 60px);
+    /* Original top padding + the nav overlap, so content clears the bar. */
+    padding-top: calc(
+      var(--nav-h) + clamp(var(--space-6), 6vh, var(--space-9))
+    );
+    padding-bottom: clamp(72px, 10vh, 140px);
+  }
+
+  @media (min-width: 980px) {
+    .hero__container {
+      grid-template-columns: minmax(0, 1.05fr) minmax(440px, 1fr);
+      gap: var(--space-8);
+    }
+  }
+
+  .hero__intro {
+    max-width: 34rem;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    color: var(--ink);
+    margin-top: var(--space-3);
+    margin-bottom: 0;
+  }
+
+  /* "hive." rotated sticker: deliberate, cartoony, hand-placed */
+  .hero__title-accent {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--ink);
+    border: 3.5px solid var(--ink);
+    border-radius: 14px;
+    padding: 0.01em 0.16em 0.05em;
+    transform: rotate(-2.5deg);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    line-height: inherit;
+    vertical-align: -0.04em;
+    margin-left: 0.06em;
+  }
+
+  .hero__lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
+    line-height: 1.65;
+    font-weight: 600;
+    color: var(--ink);
+    max-width: 40ch;
+    margin-top: var(--space-5);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  /* Right column: the hive itself */
+  .hero__map {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Bee mascot: warm 3D character flying in on a dashed pollen path */
+  .hero__bee {
+    position: absolute;
+    top: clamp(60px, 8vw, 110px);
+    right: clamp(12px, 3vw, 48px);
+    width: clamp(180px, 26vw, 340px);
+    height: clamp(150px, 22vw, 260px);
+    z-index: 6;
+    pointer-events: none;
+  }
+  .hero__bee-path {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hero__bee-img {
+    position: absolute;
+    top: 0;
+    right: clamp(16px, 3vw, 40px);
+    width: clamp(104px, 14vw, 184px);
+    height: auto;
+    transform: rotate(10deg);
+    filter: drop-shadow(4px 7px 0 rgba(30, 42, 61, 0.16));
+    animation: beeFloat 5s ease-in-out infinite alternate;
+  }
+  @keyframes beeFloat {
+    from {
+      transform: translateY(2px) rotate(11deg);
+    }
+    to {
+      transform: translateY(-10px) rotate(7deg);
+    }
+  }
+
+  @media (max-width: 979px) {
+    .hero__intro {
+      max-width: none;
+      text-align: center;
+    }
+    .hero__lede {
+      margin-inline: auto;
+    }
+    .hero__actions {
+      justify-content: center;
+    }
+    .hero__map-cue {
+      margin-inline: auto;
+    }
+    .hero {
+      --nav-h: 78px;
+    }
+    .hero__container {
+      padding-top: calc(var(--nav-h) + clamp(72px, 14vw, 110px));
+    }
+    .hero__bee {
+      top: clamp(50px, 10vw, 80px);
+      right: clamp(8px, 2vw, 20px);
+      width: clamp(118px, 30vw, 180px);
+      height: clamp(96px, 24vw, 150px);
+    }
+    .hero__bee-img {
+      width: clamp(82px, 21vw, 122px);
+      right: clamp(8px, 2vw, 16px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__bee-img {
+      animation: none;
+    }
+  }
+
+
+  /* ── About: split text + media ─────────────────────────────── */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .split {
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: var(--space-8);
+    }
+  }
+  .split__text {
+    max-width: 60ch;
+  }
+  .split__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mascot-frame {
+    position: relative;
+    background: var(--cream-deep);
+    border: 4px solid var(--navy);
+    border-radius: 24px;
+    padding: var(--space-5);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    transform: rotate(2deg);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+  .mascot-frame:hover {
+    transform: rotate(-1deg) scale(1.03);
+  }
+  .mascot-frame__img {
+    width: clamp(160px, 20vw, 240px);
+    height: auto;
+    filter: drop-shadow(4px 6px 0 rgba(30, 42, 61, 0.1));
+    animation: floatingBee 4s ease-in-out infinite alternate;
+  }
+  .mascot-frame__label {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    background: var(--honey);
+    color: var(--ink);
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    padding: 0.4em 1em;
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .mascot-frame__label-hex {
+    display: inline-block;
+    width: 10px;
+    height: 9px;
+    background: var(--cream);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  @keyframes floatingBee {
+    from {
+      transform: translateY(0) rotate(0deg);
+    }
+    to {
+      transform: translateY(-8px) rotate(3deg);
+    }
+  }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-5);
+    display: grid;
+    gap: var(--space-3);
+  }
+  .checklist li {
+    position: relative;
+    padding-inline-start: 1.9em;
+    max-width: var(--measure);
+    transition: transform 0.2s ease;
+  }
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.5em;
+    width: 0.85em;
+    height: 0.85em;
+    background: var(--honey);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .checklist li:hover {
+    transform: translateX(4px);
+  }
+  :global([dir="rtl"]) .checklist li:hover {
+    transform: translateX(-4px);
+  }
+  .checklist li:hover::before {
+    transform: scale(1.2) rotate(30deg);
+    background: var(--honey-deep);
+  }
+
+  .orga {
+    max-width: var(--container);
+    margin: var(--space-9) auto 0;
+    padding-inline: var(--space-5);
+  }
+  .orga__wrapper {
+    position: relative;
+    background: var(--cream);
+    padding: var(--space-4);
+    border: 4px solid var(--navy);
+    border-radius: 20px;
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    transform: rotate(-0.5deg);
+    transition: transform 0.3s ease;
+  }
+  .orga__wrapper:hover {
+    transform: rotate(0deg) scale(1.01);
+  }
+  .orga__wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 3px solid var(--navy);
+  }
+  .orga__tape-left,
+  .orga__tape-right {
+    position: absolute;
+    width: 70px;
+    height: 24px;
+    background: rgba(239, 171, 67, 0.4);
+    backdrop-filter: blur(1px);
+    border: 1px dashed rgba(30, 42, 61, 0.3);
+    z-index: 10;
+  }
+  .orga__tape-left {
+    top: -10px;
+    left: 20px;
+    transform: rotate(-15deg);
+  }
+  .orga__tape-right {
+    top: -10px;
+    right: 20px;
+    transform: rotate(15deg);
+  }
+  .orga figcaption {
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    color: var(--navy-soft);
+    text-align: center;
+    margin-top: var(--space-4);
+  }
+
+  /* ── President ─────────────────────────────────────────────── */
+  .band--president {
+    position: relative;
+    background-color: var(--cream-deep);
+    background-image: radial-gradient(
+      rgba(41, 58, 85, 0.04) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 24px 24px;
+  }
+  .president {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  @media (min-width: 760px) {
+    .president {
+      grid-template-columns: 240px 1fr;
+      gap: var(--space-8);
+    }
+  }
+  .president__polaroid {
+    background: var(--cream);
+    border: 4px solid var(--navy);
+    padding: 12px 12px 28px 12px;
+    border-radius: 8px;
+    box-shadow:
+      0 0 0 1px var(--navy),
+      6px 6px 0 var(--navy);
+    transform: rotate(-3deg);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+    display: inline-block;
+    max-width: 220px;
+    margin-inline: auto;
+  }
+  .president__polaroid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 3px solid var(--navy);
+    border-radius: 4px;
+  }
+  .president__polaroid-label {
+    display: block;
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--navy);
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+  .president__polaroid:hover {
+    transform: scale(1.05) rotate(0deg);
+  }
+
+  /* Cartoony Speech Bubble */
+  .president__words {
+    position: relative;
+    background: var(--cream);
+    border: 4px solid var(--navy);
+    border-radius: 20px;
+    padding: var(--space-5);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      6px 6px 0 var(--navy);
+  }
+  .president__quote-icon {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-5);
+    font-family: var(--font-display);
+    font-size: 7rem;
+    color: var(--honey-wash);
+    opacity: 0.6;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  :global([dir="rtl"]) .president__quote-icon {
+    right: auto;
+    left: var(--space-5);
+  }
+
+  /* Desktop pointer tail */
+  @media (min-width: 760px) {
+    .president__words::after {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 50px;
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-right: 20px solid var(--cream);
+      z-index: 2;
+    }
+    .president__words::before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      top: 48px;
+      width: 0;
+      height: 0;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-right: 24px solid var(--navy);
+      z-index: 1;
+    }
+  }
+
+  /* Mobile pointer tail pointing up */
+  @media (max-width: 759px) {
+    .president__words::after {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 20px solid var(--cream);
+      z-index: 2;
+    }
+    .president__words::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-bottom: 24px solid var(--navy);
+      z-index: 1;
+    }
+  }
+
+  .president blockquote {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .president blockquote p + p {
+    margin-top: var(--space-4);
+  }
+  .president__sign {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--ink);
+    margin-top: var(--space-4);
+    text-align: end;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* RTL: mirror the speech-bubble tail to point right. */
+  @media (min-width: 760px) {
+    :global([dir="rtl"]) .president__words::after {
+      left: auto;
+      right: -20px;
+      border-right: none;
+      border-left: 20px solid var(--cream);
+    }
+    :global([dir="rtl"]) .president__words::before {
+      left: auto;
+      right: -25px;
+      border-right: none;
+      border-left: 24px solid var(--navy);
+    }
+  }
+
+  /* ── Events ────────────────────────────────────────────────── */
+  /* ── Comb tiles: the quieter, secondary tier of events ──────── */
+  .events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-5) var(--space-6);
+    margin-top: var(--space-7);
+  }
+  .events__item {
+    position: relative;
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-4) calc(var(--space-4) + 14px)
+      var(--space-4);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    transition:
+      transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+      box-shadow 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+      background-color 0.22s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--navy);
+  }
+  /* Chunky hex marker carries the only colour: the comb DNA */
+  .events__item-hex {
+    display: block;
+    width: 26px;
+    height: 23px;
+    background: var(--hex-fill, var(--honey));
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    margin-bottom: var(--space-3);
+    transition:
+      transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+      filter 0.22s ease;
+    flex-shrink: 0;
+  }
+  .events__item h3 {
+    font-size: 1.25rem;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: var(--space-2);
+    transition: transform 0.2s ease;
+  }
+  .events__item:hover h3 {
+    transform: translateY(-1px);
+  }
+  .events__item p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy-soft);
+  }
+  .events__item:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+    background-color: var(--honey-wash);
+  }
+  .events__item:hover .events__item-hex {
+    transform: rotate(-12deg) scale(1.12);
+    filter: saturate(1.15);
+  }
+  .events__item:nth-child(1) {
+    --hex-fill: var(--hive-peach);
+  }
+  .events__item:nth-child(2) {
+    --hex-fill: var(--hive-blue);
+  }
+  .events__item:nth-child(3) {
+    --hex-fill: var(--hive-yellow);
+  }
+  .events__item:nth-child(4) {
+    --hex-fill: var(--hive-green);
+  }
+
+  .events__item-arrow {
+    position: absolute;
+    bottom: var(--space-3);
+    right: var(--space-4);
+    font-family: var(--font-accent);
+    font-size: 1.3rem;
+    color: var(--navy);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .events__item:hover .events__item-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  :global([dir="rtl"]) .events__item-arrow {
+    right: auto;
+    left: var(--space-4);
+    transform: translateX(4px);
+  }
+  :global([dir="rtl"]) .events__item:hover .events__item-arrow {
+    transform: translateX(0);
+  }
+
+  /* ── Featured photos: lead the section ──────────────────────── */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-7);
+  }
+  @media (min-width: 720px) {
+    .photo-strip {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+  }
+  .photo-strip__polaroid {
+    background: var(--cream);
+    border: 4px solid var(--navy);
+    padding: 16px 16px 0 16px;
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    border-radius: 8px;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .photo-strip__polaroid img {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--navy);
+    border-radius: 4px;
+    box-shadow: 2px 2px 0px rgba(41, 58, 85, 0.1);
+  }
+  .photo-strip__caption {
+    font-family: var(--font-accent);
+    font-size: 1.15rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    padding-block: 24px;
+    text-align: center;
+    width: 100%;
+  }
+  .photo-strip__polaroid:nth-child(1) {
+    transform: rotate(-1.5deg);
+  }
+  .photo-strip__polaroid:nth-child(2) {
+    transform: rotate(1.5deg);
+  }
+  .photo-strip__polaroid:hover {
+    transform: scale(1.03) rotate(0deg);
+    z-index: 3;
+  }
+
+  /* ── Partners ──────────────────────────────────────────────── */
+  .band--partners {
+    position: relative;
+    background-color: var(--cream-deep);
+    background-image: radial-gradient(
+      rgba(41, 58, 85, 0.04) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 24px 24px;
+  }
+  .partners {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-7);
+    margin-top: var(--space-7);
+  }
+  .partners__item {
+    background: var(--card-bg, var(--cream));
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-5) var(--space-5) calc(var(--space-5) + 12px)
+      var(--space-5);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transition:
+      transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+      box-shadow 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+      background-color 0.22s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--navy);
+  }
+  .partners__item:hover {
+    transform: translate(-4px, -4px) scale(1.02);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    background-color: var(--honey) !important;
+  }
+  .partners__item:nth-child(1) {
+    --card-bg: var(--hive-blue);
+  }
+  .partners__item:nth-child(2) {
+    --card-bg: var(--hive-green);
+  }
+  .partners__item:nth-child(3) {
+    --card-bg: var(--hive-yellow);
+  }
+
+  .partners__logo {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 96px;
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-5);
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  }
+  .partners__item:hover .partners__logo {
+    transform: rotate(-1.5deg);
+  }
+  .partners__logo img {
+    max-height: 56px;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+  /* TSP & IMT-BS logos are wide and text-dense, so let them fill the plate so fine print stays legible. */
+  .partners__item:nth-child(1) .partners__logo img {
+    max-height: 80px;
+  }
+  .partners__item:nth-child(2) .partners__logo img {
+    max-height: 72px;
+  }
+  .partners__item h3 {
+    color: var(--navy);
+    margin-bottom: var(--space-2);
+  }
+  .partners__item p {
+    color: var(--navy-soft);
+  }
+  .partners__item-link-icon {
+    position: absolute;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    font-family: var(--font-accent);
+    font-size: 1.15rem;
+    color: var(--navy);
+    opacity: 0;
+    transform: translate(-3px, 3px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .partners__item:hover .partners__item-link-icon {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  :global([dir="rtl"]) .partners__item-link-icon {
+    right: auto;
+    left: var(--space-4);
+    transform: translate(3px, 3px);
+  }
+  :global([dir="rtl"]) .partners__item:hover .partners__item-link-icon {
+    transform: translate(0, 0);
+  }
+
+  /* ── Contact band (honey-on-navy) ──────────────────────────── */
+  .band--contact {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+    padding-bottom: calc(var(--section-y) + clamp(35px, 4.5vw, 55px) + 8px);
+  }
+
+  /* Scale the SVG down on mobile so ~6–7 hexes fit across. */
+  @media (max-width: 639px) {
+    :global(.contact-hex-bg) {
+      transform: scale(0.65);
+      transform-origin: center center;
+    }
+  }
+
+  /* Cloud transition sits at the bottom of the contact band */
+  :global(.contact-clouds) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(35px, 4.5vw, 55px);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .band--contact .container {
+    position: relative;
+    z-index: 1;
+  }
+  .contact__title-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: auto;
+    margin-bottom: var(--space-5);
+  }
+  .contact__title {
+    position: relative;
+    color: var(--cream);
+    font-size: clamp(2rem, 5vw, 3rem);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+    margin-inline: auto;
+    -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 4px 4px 0 var(--ink);
+  }
+  .contact__decor-bee {
+    position: absolute;
+    top: -30px;
+    right: -42px;
+    transform: rotate(15deg);
+    animation: contactBeeFloat 4s ease-in-out infinite alternate;
+  }
+  .contact__decor-bee img {
+    width: 56px;
+    height: 56px;
+  }
+  @keyframes contactBeeFloat {
+    from {
+      transform: translateY(0) rotate(15deg);
+    }
+    to {
+      transform: translateY(-6px) rotate(22deg);
+    }
+  }
+  :global([dir="rtl"]) .contact__decor-bee {
+    right: auto;
+    left: -42px;
+    transform: scaleX(-1) rotate(-15deg);
+    animation: contactBeeFloatRTL 4s ease-in-out infinite alternate;
+  }
+  @keyframes contactBeeFloatRTL {
+    from {
+      transform: translateY(0) scaleX(-1) rotate(-15deg);
+    }
+    to {
+      transform: translateY(-6px) scaleX(-1) rotate(-22deg);
+    }
+  }
+  .contact__lede {
+    max-width: 44ch;
+    margin: 0 auto;
+    color: var(--cream);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.75;
+    opacity: 0.95;
+    text-wrap: balance;
+    -webkit-text-stroke: 1.5px var(--ink);
+    paint-order: stroke fill;
+  }
+  .contact__foyer {
+    max-width: 40ch;
+    margin: var(--space-3) auto 0;
+    color: var(--cream);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.6;
+    opacity: 0.95;
+    text-wrap: balance;
+    -webkit-text-stroke: 1.2px var(--ink);
+    paint-order: stroke fill;
+  }
+  .contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    justify-content: center;
+    margin-top: var(--space-6);
+  }
+  .contact__bises {
+    margin: var(--space-6) auto 0;
+    color: var(--honey);
+    font-family: var(--font-accent);
+    font-size: 1.35rem;
+    text-align: center;
+    max-width: max-content;
+    transform: rotate(-1.5deg);
+    -webkit-text-stroke: 1.5px var(--ink);
+    paint-order: stroke fill;
+  }
+  .contact__bises em {
+    font-style: normal;
+    color: var(--cream);
+    text-decoration: underline wave var(--honey);
+    text-underline-offset: 4px;
+  }
+
+  /* Desktop: split the band into two columns (message left, contacts right). */
+  @media (min-width: 900px) {
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(2.5rem, 7vw, 6rem);
+      text-align: left;
+    }
+    .contact__intro {
+      justify-self: end;
+      max-width: 32rem;
+    }
+    .contact__title-container {
+      align-items: flex-start;
+      margin: 0 0 var(--space-5);
+    }
+    .contact__lede,
+    .contact__foyer {
+      max-width: 34ch;
+      margin-inline: 0;
+      text-wrap: pretty;
+    }
+    .contact__actions {
+      justify-self: start;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-6);
+      width: 100%;
+      max-width: 26rem;
+    }
+    .contact__links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-top: 0;
+      width: auto;
+    }
+    .contact__bises {
+      margin: 0;
+      align-self: flex-start;
+    }
+  }
+  .band--contact :focus-visible {
+    outline-color: var(--honey);
+  }
+  .band--contact .btn--primary {
+    background: var(--honey);
+    color: var(--ink);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .band--contact .btn--primary:hover {
+    background: var(--honey-deep);
+    color: var(--ink);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .band--contact .btn--primary:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+  .band--contact .btn--ghost-light {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .band--contact .btn--ghost-light:hover {
+    background: var(--cream-deep);
+    color: var(--ink);
+    border-color: var(--ink);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .band--contact .btn--ghost-light:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+  .band--contact .btn--green {
+    /* Deeper pine green, warmer next to honey than the global --green CTA. */
+    background: #2e8b57;
+    color: var(--cream);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .band--contact .btn--green:hover {
+    background: #236b43;
+    color: var(--cream);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .band--contact .btn--green:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+  .band--contact :global(.lexicon-term) {
+    --lex-cue: var(--honey);
+  }
+
+  /* Foyer Toast popup styling */
+  :global(.foyer-toast) {
+    position: fixed;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15), opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    max-width: 90vw;
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    text-align: center;
+  }
+  :global(.foyer-toast.is-visible) {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+  :global(.foyer-toast__card) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    z-index: 1;
+  }
+  :global(.foyer-toast__text) {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Hero: buttons on honey background ──────────────────────── */
+  /* Chunkier, solid, comic-shadow pair: Navy / Ink + Cream */
+  .hero .btn {
+    font-size: 1.125rem;
+    padding: 0.9em 1.5em;
+    border-width: 3px;
+  }
+
+  /* Primary = cream background, ink text (dominant, bright button) */
+  .hero .btn--primary {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .hero .btn--primary:hover {
+    background: var(--cream-deep);
+    color: var(--ink);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .hero .btn--primary:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+
+  /* Secondary = solid navy background, cream text (solid, high contrast) */
+  .hero .btn--ghost {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .hero .btn--ghost:hover {
+    background: var(--navy-soft);
+    color: var(--cream);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .hero .btn--ghost:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+
+  /* ── Hero: hive-cell hover on honey bg needs cream, not honey ── */
+  :global(.hero .hive-cell:hover .hive-cell__bg-main),
+  :global(.hero .hive-cell:focus-visible .hive-cell__bg-main) {
+    fill: var(--cream) !important;
+  }
+
+  /* ── Hero: mobile hive-list on honey ────────────────────────── */
+  :global(.hero .hive-list-item) {
+    background-color: rgba(251, 244, 230, 0.55);
+    border-color: var(--navy);
+  }
+  :global(.hero .hive-list-item__title) {
+    color: var(--ink);
+  }
+  :global(.hero .hive-list-item__description) {
+    color: var(--navy);
+  }
+  :global(.hero .hive-list-item__arrow) {
+    color: var(--honey-deep);
+  }
+  :global(.hero .hive-list-item__icon-wrapper) {
+    background: var(--cream);
+    border-color: var(--navy);
+  }
+  :global(.hero .hive-list-item:hover),
+  :global(.hero .hive-list-item:focus-visible) {
+    background-color: var(--cream) !important;
+    border-color: var(--navy) !important;
+  }
+  :global(.hero .hive-list-item:hover .hive-list-item__title),
+  :global(.hero .hive-list-item:focus-visible .hive-list-item__title) {
+    color: var(--ink);
+  }
+  :global(.hero .hive-list-item:hover .hive-list-item__description),
+  :global(.hero .hive-list-item:focus-visible .hive-list-item__description) {
+    color: var(--navy);
+  }
+  :global(.hero .hive-list-item:hover .hive-list-item__arrow),
+  :global(.hero .hive-list-item:focus-visible .hive-list-item__arrow) {
+    color: var(--honey-deep);
+  }
+  :global(.hero .hive-list-item:hover .hive-list-item__icon-wrapper),
+  :global(.hero .hive-list-item:focus-visible .hive-list-item__icon-wrapper) {
+    background: var(--cream);
+    border-color: var(--navy);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mascot-frame,
+    .mascot-frame__img,
+    .orga__wrapper,
+    .president__polaroid,
+    .events__item,
+    .events__item-arrow,
+    .events__item-hex,
+    .photo-strip__polaroid,
+    .partners__item,
+    .partners__item-link-icon,
+    .contact__decor-bee {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>

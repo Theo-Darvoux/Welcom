@@ -1,0 +1,11 @@
+---
+import HomeBody from "../../components/pages/HomeBody.astro";
+import { prefixedLocales } from "../../i18n/config";
+
+// One home page per non-default locale: /fr, /es, /zh-CN, …
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+---
+
+<HomeBody />

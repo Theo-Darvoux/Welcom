@@ -1,0 +1,22 @@
+---
+/* Renders a string with {Term} placeholders (glossary terms) and inline <em> HTML. */
+import LexiconTerm from "./LexiconTerm.astro";
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const segments = text.split(/(\{[^}]+\})/g);
+---
+
+{
+  segments.map((seg) => {
+    const match = seg.match(/^\{(.+)\}$/);
+    if (match) {
+      const term = match[1];
+      return <LexiconTerm term={term}>{term}</LexiconTerm>;
+    }
+    return <Fragment set:html={seg} />;
+  })
+}

@@ -1,0 +1,153 @@
+---
+/* MagicUI HexagonPattern ported to pure Astro/SVG. Parent needs position:relative; overflow:hidden. */
+
+interface Props {
+  /** Center-to-vertex in px. Default 40 (matches MagicUI default). */
+  radius?: number;
+  /** Gap between hexagons in px. Default 0. */
+  gap?: number;
+  /** Stroke opacity on the grid lines. Default 0.3. */
+  opacity?: number;
+  /** Stroke + fill color. Default "currentColor". */
+  color?: string;
+  /** Stroke width. Default 1. */
+  strokeWidth?: number;
+  /** [col, row] pairs to fill as highlight hexagons (MagicUI coord system). */
+  hexagons?: [number, number][];
+  /** Opacity for the filled highlight hexagons (default = same as `opacity`). */
+  highlightOpacity?: number;
+  /** CSS mask-image to concentrate visibility. Default: 420px radial circle. */
+  maskImage?: string;
+  /** Additional inline styles on the <svg>. */
+  style?: string;
+  class?: string;
+}
+
+const {
+  radius = 40,
+  gap = 0,
+  opacity = 0.3,
+  color = "currentColor",
+  strokeWidth = 1,
+  hexagons = [],
+  highlightOpacity,
+  maskImage = "radial-gradient(420px circle at center, white, transparent)",
+  style: extraStyle = "",
+  class: extraClass = "",
+} = Astro.props;
+
+// Geometry, ported verbatim from MagicUI.
+const sqrt3 = Math.sqrt(3);
+
+function getHexSpacing(r: number, gap: number) {
+  const colStep = (3 * r) / 2 + (sqrt3 * gap) / 2;
+  const rowStep = sqrt3 * r + gap;
+  return { colStep, rowStep, tileW: colStep * 2, tileH: rowStep };
+}
+
+function getTileGeometry(r: number, gap: number) {
+  const { colStep, rowStep, tileW, tileH } = getHexSpacing(r, gap);
+  // Two canonical hex centers for horizontal flat-top tiling
+  const canonical: [number, number][] = [
+    [colStep / 2, rowStep / 2],
+    [(colStep * 3) / 2, rowStep],
+  ];
+  // Ghost copies for edge-wrapping (so SVG pattern tiles seamlessly)
+  const centers: [number, number][] = [];
+  for (const [cx, cy] of canonical) {
+    centers.push([cx, cy]);
+    if (cy - r < 0)            centers.push([cx, cy + tileH]);
+    if (cy + r > tileH)        centers.push([cx, cy - tileH]);
+    if (cx - r < 0)            centers.push([cx + tileW, cy]);
+    if (cx + r > tileW)        centers.push([cx - tileW, cy]);
+    if (cy - r < 0 && cx - r < 0)        centers.push([cx + tileW, cy + tileH]);
+    if (cy - r < 0 && cx + r > tileW)    centers.push([cx - tileW, cy + tileH]);
+    if (cy + r > tileH && cx - r < 0)    centers.push([cx + tileW, cy - tileH]);
+    if (cy + r > tileH && cx + r > tileW) centers.push([cx - tileW, cy - tileH]);
+  }
+  return { tileW, tileH, centers };
+}
+
+function hexCenter(col: number, row: number, r: number, gap: number): [number, number] {
+  const { colStep, rowStep } = getHexSpacing(r, gap);
+  const x = col * colStep + colStep / 2;
+  const y = row * rowStep + rowStep / 2 + (col % 2 !== 0 ? rowStep / 2 : 0);
+  return [x, y];
+}
+
+// startAngle = 0 → flat-top horizontal hexagons
+function hexPoints(cx: number, cy: number, r: number): string {
+  return Array.from({ length: 6 }, (_, i) => {
+    const angle = (i * 60 * Math.PI) / 180;
+    return `${(cx + r * Math.cos(angle)).toFixed(3)},${(cy + r * Math.sin(angle)).toFixed(3)}`;
+  }).join(" ");
+}
+
+const { tileW, tileH, centers } = getTileGeometry(radius, gap);
+const uid = Math.random().toString(36).slice(2, 9);
+
+const inlineStyle = [
+  maskImage ? `mask-image:${maskImage};-webkit-mask-image:${maskImage};` : "",
+  extraStyle,
+].join("");
+---
+
+<svg
+  aria-hidden="true"
+  class:list={["hex-bg", extraClass]}
+  xmlns="http://www.w3.org/2000/svg"
+  style={inlineStyle}
+>
+  <defs>
+    <pattern
+      id={`hxp-${uid}`}
+      width={tileW.toFixed(3)}
+      height={tileH.toFixed(3)}
+      patternUnits="userSpaceOnUse"
+      x="-1"
+      y="-1"
+    >
+      {centers.map(([cx, cy]) => (
+        <polygon
+          points={hexPoints(cx, cy, radius)}
+          fill="none"
+          stroke={color}
+          stroke-width={strokeWidth}
+          stroke-linejoin="round"
+          opacity={opacity}
+        />
+      ))}
+    </pattern>
+  </defs>
+
+  <!-- Repeating grid -->
+  <rect width="100%" height="100%" fill={`url(#hxp-${uid})`} stroke="none" />
+
+  <!-- Highlighted (filled) hexagons, same as MagicUI `hexagons` prop -->
+  {hexagons.length > 0 && (
+    <svg aria-hidden="true" style="overflow:visible" x="-1" y="-1">
+      {hexagons.map(([col, row]) => {
+        const [cx, cy] = hexCenter(col, row, radius, gap);
+        return (
+          <polygon
+            points={hexPoints(cx, cy, radius - 1)}
+            fill={color}
+            opacity={highlightOpacity ?? opacity}
+            stroke-width="0"
+          />
+        );
+      })}
+    </svg>
+  )}
+</svg>
+
+<style>
+  .hex-bg {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+</style>

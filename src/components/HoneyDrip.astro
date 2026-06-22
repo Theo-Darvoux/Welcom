@@ -1,0 +1,72 @@
+---
+/* Wavy "honey pouring between sections" edge. Place in a relative section; `fill` is the colour it pours into. */
+interface Props {
+  /** Colour filling below (or above) the wave, i.e. the adjacent section's color. */
+  fill?: string;
+  /** Drip line colour. */
+  stroke?: string;
+  /** Drip line thickness. */
+  strokeWidth?: number;
+  /** Which edge of the relative parent to attach to. */
+  anchor?: "bottom" | "top" | "top-inside";
+  /** Whether to fill above the wave instead of below it. */
+  fillAbove?: boolean;
+  /** Extra classes for sizing/overrides. */
+  class?: string;
+}
+
+const {
+  fill = "var(--cream)",
+  stroke = "var(--navy)",
+  strokeWidth = 3,
+  anchor = "bottom",
+  fillAbove = anchor === "top-inside",
+  class: className = "",
+} = Astro.props;
+
+const wave = `M0,38 C 90,6 170,6 240,38 C 300,64 396,72 480,40
+  C 560,10 640,8 720,40 C 800,72 880,72 960,40
+  C 1040,8 1120,10 1200,40 C 1284,72 1380,64 1440,38`;
+
+const fillPath = fillAbove ? `${wave} L1440,0 L0,0 Z` : `${wave} L1440,80 L0,80 Z`;
+---
+
+<div class:list={["honey-drip", `honey-drip--${anchor}`, className]} aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <!-- Fill below/above the wave, blending into the adjacent section -->
+    <path fill={fill} stroke="none" d={fillPath}></path>
+    <!-- The drip line itself -->
+    <path
+      fill="none"
+      stroke={stroke}
+      stroke-width={strokeWidth}
+      stroke-linecap="round"
+      d={wave}></path>
+  </svg>
+</div>
+
+<style>
+  .honey-drip {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: clamp(40px, 5vw, 64px);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .honey-drip svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .honey-drip--bottom {
+    bottom: -1px;
+  }
+  .honey-drip--top {
+    top: 1px;
+    transform: translateY(-100%);
+  }
+  .honey-drip--top-inside {
+    top: -1px;
+  }
+</style>

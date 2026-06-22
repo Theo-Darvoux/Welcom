@@ -1,0 +1,36 @@
+---
+import "../styles/tokens.css";
+import "../styles/global.css";
+import { localeMeta } from "../i18n/config";
+import { getLangFromUrl } from "../i18n/utils";
+import ImageLightbox from "../components/ImageLightbox.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "WELCOM, the hive that helps international students settle in at Télécom SudParis & IMT-BS, Évry campus.",
+} = Astro.props;
+
+// Writing direction and BCP-47 tag come from the active locale.
+const lang = getLangFromUrl(Astro.url);
+const { htmlLang, dir } = localeMeta[lang];
+---
+
+<!doctype html>
+<html lang={htmlLang} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/imgs/bee.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <ImageLightbox />
+  </body>
+</html>

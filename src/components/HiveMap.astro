@@ -1,0 +1,460 @@
+---
+/* The 8 guide categories as a honeycomb grid on desktop, a card list on mobile. */
+
+import HiveIcon from "./HiveIcon.astro";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Layout-only data; title + description come from the dictionary by id.
+const categories = [
+  { id: "getting-here", color: "var(--hive-blue)", href: "#getting-here" },
+  { id: "housing", color: "var(--hive-yellow)", href: "#housing" },
+  { id: "admin-aid", color: "var(--hive-peach)", href: "#admin" },
+  { id: "money-phone", color: "var(--hive-green)", href: "#money" },
+  { id: "getting-around", color: "var(--hive-yellow)", href: "#transport" },
+  { id: "daily-life", color: "var(--hive-green)", href: "#daily-life" },
+  { id: "studies", color: "var(--hive-blue)", href: "#studies" },
+  { id: "events-buddy", color: "var(--hive-peach)", href: "#events" },
+] as const;
+---
+
+<div class="hive-container" id="hive-map">
+  <h2 class="hive-map-title">{t.hive.title}</h2>
+  <!-- Desktop Honeycomb Grid -->
+  <div class="hive-grid" aria-label={t.hive.ariaGrid}>
+    {
+      categories.map((cat, idx) => (
+        <a
+          href={cat.href}
+          class={`hive-cell hive-cell--${cat.id}`}
+          style={`animation-delay: ${idx * 0.15}s; --cell-bg: ${cat.color};`}
+        >
+          <svg class="hive-cell__bg" viewBox="0 0 120 104" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Main solid/thick wobbly border -->
+            <path class="hive-cell__bg-main" d="
+              M 30,3 
+              Q 60,1 90,3 
+              Q 104,27 117,52 
+              Q 104,77 90,101 
+              Q 60,103 30,101 
+              Q 16,77 3,52 
+              Q 16,27 30,3 Z
+            " />
+            <!-- Sketch outline overlay -->
+            <path class="hive-cell__bg-sketch" d="
+              M 29,4 
+              Q 59,2 91,4 
+              Q 105,28 118,51 
+              Q 105,76 91,100 
+              Q 59,102 29,100 
+              Q 15,76 2,51 
+              Q 15,28 29,4 Z
+            " />
+          </svg>
+          <div class="hive-cell__content">
+            <HiveIcon id={cat.id} class="hive-cell__icon" />
+            <span class="hive-cell__title">{t.hive.categories[cat.id].title}</span>
+            <span class="hive-cell__peek">{t.hive.peek}</span>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+
+  <!-- Mobile List (degrades gracefully) -->
+  <div class="hive-list" aria-label={t.hive.ariaList}>
+    {
+      categories.map((cat) => (
+        <a
+          href={cat.href}
+          class={`hive-list-item hive-list-item--${cat.id}`}
+          style={`--cell-bg: ${cat.color};`}
+        >
+          <div class="hive-list-item__icon-wrapper">
+            <HiveIcon id={cat.id} class="hive-list-item__icon" />
+          </div>
+          <div class="hive-list-item__text">
+            <h3 class="hive-list-item__title">{t.hive.categories[cat.id].title}</h3>
+            <p class="hive-list-item__description">{t.hive.categories[cat.id].description}</p>
+          </div>
+          <span class="hive-list-item__arrow" aria-hidden="true">→</span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .hive-container {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .hive-map-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    text-align: center;
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-6);
+    display: block;
+    line-height: 1;
+    padding-block: var(--space-2);
+    transform: rotate(-3deg);
+    
+    /* Clean outline that doesn't eat into the fill */
+    -webkit-text-stroke: 8px var(--navy);
+    paint-order: stroke fill;
+    
+    /* Offset solid drop shadow */
+    text-shadow: 6px 6px 0 var(--navy);
+  }
+
+  /* ── Desktop Honeycomb ─────────────────────────────────────── */
+  .hive-grid {
+    display: none; /* hidden on mobile */
+    position: relative;
+    --hex-w: 185px;
+    --hex-h: 162px;
+    --hex-gap-x: 10px;
+    --hex-gap-y: 14px;
+    
+    /* Sized for the 3-2-3 hex structure. */
+    width: calc(2.5 * var(--hex-w) + 2 * var(--hex-gap-x));
+    height: calc(3 * var(--hex-h) + 2 * var(--hex-gap-y));
+    margin: 0 auto;
+  }
+
+  @media (min-width: 960px) {
+    .hive-grid {
+      display: block;
+    }
+  }
+
+  /* Cell Positioning logic (3-2-3 Layout) */
+  .hive-cell {
+    position: absolute;
+    width: var(--hex-w);
+    height: var(--hex-h);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--navy);
+    transform-origin: center;
+    transition: 
+      transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+      filter 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+    filter: drop-shadow(4px 4px 0px var(--navy));
+    animation: sway 6s ease-in-out infinite alternate;
+  }
+
+  /* Specific column offsets */
+  /* Column 1 (Left): cells 0, 2, 4 */
+  .hive-cell--getting-here {
+    left: 0;
+    top: 0;
+    animation-delay: 0s;
+  }
+  .hive-cell--admin-aid {
+    left: 0;
+    top: calc(var(--hex-h) + var(--hex-gap-y));
+    animation-delay: 0.4s;
+  }
+  .hive-cell--getting-around {
+    left: 0;
+    top: calc(2 * (var(--hex-h) + var(--hex-gap-y)));
+    animation-delay: 0.8s;
+  }
+
+  /* Column 2 (Middle, staggered down by 50%): cells 1, 3 */
+  .hive-cell--housing {
+    left: calc(0.75 * var(--hex-w) + var(--hex-gap-x));
+    top: calc(0.5 * var(--hex-h) + 0.5 * var(--hex-gap-y));
+    animation-delay: 0.2s;
+  }
+  .hive-cell--money-phone {
+    left: calc(0.75 * var(--hex-w) + var(--hex-gap-x));
+    top: calc(1.5 * var(--hex-h) + 1.5 * var(--hex-gap-y));
+    animation-delay: 0.6s;
+  }
+
+  /* Column 3 (Right): cells 5, 6, 7 */
+  .hive-cell--daily-life {
+    left: calc(1.5 * var(--hex-w) + 2 * var(--hex-gap-x));
+    top: 0;
+    animation-delay: 0.3s;
+  }
+  .hive-cell--studies {
+    left: calc(1.5 * var(--hex-w) + 2 * var(--hex-gap-x));
+    top: calc(var(--hex-h) + var(--hex-gap-y));
+    animation-delay: 0.7s;
+  }
+  .hive-cell--events-buddy {
+    left: calc(1.5 * var(--hex-w) + 2 * var(--hex-gap-x));
+    top: calc(2 * (var(--hex-h) + var(--hex-gap-y)));
+    animation-delay: 1.1s;
+  }
+
+  /* SVG hexagon rendering */
+  .hive-cell__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  .hive-cell__bg-main {
+    fill: var(--cell-bg, var(--honey-wash));
+    stroke: var(--navy);
+    stroke-width: 4;
+    stroke-linejoin: round;
+    transition: 
+      fill 0.25s ease,
+      stroke 0.25s ease;
+  }
+
+  .hive-cell__bg-sketch {
+    fill: none;
+    stroke: var(--navy);
+    stroke-width: 1.5;
+    opacity: 0.5;
+    stroke-linejoin: round;
+    transition: stroke 0.25s ease;
+  }
+
+  /* Cell Content overlay */
+  .hive-cell__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-inline: var(--space-4);
+    padding-bottom: 22px; /* Prevent text from falling into the bottom tapered zone */
+    padding-top: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+
+  .hive-cell__icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 2px;
+    color: var(--navy);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+    display: inline-block;
+  }
+
+  .hive-cell__title {
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    line-height: 1.1;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    max-width: 12ch;
+  }
+
+  .hive-cell__peek {
+    font-family: var(--font-accent);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    margin-top: 6px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: 
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  /* Interactive States (Comic-style Solid Shadow Lift-off) */
+  .hive-cell:hover,
+  .hive-cell:focus-visible {
+    z-index: 10;
+    transform: translate(-4px, -4px) scale(1.02);
+    filter: drop-shadow(8px 8px 0px var(--navy));
+    animation-play-state: paused;
+  }
+
+  .hive-cell:hover .hive-cell__bg-main,
+  .hive-cell:focus-visible .hive-cell__bg-main {
+    fill: var(--honey) !important;
+    stroke: var(--ink);
+  }
+
+  .hive-cell:hover .hive-cell__bg-sketch,
+  .hive-cell:focus-visible .hive-cell__bg-sketch {
+    stroke: var(--ink);
+  }
+
+  .hive-cell:hover .hive-cell__icon,
+  .hive-cell:focus-visible .hive-cell__icon {
+    transform: scale(1.22) rotate(8deg);
+  }
+
+  .hive-cell:hover .hive-cell__content,
+  .hive-cell:focus-visible .hive-cell__content {
+    transform: translateY(-5px);
+  }
+
+  .hive-cell:hover .hive-cell__peek,
+  .hive-cell:focus-visible .hive-cell__peek {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Accessible outline matching the hex shape */
+  .hive-cell:focus-visible {
+    outline: none;
+  }
+  .hive-cell:focus-visible .hive-cell__bg-main {
+    stroke: var(--navy);
+    stroke-width: 6;
+  }
+
+  /* Swaying Honeycomb Animation */
+  @keyframes sway {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-2px) rotate(0.4deg);
+    }
+    100% {
+      transform: translateY(2px) rotate(-0.4deg);
+    }
+  }
+
+  /* ── Mobile List (Tactile comic-style cards) ───────────────── */
+  .hive-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-inline: var(--space-1);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 960px) {
+    .hive-list {
+      display: none;
+    }
+  }
+
+  .hive-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--navy);
+    background-color: var(--cell-bg, var(--cream-deep));
+    transition: 
+      transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+      box-shadow 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    border: 3.5px solid var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+
+  .hive-list-item__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+
+  .hive-list-item__icon {
+    width: 34px;
+    height: 34px;
+    color: var(--navy);
+  }
+
+  .hive-list-item__text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hive-list-item__title {
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .hive-list-item__description {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--navy-soft);
+    line-height: 1.3;
+  }
+
+  .hive-list-item__arrow {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--navy);
+    transition: transform 0.2s ease-out;
+  }
+
+  /* Mobile Interactive States */
+  .hive-list-item:hover,
+  .hive-list-item:focus-visible {
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+    background-color: var(--honey) !important;
+    outline: none;
+  }
+
+  .hive-list-item:hover .hive-list-item__icon-wrapper,
+  .hive-list-item:focus-visible .hive-list-item__icon-wrapper {
+    transform: scale(1.15) rotate(6deg);
+  }
+
+  .hive-list-item:hover .hive-list-item__arrow,
+  .hive-list-item:focus-visible .hive-list-item__arrow {
+    transform: translateX(4px);
+  }
+
+  /* ── Reduced Motion ────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .hive-cell {
+      animation: none !important;
+      transition: none !important;
+    }
+    .hive-cell:hover,
+    .hive-cell:focus-visible {
+      transform: none !important;
+      filter: none !important;
+    }
+    .hive-cell__icon,
+    .hive-cell__peek,
+    .hive-list-item,
+    .hive-list-item__icon-wrapper,
+    .hive-list-item__arrow {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>

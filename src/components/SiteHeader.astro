@@ -1,0 +1,389 @@
+---
+/* "The comb shelf": floating cream nav bar; the active page's link gets a honey-filled hexagon. */
+
+import { getLangFromUrl, localizedPath, stripLocale } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+import LangSwitcher from "./LangSwitcher.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const links = [
+  { label: t.nav.home, path: "/" },
+  { label: t.nav.guides, path: "/guides" },
+  { label: t.nav.team, path: "/team" },
+  { label: t.nav.events, path: "/events" },
+  { label: t.nav.contact, path: "/contact" },
+];
+
+// Active page, compared on the locale-stripped (canonical) path.
+const current = stripLocale(Astro.url.pathname).replace(/\/+$/, "") || "/";
+const isActive = (path: string) =>
+  path === "/" ? current === "/" : current === path || current.startsWith(path + "/");
+---
+
+<header class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="nav__brand" href={localizedPath("/", lang)} aria-label={t.nav.brandHome}>
+      <img class="nav__mark" src="/imgs/planet.webp" alt="" width="220" height="220" />
+      <span class="nav__wordmark" dir="ltr">Welcom’</span>
+    </a>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      aria-label={t.nav.openMenu}
+      data-label-open={t.nav.openMenu}
+      data-label-close={t.nav.closeMenu}
+    >
+      <span class="nav__toggle-box" aria-hidden="true">
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </span>
+    </button>
+
+    <div class="nav__menu" id="nav-menu">
+      <nav aria-label={t.nav.primary}>
+        <ul class="nav__list">
+          {links.map((l) => (
+            <li>
+              <a
+                class="nav__link"
+                href={localizedPath(l.path, lang)}
+                aria-current={isActive(l.path) ? "page" : undefined}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <LangSwitcher />
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: var(--space-4);
+    z-index: 50;
+    width: min(calc(100% - 2 * var(--space-4)), var(--container));
+    margin: var(--space-4) auto 0;
+  }
+
+  .nav__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+  }
+
+  /* ── Brand ─────────────────────────────────────────────────── */
+  .nav__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+  .nav__mark {
+    height: 42px;
+    width: auto;
+    filter: drop-shadow(2px 2px 0 rgba(30, 42, 61, 0.12));
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  /* The world turns when you reach for home */
+  .nav__brand:hover .nav__mark {
+    transform: rotate(-10deg) scale(1.06);
+  }
+  .nav__wordmark {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--ink);
+    padding-top: 0.08em; /* optical centring against the globe */
+  }
+
+  /* ── Desktop menu ──────────────────────────────────────────── */
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+  .nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav__link {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 0.45em 0.15em 0.5em 0.95em;
+    transition: color 0.18s ease;
+  }
+  /* Signature: honey-filled hexagon marker = "this comb cell is yours" */
+  .nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 12px;
+    height: 10px;
+    background: var(--honey);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    transform: translate(-2px, -50%) scale(0);
+    transform-origin: center;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .nav__link:hover {
+    color: var(--honey-deep);
+  }
+  .nav__link:hover::after {
+    transform: translate(-2px, -50%) scale(1);
+  }
+  .nav__link[aria-current="page"] {
+    color: var(--honey-deep);
+  }
+  .nav__link[aria-current="page"]::after {
+    transform: translate(-2px, -50%) scale(1);
+  }
+
+  /* ── CTA pill (matches the hero's chunky honey actions) ────── */
+  .nav__cta {
+    flex-shrink: 0;
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--ink);
+    background: var(--honey);
+    text-decoration: none;
+    padding: 0.6em 1.15em 0.55em;
+    border-radius: var(--radius-pill);
+    border: 2.5px solid var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    transition:
+      transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background-color 0.16s ease;
+  }
+  .nav__cta:hover {
+    background: var(--honey-deep);
+    transform: translate(-2px, -2px);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+  }
+  .nav__cta:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy);
+  }
+
+  /* ── Mobile toggle (hidden on desktop) ─────────────────────── */
+  .nav__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: var(--cream);
+    color: var(--navy);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-button);
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    cursor: pointer;
+    transition:
+      transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.16s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .nav__toggle:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy);
+  }
+  .nav__toggle-box {
+    position: relative;
+    width: 20px;
+    height: 14px;
+  }
+  .nav__bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--navy);
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+  .nav__bar:nth-child(1) {
+    top: 0;
+  }
+  .nav__bar:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .nav__bar:nth-child(3) {
+    bottom: 0;
+  }
+  .nav.is-open .nav__bar:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .nav.is-open .nav__bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav.is-open .nav__bar:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+
+  /* ── Responsive: collapse into a comb dropdown ─────────────── */
+  @media (max-width: 720px) {
+    .nav {
+      top: var(--space-2);
+      width: min(calc(100% - 2 * var(--space-2)), var(--container));
+      margin-top: var(--space-2);
+    }
+    .nav__inner {
+      gap: var(--space-3);
+    }
+    .nav__mark {
+      height: 38px;
+    }
+    .nav__wordmark {
+      font-size: 1.55rem;
+    }
+    .nav__toggle {
+      display: inline-flex;
+    }
+
+    .nav__menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + var(--space-2));
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      background: var(--cream);
+      border: 3.5px solid var(--navy);
+      border-radius: var(--radius);
+      box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    }
+    .nav.is-open .nav__menu {
+      display: flex;
+      animation: navDrop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    .nav__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2px;
+    }
+    .nav__link {
+      display: block;
+      padding: 0.7em 0.6em;
+      border-radius: 10px;
+    }
+    /* On mobile the centred marker reads oddly, so use a comb-cell fill instead */
+    .nav__link::after {
+      display: none;
+    }
+    .nav__link:hover,
+    .nav__link[aria-current="page"] {
+      background: var(--honey-wash);
+    }
+    .nav__cta {
+      text-align: center;
+    }
+  }
+
+  @keyframes navDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav__brand img,
+    .nav__link,
+    .nav__link::after,
+    .nav__cta,
+    .nav__toggle,
+    .nav__bar {
+      transition: none;
+    }
+    .nav.is-open .nav__menu {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-nav]");
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+
+  if (header && toggle) {
+    const labelOpen = toggle.dataset.labelOpen || "Open menu";
+    const labelClose = toggle.dataset.labelClose || "Close menu";
+    const setOpen = (open: boolean) => {
+      header.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? labelClose : labelOpen);
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(!header.classList.contains("is-open"));
+    });
+
+    // Close when a link is tapped, on Escape, or when clicking away.
+    header.querySelectorAll(".nav__link").forEach((link) =>
+      link.addEventListener("click", () => setOpen(false))
+    );
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && header.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    document.addEventListener("click", (e) => {
+      if (
+        header.classList.contains("is-open") &&
+        !header.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    });
+    // Reset to desktop layout cleanly.
+    const mq = window.matchMedia("(min-width: 721px)");
+    mq.addEventListener("change", (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>
