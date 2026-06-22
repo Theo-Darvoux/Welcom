@@ -38,7 +38,7 @@ export const en = {
     titleAccent: "Évry.",
     lede: "Just arrived, or about to? We’re the student club that helps international students settle into life at {INT}, and everything you need is right here! Feel free to contact us!",
     ctaTeam: "Meet the team",
-    ctaFollow: "View guides",
+    ctaGuides: "View guides",
   },
   about: {
     eyebrow: "Meet the hive",

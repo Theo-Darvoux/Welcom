@@ -29,7 +29,7 @@ export const zhCN: Translation = {
     titleAccent: "Évry.",
     lede: "刚刚抵达，或即将抵达？我们是帮助国际学生在 {INT} 安顿生活的学生社团，你所需要的一切都在这里！欢迎随时与我们联系！",
     ctaTeam: "认识团队",
-    ctaFollow: "查看指南",
+    ctaGuides: "查看指南",
   },
   about: {
     eyebrow: "认识蜂巢",

@@ -29,7 +29,7 @@ export const fr: Translation = {
     titleAccent: "Évry.",
     lede: "Tout juste arrivé, ou sur le point de l’être ? Nous sommes le club étudiant qui aide les étudiants internationaux à s’installer à l’{INT}, et tout ce qu’il vous faut se trouve ici ! N’hésitez pas à nous contacter !",
     ctaTeam: "Rencontrer l’équipe",
-    ctaFollow: "Voir les guides",
+    ctaGuides: "Voir les guides",
   },
   about: {
     eyebrow: "Découvrez la ruche",

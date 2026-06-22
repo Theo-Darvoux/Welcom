@@ -29,7 +29,7 @@ export const es: Translation = {
     titleAccent: "Évry.",
     lede: "¿Acabas de llegar o estás a punto? Somos el club estudiantil que ayuda a los estudiantes internacionales a instalarse en {INT}, ¡y todo lo que necesitas está aquí! ¡No dudes en contactarnos!",
     ctaTeam: "Conoce al equipo",
-    ctaFollow: "Ver las guías",
+    ctaGuides: "Ver las guías",
   },
   about: {
     eyebrow: "Conoce la colmena",

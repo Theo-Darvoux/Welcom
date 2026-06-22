@@ -29,7 +29,7 @@ export const zhTW: Translation = {
     titleAccent: "Évry.",
     lede: "剛剛抵達，或即將抵達？我們是協助國際學生在 {INT} 安頓生活的學生社團，你所需要的一切都在這裡！歡迎隨時與我們聯絡！",
     ctaTeam: "認識團隊",
-    ctaFollow: "查看指南",
+    ctaGuides: "查看指南",
   },
   about: {
     eyebrow: "認識蜂巢",

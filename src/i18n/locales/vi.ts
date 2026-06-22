@@ -29,7 +29,7 @@ export const vi: Translation = {
     titleAccent: "Évry.",
     lede: "Vừa đến, hoặc sắp đến? Chúng tôi là câu lạc bộ sinh viên giúp các bạn sinh viên quốc tế ổn định cuộc sống tại {INT}, và mọi thứ bạn cần đều ở ngay đây! Đừng ngần ngại liên hệ với chúng tôi!",
     ctaTeam: "Gặp gỡ đội ngũ",
-    ctaFollow: "Xem hướng dẫn",
+    ctaGuides: "Xem hướng dẫn",
   },
   about: {
     eyebrow: "Khám phá tổ ong",

@@ -29,7 +29,7 @@ export const ptBR: Translation = {
     titleAccent: "Évry.",
     lede: "Acabou de chegar, ou está prestes a chegar? Somos o grupo estudantil que ajuda estudantes internacionais a se instalarem na {INT}, e tudo o que você precisa está aqui! Não hesite em nos contatar!",
     ctaTeam: "Conheça a equipe",
-    ctaFollow: "Ver os guias",
+    ctaGuides: "Ver os guias",
   },
   about: {
     eyebrow: "Conheça a colmeia",
