@@ -5,7 +5,6 @@ import HiveMap from "../HiveMap.astro";
 import RichText from "../RichText.astro";
 import HexBg from "../HexBg.astro";
 import HoneyDrip from "../HoneyDrip.astro";
-import CloudTransition from "../CloudTransition.astro";
 import Footer from "../Footer.astro";
 import { getLangFromUrl, localizedPath } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/ui";
@@ -457,7 +456,6 @@ const partners = [
         <p class="contact__bises"><RichText text={t.contactBand.bises} /></p>
         </div>
       </div>
-      <CloudTransition class="contact-clouds" />
     </section>
 
     <script>
@@ -1459,16 +1457,7 @@ const partners = [
     }
   }
 
-  /* Cloud transition sits at the bottom of the contact band */
-  :global(.contact-clouds) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: clamp(35px, 4.5vw, 55px);
-    pointer-events: none;
-    z-index: 3;
-  }
+
   .band--contact .container {
     position: relative;
     z-index: 1;

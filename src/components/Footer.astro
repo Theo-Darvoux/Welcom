@@ -1,6 +1,7 @@
 ---
 import RichText from "./RichText.astro";
 import HexBg from "./HexBg.astro";
+import CloudTransition from "./CloudTransition.astro";
 import { getLangFromUrl, localizedPath } from "../i18n/utils";
 import { useTranslations, developerName, developerLink } from "../i18n/ui";
 
@@ -17,6 +18,9 @@ const navLinks = [
 ---
 
 <footer class="site-footer" id="site-footer">
+  <CloudTransition class="footer-clouds" />
+
+  <div class="footer__inner-wrap">
 
   <!-- Subtle hex texture over the dark ink background -->
   <HexBg
@@ -154,16 +158,31 @@ const navLinks = [
     </div>
   </div>
 
+  </div>
 </footer>
 
 <style>
   /* ── Shell ───────────────────────────────────────────────── */
   .site-footer {
     position: relative;
+    z-index: 10;
+  }
+
+  :global(.footer-clouds) {
+    position: absolute;
+    bottom: 100% !important;
+    left: 0;
+    width: 100%;
+    height: clamp(35px, 4.5vw, 55px);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .footer__inner-wrap {
+    position: relative;
     background: var(--ink);
     color: var(--cream);
     overflow: hidden;
-    z-index: 10;
   }
 
   .container {
