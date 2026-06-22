@@ -1,5 +1,6 @@
 ---
 import PlaceholderBody from "../../components/pages/PlaceholderBody.astro";
+import ContactBody from "../../components/pages/ContactBody.astro";
 import { prefixedLocales } from "../../i18n/config";
 
 type PageSlug = "guides" | "team" | "events" | "contact";
@@ -16,4 +17,4 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 ---
 
-<PlaceholderBody page={slug as PageSlug} />
+{slug === "contact" ? <ContactBody /> : <PlaceholderBody page={slug as Exclude<PageSlug, "contact">} />}
