@@ -13,10 +13,17 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* Kill any stray horizontal scroll (e.g. a rotated/decorative element a few
+     px past the edge) without turning the page into a scroll container —
+     `clip` keeps `position: sticky` on the nav working, unlike `hidden`. */
+  overflow-x: clip;
 }
 
 body {
   min-height: 100dvh;
+  /* Belt-and-braces: the visual bleed-guard lives here too so the body bg can
+     never paint into an off-screen overflow strip. */
+  overflow-x: clip;
   background-color: var(--cream);
   background-image: radial-gradient(rgba(41, 58, 85, 0.04) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
