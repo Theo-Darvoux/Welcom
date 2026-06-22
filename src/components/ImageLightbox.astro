@@ -111,6 +111,25 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     let initialTranslateX = 0;
     let initialTranslateY = 0;
 
+    // Scroll lock helpers (handles iOS Safari momentum scrolling)
+    let scrollLockY = 0;
+    function lockScroll() {
+      scrollLockY = window.scrollY;
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollLockY}px`;
+      document.body.style.width = '100%';
+    }
+    function unlockScroll() {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockY);
+    }
+
     const minScale = 1;
     const maxScale = 6;
     const zoomStep = 0.3;
@@ -160,7 +179,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       resetZoom(false); // Reset coordinates without smooth transition for immediate setup
 
       lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden'; // Stop background scrolling
+      lockScroll(); // Stop background scrolling (works on iOS Safari too)
 
       // Add smooth transition class shortly after opening so setup is instant
       setTimeout(() => {
@@ -171,7 +190,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     function closeLightbox() {
       if (!lightbox) return;
       lightbox.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = ''; // Restore scrolling
+      unlockScroll(); // Restore scrolling
     }
 
     // Set interactive hover states and click events on source photos

@@ -50,6 +50,7 @@ const definition = lexicon[term] ?? lexicon.fallback;
       // Toggle tooltip on click/tap
       term.addEventListener('click', (e) => {
         e.stopPropagation();
+        e.preventDefault();
         const isActive = term.classList.contains('is-active');
 
         // Close all other tooltips first
