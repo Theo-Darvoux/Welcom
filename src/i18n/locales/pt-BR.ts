@@ -73,10 +73,10 @@ export const ptBR: Translation = {
       },
       cultural: {
         title: "Encontros culturais",
-        body: "Do Global Village a encontros descontraídos, quase sempre tem algo acontecendo na colmeia.",
+        body: "Do {Global Village} a encontros descontraídos, quase sempre tem algo acontecendo na colmeia.",
       },
     },
-    photoCaption1: "Global Village",
+    photoCaption1: "{Global Village}",
     photoCaption2: "Dia dos Namorados (festa)",
     photoAlt1: "Estudantes celebrando as culturas no Global Village",
     photoAlt2: "Uma festa de Dia dos Namorados no campus",
@@ -173,6 +173,8 @@ export const ptBR: Translation = {
       "Um trocadilho brincalhão com Évry, a cidade ao sul de Paris onde fica o nosso campus!",
     Foyer:
       "O centro estudantil (foyer) abriga os escritórios das associações estudantis do campus. Está localizado entre os edifícios U1, U4 e a escola.",
+    "Global Village":
+      "Nosso evento cultural mais esperado, onde os estudantes mostram seu patrimônio por meio de comida, música, dança e histórias, uma celebração da diversidade que enriquece nossa comunidade no campus.",
     fallback: "Uma gíria do campus.",
   },
 };

@@ -73,10 +73,10 @@ export const vi: Translation = {
       },
       cultural: {
         title: "Giao lưu văn hóa",
-        body: "Từ Global Village đến những buổi tụ họp thoải mái, ở tổ ong gần như lúc nào cũng có điều gì đó đang diễn ra.",
+        body: "Từ {Global Village} đến những buổi tụ họp thoải mái, ở tổ ong gần như lúc nào cũng có điều gì đó đang diễn ra.",
       },
     },
-    photoCaption1: "Global Village",
+    photoCaption1: "{Global Village}",
     photoCaption2: "Valentine (tiệc)",
     photoAlt1: "Sinh viên tôn vinh các nền văn hóa tại Global Village",
     photoAlt2: "Tiệc Valentine trong khuôn viên trường",
@@ -173,6 +173,8 @@ export const vi: Translation = {
       "Một cách chơi chữ tinh nghịch với Évry, thành phố phía nam Paris nơi có khuôn viên của chúng tôi!",
     Foyer:
       "Nhà chung hội sinh viên (foyer) là nơi đặt văn phòng của các hội nhóm trong khuôn viên trường. Nó nằm giữa các tòa nhà U1, U4 và trường học.",
+    "Global Village":
+      "Sự kiện văn hóa đặc trưng của chúng tôi, nơi sinh viên giới thiệu di sản của mình qua ẩm thực, âm nhạc, vũ điệu và câu chuyện, lễ hội tôn vinh tôn vinh sự đa dạng làm nên nét phong phú của cộng đồng campus.",
     fallback: "Một từ lóng trong khuôn viên trường.",
   },
 };

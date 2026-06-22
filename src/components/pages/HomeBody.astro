@@ -227,7 +227,7 @@ const partners = [
               height="800"
               loading="lazy"
             />
-            <span class="photo-strip__caption">{t.events.photoCaption1}</span>
+            <span class="photo-strip__caption"><RichText text={t.events.photoCaption1} /></span>
           </div>
           <div class="photo-strip__polaroid">
             <img
@@ -251,7 +251,7 @@ const partners = [
           <a class="events__item" href={localizedPath("/events", lang)}>
             <span class="events__item-hex" aria-hidden="true"></span>
             <h3>{t.events.items.trip.title}</h3>
-            <p>{t.events.items.trip.body}</p>
+            <p><RichText text={t.events.items.trip.body} /></p>
             <span class="events__item-arrow" aria-hidden="true">→</span>
           </a>
           <a class="events__item" href={localizedPath("/events", lang)}>
@@ -263,7 +263,7 @@ const partners = [
           <a class="events__item" href={localizedPath("/events", lang)}>
             <span class="events__item-hex" aria-hidden="true"></span>
             <h3>{t.events.items.cultural.title}</h3>
-            <p>{t.events.items.cultural.body}</p>
+            <p><RichText text={t.events.items.cultural.body} /></p>
             <span class="events__item-arrow" aria-hidden="true">→</span>
           </a>
         </div>

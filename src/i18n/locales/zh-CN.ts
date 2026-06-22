@@ -73,10 +73,10 @@ export const zhCN: Translation = {
       },
       cultural: {
         title: "文化聚会",
-        body: "从 Global Village 到随意的小聚，蜂巢里几乎总有事情在发生。",
+        body: "从 {Global Village} 到随意的小聚，蜂巢里几乎总有事情在发生。",
       },
     },
-    photoCaption1: "Global Village",
+    photoCaption1: "{Global Village}",
     photoCaption2: "情人节（派对）",
     photoAlt1: "学生在 Global Village 欢庆各国文化",
     photoAlt2: "校园里的情人节派对",
@@ -173,6 +173,8 @@ export const zhCN: Translation = {
       "对 Évry（埃夫里，巴黎以南我们校区所在的城市）的俏皮双关！",
     Foyer:
       "学生社团活动中心 (Foyer) 汇集了校园各学生社团的办公室，位于 U1、U4 教学楼与学校主楼之间。",
+    "Global Village":
+      "我们的旗舰文化活动，学生们通过美食、音乐、舞蹈和故事展示各自的文化传承，这是对让我们校园社区如此丰富多彩的多样性的礼赞。",
     fallback: "一个校园俚语。",
   },
 };

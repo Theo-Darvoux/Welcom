@@ -73,10 +73,10 @@ export const fr: Translation = {
       },
       cultural: {
         title: "Rencontres culturelles",
-        body: "Du Global Village aux retrouvailles décontractées, il se passe presque toujours quelque chose à la ruche.",
+        body: "Du {Global Village} aux retrouvailles décontractées, il se passe presque toujours quelque chose à la ruche.",
       },
     },
-    photoCaption1: "Global Village",
+    photoCaption1: "{Global Village}",
     photoCaption2: "Saint-Valentin (soirée)",
     photoAlt1: "Des étudiants célébrant les cultures au Global Village",
     photoAlt2: "Une soirée de la Saint-Valentin sur le campus",
@@ -173,6 +173,8 @@ export const fr: Translation = {
       "Un clin d’œil malicieux à Évry, la ville au sud de Paris où se trouve notre campus !",
     Foyer:
       "Le foyer associatif regroupe les locaux des associations du campus. Il est situé entre les bâtiments U1, U4 et l'école.",
+    "Global Village":
+      "Notre événement culturel phare, où les étudiants font découvrir leur patrimoine à travers la nourriture, la musique, la danse et les récits, une célébration de la diversité qui fait toute la richesse de notre campus.",
     fallback: "Un mot d’argot du campus.",
   },
 };

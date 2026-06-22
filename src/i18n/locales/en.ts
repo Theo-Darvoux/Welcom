@@ -82,10 +82,10 @@ export const en = {
       },
       cultural: {
         title: "Cultural meetups",
-        body: "From the Global Village to casual hangouts, there is almost always something happening at the hive.",
+        body: "From the {Global Village} to casual hangouts, there is almost always something happening at the hive.",
       },
     },
-    photoCaption1: "Global Village",
+    photoCaption1: "{Global Village}",
     photoCaption2: "Valentine's Day (party)",
     photoAlt1: "Students celebrating cultures at the Global Village",
     photoAlt2: "A Valentine's Day party on campus",
@@ -182,6 +182,8 @@ export const en = {
       "A cheeky pun on Évry, the city south of Paris where our campus is located!",
     Foyer:
       "The student center (foyer) houses the offices of the campus student associations. It is located between buildings U1, U4, and the school.",
+    "Global Village":
+      "Our flagship cultural event where students showcase their heritage through food, music, dance, and stories, a celebration of the diversity that makes our campus community so rich.",
     fallback: "A campus slang word.",
   },
 };

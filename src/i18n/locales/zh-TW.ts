@@ -73,10 +73,10 @@ export const zhTW: Translation = {
       },
       cultural: {
         title: "文化聚會",
-        body: "從 Global Village 到隨興的小聚，蜂巢裡幾乎總有事情在發生。",
+        body: "從 {Global Village} 到隨興的小聚，蜂巢裡幾乎總有事情在發生。",
       },
     },
-    photoCaption1: "Global Village",
+    photoCaption1: "{Global Village}",
     photoCaption2: "情人節（派對）",
     photoAlt1: "學生在 Global Village 歡慶各國文化",
     photoAlt2: "校園裡的情人節派對",
@@ -173,6 +173,8 @@ export const zhTW: Translation = {
       "對 Évry（埃夫里，巴黎以南我們校區所在的城市）的俏皮雙關！",
     Foyer:
       "學生社團活動中心 (Foyer) 匯集了校園各學生社團的辦公室，位於 U1、U4 教學樓與學校主樓之間。",
+    "Global Village":
+      "我們的旗艦文化活動，學生們透過美食、音樂、舞蹈與故事展現各自的文化傳承，這是對賦予我們校園社群豐富色彩的多元性的禮讚。",
     fallback: "一個校園俚語。",
   },
 };
