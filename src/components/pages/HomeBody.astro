@@ -311,6 +311,7 @@ const partners = [
     <!-- ── Contact / closing band ────────────────────────────────── -->
     <section id="say-hi" class="band band--contact">
       <HoneyDrip fill="var(--cream-deep)" stroke="var(--honey-deep)" anchor="top-inside" />
+      <!-- Desktop comb: wide, short band → radial-masked, full opacity. -->
       <HexBg
         radius={44}
         gap={2}
@@ -342,8 +343,37 @@ const partners = [
           [20, 6],
         ]}
         highlightOpacity={0.1}
-        class="contact-hex-bg"
+        class="contact-hex-bg contact-hex-bg--desktop"
         maskImage="radial-gradient(ellipse clamp(300px, 88vw, 1100px) clamp(260px, 65vh, 560px) at center, white, transparent)"
+      />
+      <!-- Mobile comb: tall, narrow band → smaller hexes, no mask (edge-to-edge),
+           lighter. Fills the band natively like desktop, so no transform hacks. -->
+      <HexBg
+        radius={24}
+        gap={2}
+        opacity={0.1}
+        color="var(--honey)"
+        strokeWidth={1.5}
+        hexagons={[
+          [1, 1],
+          [3, 3],
+          [5, 5],
+          [2, 7],
+          [4, 9],
+          [0, 4],
+          [6, 2],
+          [7, 6],
+          [9, 4],
+          [8, 8],
+          [10, 1],
+          [11, 5],
+          [12, 9],
+          [13, 3],
+          [14, 7],
+        ]}
+        highlightOpacity={0.05}
+        class="contact-hex-bg contact-hex-bg--mobile"
+        maskImage="linear-gradient(to right, rgba(255,255,255,0.55), white 6%, white 94%, rgba(255,255,255,0.55))"
       />
       <div class="container contact">
         <div class="contact__intro">
@@ -1411,11 +1441,17 @@ const partners = [
     padding-bottom: calc(var(--section-y) + clamp(35px, 4.5vw, 55px) + 8px);
   }
 
-  /* Scale the SVG down on mobile so ~6–7 hexes fit across. */
+  /* Two combs, one per breakpoint — each fills the band natively (no scaling,
+     which is what was clipping the coverage box on mobile). */
+  :global(.contact-hex-bg--mobile) {
+    display: none;
+  }
   @media (max-width: 639px) {
-    :global(.contact-hex-bg) {
-      transform: scale(0.65);
-      transform-origin: center center;
+    :global(.contact-hex-bg--desktop) {
+      display: none;
+    }
+    :global(.contact-hex-bg--mobile) {
+      display: block;
     }
   }
 

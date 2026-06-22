@@ -1,7 +1,7 @@
 ---
 import "../styles/tokens.css";
 import "../styles/global.css";
-import { localeMeta } from "../i18n/config";
+import { localeMeta, locales, defaultLang } from "../i18n/config";
 import { getLangFromUrl } from "../i18n/utils";
 import ImageLightbox from "../components/ImageLightbox.astro";
 
@@ -23,6 +23,63 @@ const { htmlLang, dir } = localeMeta[lang];
 <!doctype html>
 <html lang={htmlLang} dir={dir}>
   <head>
+    {
+      /* On the default-locale (unprefixed) pages only: redirect first-time
+         visitors to the localized path that best matches their browser
+         language. A manual choice in the language switcher (stored in
+         localStorage) always wins — including an explicit "English", so a
+         visitor on a French browser who picks English is not bounced back.
+         Runs inline before paint to minimise flash; replace() leaves no
+         history entry, so there is no back-button trap. */
+      lang === defaultLang && (
+        <script is:inline define:vars={{ locales, defaultLang }}>
+          {`(function () {
+  try {
+    var path = location.pathname.split("/").filter(Boolean);
+    // Safety: never run if we are somehow already on a locale-prefixed path.
+    if (path[0] && locales.indexOf(path[0]) !== -1) return;
+
+    function pick(prefs) {
+      var lower = locales.map(function (l) { return l.toLowerCase(); });
+      for (var i = 0; i < prefs.length; i++) {
+        var tag = String(prefs[i]).toLowerCase();
+        var parts = tag.split("-");
+        var primary = parts[0];
+        var exact = lower.indexOf(tag);
+        if (exact !== -1) return locales[exact];
+        if (primary === "zh") {
+          var trad =
+            tag.indexOf("hant") !== -1 ||
+            parts.indexOf("tw") !== -1 ||
+            parts.indexOf("hk") !== -1 ||
+            parts.indexOf("mo") !== -1;
+          return trad ? "zh-TW" : "zh-CN";
+        }
+        if (primary === "pt") return "pt-BR"; // only Brazilian Portuguese is offered
+        for (var j = 0; j < locales.length; j++) {
+          if (locales[j].toLowerCase().split("-")[0] === primary) return locales[j];
+        }
+      }
+      return defaultLang;
+    }
+
+    var stored = null;
+    try { stored = localStorage.getItem("welcom:lang"); } catch (e) {}
+    var target =
+      stored && locales.indexOf(stored) !== -1
+        ? stored
+        : pick(navigator.languages || [navigator.language || defaultLang]);
+
+    if (!target || target === defaultLang) return;
+
+    var clean = location.pathname.replace(/^\\/+|\\/+$/g, "");
+    var dest = "/" + target + (clean ? "/" + clean : "");
+    location.replace(dest + location.search + location.hash);
+  } catch (e) {}
+})();`}
+        </script>
+      )
+    }
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />

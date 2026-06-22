@@ -31,7 +31,7 @@ export const localeMeta: Record<Locale, LocaleMeta> = {
   en: { label: "English", flag: "gb", dir: "ltr", htmlLang: "en" },
   fr: { label: "Français", flag: "fr", dir: "ltr", htmlLang: "fr" },
   es: { label: "Español", flag: "es", dir: "ltr", htmlLang: "es" },
-  "pt-BR": { label: "Português", flag: "br", dir: "ltr", htmlLang: "pt-BR" },
+  "pt-BR": { label: "Português", flag: "pt", dir: "ltr", htmlLang: "pt-BR" },
   "zh-CN": { label: "简体中文", flag: "cn", dir: "ltr", htmlLang: "zh-CN" },
   "zh-TW": { label: "繁體中文", flag: "tw", dir: "ltr", htmlLang: "zh-TW" },
   hi: { label: "हिन्दी", flag: "in", dir: "ltr", htmlLang: "hi" },

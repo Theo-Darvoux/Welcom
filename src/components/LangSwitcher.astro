@@ -46,6 +46,7 @@ const current = localeMeta[lang];
             <a
               class="langsel__item"
               role="menuitem"
+              data-locale={l}
               href={localizedPath(canonical, l)}
               hreflang={meta.htmlLang}
               lang={meta.htmlLang}
@@ -83,19 +84,31 @@ const current = localeMeta[lang];
     border-radius: var(--radius-pill);
     border: 2.5px solid var(--navy);
     box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    /* Kill the ~300ms touch double-tap delay so rapid taps register instantly,
+       and stop mashing the pill from selecting its label text. */
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
     transition:
       transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
       box-shadow 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
       background-color 0.16s ease;
   }
-  .langsel__btn:hover {
-    background: var(--honey);
-    transform: translate(-2px, -2px);
-    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+  @media (hover: hover) {
+    .langsel__btn:hover {
+      background: var(--honey);
+      transform: translate(-2px, -2px);
+      box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    }
+    .langsel__btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy);
+    }
   }
-  .langsel__btn:active {
-    transform: translate(3px, 3px);
-    box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy);
+  @media (hover: none) {
+    .langsel__btn:active {
+      background: var(--honey);
+    }
   }
   .langsel__current {
     padding-top: 0.08em; /* optical centring against the flag box */
@@ -139,6 +152,7 @@ const current = localeMeta[lang];
     border-radius: 10px;
     text-decoration: none;
     color: var(--navy);
+    touch-action: manipulation;
     transition: background-color 0.15s ease;
   }
   .langsel__label {
@@ -178,6 +192,20 @@ const current = localeMeta[lang];
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* Inside the mobile nav column the menu is `align-items: stretch`, so without
+     this the pill keeps its content width on the inline-start while the dropdown
+     (right-aligned to the stretched container) detaches to the far side. Hug the
+     pill and open the panel from the start edge, directly under it. */
+  @media (max-width: 720px) {
+    .langsel {
+      align-self: flex-start;
+    }
+    .langsel__menu {
+      inset-inline-start: 0;
+      inset-inline-end: auto;
     }
   }
 
@@ -376,6 +404,13 @@ const current = localeMeta[lang];
           ) {
             return;
           }
+          // Remember the explicit choice so the auto-detect redirect on the
+          // default-locale pages honours it (incl. an explicit "English").
+          try {
+            if (link.dataset.locale) {
+              localStorage.setItem("welcom:lang", link.dataset.locale);
+            }
+          } catch {}
           captureScroll();
         });
       });

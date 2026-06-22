@@ -17,13 +17,41 @@ const definition = lexicon[term] ?? lexicon.fallback;
 <span class="lexicon-term" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false"><slot /><span class="lexicon-popover" role="tooltip"><span class="lexicon-popover__card"></span><strong class="lexicon-popover__title">{term}</strong><span class="lexicon-popover__body">{definition}</span></span></span><script>
   function initLexicon() {
     const terms = document.querySelectorAll('.lexicon-term');
-    
+
+    // Keep an open popover within the viewport: shift it horizontally so it
+    // never clips off-screen on narrow phones, and nudge the arrow the other
+    // way so it still points at the term.
+    function positionPopover(term: Element) {
+      const popover = term.querySelector('.lexicon-popover') as HTMLElement | null;
+      if (!popover) return;
+
+      // Derive the shift from the term's on-screen position and the popover's
+      // untransformed layout width. We must NOT read the popover's own
+      // getBoundingClientRect here: `transform` is transitioned, so it would
+      // report a mid-animation position and the shift would drift on reopen.
+      const margin = 12;
+      const termRect = term.getBoundingClientRect();
+      const popWidth = popover.offsetWidth;
+      // When un-shifted, the popover is centred on the term.
+      const center = termRect.left + termRect.width / 2;
+      const naturalLeft = center - popWidth / 2;
+      const naturalRight = center + popWidth / 2;
+
+      let shift = 0;
+      if (naturalLeft < margin) {
+        shift = margin - naturalLeft;
+      } else if (naturalRight > window.innerWidth - margin) {
+        shift = window.innerWidth - margin - naturalRight;
+      }
+      popover.style.setProperty('--lex-shift', `${shift}px`);
+    }
+
     terms.forEach((term) => {
       // Toggle tooltip on click/tap
       term.addEventListener('click', (e) => {
         e.stopPropagation();
         const isActive = term.classList.contains('is-active');
-        
+
         // Close all other tooltips first
         document.querySelectorAll('.lexicon-term.is-active').forEach((other) => {
           if (other !== term) {
@@ -38,8 +66,13 @@ const definition = lexicon[term] ?? lexicon.fallback;
         } else {
           term.classList.add('is-active');
           term.setAttribute('aria-expanded', 'true');
+          positionPopover(term);
         }
       });
+
+      // Desktop hover/focus also benefits from staying on-screen.
+      term.addEventListener('mouseenter', () => positionPopover(term));
+      term.addEventListener('focus', () => positionPopover(term));
 
       // Handle keyboard accessibility
       term.addEventListener('keydown', (e: any) => {
@@ -60,6 +93,12 @@ const definition = lexicon[term] ?? lexicon.fallback;
         term.classList.remove('is-active');
         term.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // The shift is viewport-relative, so recompute it for any open popover
+    // whenever the viewport changes (resize / orientation / zoom).
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.lexicon-term.is-active').forEach(positionPopover);
     });
   }
 
@@ -111,11 +150,12 @@ const definition = lexicon[term] ?? lexicon.fallback;
 
   /* Comic speech bubble container */
   .lexicon-popover {
+    --lex-shift: 0px;
     position: absolute;
     bottom: 135%;
     left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    width: 250px;
+    transform: translateX(calc(-50% + var(--lex-shift))) translateY(8px);
+    width: min(250px, calc(100vw - 24px));
     padding: var(--space-3) var(--space-4);
     font-size: 0.9rem;
     line-height: 1.45;
@@ -188,7 +228,8 @@ const definition = lexicon[term] ?? lexicon.fallback;
     content: "";
     position: absolute;
     top: 100%;
-    left: 50%;
+    /* Counter the popover's shift so the arrow stays under the term. */
+    left: calc(50% - var(--lex-shift));
     transform: translateX(-50%) translateY(-4px) rotate(45deg);
     width: 16px;
     height: 16px;
@@ -204,7 +245,7 @@ const definition = lexicon[term] ?? lexicon.fallback;
   .lexicon-term.is-active .lexicon-popover {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(calc(-50% + var(--lex-shift))) translateY(0);
     pointer-events: auto;
   }
 
