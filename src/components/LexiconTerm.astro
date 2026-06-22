@@ -131,6 +131,10 @@ const definition = lexicon[term] ?? lexicon.fallback;
     text-align: left;
     font-family: var(--font-body);
     font-weight: 600;
+    /* Reset any text-stroke inherited from surfaces like the contact band,
+       so the popover text reads clean on its cream card everywhere. */
+    -webkit-text-stroke: 0;
+    paint-order: normal;
   }
 
   /* Separate background card layer to control border stacking */
