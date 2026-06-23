@@ -9,10 +9,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navLinks = [
-  { label: t.nav.home,    path: "/" },
-  { label: t.nav.guides,  path: "/guides" },
-  { label: t.nav.team,    path: "/team" },
-  { label: t.nav.events,  path: "/events" },
+  { label: t.nav.home, path: "/" },
+  { label: t.nav.guides, path: "/guides" },
+  { label: t.nav.team, path: "/team" },
+  { label: t.nav.events, path: "/events" },
   { label: t.nav.contact, path: "/contact" },
 ];
 ---
@@ -21,143 +21,233 @@ const navLinks = [
   <CloudTransition class="footer-clouds" />
 
   <div class="footer__inner-wrap">
+    <!-- Subtle hex texture over the dark ink background -->
+    <HexBg
+      radius={52}
+      gap={4}
+      opacity={0.055}
+      color="var(--honey)"
+      strokeWidth={1.5}
+      hexagons={[]}
+      maskImage="linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0.4) 70%, transparent 100%)"
+    />
 
-  <!-- Subtle hex texture over the dark ink background -->
-  <HexBg
-    radius={52}
-    gap={4}
-    opacity={0.055}
-    color="var(--honey)"
-    strokeWidth={1.5}
-    hexagons={[]}
-    maskImage="linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0.4) 70%, transparent 100%)"
-  />
-
-  <!-- ── Main grid ─────────────────────────────────────────── -->
-  <div class="footer__body">
-    <div class="container footer__grid">
-
-      <!-- Col 1 · Brand ────────────────────────────────────── -->
-      <div class="footer__col footer__col--brand">
-
-        <a class="footer__brand-link" href={localizedPath("/", lang)} aria-label={t.nav.brandHome}>
-          <img class="footer__logo-img" src="/imgs/logo.webp" alt="" width="80" height="69" />
-          <span class="footer__wordmark" dir="ltr">Welcom’</span>
-        </a>
-
-        <p class="footer__tagline">{t.footer.tagline}</p>
-
-        <div class="footer__socials">
+    <!-- ── Main grid ─────────────────────────────────────────── -->
+    <div class="footer__body">
+      <div class="container footer__grid">
+        <!-- Col 1 · Brand ────────────────────────────────────── -->
+        <div class="footer__col footer__col--brand">
           <a
-            class="footer__social-pill"
-            href="https://www.instagram.com/welcom_int"
-            target="_blank"
-            rel="noopener noreferrer"
+            class="footer__brand-link"
+            href={localizedPath("/", lang)}
+            aria-label={t.nav.brandHome}
           >
-            <svg class="footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-            <bdi>@welcom_int</bdi>
+            <img
+              class="footer__logo-img"
+              src="/imgs/logo.webp"
+              alt=""
+              width="80"
+              height="69"
+            />
+            <span class="footer__wordmark" dir="ltr">Welcom’</span>
           </a>
-          <a class="footer__social-pill" href="mailto:association.welcom@imtbs-tsp.eu">
-            <svg class="footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <polyline points="2,4 12,13 22,4"/>
-            </svg>
-            Email
-          </a>
-        </div>
 
-      </div>
+          <p class="footer__tagline">{t.footer.tagline}</p>
 
-      <!-- Col 2 · Navigation ───────────────────────────────── -->
-      <div class="footer__col footer__col--nav">
-        <div class="footer__col-label">
-          <svg class="footer__col-hex" viewBox="0 0 12 11" aria-hidden="true"><polygon points="6,0 12,3 12,8 6,11 0,8 0,3" fill="currentColor"/></svg>
-          {t.nav.brandHome}
-        </div>
-        <ul class="footer__nav-list">
-          {navLinks.map((l) => (
-            <li>
-              <a class="footer__nav-link" href={localizedPath(l.path, lang)}>
-                {l.label}
-                <svg class="footer__nav-chevron" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="1,1 7,7 1,13"/>
-                </svg>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Col 3 · Contact ──────────────────────────────────── -->
-      <div class="footer__col footer__col--contact">
-        <div class="footer__col-label">
-          <svg class="footer__col-hex" viewBox="0 0 12 11" aria-hidden="true"><polygon points="6,0 12,3 12,8 6,11 0,8 0,3" fill="currentColor"/></svg>
-          {t.nav.contact}
-        </div>
-
-        <address class="footer__address">
-          <a class="footer__contact-item footer__contact-item--link" href="https://www.instagram.com/welcom_int" target="_blank" rel="noopener noreferrer">
-            <span class="footer__contact-item-label">Instagram</span>
-            <span class="footer__contact-item-value"><bdi>@welcom_int</bdi></span>
-          </a>
-          <a class="footer__contact-item footer__contact-item--link" href="mailto:association.welcom@imtbs-tsp.eu">
-            <span class="footer__contact-item-label">Email</span>
-            <span class="footer__contact-item-value"><bdi>association.welcom<wbr/>@imtbs-tsp.eu</bdi></span>
-          </a>
-          <div class="footer__contact-item">
-            <span class="footer__contact-item-label">Adresse</span>
-            <span class="footer__contact-item-value"><bdi>9 Rue Charles Fourier,<br/>91011 Évry-Courcouronnes</bdi></span>
+          <div class="footer__socials">
+            <a
+              class="footer__social-pill"
+              href="https://www.instagram.com/welcom_int"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                class="footer__social-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"></circle>
+              </svg>
+              <bdi>@welcom_int</bdi>
+            </a>
+            <a
+              class="footer__social-pill"
+              href="mailto:association.welcom@imtbs-tsp.eu"
+            >
+              <svg
+                class="footer__social-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <polyline points="2,4 12,13 22,4"></polyline>
+              </svg>
+              Email
+            </a>
           </div>
-        </address>
-
-        <p class="footer__dev-line">
-          {t.footer.dev.split("{name}")[0]}<a
-            href={developerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer__dev-link"
-          >{developerName}</a>{t.footer.dev.split("{name}")[1]}
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ── Divider ───────────────────────────────────────────── -->
-  <div class="footer__rule-wrap" aria-hidden="true">
-    <div class="container">
-      <div class="footer__rule">
-        <div class="footer__rule-line"></div>
-        <div class="footer__rule-comb">
-          {[0,1,2,3,4].map((i) => (
-            <svg class="footer__rule-hex" style={`animation-delay:${i * 0.12}s`} viewBox="0 0 14 13" aria-hidden="true">
-              <polygon points="7,0.5 13.5,3.5 13.5,9.5 7,12.5 0.5,9.5 0.5,3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          ))}
         </div>
-        <div class="footer__rule-line"></div>
+
+        <!-- Col 2 · Navigation ───────────────────────────────── -->
+        <div class="footer__col footer__col--nav">
+          <div class="footer__col-label">
+            <svg class="footer__col-hex" viewBox="0 0 12 11" aria-hidden="true"
+              ><polygon points="6,0 12,3 12,8 6,11 0,8 0,3" fill="currentColor"
+              ></polygon></svg
+            >
+            {t.nav.brandHome}
+          </div>
+          <ul class="footer__nav-list">
+            {
+              navLinks.map((l) => (
+                <li>
+                  <a
+                    class="footer__nav-link"
+                    href={localizedPath(l.path, lang)}
+                  >
+                    {l.label}
+                    <svg
+                      class="footer__nav-chevron"
+                      viewBox="0 0 8 14"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="1,1 7,7 1,13" />
+                    </svg>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Col 3 · Contact ──────────────────────────────────── -->
+        <div class="footer__col footer__col--contact">
+          <div class="footer__col-label">
+            <svg class="footer__col-hex" viewBox="0 0 12 11" aria-hidden="true"
+              ><polygon points="6,0 12,3 12,8 6,11 0,8 0,3" fill="currentColor"
+              ></polygon></svg
+            >
+            {t.nav.contact}
+          </div>
+
+          <address class="footer__address">
+            <a
+              class="footer__contact-item footer__contact-item--link"
+              href="https://www.instagram.com/welcom_int"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="footer__contact-item-label">Instagram</span>
+              <span class="footer__contact-item-value"
+                ><bdi>@welcom_int</bdi></span
+              >
+            </a>
+            <a
+              class="footer__contact-item footer__contact-item--link"
+              href="mailto:association.welcom@imtbs-tsp.eu"
+            >
+              <span class="footer__contact-item-label">Email</span>
+              <span class="footer__contact-item-value"
+                ><bdi>association.welcom<wbr />@imtbs-tsp.eu</bdi></span
+              >
+            </a>
+            <a
+              class="footer__contact-item footer__contact-item--link"
+              href="https://maps.app.goo.gl/BkE7fHqtwXX4cz4FA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="footer__contact-item-label">Adresse</span>
+              <span class="footer__contact-item-value"
+                ><bdi>9 Rue Charles Fourier,<br />91011 Évry-Courcouronnes</bdi
+                ></span
+              >
+            </a>
+          </address>
+
+          <p class="footer__dev-line">
+            {t.footer.dev.split("{name}")[0]}<a
+              href={developerLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__dev-link">{developerName}</a
+            >{t.footer.dev.split("{name}")[1]}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- ── Bottom bar ────────────────────────────────────────── -->
-  <div class="footer__bottom">
-    <div class="container footer__bottom-inner">
-      <p class="footer__credits"><RichText text={t.footer.credits} /></p>
-      <a href="#top" class="footer__top-btn" aria-label={t.footer.backToTop}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="12" y1="19" x2="12" y2="5"/>
-          <polyline points="5 12 12 5 19 12"/>
-        </svg>
-        <span>{t.footer.top}</span>
-      </a>
+    <!-- ── Divider ───────────────────────────────────────────── -->
+    <div class="footer__rule-wrap" aria-hidden="true">
+      <div class="container">
+        <div class="footer__rule">
+          <div class="footer__rule-line"></div>
+          <div class="footer__rule-comb">
+            {
+              [0, 1, 2, 3, 4].map((i) => (
+                <svg
+                  class="footer__rule-hex"
+                  style={`animation-delay:${i * 0.12}s`}
+                  viewBox="0 0 14 13"
+                  aria-hidden="true"
+                >
+                  <polygon
+                    points="7,0.5 13.5,3.5 13.5,9.5 7,12.5 0.5,9.5 0.5,3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              ))
+            }
+          </div>
+          <div class="footer__rule-line"></div>
+        </div>
+      </div>
     </div>
-  </div>
 
+    <!-- ── Bottom bar ────────────────────────────────────────── -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__credits"><RichText text={t.footer.credits} /></p>
+        <a href="#top" class="footer__top-btn" aria-label={t.footer.backToTop}>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+          <span>{t.footer.top}</span>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -195,7 +285,8 @@ const navLinks = [
   .footer__body {
     position: relative;
     z-index: 2;
-    padding-block: clamp(var(--space-7), 8vw, var(--space-9)) clamp(var(--space-6), 6vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 8vw, var(--space-9))
+      clamp(var(--space-6), 6vw, var(--space-8));
   }
 
   .footer__grid {
@@ -364,7 +455,9 @@ const navLinks = [
     color: var(--honey);
     opacity: 0;
     transform: translateX(-4px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
   }
 
   .footer__nav-link:hover {
@@ -428,7 +521,9 @@ const navLinks = [
     font-weight: 800;
     text-decoration: none;
     border-bottom: 1.5px dashed rgba(239, 171, 67, 0.5);
-    transition: border-color 0.15s ease, color 0.15s ease;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
 
   .footer__dev-link:hover {
@@ -452,7 +547,8 @@ const navLinks = [
   .footer__rule-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right,
+    background: linear-gradient(
+      to right,
       transparent,
       rgba(239, 171, 67, 0.35) 15%,
       rgba(239, 171, 67, 0.35) 85%,
@@ -481,8 +577,12 @@ const navLinks = [
   }
 
   @keyframes hexPulse {
-    from { opacity: 0.3; }
-    to   { opacity: 0.55; }
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 0.55;
+    }
   }
 
   /* ── Bottom bar ──────────────────────────────────────────── */
@@ -579,7 +679,11 @@ const navLinks = [
       transform: none !important;
       animation: none !important;
     }
-    .footer__nav-chevron { opacity: 0.4; }
-    .footer__rule-hex { opacity: 0.4; }
+    .footer__nav-chevron {
+      opacity: 0.4;
+    }
+    .footer__rule-hex {
+      opacity: 0.4;
+    }
   }
 </style>

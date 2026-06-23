@@ -137,7 +137,7 @@ export const en = {
     directAddress: "Address",
     directAddressValue: "9 Rue Charles Fourier,\n91011 Évry-Courcouronnes",
     directFoyer: "You can also find us in person at the {Foyer}.",
-    teamTitle: "Team Contacts",
+    teamTitle: "Welcom' Contacts",
     presidentRole: "President of Welcom’",
     respoAccueilRole: "Welcome Manager of Welcom’",
     faqTitle: "Common questions",
@@ -163,6 +163,67 @@ export const en = {
         a: "Absolutely. Many incoming students reach out months before arriving. We love early birds!",
       },
     ],
+  },
+  eventsPage: {
+    heroTitle: "A year of good buzz.",
+    heroLede:
+      "From your very first BBQ to the {Global Village}, the hive throws something almost every month. Here's a taste of what's waiting for you.",
+    featuredEyebrow: "The big ones",
+    featuredTitle: "Three dates worth circling on your calendar.",
+    globalVillage: {
+      title: "Global Village",
+      body: "Our flagship evening. Students set up stands in the colors of their countries, cook traditional dishes, and share music, dance, and stories. Cultures from all over the world are gathered at the school forum during the {Global Village}.",
+      photoAlt: "Students celebrating their cultures at the Global Village",
+      photoCaption: "{Global Village}",
+      aftermovieTitle: "Watch the 2024 after movie 🎬",
+    },
+    valentines: {
+      title: "Valentine's party",
+      body: "Single, in a relationship, or just here for the {ritz}: everyone is invited. On the agenda: music, games, and a Valentine's Day themed evening!",
+      photoAlt: "Students at a Valentine's party on campus",
+      photoCaption: "Valentine's party",
+    },
+    trip: {
+      title: "The Amsterdam trip",
+      body: "Our second-biggest event of the year, right behind the {Global Village}. The entire campus lands in Amsterdam for a weekend: restaurants, museums, late-night strolls along the water, to bring students in the cohort closer together and let you discover the city of Amsterdam!",
+      photoAlt: "Students together on the annual trip to Amsterdam",
+      photoCaption: "Amsterdam",
+    },
+    yearRoundEyebrow: "All year round",
+    yearRoundTitle: "And plenty more",
+    yearRoundLede:
+      "The hive keeps buzzing all year. Some events are ours, some are just good excuses to celebrate together. Either way, they're all a chance to meet people.",
+    yearRound: {
+      bbq: {
+        title: "Welcome BBQ",
+        body: "Good food, great company, and the easiest way to meet people. The BBQ is where your year at {INT} begins.",
+      },
+      absinthe: {
+        title: "{AbsINThe} nights",
+        body: "Themed evenings, games, and relaxed nights at the school bar, {ACO} for short, all year long.",
+      },
+      stpatrick: {
+        title: "Saint Patrick's Day",
+        body: "Green everywhere, lively music, and a cheerful nod to Irish culture, the hive's way.",
+      },
+      oktoberfest: {
+        title: "Oktoberfest",
+        body: "A festive atmosphere, big communal tables, and traditional specialties to celebrate the famous beer festival.",
+      },
+    },
+    suggestBand: {
+      eyebrow: "Your culture, your event",
+      title: "What should we celebrate next?",
+      body: "Over 40 nationalities call this campus home, and each one has something worth celebrating together. Diwali, Lunar New Year, Eid, Carnival, a dish you miss from home... You too can suggest events for us to organize!",
+      cta: "Suggest an event",
+    },
+    ctaTitle: "Don't miss the next one.",
+    ctaLede:
+      "We publish every event on the campus calendar. Check it and you won't miss a thing.",
+    ctaMinet: "Campus calendar",
+    calNoEvents: "No events this week.",
+    calPrevWeek: "Previous week",
+    calNextWeek: "Next week",
   },
   footer: {
     tagline:
@@ -218,6 +279,7 @@ export const en = {
       "Maison des Élèves, the campus student residence blocks where you will live.",
     AbsINThe:
       "The beloved student-run campus bar, host to theme nights and relaxed evenings.",
+    ACO: "AbsINThe Chill Out, the name for the themed evenings hosted at the AbsINThe campus bar.",
     CAF: "Caisse d’Allocations Familiales, the French government agency that pays you monthly housing aid (APL).",
     "RER D":
       "The regional train line connecting Évry to the centre of Paris in 40 minutes.",
@@ -237,7 +299,9 @@ export const en = {
     Foyer:
       "The student center (foyer) houses the offices of the campus student associations. It is located between buildings U1, U4, and the school.",
     "Global Village":
-      "Our flagship cultural event where students showcase their heritage through food, music, dance, and stories, a celebration of the diversity that makes our campus community so rich.",
+      "An evening where students set up stands in the colors of their countries, cook traditional specialties, and share their cultures at the school forum.",
+    ritz:
+      "The name given to the free food offered during events, named after the school's restaurant, the Rits, with a cheeky nod to the famous Parisian hotel, the Ritz.",
     fallback: "A campus slang word.",
   },
 };

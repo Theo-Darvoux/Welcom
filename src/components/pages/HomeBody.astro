@@ -701,7 +701,7 @@ const partners = [
   .hero__title {
     font-family: var(--font-display);
     font-size: clamp(2.75rem, 7vw, 5.5rem);
-    line-height: 0.95;
+    line-height: 1.05;
     color: var(--ink);
     margin-top: var(--space-3);
     margin-bottom: 0;
@@ -1051,6 +1051,7 @@ const partners = [
   /* Cartoony Speech Bubble */
   .president__words {
     position: relative;
+    z-index: 1;
     background: var(--cream);
     border: 4px solid var(--navy);
     border-radius: 20px;
@@ -1082,6 +1083,7 @@ const partners = [
     .president__words::after {
       content: "";
       position: absolute;
+      box-sizing: content-box;
       left: -20px;
       top: 50px;
       width: 0;
@@ -1089,11 +1091,12 @@ const partners = [
       border-top: 12px solid transparent;
       border-bottom: 12px solid transparent;
       border-right: 20px solid var(--cream);
-      z-index: 2;
+      z-index: -1;
     }
     .president__words::before {
       content: "";
       position: absolute;
+      box-sizing: content-box;
       left: -25px;
       top: 48px;
       width: 0;
@@ -1101,7 +1104,7 @@ const partners = [
       border-top: 14px solid transparent;
       border-bottom: 14px solid transparent;
       border-right: 24px solid var(--navy);
-      z-index: 1;
+      z-index: -2;
     }
   }
 
@@ -1110,6 +1113,7 @@ const partners = [
     .president__words::after {
       content: "";
       position: absolute;
+      box-sizing: content-box;
       top: -20px;
       left: 50%;
       transform: translateX(-50%);
@@ -1118,11 +1122,12 @@ const partners = [
       border-left: 12px solid transparent;
       border-right: 12px solid transparent;
       border-bottom: 20px solid var(--cream);
-      z-index: 2;
+      z-index: -1;
     }
     .president__words::before {
       content: "";
       position: absolute;
+      box-sizing: content-box;
       top: -25px;
       left: 50%;
       transform: translateX(-50%);
@@ -1131,7 +1136,7 @@ const partners = [
       border-left: 14px solid transparent;
       border-right: 14px solid transparent;
       border-bottom: 24px solid var(--navy);
-      z-index: 1;
+      z-index: -2;
     }
   }
 
@@ -1611,13 +1616,13 @@ const partners = [
     outline-color: var(--honey);
   }
   .band--contact .btn--primary {
-    background: var(--honey);
+    background: #ffffff;
     color: var(--ink);
     border-color: var(--ink);
     box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
   }
   .band--contact .btn--primary:hover {
-    background: var(--honey-deep);
+    background: var(--honey-wash);
     color: var(--ink);
     transform: translate(-3px, -3px);
     box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
@@ -1625,6 +1630,7 @@ const partners = [
   .band--contact .btn--primary:active {
     transform: translate(5px, 5px);
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+    background: var(--honey-wash);
   }
   .band--contact .btn--ghost-light {
     background: var(--cream);

@@ -128,7 +128,7 @@ export const ptBR: Translation = {
     directAddress: "Endereço",
     directAddressValue: "9 Rue Charles Fourier,\n91011 Évry-Courcouronnes",
     directFoyer: "Você também pode nos encontrar pessoalmente no {Foyer}.",
-    teamTitle: "Contatos da equipe",
+    teamTitle: "Contatos da Welcom'",
     presidentRole: "Presidente da Welcom’",
     respoAccueilRole: "Responsável pela Acolhida da Welcom’",
     faqTitle: "Perguntas frequentes",
@@ -154,6 +154,67 @@ export const ptBR: Translation = {
         a: "Com certeza. Muitos futuros estudantes falam com a gente meses antes de chegar. Adoramos gente previdente!",
       },
     ],
+  },
+  eventsPage: {
+    heroTitle: "Um ano cheio de zumbido.",
+    heroLede:
+      "Do seu primeiro churrasco até o {Global Village}, a colmeia organiza algo quase todo mês. Aqui vai uma amostra do que espera por você.",
+    featuredEyebrow: "Os imperdíveis",
+    featuredTitle: "Três datas para marcar no calendário.",
+    globalVillage: {
+      title: "Global Village",
+      body: "Nossa noite mais especial. Os estudantes montam estandes com as cores de seus países, preparam pratos tradicionais e compartilham música, dança e histórias. Culturas de todo o mundo se reúnem no fórum da escola durante o {Global Village}.",
+      photoAlt: "Estudantes celebrando suas culturas no Global Village",
+      photoCaption: "{Global Village}",
+      aftermovieTitle: "Assista ao aftermovie de 2024 🎬",
+    },
+    valentines: {
+      title: "Festa de Dia dos Namorados",
+      body: "Solteiro, em um relacionamento ou apenas aqui pelo {ritz}: todo mundo está convidado. Na programação: música, jogos e uma noite com as cores do Dia dos Namorados!",
+      photoAlt: "Estudantes em uma festa de Dia dos Namorados no campus",
+      photoCaption: "Dia dos Namorados",
+    },
+    trip: {
+      title: "A viagem a Amsterdã",
+      body: "Nosso segundo maior evento do ano, logo atrás do {Global Village}. Todo o campus desembarca em Amsterdã durante um fim de semana: restaurantes, museus, caminhadas noturnas à beira da água, para aproximar os estudantes da turma e fazer você descobrir a cidade de Amsterdã!",
+      photoAlt: "Estudantes juntos na viagem anual a Amsterdã",
+      photoCaption: "Amsterdã",
+    },
+    yearRoundEyebrow: "O ano todo",
+    yearRoundTitle: "E muito mais",
+    yearRoundLede:
+      "A colmeia não para o ano todo. Alguns eventos são nossos, outros são apenas boas desculpas para celebrar juntos. De qualquer forma, são uma chance de conhecer gente.",
+    yearRound: {
+      bbq: {
+        title: "Churrasco de boas-vindas",
+        body: "Boa comida, ótima companhia e o jeito mais fácil de conhecer gente. O churrasco é onde começa o seu ano no {INT}.",
+      },
+      absinthe: {
+        title: "Noites {AbsINThe}",
+        body: "Noites temáticas, jogos e momentos descontraídos no bar da escola, os {ACO}, o ano inteiro.",
+      },
+      stpatrick: {
+        title: "Dia de São Patrício",
+        body: "Verde por toda parte, música animada e uma homenagem alegre à cultura irlandesa, do jeito da colmeia.",
+      },
+      oktoberfest: {
+        title: "Oktoberfest",
+        body: "Clima festivo, grandes mesas e especialidades tradicionais para celebrar a famosa festa da cerveja.",
+      },
+    },
+    suggestBand: {
+      eyebrow: "Sua cultura, seu evento",
+      title: "O que vamos celebrar a seguir?",
+      body: "Mais de 40 nacionalidades chamam este campus de lar, e cada uma tem algo que vale a pena celebrar juntos. Diwali, Ano Novo Lunar, Eid, Carnaval, um prato que você sente falta de casa... Você também pode nos propor eventos para organizar!",
+      cta: "Sugerir um evento",
+    },
+    ctaTitle: "Não perca a próxima.",
+    ctaLede:
+      "Publicamos todos os eventos no calendário do campus. Consulte-o e não perca nada.",
+    ctaMinet: "Calendário do campus",
+    calNoEvents: "Sem eventos esta semana.",
+    calPrevWeek: "Semana anterior",
+    calNextWeek: "Próxima semana",
   },
   footer: {
     tagline:
@@ -209,6 +270,7 @@ export const ptBR: Translation = {
       "A Maison des Élèves, os blocos da residência estudantil do campus onde você vai morar.",
     AbsINThe:
       "O querido bar estudantil do campus, palco de noites temáticas e encontros tranquilos.",
+    ACO: "AbsINThe Chill Out, o nome das noites temáticas realizadas no bar AbsINThe do campus.",
     CAF: "Caisse d’Allocations Familiales, o órgão público francês que paga um auxílio-moradia mensal (APL).",
     "RER D":
       "A linha de trem regional que liga Évry ao centro de Paris em 40 minutos.",
@@ -228,7 +290,9 @@ export const ptBR: Translation = {
     Foyer:
       "O centro estudantil (foyer) abriga os escritórios das associações estudantis do campus. Está localizado entre os edifícios U1, U4 e a escola.",
     "Global Village":
-      "Nosso evento cultural mais esperado, onde os estudantes mostram seu patrimônio por meio de comida, música, dança e histórias, uma celebração da diversidade que enriquece nossa comunidade no campus.",
+      "Uma noite onde os estudantes montam estandes com as cores de seus países, cozinham especialidades tradicionais e compartilham suas culturas no fórum da escola.",
+    ritz:
+      "Nome dado à comida gratuita oferecida durante os eventos, batizado em homenagem ao restaurante da escola, o Rits, com uma piscadela para o famoso hotel parisiense Ritz.",
     fallback: "Uma gíria do campus.",
   },
 };

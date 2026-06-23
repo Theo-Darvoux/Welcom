@@ -57,23 +57,23 @@ export const fr: Translation = {
   events: {
     eyebrow: "Toute l’année",
     h2: "À la ruche, on ne s’ennuie jamais.",
-    lede: "Nous organisons des événements tout au long de l’année pour que les étudiants internationaux puissent se faire des amis et vivre pleinement la vie étudiante à l’INT.",
+    lede: "Nous organisons des événements tout au long de l’année pour que les étudiants internationaux puissent se faire des amis et profiter à fond de la vie étudiante à l’{INT}.",
     items: {
       bbq: {
         title: "BBQ de bienvenue",
-        body: "Commencez l’année avec de bons petits plats, une chouette compagnie et une façon facile de rencontrer du monde. Le BBQ, c’est là que commence votre année à l’{INT}.",
+        body: "Un barbecue simple et convivial pour faire connaissance. C’est le meilleur moyen de lancer votre année à l’{INT} !",
       },
       trip: {
         title: "Voyage annuel",
-        body: "Chaque année, nous partons découvrir un nouvel endroit en Europe ensemble. L’an dernier c’était Amsterdam, et cette année une nouvelle destination nous attend, côte à côte.",
+        body: "Chaque année, on part ensemble découvrir une ville européenne. Après Amsterdam l’an dernier, préparez-vous pour la prochaine destination !",
       },
       absinthe: {
         title: "Soirées {AbsINThe}",
-        body: "Nous nous associons à {AbsINThe}, le bar de l’école, pour des soirées à thème, des jeux et des moments détendus tout au long de l’année.",
+        body: "En partenariat avec le bar de l’école, nous vous proposons des soirées à thème, des jeux et des moments de détente tout au long de l’année.",
       },
       cultural: {
         title: "Rencontres culturelles",
-        body: "Du {Global Village} aux retrouvailles décontractées, il se passe presque toujours quelque chose à la ruche.",
+        body: "Du {Global Village} aux soirées plus informelles, il y a toujours une occasion de se retrouver à la ruche.",
       },
     },
     photoCaption1: "{Global Village}",
@@ -128,7 +128,7 @@ export const fr: Translation = {
     directAddress: "Adresse",
     directAddressValue: "9 Rue Charles Fourier,\n91011 Évry-Courcouronnes",
     directFoyer: "Vous pouvez aussi nous trouver en personne au {Foyer}.",
-    teamTitle: "Contacts de l'équipe",
+    teamTitle: "Contacts Welcom'",
     presidentRole: "Président de Welcom’",
     respoAccueilRole: "Responsable Accueil de Welcom’",
     faqTitle: "Questions fréquentes",
@@ -154,6 +154,67 @@ export const fr: Translation = {
         a: "Absolument. Beaucoup de futurs étudiants nous contactent des mois avant d'arriver. On adore les prévoyants !",
       },
     ],
+  },
+  eventsPage: {
+    heroTitle: "Une année pleine de buzz.",
+    heroLede:
+      "De votre tout premier BBQ jusqu’au {Global Village}, la ruche organise quelque chose presque chaque mois. Voici un avant-goût de ce qui vous attend.",
+    featuredEyebrow: "Les incontournables",
+    featuredTitle: "Trois dates à entourer sur votre calendrier.",
+    globalVillage: {
+      title: "Global Village",
+      body: "Notre soirée phare. Les étudiants tiennent des stands aux couleurs de leur pays, cuisinent des plats traditionnels et partagent musique, danse et histoires. Les cultures du monde entier sont réunies au forum de l'école au cours du {Global Village}.",
+      photoAlt: "Des étudiants célébrant leurs cultures au Global Village",
+      photoCaption: "{Global Village}",
+      aftermovieTitle: "Regardez l’aftermovie de 2024 🎬",
+    },
+    valentines: {
+      title: "Soirée de la Saint-Valentin",
+      body: "Célibataire, en couple, ou juste là pour le {ritz} : tout le monde est invité. Au programme, de la musique, des jeux et une soirée aux couleurs de la Saint-Valentin !",
+      photoAlt: "Des étudiants à une soirée de la Saint-Valentin sur le campus",
+      photoCaption: "Saint-Valentin",
+    },
+    trip: {
+      title: "Le voyage à Amsterdam",
+      body: "Notre deuxième plus gros événement de l’année, juste derrière le {Global Village}. Tout le campus débarque à Amsterdam le temps d’un week-end : restaurants, musées, balades nocturnes au bord de l’eau, pour rapprocher les étudiants de la promo et vous faire découvrir la ville d'Amsterdam !",
+      photoAlt: "Des étudiants réunis lors du voyage annuel à Amsterdam",
+      photoCaption: "Amsterdam",
+    },
+    yearRoundEyebrow: "Toute l’année",
+    yearRoundTitle: "Et plein d’autres moments",
+    yearRoundLede:
+      "La ruche s’active toute l’année. Que ce soit pour nos événements ou simplement pour se retrouver, c'est toujours le moment idéal pour faire de nouvelles rencontres.",
+    yearRound: {
+      bbq: {
+        title: "BBQ de bienvenue",
+        body: "Un barbecue simple et convivial pour faire connaissance. C’est le meilleur moyen de lancer votre année à l’{INT} !",
+      },
+      absinthe: {
+        title: "Soirées {AbsINThe}",
+        body: "Des soirées à thème, des jeux et des moments chill au bar de l’école, les {ACO}, tout au long de l’année.",
+      },
+      stpatrick: {
+        title: "Saint-Patrick",
+        body: "Du vert, de la musique et une ambiance festive pour célébrer la culture irlandaise à notre façon.",
+      },
+      oktoberfest: {
+        title: "Oktoberfest",
+        body: "Une ambiance festive, de grandes tablées et des spécialités à partager pour célébrer la célèbre fête de la bière.",
+      },
+    },
+    suggestBand: {
+      eyebrow: "Ta culture, ton événement",
+      title: "Qu'est-ce qu'on célèbre ensuite ?",
+      body: "Plus de 40 nationalités se croisent sur ce campus, et chacune a quelque chose qui mérite d'être fêté ensemble. Diwali, Nouvel An lunaire, Aïd, Carnaval, un plat qui te manque de chez toi... Toi aussi tu peux nous proposer des évènements à organiser !",
+      cta: "Proposer un événement",
+    },
+    ctaTitle: "Ne ratez pas la prochaine.",
+    ctaLede:
+      "Tous nos événements sont publiés sur le calendrier du campus. Consultez-le et ne ratez plus rien.",
+    ctaMinet: "Calendrier du campus",
+    calNoEvents: "Aucun événement cette semaine.",
+    calPrevWeek: "Semaine précédente",
+    calNextWeek: "Semaine suivante",
   },
   footer: {
     tagline:
@@ -209,6 +270,7 @@ export const fr: Translation = {
       "La Maison des Élèves, les bâtiments de la résidence étudiante du campus où vous allez vivre.",
     AbsINThe:
       "Le bar étudiant adoré du campus, hôte des soirées à thème et des moments détendus.",
+    ACO: "AbsINThe Chill Out, le nom des soirées à thème organisées au bar étudiant AbsINThe.",
     CAF: "Caisse d’Allocations Familiales, l’organisme public français qui vous verse une aide au logement mensuelle (APL).",
     "RER D":
       "La ligne de train régionale qui relie Évry au centre de Paris en 40 minutes.",
@@ -228,7 +290,9 @@ export const fr: Translation = {
     Foyer:
       "Le foyer associatif regroupe les locaux des associations du campus. Il est situé entre les bâtiments U1, U4 et l'école.",
     "Global Village":
-      "Notre événement culturel phare, où les étudiants font découvrir leur patrimoine à travers la nourriture, la musique, la danse et les récits, une célébration de la diversité qui fait toute la richesse de notre campus.",
+      "Une soirée où les étudiants tiennent des stands aux couleurs de leur pays, cuisinent leurs spécialités et partagent leur culture au forum de l'école.",
+    ritz:
+      "Nom donné à la nourriture gratuite proposée lors des événements. Il tire son nom du Rits, le restaurant de l'école, et fait un clin d'œil au Ritz, le célèbre palace parisien.",
     fallback: "Un mot d’argot du campus.",
   },
 };

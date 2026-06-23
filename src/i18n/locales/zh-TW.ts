@@ -128,7 +128,7 @@ export const zhTW: Translation = {
     directAddress: "地址",
     directAddressValue: "9 Rue Charles Fourier,\n91011 Évry-Courcouronnes",
     directFoyer: "你也可以親自到 {Foyer} 找我們。",
-    teamTitle: "主要負責人聯絡方式",
+    teamTitle: "Welcom' 聯絡方式",
     presidentRole: "Welcom’ 主席",
     respoAccueilRole: "Welcom’ 迎新負責人",
     faqTitle: "常見問題",
@@ -154,6 +154,67 @@ export const zhTW: Translation = {
         a: "當然可以。很多準學生提前好幾個月就聯絡我們了。我們喜歡早起的鳥！",
       },
     ],
+  },
+  eventsPage: {
+    heroTitle: "熱鬧一整年。",
+    heroLede:
+      "從你的第一次烤肉到{Global Village}，蜂巢幾乎每個月都有活動。先來感受一下等著你的精彩吧。",
+    featuredEyebrow: "重頭戲",
+    featuredTitle: "三個值得記在日曆上的日子。",
+    globalVillage: {
+      title: "Global Village",
+      body: "我們的招牌之夜。同學們搭建展現自己國家色彩的攤位，烹飪傳統美食，並分享音樂、舞蹈與故事。在 {Global Village} 期間，來自世界各地的文化匯聚在學校的論壇（forum）。",
+      photoAlt: "同學們在 Global Village 上展示各自的文化",
+      photoCaption: "{Global Village}",
+      aftermovieTitle: "觀看 2024 年的活動回顧 🎬",
+    },
+    valentines: {
+      title: "情人節派對",
+      body: "單身、戀愛中，或者只是為了 {ritz} 而來：人人都受歡迎。活動內容包括：音樂、遊戲和充滿情人節色彩的夜晚！",
+      photoAlt: "同學們在校園裡的情人節派對上",
+      photoCaption: "情人節",
+    },
+    trip: {
+      title: "阿姆斯特丹之旅",
+      body: "我們一年中第二大的活動，僅次於{Global Village}。整個校區都將在週末前往阿姆斯特丹：餐館、博物館、水邊夜步，旨在拉近同屆學生之間的距離，並帶你領略阿姆斯特丹這座城市！",
+      photoAlt: "同學們在阿姆斯特丹年度旅行中合影",
+      photoCaption: "阿姆斯特丹",
+    },
+    yearRoundEyebrow: "全年不停",
+    yearRoundTitle: "還有更多",
+    yearRoundLede:
+      "蜂巢全年都熱鬧非凡。有些活動是我們自己辦的，有些只是一起慶祝的好藉口。無論哪種，都是認識新朋友的機會。",
+    yearRound: {
+      bbq: {
+        title: "歡迎烤肉",
+        body: "美食、好夥伴，還有認識新朋友最輕鬆的方式。烤肉，就是你在{INT}這一年的起點。",
+      },
+      absinthe: {
+        title: "{AbsINThe} 之夜",
+        body: "主題之夜、遊戲，還有在校園酒吧裡輕鬆愜意的夜晚，也就是{ACO}，全年不斷。",
+      },
+      stpatrick: {
+        title: "聖派翠克節",
+        body: "滿眼綠色、歡快的音樂，以蜂巢的方式向愛爾蘭文化致以愉快的問候。",
+      },
+      oktoberfest: {
+        title: "慕尼黑啤酒節",
+        body: "節日氛圍、大長桌和傳統美食，一起慶祝著名的啤酒節。",
+      },
+    },
+    suggestBand: {
+      eyebrow: "你的文化，你的活動",
+      title: "接下來我們慶祝什麼？",
+      body: "校園裡有40多個國籍的學生，每個國家都有值得一起慶祝的事情。排燈節、農曆新年、開齋節、嘉年華、一道你思念家鄉的菜餚……你也可以向我們提議要舉辦的活動！",
+      cta: "建議一個活動",
+    },
+    ctaTitle: "別錯過下一場。",
+    ctaLede:
+      "我們將所有活動發布在校園日曆上。查看日曆，一場都不會錯過。",
+    ctaMinet: "校園日曆",
+    calNoEvents: "本週沒有活動。",
+    calPrevWeek: "上一週",
+    calNextWeek: "下一週",
   },
   footer: {
     tagline:
@@ -209,6 +270,7 @@ export const zhTW: Translation = {
       "Maison des Élèves，校園裡的學生宿舍樓，你將住在這裡。",
     AbsINThe:
       "深受喜愛、由學生營運的校園酒吧，舉辦各種主題之夜和輕鬆的聚會。",
+    ACO: "AbsINThe Chill Out, AbsINThe校園酒吧舉辦的主題之夜的名稱。",
     CAF: "Caisse d’Allocations Familiales，按月發放住房補助（APL）給你的法國政府機構。",
     "RER D":
       "把埃夫里與巴黎市中心相連的區域列車路線，約 40 分鐘可達。",
@@ -228,7 +290,9 @@ export const zhTW: Translation = {
     Foyer:
       "學生社團活動中心 (Foyer) 匯集了校園各學生社團的辦公室，位於 U1、U4 教學樓與學校主樓之間。",
     "Global Village":
-      "我們的旗艦文化活動，學生們透過美食、音樂、舞蹈與故事展現各自的文化傳承，這是對賦予我們校園社群豐富色彩的多元性的禮讚。",
+      "在這場晚會上，同學們搭建展現自己國家色彩的攤位，烹飪傳統美食並分享他們的文化。",
+    ritz:
+      "活動期間提供的免費食物的別稱，得名於學校的餐廳 Rits，同時也巧妙地致敬了巴黎著名的麗茲酒店（Ritz）。",
     fallback: "一個校園俚語。",
   },
 };

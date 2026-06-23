@@ -128,7 +128,7 @@ export const vi: Translation = {
     directAddress: "Địa chỉ",
     directAddressValue: "9 Rue Charles Fourier,\n91011 Évry-Courcouronnes",
     directFoyer: "Bạn cũng có thể gặp chúng tôi trực tiếp tại {Foyer}.",
-    teamTitle: "Liên hệ chính",
+    teamTitle: "Liên hệ Welcom'",
     presidentRole: "Chủ tịch Welcom’",
     respoAccueilRole: "Trưởng ban Đón tiếp Welcom’",
     faqTitle: "Câu hỏi thường gặp",
@@ -154,6 +154,67 @@ export const vi: Translation = {
         a: "Tất nhiên. Nhiều sinh viên sắp nhập học liên hệ trước nhiều tháng. Chúng tôi yêu những chú chim đến sớm!",
       },
     ],
+  },
+  eventsPage: {
+    heroTitle: "Cả năm rộn ràng tiếng vo ve.",
+    heroLede:
+      "Từ buổi BBQ đầu tiên của bạn đến {Global Village}, tổ ong tổ chức sự kiện gần như mỗi tháng. Đây là một chút hương vị của những gì đang chờ bạn.",
+    featuredEyebrow: "Những sự kiện lớn",
+    featuredTitle: "Ba ngày đáng để khoanh tròn trên lịch.",
+    globalVillage: {
+      title: "Global Village",
+      body: "Buổi tối đỉnh cao của chúng tôi. Sinh viên dựng các gian hàng mang màu sắc quốc gia của mình, nấu các món ăn truyền thống và chia sẻ âm nhạc, điệu nhảy cũng như những câu chuyện. Các nền văn hóa từ khắp nơi trên thế giới hội tụ tại diễn đàn của trường trong suốt thời gian diễn ra {Global Village}.",
+      photoAlt: "Sinh viên tôn vinh văn hóa của mình tại Global Village",
+      photoCaption: "{Global Village}",
+      aftermovieTitle: "Xem aftermovie 2024 🎬",
+    },
+    valentines: {
+      title: "Tiệc Valentine",
+      body: "Độc thân, đang yêu, hay chỉ đến vì {ritz}: tất cả đều được chào đón. Chương trình gồm có: âm nhạc, trò chơi và một buổi tối mang sắc màu Valentine!",
+      photoAlt: "Sinh viên trong một buổi tiệc Valentine ở khuôn viên trường",
+      photoCaption: "Valentine",
+    },
+    trip: {
+      title: "Chuyến đi Amsterdam",
+      body: "Sự kiện lớn thứ hai trong năm của chúng tôi, chỉ sau {Global Village}. Toàn bộ sinh viên trong campus sẽ đến Amsterdam trong một dịp cuối tuần: nhà hàng, bảo tàng, dạo bộ đêm bên bờ nước, để gắn kết các sinh viên trong khóa học và giúp bạn khám phá thành phố Amsterdam!",
+      photoAlt: "Sinh viên cùng nhau trong chuyến đi thường niên đến Amsterdam",
+      photoCaption: "Amsterdam",
+    },
+    yearRoundEyebrow: "Quanh năm",
+    yearRoundTitle: "Và còn nhiều điều nữa",
+    yearRoundLede:
+      "Tổ ong rộn ràng suốt cả năm. Một số sự kiện là của chúng tôi, một số chỉ là cái cớ hay để cùng nhau ăn mừng. Dù thế nào, đó cũng là dịp để gặp gỡ mọi người.",
+    yearRound: {
+      bbq: {
+        title: "BBQ chào mừng",
+        body: "Đồ ăn ngon, bạn bè tuyệt vời và cách dễ nhất để gặp gỡ mọi người. BBQ là nơi năm học của bạn ở {INT} bắt đầu.",
+      },
+      absinthe: {
+        title: "Những đêm {AbsINThe}",
+        body: "Những buổi tối theo chủ đề, trò chơi và những đêm thư giãn tại quán bar của trường, gọi tắt là {ACO}, suốt cả năm.",
+      },
+      stpatrick: {
+        title: "Ngày Thánh Patrick",
+        body: "Màu xanh khắp nơi, âm nhạc sôi động và một lời chào vui vẻ gửi đến văn hóa Ireland, theo phong cách tổ ong.",
+      },
+      oktoberfest: {
+        title: "Oktoberfest",
+        body: "Không khí lễ hội, bàn dài và các món ăn truyền thống để kỷ niệm lễ hội bia nổi tiếng.",
+      },
+    },
+    suggestBand: {
+      eyebrow: "Văn hóa của bạn, sự kiện của bạn",
+      title: "Tiếp theo chúng ta sẽ ăn mừng gì?",
+      body: "Hơn 40 quốc tịch gọi khuôn viên này là nhà, và mỗi quốc tịch đều có điều gì đó đáng được cùng nhau ăn mừng. Diwali, Tết Nguyên Đán, Eid, Carnaval, một món ăn bạn nhớ từ quê hương... Bạn cũng có thể đề xuất các sự kiện để chúng tôi tổ chức!",
+      cta: "Đề xuất một sự kiện",
+    },
+    ctaTitle: "Đừng bỏ lỡ lần tới.",
+    ctaLede:
+      "Chúng tôi đăng tất cả sự kiện lên lịch của campus. Kiểm tra thường xuyên để không bỏ lỡ gì.",
+    ctaMinet: "Lịch campus",
+    calNoEvents: "Không có sự kiện tuần này.",
+    calPrevWeek: "Tuần trước",
+    calNextWeek: "Tuần tiếp theo",
   },
   footer: {
     tagline:
@@ -209,6 +270,7 @@ export const vi: Translation = {
       "Maison des Élèves, các tòa ký túc xá sinh viên trong khuôn viên nơi bạn sẽ ở.",
     AbsINThe:
       "Quán bar sinh viên thân thương trong trường, nơi tổ chức các đêm theo chủ đề và những buổi tối thư giãn.",
+    ACO: "AbsINThe Chill Out, tên gọi của các đêm chủ đề được tổ chức tại quán bar AbsINThe.",
     CAF: "Caisse d’Allocations Familiales, cơ quan nhà nước Pháp trả cho bạn trợ cấp nhà ở hằng tháng (APL).",
     "RER D":
       "Tuyến tàu vùng nối Évry với trung tâm Paris trong 40 phút.",
@@ -228,7 +290,9 @@ export const vi: Translation = {
     Foyer:
       "Nhà chung hội sinh viên (foyer) là nơi đặt văn phòng của các hội nhóm trong khuôn viên trường. Nó nằm giữa các tòa nhà U1, U4 và trường học.",
     "Global Village":
-      "Sự kiện văn hóa đặc trưng của chúng tôi, nơi sinh viên giới thiệu di sản của mình qua ẩm thực, âm nhạc, vũ điệu và câu chuyện, lễ hội tôn vinh tôn vinh sự đa dạng làm nên nét phong phú của cộng đồng campus.",
+      "Một buổi tối nơi sinh viên dựng các gian hàng mang màu sắc quốc gia của mình, nấu món ăn truyền thống và chia sẻ văn hóa của họ tại diễn đàn trường.",
+    ritz:
+      "Tên gọi dành cho đồ ăn miễn phí được phục vụ tại các sự kiện, đặt theo tên nhà ăn của trường là Rits, đồng thời là cách chơi chữ hướng đến khách sạn Ritz nổi tiếng ở Paris.",
     fallback: "Một từ lóng trong khuôn viên trường.",
   },
 };

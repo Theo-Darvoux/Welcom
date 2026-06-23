@@ -48,7 +48,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
 
           <form id="contact-form" class="form" novalidate>
             <div class="form__field">
-              <label class="form__label" for="contact-name">{t.contactPage.formName}</label>
+              <label class="form__label" for="contact-name"
+                >{t.contactPage.formName}</label
+              >
               <input
                 class="form__input"
                 type="text"
@@ -61,7 +63,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
             </div>
 
             <div class="form__field">
-              <label class="form__label" for="contact-email">{t.contactPage.formEmail}</label>
+              <label class="form__label" for="contact-email"
+                >{t.contactPage.formEmail}</label
+              >
               <input
                 class="form__input"
                 type="email"
@@ -74,32 +78,55 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
             </div>
 
             <div class="form__field">
-              <label class="form__label" for="contact-topic">{t.contactPage.formTopic}</label>
+              <label class="form__label" for="contact-topic"
+                >{t.contactPage.formTopic}</label
+              >
               <div class="form__select-wrap">
-                <select class="form__select" id="contact-topic" name="topic" required>
-                  {topicOptions.map(([, label]) => (
-                    <option value={label}>{label}</option>
-                  ))}
+                <select
+                  class="form__select"
+                  id="contact-topic"
+                  name="topic"
+                  required
+                >
+                  {
+                    topicOptions.map(([, label]) => (
+                      <option value={label}>{label}</option>
+                    ))
+                  }
                 </select>
-                <svg class="form__select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg
+                  class="form__select-chevron"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
             </div>
 
             <div class="form__field">
-              <label class="form__label" for="contact-message">{t.contactPage.formMessage}</label>
+              <label class="form__label" for="contact-message"
+                >{t.contactPage.formMessage}</label
+              >
               <textarea
                 class="form__textarea"
                 id="contact-message"
                 name="message"
                 rows="5"
                 placeholder={t.contactPage.formMessagePlaceholder}
-                required
-              ></textarea>
+                required></textarea>
             </div>
 
-            <button class="btn btn--primary form__submit" type="submit" id="contact-submit">
+            <button
+              class="btn btn--primary form__submit"
+              type="submit"
+              id="contact-submit"
+            >
               {t.contactPage.formSend}
             </button>
 
@@ -114,70 +141,155 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
 
             <div class="direct-list">
               <!-- Email -->
-              <a class="direct-item" href="mailto:association.welcom@imtbs-tsp.eu" id="direct-email">
+              <a
+                class="direct-item"
+                href="mailto:association.welcom@imtbs-tsp.eu"
+                id="direct-email"
+              >
                 <div class="direct-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
                 </div>
                 <div class="direct-item__text">
-                  <span class="direct-item__label">{t.contactPage.directEmail}</span>
-                  <span class="direct-item__value"><bdi>association.welcom<wbr/>@imtbs-tsp.eu</bdi></span>
+                  <span class="direct-item__label"
+                    >{t.contactPage.directEmail}</span
+                  >
+                  <span class="direct-item__value"
+                    ><bdi>association.welcom<wbr />@imtbs-tsp.eu</bdi></span
+                  >
                 </div>
               </a>
 
               <!-- Instagram -->
-              <a class="direct-item" href="https://www.instagram.com/welcom_int" target="_blank" rel="noopener noreferrer" id="direct-instagram">
+              <a
+                class="direct-item"
+                href="https://www.instagram.com/welcom_int"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="direct-instagram"
+              >
                 <div class="direct-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+                    ></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                    ></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
                 </div>
                 <div class="direct-item__text">
-                  <span class="direct-item__label">{t.contactPage.directInstagram}</span>
+                  <span class="direct-item__label"
+                    >{t.contactPage.directInstagram}</span
+                  >
                   <span class="direct-item__value"><bdi>@welcom_int</bdi></span>
                 </div>
               </a>
 
               <!-- Address -->
-              <div class="direct-item" id="direct-address">
+              <a
+                class="direct-item"
+                href="https://maps.app.goo.gl/BkE7fHqtwXX4cz4FA"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="direct-address"
+              >
                 <div class="direct-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
                 <div class="direct-item__text">
-                  <span class="direct-item__label">{t.contactPage.directAddress}</span>
-                  <span class="direct-item__value"><bdi>9 Rue Charles Fourier,<br/>91011 Évry-Courcouronnes</bdi></span>
+                  <span class="direct-item__label"
+                    >{t.contactPage.directAddress}</span
+                  >
+                  <span class="direct-item__value"
+                    ><bdi
+                      >9 Rue Charles Fourier,<br />91011 Évry-Courcouronnes</bdi
+                    ></span
+                  >
                 </div>
-              </div>
+              </a>
             </div>
 
-            <p class="direct-card__foyer"><RichText text={t.contactPage.directFoyer} /></p>
+            <p class="direct-card__foyer">
+              <RichText text={t.contactPage.directFoyer} />
+            </p>
           </div>
 
           <div class="team-contacts-card" id="team-contacts-card">
             <h3 class="team-contacts-card__title">{t.contactPage.teamTitle}</h3>
-            
+
             <div class="team-contacts-list">
               <!-- Manuel Brillantes Tavares -->
               <div class="person-card">
                 <div class="person-card__avatar">
-                  <img src="/imgs/assoc/president.webp" alt="Manuel Brillantes Tavares" width="64" height="64" loading="lazy" />
+                  <img
+                    src="/imgs/assoc/president.webp"
+                    alt="Manuel Brillantes Tavares"
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                  />
                 </div>
                 <div class="person-card__info">
-                  <span class="person-card__name">Manuel Brillantes Tavares</span>
-                  <span class="person-card__role">{t.contactPage.presidentRole}</span>
-                  <a class="person-card__email" href="mailto:manuel.brillantes_tavares@telecom-sudparis.eu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="person-card__email-icon" aria-hidden="true">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <span class="person-card__name"
+                    >Manuel Brillantes Tavares</span
+                  >
+                  <span class="person-card__role"
+                    >{t.contactPage.presidentRole}</span
+                  >
+                  <a
+                    class="person-card__email"
+                    href="mailto:manuel.brillantes_tavares@telecom-sudparis.eu"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="person-card__email-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
-                    <span class="person-card__email-text"><bdi>manuel.brillantes_tavares<wbr />@telecom-<wbr />sudparis.eu</bdi></span>
+                    <span class="person-card__email-text"
+                      ><bdi
+                        >manuel.brillantes_tavares<wbr />@telecom-<wbr
+                        />sudparis.eu</bdi
+                      ></span
+                    >
                   </a>
                 </div>
               </div>
@@ -185,17 +297,43 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
               <!-- Javier Caniz -->
               <div class="person-card">
                 <div class="person-card__avatar">
-                  <img src="/imgs/assoc/respoaccueil.webp" alt="Javier Caniz" width="64" height="64" loading="lazy" />
+                  <img
+                    src="/imgs/assoc/respoaccueil.webp"
+                    alt="Javier Caniz"
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                  />
                 </div>
                 <div class="person-card__info">
                   <span class="person-card__name">Javier Caniz</span>
-                  <span class="person-card__role">{t.contactPage.respoAccueilRole}</span>
-                  <a class="person-card__email" href="mailto:david.caniz_meng@telecom-sudparis.eu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="person-card__email-icon" aria-hidden="true">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <span class="person-card__role"
+                    >{t.contactPage.respoAccueilRole}</span
+                  >
+                  <a
+                    class="person-card__email"
+                    href="mailto:david.caniz_meng@telecom-sudparis.eu"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="person-card__email-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
-                    <span class="person-card__email-text"><bdi>david.caniz_meng<wbr />@telecom-<wbr />sudparis.eu</bdi></span>
+                    <span class="person-card__email-text"
+                      ><bdi
+                        >david.caniz_meng<wbr />@telecom-<wbr />sudparis.eu</bdi
+                      ></span
+                    >
                   </a>
                 </div>
               </div>
@@ -212,20 +350,31 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
       <div class="container faq-section">
         <h2 class="faq-section__title">{t.contactPage.faqTitle}</h2>
         <div class="faq-list" id="faq-list">
-          {t.contactPage.faq.map((item, i) => (
-            <details class="faq-item" id={`faq-item-${i}`}>
-              <summary class="faq-item__q">
-                <span class="faq-item__hex" aria-hidden="true"></span>
-                <span class="faq-item__q-text">{item.q}</span>
-                <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </summary>
-              <div class="faq-item__a">
-                <p>{item.a}</p>
-              </div>
-            </details>
-          ))}
+          {
+            t.contactPage.faq.map((item, i) => (
+              <details class="faq-item" id={`faq-item-${i}`}>
+                <summary class="faq-item__q">
+                  <span class="faq-item__hex" aria-hidden="true" />
+                  <span class="faq-item__q-text">{item.q}</span>
+                  <svg
+                    class="faq-item__chevron"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </summary>
+                <div class="faq-item__a">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -236,20 +385,28 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
 
 <script>
   function initContactForm() {
-    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const form = document.getElementById(
+      "contact-form",
+    ) as HTMLFormElement | null;
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const name = (form.querySelector('#contact-name') as HTMLInputElement)?.value || '';
-      const email = (form.querySelector('#contact-email') as HTMLInputElement)?.value || '';
-      const topic = (form.querySelector('#contact-topic') as HTMLSelectElement)?.value || '';
-      const message = (form.querySelector('#contact-message') as HTMLTextAreaElement)?.value || '';
+      const name =
+        (form.querySelector("#contact-name") as HTMLInputElement)?.value || "";
+      const email =
+        (form.querySelector("#contact-email") as HTMLInputElement)?.value || "";
+      const topic =
+        (form.querySelector("#contact-topic") as HTMLSelectElement)?.value ||
+        "";
+      const message =
+        (form.querySelector("#contact-message") as HTMLTextAreaElement)
+          ?.value || "";
 
       const subject = encodeURIComponent(`[Welcom' Contact] ${topic}`);
       const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\n${message}`
+        `Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\n${message}`,
       );
 
       window.location.href = `mailto:association.welcom@imtbs-tsp.eu?subject=${subject}&body=${body}`;
@@ -257,7 +414,7 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
   }
 
   initContactForm();
-  document.addEventListener('astro:after-swap', initContactForm);
+  document.addEventListener("astro:after-swap", initContactForm);
 </script>
 
 <style>
@@ -285,7 +442,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
   .hero__inner {
     position: relative;
     z-index: 2;
-    padding-top: calc(var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9)));
+    padding-top: calc(
+      var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9))
+    );
     padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
   }
 
@@ -301,8 +460,12 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
   }
 
   @keyframes heroBeeFloat {
-    from { transform: translateY(0) rotate(-3deg); }
-    to   { transform: translateY(-8px) rotate(5deg); }
+    from {
+      transform: translateY(0) rotate(-3deg);
+    }
+    to {
+      transform: translateY(-8px) rotate(5deg);
+    }
   }
 
   .hero__title {
@@ -372,7 +535,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     border: 4px solid var(--navy);
     border-radius: 20px;
     padding: var(--space-6);
-    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      8px 8px 0 var(--navy);
   }
 
   .form-card__title {
@@ -504,16 +669,22 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     background: var(--honey);
     color: var(--ink);
     border-color: var(--navy);
-    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      4px 4px 0 var(--navy);
   }
   .btn--primary:hover {
     background: var(--honey-deep);
     transform: translate(-3px, -3px);
-    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      7px 7px 0 var(--navy);
   }
   .btn--primary:active {
     transform: translate(4px, 4px);
-    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      0px 0px 0 var(--navy);
   }
 
   /* ── Direct contact cards ───────────────────────────────── */
@@ -522,7 +693,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     border: 4px solid var(--navy);
     border-radius: 20px;
     padding: var(--space-6);
-    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      8px 8px 0 var(--navy);
   }
 
   .direct-card__title {
@@ -556,23 +729,24 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
   }
 
   a.direct-item {
-    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      4px 4px 0 var(--navy);
   }
 
   a.direct-item:hover {
     background: var(--honey-wash);
     transform: translate(-3px, -3px);
-    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      7px 7px 0 var(--navy);
   }
 
   a.direct-item:active {
     transform: translate(3px, 3px);
-    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
-  }
-
-  div.direct-item {
-    background: var(--cream-deep);
-    border-color: var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      0px 0px 0 var(--navy);
   }
 
   .direct-item__icon {
@@ -634,7 +808,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     border: 4px solid var(--navy);
     border-radius: 20px;
     padding: var(--space-6);
-    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      8px 8px 0 var(--navy);
   }
 
   .team-contacts-card__title {
@@ -701,7 +877,7 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
 
   .person-card__email {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-2);
     color: var(--navy-soft);
     text-decoration: none;
@@ -719,7 +895,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     width: 14px;
     height: 14px;
     flex-shrink: 0;
-    margin-top: 0.22em;
   }
 
   /* ── FAQ section ────────────────────────────────────────── */
@@ -756,13 +931,17 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     background: var(--cream);
     border: 3px solid var(--navy);
     border-radius: var(--radius);
-    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      4px 4px 0 var(--navy);
     overflow: hidden;
     transition: box-shadow 0.2s ease;
   }
 
   .faq-item[open] {
-    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      6px 6px 0 var(--navy);
   }
 
   .faq-item__q {
