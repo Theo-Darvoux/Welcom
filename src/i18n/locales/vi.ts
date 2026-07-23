@@ -27,6 +27,10 @@ export const vi: Translation = {
       title: "Nhà Ở & Ký Túc Xá Maisel | Cẩm nang | WELCOM’",
       description: "Cẩm nang đầy đủ về ký túc xá Maisel tại Évry: tòa U1–U7, các loại phòng, quy trình đặt phòng, tiền đặt cọc 600€, bảo lãnh và trợ cấp CAF.",
     },
+    guidesMoneyPhone: {
+      title: "Tiền Bạc & Điện Thoại | Cẩm nang | WELCOM’",
+      description: "Cẩm nang đầy đủ về thẻ SIM Pháp, các nhà mạng (Free, Sosh, B&You), mở tài khoản ngân hàng Société Générale, mã RIB, Revolut/Wise và quản lý ngân sách sinh viên tại Évry.",
+    },
     foyer: {
       title: "Khu Vực Foyer | WELCOM’",
     },
@@ -208,7 +212,7 @@ export const vi: Translation = {
       },
       stpatrick: {
         title: "Ngày Thánh Patrick",
-        body: "Màu xanh khắp nơi, âm nhạc sôi động và một lời chào vui vẻ gửi đến văn hóa Ireland, theo phong cách tổ ong.",
+        body: "Màu xanh khắp nơi, âm nhạc sôi động và một lời chào vui vẻ gửi đến văn hóa Ireland.",
       },
       oktoberfest: {
         title: "Oktoberfest",
@@ -278,6 +282,10 @@ export const vi: Translation = {
   lexicon: {
     INT: "Tên gọi lịch sử của cơ sở Évry, nay được Télécom SudParis & IMT-BS dùng chung.",
     Maisel: "Maison des Élèves, các tòa ký túc xá sinh viên trong khuôn viên nơi bạn sẽ ở.",
+    "MAISEL SudParis": "Maison des Élèves, tổ chức nhà ở sinh viên phi lợi nhuận chính thức của Télécom SudParis và IMT Business School.",
+    "Maisel SudParis": "Maison des Élèves, tổ chức nhà ở sinh viên phi lợi nhuận chính thức của Télécom SudParis và IMT Business School.",
+    "Le Bras de Fer": "Ga tàu RER D nằm ngay cạnh khuôn viên cơ sở Évry.",
+    "RER B": "Tuyến tàu vùng kết nối sân bay Charles de Gaulle (CDG) với trung tâm Paris.",
     AbsINThe: "Quán bar sinh viên thân thương trong trường, nơi tổ chức các đêm theo chủ đề và những buổi tối thư giãn.",
     ACO: "AbsINThe Chill Out, tên gọi của các đêm chủ đề được tổ chức tại quán bar AbsINThe.",
     CAF: "Caisse d’Allocations Familiales, cơ quan nhà nước Pháp trả cho bạn trợ cấp nhà ở hằng tháng (APL).",
@@ -543,4 +551,176 @@ export const vi: Translation = {
       },
     ],
   },
+  moneyPhone: {
+    heroTitle: "Tiền Bạc & Điện Thoại",
+    heroLede: "Mọi thứ bạn cần để đăng ký gói cước di động, mở tài khoản ngân hàng Pháp, hiểu mã RIB và quản lý ngân sách trong thời gian học tập tại Évry.",
+    roadmapEyebrow: "Lộ trình từng bước",
+    roadmapH2: "Thiết Lập Tài Chính & Di Động Của Bạn",
+    roadmapLede: "Thực hiện theo 4 bước thiết yếu này khi đến Pháp để luôn kết nối và ổn định tài chính.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "Data Tạm Thời / eSIM",
+        time: "Ngày 1 / Đến nơi",
+        desc: "Giữ kết nối tại sân bay và khuôn viên trường bằng chuyển vùng quốc tế hoặc eSIM trong khi làm thủ tục nhận phòng.",
+        url: "#step-phone"
+      },
+      {
+        step: "02",
+        title: "Thẻ SIM Pháp",
+        time: "Tuần 1",
+        desc: "Đăng ký gói cước di động đầu số +33 (Free Mobile, Sosh, B&You, RED) cần thiết cho xác minh SMS ngân hàng và thủ tục hành chính.",
+        url: "#step-phone"
+      },
+      {
+        step: "03",
+        title: "Tài Khoản Ngân Hàng Pháp",
+        time: "Tuần 1–2",
+        desc: "Mở tài khoản tại Société Générale (đối tác chính thức của BDE và WELCOM') để nhận mã RIB (IBAN).",
+        url: "#step-bank"
+      },
+      {
+        step: "04",
+        title: "Ngân Sách & Chuyển Tiền Wero",
+        time: "Hàng ngày",
+        desc: "Sử dụng Wero để chuyển tiền ngân hàng Châu Âu tức thì, thưởng thức suất ăn CROUS 3,30 € tại Restaurant universitaire Le Sablier gần tòa U6, và sử dụng mạng cáp quang MiNET.",
+        url: "#step-budget"
+      }
+    ],
+
+    phoneEyebrow: "Bước 1: Di Động & Kết Nối",
+    phoneH2: "Các Nhà Mạng & Thẻ SIM Pháp",
+    phoneLede: "Số điện thoại Pháp (+33) là bắt buộc tại Pháp để nhận mã SMS bảo mật từ ngân hàng, CAF, dịch vụ giao hàng và cổng thông tin hành chính.",
+    phoneOperatorsTitle: "Các Nhà Mạng Di Động Hàng Đầu Tại Pháp",
+    phoneOperators: [
+      {
+        name: "Syma Mobile",
+        badge: "Giá Rẻ & Quốc Tế",
+        desc: "Gói cước giá rẻ không hợp đồng cam kết với dung lượng data lớn và bao gồm tùy chọn gọi quốc tế đến nhiều quốc gia.",
+        url: "https://www.symamobile.com"
+      },
+      {
+        name: "B&You (thuộc Bouygues)",
+        badge: "Giá Trị Cao",
+        desc: "Gói cước di động linh hoạt không hợp đồng cam kết với dung lượng data dồi dào tại Pháp và chuyển vùng châu Âu.",
+        url: "https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement"
+      },
+      {
+        name: "Prixtel",
+        badge: "Linh Hoạt & Thân Thiện Môi Trường",
+        desc: "Các gói cước linh hoạt trên mạng SFR tự động điều chỉnh theo mức tiêu thụ dung lượng hàng tháng của bạn để bạn chỉ trả tiền cho những gì sử dụng.",
+        url: "https://www.prixtel.com"
+      }
+    ],
+    phoneTipsTitle: "Lưu ý quan trọng trước khi mua thẻ SIM:",
+    phoneTips: [
+      "<strong>Luôn chọn 'Sans Engagement':</strong> Nghĩa là 'Không cam kết thời hạn hợp đồng'. Bạn có thể hủy hoặc đổi nhà mạng bất kỳ lúc nào mà không bị phạt.",
+      "<strong>Tùy chọn eSIM:</strong> Nếu điện thoại hỗ trợ eSIM, nhiều nhà mạng cho phép tải mã về máy tức thì mà không cần chờ thẻ SIM vật lý gửi qua bưu điện.",
+      "<strong>Bao gồm Chuyển vùng EU:</strong> Tất cả các gói cước di động Pháp đều bao gồm gọi điện và dung lượng data miễn phí tại các quốc gia Liên minh Châu Âu!"
+    ],
+
+    bankEyebrow: "Bước 2: Quản Lý Tiền Bạc",
+    bankH2: "Mở Tài Khoản Ngân Hàng Pháp",
+    bankLede: "Tài khoản ngân hàng Pháp kèm mã RIB (Relevé d'Identité Bancaire / IBAN) là thiết yếu để nhận trợ cấp CAF, đăng ký trừ tiền di động tự động, trả tiền nhà và quản lý chi tiêu hàng ngày.",
+    bankPartnerTitle: "Société Générale: Đối Tác Chính Thức Của BDE & WELCOM'",
+    bankPartnerBody: "Thông qua hợp tác này, sinh viên nhận được các ưu đãi đặc quyền: thưởng tiền mặt chào mừng, ưu đãi thẻ ngân hàng, giảm giá vé WEI (cuối tuần hội nhập) và phí thành viên hội sinh viên, cùng quy trình mở tài khoản đơn giản dành riêng cho sinh viên trên trường.",
+    bankDocsTitle: "Giấy tờ cần thiết để mở tài khoản:",
+    bankDocs: [
+      "Hộ chiếu còn hiệu lực kèm thị thực sinh viên (VLS-TS).",
+      "Giấy chứng nhận chỗ ở tại Pháp (Attestation de Logement từ Maisel hoặc hợp đồng thuê nhà).",
+      "Giấy chứng nhận nhập học (Certificat de Scolarité) hoặc thẻ sinh viên."
+    ],
+    bankTip: "<strong>RIB là gì?</strong> Tại Pháp, RIB chứa mã IBAN và BIC của bạn. Bạn sẽ gửi RIB cho CAF để nhận trợ cấp nhà ở, cho Maisel để trừ tiền nhà tự động và cho nhà mạng di động.",
+
+    ribEyebrow: "Bước 3: Hiểu Về Ngân Hàng",
+    ribH2: "Hiểu Mã RIB & Các Phương Thức Thanh Toán Tại Pháp",
+    ribLede: "Tại Pháp, hệ thống ngân hàng phụ thuộc lớn vào mã RIB và thanh toán qua thẻ chạm. Dưới đây là cách hoạt động của thanh toán hàng ngày.",
+    ribCards: [
+      {
+        title: "RIB là gì?",
+        desc: "<strong>RIB</strong> (Relevé d'Identité Bancaire) chứa mã tài khoản của bạn (IBAN và BIC). Bạn sẽ gửi RIB cho CAF (trợ cấp), Maisel (tự động trừ tiền nhà), nhà mạng và nhà tuyển dụng."
+      },
+      {
+        title: "Thẻ Ngân Hàng (CB / Carte Bancaire)",
+        desc: "Thẻ ghi nợ (Visa/Mastercard) được chấp nhận ở mọi nơi. Thanh toán không tiếp xúc (<em>sans contact</em>) áp dụng cho khoản thanh toán dưới 50 €. Apple Pay và Google Pay được chấp nhận rộng rãi, ngay cả khi mua chiếc bánh mì 1 €!"
+      },
+      {
+        title: "Chuyển Khoản Ngân Hàng SEPA",
+        desc: "Chuyển khoản giữa các tài khoản Châu Âu (<em>virement SEPA</em>) hoàn toàn miễn phí và thường đến trong 1 ngày làm việc. Chuyển khoản tức thì được hầu hết các ngân hàng hỗ trợ."
+      },
+      {
+        title: "Sổ Séc (Chèque)",
+        desc: "Các ngân hàng truyền thống tại Pháp cung cấp sổ séc miễn phí khi có yêu cầu. Séc đôi khi được dùng làm tiền đặt cọc nhà ở hoặc thiết bị."
+      }
+    ],
+
+    budgetEyebrow: "Bước 4: Quản Lý Ngân Sách Thông Minh",
+    budgetH2: "Quản Lý Tiền Bạc & Ưu Đãi Sinh Viên",
+    budgetLede: "Tối ưu hóa ngân sách sinh viên của bạn tại Évry với các công cụ chuyển tiền thông minh, nhà ăn sinh viên CROUS và internet ký túc xá.",
+    budgetItems: [
+      {
+        title: "Chuyển Tiền Tức Thì Wero",
+        desc: "Sử dụng <strong>Wero</strong>, dịch vụ thanh toán tức thì Châu Âu được các ngân hàng lớn tại Pháp hỗ trợ, để gửi và nhận tiền miễn phí, tức thì giữa bạn bè chỉ bằng số điện thoại."
+      },
+      {
+        title: "Nhà Ăn Sinh Viên CROUS (Restaurant universitaire Le Sablier)",
+        desc: "Tọa lạc tại trung tâm Évry gần tòa nhà U6, ngay cạnh Université Évry Paris-Saclay, <a href=\"https://maps.app.goo.gl/jkgWSUNCtizFmyFv6\" target=\"_blank\" rel=\"noopener noreferrer\">Restaurant universitaire Le Sablier</a> cung cấp các bữa ăn nóng đầy đủ chỉ với <strong>3,30 €</strong> (hoặc <strong>1,00 €</strong> cho sinh viên có học bổng!)."
+      },
+      {
+        title: "Wi-Fi & Cáp Quang Ký Túc Xá (MiNET)",
+        desc: "Internet cáp quang tốc độ cao và Wi-Fi tại ký túc xá Maisel do hội sinh viên <a href=\"https://minet.net/fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MiNET</a> vận hành: không cần mua cục phát internet riêng đắt đỏ!"
+      }
+    ],
+
+    supportEyebrow: "Cần Hỗ Trợ?",
+    supportH2: "Có thắc mắc về tài khoản ngân hàng hoặc gói cước di động?",
+    supportBody: "Ghé qua văn phòng WELCOM' tại khu Foyer! Đội ngũ của chúng tôi có thể hướng dẫn bạn đặt lịch hẹn ngân hàng, chọn gói cước di động hoặc giải thích các tài liệu ngân hàng Pháp.",
+    supportBtn: "Tìm Văn Phòng Welcom'"
+  },
+
+  guidesPage: {
+    heroTitle: "Cẩm Nang Sinh Viên",
+    heroLede: "Mọi thứ bạn cần để bắt đầu cuộc sống tại Télécom SudParis & IMT Business School: từ khi đặt chân đến Pháp cho đến nhà ở, đi lại, ngân hàng và trợ cấp.",
+    guidesSectionEyebrow: "Cẩm nang thiết yếu",
+    guidesSectionTitle: "Khám Phá Các Cẩm Nang",
+    gettingHere: {
+      title: "Cách Đi Đến Trường",
+      badge: "Đến trường & Chỉ đường",
+      desc: "Hướng dẫn từng bước từ các sân bay (CDG, Orly), các nhà ga Paris, tuyến RER D và đường đi bộ đến khuôn viên trường.",
+      tag: "Sân bay • RER D • Bản đồ đi bộ",
+      btn: "Xem cẩm nang Đi Đến Trường"
+    },
+    gettingAround: {
+      title: "Đi Lại & Giao Thông",
+      badge: "Giao thông công cộng",
+      desc: "Thông tin về thẻ Navigo (Imagine R & Liberté+), Tàu điện ngầm Paris (Métro), tàu vùng RER và xe buýt tại Évry.",
+      tag: "Thẻ Navigo • RER & Métro • Mẹo di chuyển",
+      btn: "Xem cẩm nang Đi Lại"
+    },
+    housing: {
+      title: "Nhà Ở & Ký Túc Xá Maisel",
+      badge: "Chỗ ở trong trường",
+      desc: "Hướng dẫn toàn diện về ký túc xá Maisel tại Évry: tòa U1–U7, các loại phòng, quy trình đặt phòng, tiền cọc và người bảo lãnh.",
+      tag: "KTX Maisel U1–U7 • Đặt phòng • Cọc 600€",
+      btn: "Xem cẩm nang Nhà Ở"
+    },
+    adminAid: {
+      title: "Thủ Tục & Trợ Cấp CAF",
+      badge: "Thủ tục hành chính",
+      desc: "Hướng dẫn làm thủ tục tại Pháp: xác minh visa (ANEF), phí CVEC, nhập học, Bảo hiểm y tế (Ameli) và trợ cấp nhà ở CAF.",
+      tag: "Visa ANEF • CAF APL • Bảo hiểm Ameli",
+      btn: "Xem cẩm nang Thủ Tục"
+    },
+    moneyPhone: {
+      title: "Tiền Bạc & SIM Điện Thoại",
+      badge: "Tài chính & Viễn thông",
+      desc: "Cách đăng ký SIM Pháp (Free, Sosh, B&You), mở tài khoản ngân hàng (Société Générale), lấy RIB và dùng Revolut/Wise.",
+      tag: "SIM Pháp • RIB & Ngân hàng • Mẹo tài chính",
+      btn: "Xem cẩm nang Tiền & SIM"
+    },
+    supportEyebrow: "Bạn Cần Hỗ Trợ Trực Tiếp?",
+    supportTitle: "Bạn Có Thắc Mắc Về Thủ Tục Hay Nhà Ở?",
+    supportBody: "Hãy ghé qua phòng Welcom’ tại Foyer! Đội ngũ của chúng tôi sẵn sàng giúp bạn đặt lịch hẹn ngân hàng, chọn gói cước điện thoại và làm giấy tờ.",
+    supportBtn: "Tìm Phòng Welcom’"
+  }
 };

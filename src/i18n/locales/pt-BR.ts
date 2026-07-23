@@ -27,6 +27,10 @@ export const ptBR: Translation = {
       title: "Alojamento e Residência Maisel | Guias | WELCOM’",
       description: "Guia completo sobre o alojamento Maisel em Évry: edifícios U1–U7, tipos de quarto, reserva, caução de 600€, fiador e auxílio CAF (APL/ALS).",
     },
+    guidesMoneyPhone: {
+      title: "Dinheiro e Telefone | Guia | WELCOM’",
+      description: "Guia completo de chips de celular franceses, operadoras móveis (Free, Sosh, B&You), conta bancária no Société Générale, RIB, Revolut/Wise e gestão financeira estudantil em Évry.",
+    },
     foyer: {
       title: "Foyer | WELCOM’",
     },
@@ -208,7 +212,7 @@ export const ptBR: Translation = {
       },
       stpatrick: {
         title: "Dia de São Patrício",
-        body: "Verde por toda parte, música animada e uma homenagem alegre à cultura irlandesa, do jeito da colmeia.",
+        body: "Verde por toda parte, música animada e uma homenagem alegre à cultura irlandesa.",
       },
       oktoberfest: {
         title: "Oktoberfest",
@@ -278,6 +282,10 @@ export const ptBR: Translation = {
   lexicon: {
     INT: "O nome histórico do campus de Évry, hoje compartilhado pela Télécom SudParis e IMT-BS.",
     Maisel: "A Maison des Élèves, os blocos da residência estudantil do campus onde você vai morar.",
+    "MAISEL SudParis": "Maison des Élèves, a associação estudantil sem fins lucrativos de moradia oficial da Télécom SudParis e IMT Business School.",
+    "Maisel SudParis": "Maison des Élèves, a associação estudantil sem fins lucrativos de moradia oficial da Télécom SudParis e IMT Business School.",
+    "Le Bras de Fer": "A estação de trem do RER D localizada logo ao lado do campus de Évry.",
+    "RER B": "A linha de trem regional que liga o aeroporto Charles de Gaulle (CDG) ao centro de Paris.",
     AbsINThe: "O querido bar estudantil do campus, palco de noites temáticas e encontros tranquilos.",
     ACO: "AbsINThe Chill Out, o nome das noites temáticas realizadas no bar AbsINThe do campus.",
     CAF: "Caisse d’Allocations Familiales, o órgão público francês que paga um auxílio-moradia mensal (APL).",
@@ -543,4 +551,176 @@ export const ptBR: Translation = {
       },
     ],
   },
+  moneyPhone: {
+    heroTitle: "Dinheiro & Telefone",
+    heroLede: "Tudo o que você precisa para contratar seu plano móvel, abrir uma conta bancária francesa, entender seu RIB e gerenciar seu orçamento enquanto estuda em Évry.",
+    roadmapEyebrow: "Passo a passo",
+    roadmapH2: "Sua Configuração Financeira & Móvel",
+    roadmapLede: "Siga estes 4 passos essenciais ao chegar à França para se conectar e organizar suas finanças.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "Dados Temporários / eSIM",
+        time: "Dia 1 / Chegada",
+        desc: "Mantenha-se conectado no aeroporto e no campus usando roaming ou um eSIM enquanto se instala.",
+        url: "#step-phone"
+      },
+      {
+        step: "02",
+        title: "Chip Francês (SIM)",
+        time: "Semana 1",
+        desc: "Obtenha um plano móvel francês com número +33 (Free Mobile, Sosh, B&You, RED) necessário para confirmação bancária por SMS e cadastros.",
+        url: "#step-phone"
+      },
+      {
+        step: "03",
+        title: "Conta Bancária Francesa",
+        time: "Semanas 1–2",
+        desc: "Abra sua conta no Société Générale (parceiro oficial do BDE e WELCOM') para obter seu RIB (IBAN).",
+        url: "#step-bank"
+      },
+      {
+        step: "04",
+        title: "Orçamento e Transferências Wero",
+        time: "Contínuo",
+        desc: "Use o Wero para transferências bancárias instantâneas na Europa, aproveite refeições no CROUS por 3,30 € no Restaurant universitaire Le Sablier perto do prédio U6 e aproveite a fibra da MiNET.",
+        url: "#step-budget"
+      }
+    ],
+
+    phoneEyebrow: "Passo 1: Celular e Conectividade",
+    phoneH2: "Chips SIM e Operadoras Móveis Francesas",
+    phoneLede: "Um número de telefone francês (+33) é essencial na França para receber códigos de segurança por SMS de bancos, CAF, entregas e portais governamentais.",
+    phoneOperatorsTitle: "Principais Operadoras Móveis na França",
+    phoneOperators: [
+      {
+        name: "Syma Mobile",
+        badge: "Econômico e Internacional",
+        desc: "Planos acessíveis sem fidelidade com grandes pacotes de dados e opções de chamadas internacionais incluídas para vários países.",
+        url: "https://www.symamobile.com"
+      },
+      {
+        name: "B&You (da Bouygues)",
+        badge: "Ótimo Custo-Benefício",
+        desc: "Planos móveis flexíveis sem fidelidade com franquia generosa de internet na França e roaming na Europa.",
+        url: "https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement"
+      },
+      {
+        name: "Prixtel",
+        badge: "Flexível & Ecológico",
+        desc: "Planos flexíveis na rede SFR que se ajustam automaticamente ao seu consumo de dados a cada mês para que você só pague pelo que usa.",
+        url: "https://www.prixtel.com"
+      }
+    ],
+    phoneTipsTitle: "Dicas fundamentais antes de comprar um chip:",
+    phoneTips: [
+      "<strong>Escolha sempre 'Sans Engagement':</strong> Significa 'sem fidelidade'. Você pode cancelar ou mudar de operadora a qualquer momento sem multa.",
+      "<strong>Opção eSIM:</strong> Se seu celular aceita eSIM, várias operadoras permitem baixar o perfil online na hora sem esperar o chip físico pelos correios.",
+      "<strong>Roaming na UE Incluso:</strong> Todos os planos móveis franceses incluem franquia de dados e chamadas em países da União Europeia sem custo extra!"
+    ],
+
+    bankEyebrow: "Passo 2: Gerenciar o dinheiro",
+    bankH2: "Abrindo uma Conta Bancária Francesa",
+    bankLede: "Uma conta bancária francesa com RIB (Relevé d'Identité Bancaire / IBAN) é essencial para receber auxílio da CAF, cadastrar débito automático do celular, pagar o aluguel e gerenciar despesas diárias.",
+    bankPartnerTitle: "Société Générale: Parceiro Oficial do BDE & WELCOM'",
+    bankPartnerBody: "Por meio desta parceria, os estudantes recebem vantagens exclusivas: bônus de boas-vindas em dinheiro, benefícios no cartão bancário, descontos no WEI (fim de semana de integração) e anuidades de associações, além de um processo simplificado de abertura de conta para estudantes do campus.",
+    bankDocsTitle: "Documentos Necessários para Abertura de Conta:",
+    bankDocs: [
+      "Passaporte válido com visto de estudante (VLS-TS).",
+      "Comprovante de residência na França (Attestation de Logement da Maisel ou contrato de aluguel).",
+      "Comprovante de matrícula (Certificat de Scolarité) ou carteira de estudante."
+    ],
+    bankTip: "<strong>O que é um RIB?</strong> Na França, um RIB contém seu IBAN e BIC. Você enviará seu RIB para a CAF para auxílio-moradia, para a Maisel para débito do aluguel e para operadoras de celular.",
+
+    ribEyebrow: "Passo 3: Entendendo o Banco",
+    ribH2: "Entendendo o RIB e Meios de Pagamento na França",
+    ribLede: "Na França, o sistema bancário se baseia muito no RIB e em pagamentos com cartão por aproximação. Veja como funcionam os pagamentos diários.",
+    ribCards: [
+      {
+        title: "O que é um RIB?",
+        desc: "Um <strong>RIB</strong> (Relevé d'Identité Bancaire) contém os dados da sua conta (IBAN e BIC). Você enviará seu RIB para a CAF (auxílio-moradia), Maisel (débito do aluguel), operadoras de celular e empregadores."
+      },
+      {
+        title: "Cartão Bancário (CB)",
+        desc: "Cartões de débito (Visa/Mastercard) são aceitos em todos os lugares. Pagamento por aproximação (<em>sans contact</em>) funciona até 50 €. Apple Pay e Google Pay são aceitos em quase todo lugar, até para um pão de 1 €!"
+      },
+      {
+        title: "Transferências SEPA",
+        desc: "Transferências entre contas europeias (<em>virement SEPA</em>) são gratuitas e caem em até 1 dia útil. Transferências instantâneas são oferecidas pela maioria dos bancos."
+      },
+      {
+        title: "Talão de Cheques (Chèque)",
+        desc: "Os bancos tradicionais franceses fornecem talão de cheques gratuitamente quando solicitado. Cheques às vezes são pedidos como caução de moradia ou equipamentos."
+      }
+    ],
+
+    budgetEyebrow: "Passo 4: Orçamento Inteligente",
+    budgetH2: "Gerenciando Dinheiro e Vantagens Estudantis",
+    budgetLede: "Aproveite ao máximo seu orçamento de estudante em Évry com ferramentas de transferência eficientes, refeições no CROUS e internet no campus.",
+    budgetItems: [
+      {
+        title: "Transferências Instantâneas Wero",
+        desc: "Use o <strong>Wero</strong>, o serviço europeu de pagamento instantâneo integrado aos principais bancos franceses, para enviar e receber dinheiro gratuitamente e na hora entre amigos usando apenas o número de telefone."
+      },
+      {
+        title: "Restaurante Universitário CROUS (Restaurant universitaire Le Sablier)",
+        desc: "Localizado no centro de Évry perto do prédio U6, ao lado da Université Évry Paris-Saclay, o <a href=\"https://maps.app.goo.gl/jkgWSUNCtizFmyFv6\" target=\"_blank\" rel=\"noopener noreferrer\">Restaurant universitaire Le Sablier</a> oferece refeições quentes completas por apenas <strong>3,30 €</strong> (ou <strong>1,00 €</strong> para bolsistas!)."
+      },
+      {
+        title: "Wi-Fi e Fibra nas Residências (MiNET)",
+        desc: "A fibra óptica de alta velocidade e o Wi-Fi nas residências Maisel são gerenciados pela associação estudantil <a href=\"https://minet.net/fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MiNET</a>: sem necessidade de contratar um roteador caro!"
+      }
+    ],
+
+    supportEyebrow: "Precisa de ajuda?",
+    supportH2: "Dúvidas sobre sua conta bancária ou plano de celular?",
+    supportBody: "Passe na sala da WELCOM' no Foyer! Nossa equipe pode ajudar você a agendar no banco, escolher um plano de celular ou entender seus documentos bancários franceses.",
+    supportBtn: "Localizar a Sala da Welcom'"
+  },
+
+  guidesPage: {
+    heroTitle: "Guias Estudantis",
+    heroLede: "Tudo o que você precisa para se adaptar à Télécom SudParis & IMT Business School: chegada à França, moradia, transporte, banco e burocracia.",
+    guidesSectionEyebrow: "Guias Essenciais",
+    guidesSectionTitle: "Explore Nossos Guias",
+    gettingHere: {
+      title: "Como Chegar",
+      badge: "Chegada & Rotas",
+      desc: "Instruções passo a passo a partir dos aeroportos (CDG, Orly), estações de trem de Paris, linha RER D e rotas a pé até o campus.",
+      tag: "Aeroportos • RER D • Mapas a pé",
+      btn: "Ler Guia de Chegada"
+    },
+    gettingAround: {
+      title: "Como se Locomover",
+      badge: "Transporte Público",
+      desc: "Tudo sobre o passe Navigo (Imagine R & Liberté+), Metrô de Paris, trens regionais e ônibus locais em Évry.",
+      tag: "Passe Navigo • RER & Metrô • Dicas de viagem",
+      btn: "Ler Guia de Transporte"
+    },
+    housing: {
+      title: "Moradia & Residência Maisel",
+      badge: "Acomodação no Campus",
+      desc: "Guia completo da residência estudantil Maisel em Évry: blocos U1–U7, tipos de quarto, reserva, caução e fiador.",
+      tag: "Maisel U1–U7 • Reserva • Caução de 600€",
+      btn: "Ler Guia de Moradia"
+    },
+    adminAid: {
+      title: "Burocracia & Auxílios CAF",
+      badge: "Formalidades Oficiais",
+      desc: "Guia passo a passo dos procedimentos franceses: validação de visto (ANEF), CVEC, matrícula, Segurança Social (Ameli) e auxílio CAF.",
+      tag: "Visto ANEF • CAF APL • Saúde Ameli",
+      btn: "Ler Guia Burocrático"
+    },
+    moneyPhone: {
+      title: "Dinheiro & Celular",
+      badge: "Finanças & Telecom",
+      desc: "Como adquirir um chip francês (Free, Sosh, B&You), abrir conta bancária (Société Générale), obter o RIB e usar Revolut/Wise.",
+      tag: "SIM francês • RIB & Banco • Dicas financeiras",
+      btn: "Ler Guia Dinheiro & Chip"
+    },
+    supportEyebrow: "Precisa de Ajuda Pessoal?",
+    supportTitle: "Dúvidas Sobre Documentos ou Moradia?",
+    supportBody: "Venha até a sala da Welcom’ no Foyer! Nossa equipe pode ajudar você com agendamentos no banco, planos de celular e documentos franceses.",
+    supportBtn: "Localizar a Sala Welcom’"
+  }
 };

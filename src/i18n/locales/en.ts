@@ -39,6 +39,14 @@ export const en = {
       title: "Housing & Maisel Residence | Guides | WELCOM’",
       description: "Complete guide to Maisel student housing in Évry: buildings U1–U7, room types, booking, 600€ deposit, guarantor rules, and CAF housing aid (APL/ALS).",
     },
+    guidesAdminAid: {
+      title: "Admin & Aid | Guides | WELCOM’",
+      description: "Step-by-step guide to French student administration: visa validation (ANEF), CVEC, school registration, Société Générale bank account, Social Security (Ameli), and CAF housing aid.",
+    },
+    guidesMoneyPhone: {
+      title: "Money & Phone | Guides | WELCOM’",
+      description: "Complete guide to setting up French SIM cards, mobile operators (Free, Sosh, B&You), Société Générale bank account, RIB, Revolut/Wise, and student money management in Évry.",
+    },
     foyer: {
       title: "Foyer | WELCOM’",
     },
@@ -221,7 +229,7 @@ export const en = {
       },
       stpatrick: {
         title: "Saint Patrick's Day",
-        body: "Green everywhere, lively music, and a cheerful nod to Irish culture, the hive's way.",
+        body: "Green everywhere, lively music, and a cheerful nod to Irish culture.",
       },
       oktoberfest: {
         title: "Oktoberfest",
@@ -291,6 +299,10 @@ export const en = {
   lexicon: {
     INT: "The historic name of the Évry campus, now shared by Télécom SudParis & IMT-BS.",
     Maisel: "Maison des Élèves, the campus student residence blocks where you will live.",
+    "MAISEL SudParis": "Maison des Élèves, the official non-profit student housing association of Télécom SudParis and IMT Business School.",
+    "Maisel SudParis": "Maison des Élèves, the official non-profit student housing association of Télécom SudParis and IMT Business School.",
+    "Le Bras de Fer": "The RER D train station located right next to the Évry campus.",
+    "RER B": "The regional train line connecting Charles de Gaulle airport (CDG) to central Paris.",
     AbsINThe: "The beloved student-run campus bar, host to theme nights and relaxed evenings.",
     ACO: "AbsINThe Chill Out, the name for the themed evenings hosted at the AbsINThe campus bar.",
     CAF: "Caisse d’Allocations Familiales, the French government agency that pays you monthly housing aid (APL).",
@@ -556,6 +568,279 @@ export const en = {
       },
     ],
   },
+  adminAid: {
+    heroTitle: "Admin & Aid",
+    heroLede: "Navigating French administration step by step: from visa validation to health insurance, bank accounts, and student financial aid.",
+    roadmapEyebrow: "Step-by-step roadmap",
+    roadmapH2: "Your Administrative Timeline",
+    roadmapLede: "Follow these five essential steps in order after arriving in France to set up your student life smoothly.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "CVEC & School Registration",
+        time: "Before / Day 1",
+        desc: "Pay the CVEC fee on cvec.etudiant.gouv.fr to get your certificate, then complete registration at TSP or IMT-BS to obtain your official Certificat de Scolarité.",
+        url: "https://cvec.etudiant.gouv.fr"
+      },
+      {
+        step: "02",
+        title: "French Bank Account",
+        time: "Week 1",
+        desc: "Open your bank account with Société Générale (official partner of BDE and WELCOM') to obtain your French IBAN (RIB).",
+        url: "#step-bank"
+      },
+      {
+        step: "03",
+        title: "Visa Validation (ANEF)",
+        time: "Within 3 Months",
+        desc: "Validate your VLS-TS student visa online on the ANEF portal to secure your legal stay and right to work.",
+        url: "https://administration-etrangers-en-france.interieur.gouv.fr"
+      },
+      {
+        step: "04",
+        title: "Social Security (Ameli)",
+        time: "Month 1",
+        desc: "Register for free French Social Security on etudiant-etranger.ameli.fr to receive your Carte Vitale and cover your healthcare costs.",
+        url: "https://etudiant-etranger.ameli.fr"
+      },
+      {
+        step: "05",
+        title: "CAF Housing Subsidies",
+        time: "Month 1 (Before month-end)",
+        desc: "Submit your APL or ALS application on caf.fr to receive monthly housing aid towards your Maisel rent.",
+        url: "https://www.caf.fr"
+      }
+    ],
+    cvecEyebrow: "Step 1: Academic Registration",
+    cvecH2: "CVEC & School Certificate",
+    cvecLede: "Before finalizing your enrollment at Télécom SudParis or IMT Business School, you must obtain your CVEC payment receipt.",
+    cvecTitle: "What is the CVEC?",
+    cvecDesc: "The CVEC (Contribution Vie Étudiante et de Campus) is a mandatory annual contribution (~103 €) collected by the French government to fund student life, sports, health, and cultural initiatives.",
+    cvecStepsTitle: "How to complete this step:",
+    cvecSteps: [
+      "Visit the official portal <a href=\"https://cvec.etudiant.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> and create your account.",
+      "Pay the CVEC fee online by credit card (or download your exemption certificate if you are a scholarship holder).",
+      "Download your <strong>Attestation de paiement CVEC</strong> (CVEC Certificate).",
+      "Submit your CVEC certificate to the school registrar (Scolarité) during administrative registration.",
+      "Receive your official <strong>Certificat de Scolarité</strong> (School Certificate) and your student badge."
+    ],
+    cvecTip: "<strong>Keep your Certificat de Scolarité safe:</strong> You will need this document for your bank account, CAF, Navigo pass, and visa validation!",
+    bankEyebrow: "Step 2: Managing Money",
+    bankH2: "Opening a French Bank Account",
+    bankLede: "A French bank account with a RIB (Relevé d'Identité Bancaire / IBAN) is essential for receiving CAF aid, setting up phone plans, paying rent, and managing daily expenses.",
+    bankPartnerTitle: "Société Générale: Official Partner of BDE & WELCOM'",
+    bankPartnerBody: "Through this partnership, students receive exclusive advantages: a welcome cash bonus, credit card perks, discounts for the WEI (integration weekend) and association memberships, and streamlined account opening procedures tailored for campus students.",
+    bankDocsTitle: "Required Documents for Account Opening:",
+    bankDocs: [
+      "Valid Passport with your student visa (VLS-TS).",
+      "Proof of Address in France (Attestation de Logement from Maisel or lease agreement).",
+      "School Enrollment Certificate (Certificat de Scolarité) or student card."
+    ],
+    bankTip: "<strong>What is a RIB?</strong> In France, a RIB contains your IBAN and BIC. You will share your RIB with CAF for housing subsidies, with Maisel for rent direct debit, and with phone operators.",
+    visaEyebrow: "Step 3: Legal Stay",
+    visaH2: "Visa Validation & Titre de Séjour (ANEF)",
+    visaLede: "If you arrived in France with a Long-Stay Visa valid as a Residence Permit (VLS-TS), you MUST validate it online within 3 months of your arrival date.",
+    visaStepsTitle: "Online Validation Process on ANEF:",
+    visaSteps: [
+      "Go to the official ANEF portal: <a href=\"https://administration-etrangers-en-france.interieur.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">administration-etrangers-en-france.interieur.gouv.fr</a>.",
+      "Click on <strong>Validate your VLS-TS</strong>.",
+      "Enter your visa number, date of entry into France, French address, and contact details.",
+      "Pay the residence tax stamp (Taxe de Séjour, approx. 50 €) online using a payment card.",
+      "Download and print your <strong>Attestation de validation du VLS-TS</strong>."
+    ],
+    healthEyebrow: "Step 4: Healthcare",
+    healthH2: "French Social Security & Health Insurance",
+    healthLede: "France offers universal healthcare. As an international student, registering for French Social Security (CPAM) is completely free of charge.",
+    healthAmeliTitle: "1. Social Security Registration (Ameli)",
+    healthAmeliBody: "Register online at <a href=\"https://etudiant-etranger.ameli.fr\" target=\"_blank\" rel=\"noopener noreferrer\">etudiant-etranger.ameli.fr</a>. Upload your passport, visa, VLS-TS validation certificate, school certificate, birth certificate, and French RIB. You will receive a temporary Social Security number, then your permanent number and your green <strong>Carte Vitale</strong>.",
+    healthMutuelleTitle: "2. Complementary Health Insurance (Mutuelle)",
+    healthMutuelleBody: "French Social Security reimburses about 70% of standard medical costs. To cover the remaining 30% (prescription drugs, specialist visits, hospital fees, dental and optical care), taking out a student <strong>Mutuelle</strong> (such as Heyme or LMDE) is strongly recommended.",
+    healthCampusTitle: "3. On-Campus Medical Consultations",
+    healthCampusBody: "Visiting medical services regularly come to campus to offer free consultations (STI screening, dental care, ophthalmology, and more).",
+    healthDoctolibTitle: "4. Booking Appointments with Doctolib",
+    healthDoctolibBody: "To find a general practitioner or specialist near Évry and book online appointments, use the <a href=\"https://www.doctolib.fr\" target=\"_blank\" rel=\"noopener noreferrer\">Doctolib</a> website or app.",
+    cafEyebrow: "Step 5: Financial Assistance",
+    cafH2: "CAF Housing Subsidies (APL & ALS)",
+    cafLede: "International students residing in France are eligible for monthly housing subsidies paid by the CAF (Caisse d'Allocations Familiales).",
+    cafBody: "Be sure to submit your application on caf.fr before the last day of your arrival month. For a detailed guide on Maisel residence eligibility, APL vs ALS, and step-by-step instructions, view our Housing Guide.",
+    cafBtn: "View Housing & CAF Guide",
+    supportEyebrow: "Need Help?",
+    supportH2: "Come Visit Us at the Foyer!",
+    supportBody: "Administrative portals and paperwork in a foreign language can be daunting. The WELCOM' team is available at our office in the Foyer to assist you step-by-step with your online applications.",
+    supportBtn: "Find the Welcom' Office"
+  },
+  moneyPhone: {
+    heroTitle: "Money & Phone",
+    heroLede: "Everything you need to set up your mobile plan, open a French bank account, understand your RIB, and manage your budget while studying in Évry.",
+    roadmapEyebrow: "Step-by-step roadmap",
+    roadmapH2: "Your Financial & Mobile Setup",
+    roadmapLede: "Follow these 4 essential steps when arriving in France to get connected and financially set up.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "Temporary Data / eSIM",
+        time: "Day 1 / Arrival",
+        desc: "Stay connected at the airport and campus using roaming or an eSIM while you get settled.",
+        url: "#step-phone"
+      },
+      {
+        step: "02",
+        title: "French SIM Card",
+        time: "Week 1",
+        desc: "Get a French +33 mobile plan (Free Mobile, Sosh, B&You, RED) required for French bank SMS verification and administrative portals.",
+        url: "#step-phone"
+      },
+      {
+        step: "03",
+        title: "French Bank Account",
+        time: "Week 1–2",
+        desc: "Open your account with Société Générale (official partner of BDE and WELCOM') to obtain your RIB (IBAN).",
+        url: "#step-bank"
+      },
+      {
+        step: "04",
+        title: "Budget & Wero Transfers",
+        time: "Ongoing",
+        desc: "Use Wero for instant European bank transfers, enjoy 3.30 € CROUS meals at Restaurant universitaire Le Sablier near U6, and utilize campus MiNET fiber.",
+        url: "#step-budget"
+      }
+    ],
+
+    phoneEyebrow: "Step 1: Mobile & Connectivity",
+    phoneH2: "French SIM Cards & Mobile Operators",
+    phoneLede: "A French phone number (+33) is essential in France for SMS security codes from French banks, CAF, delivery services, and administrative portals.",
+    phoneOperatorsTitle: "Top Mobile Operators in France",
+    phoneOperators: [
+      {
+        name: "Syma Mobile",
+        badge: "Low Cost & Intl",
+        desc: "Affordable no-contract plans with large data packages and included international call options to many countries.",
+        url: "https://www.symamobile.com"
+      },
+      {
+        name: "B&You (by Bouygues)",
+        badge: "Great Value",
+        desc: "Flexible, no-contract mobile plans with generous data caps in France and roaming across Europe.",
+        url: "https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement"
+      },
+      {
+        name: "Prixtel",
+        badge: "Flexible & Eco",
+        desc: "Flexible plans on the SFR network that adjust automatically to your data usage every month so you only pay for what you use.",
+        url: "https://www.prixtel.com"
+      }
+    ],
+    phoneTipsTitle: "Key Things to Know Before Buying a SIM Card:",
+    phoneTips: [
+      "<strong>Always choose 'Sans Engagement':</strong> This means 'No Contract Commitment'. You can cancel or switch operators anytime without penalty.",
+      "<strong>E-SIM option:</strong> If your phone supports eSIMs, many French operators allow instant online download without waiting for a physical SIM card in the mail.",
+      "<strong>EU Roaming Included:</strong> All French mobile plans include free data and call roaming across EU countries!"
+    ],
+
+    bankEyebrow: "Step 2: Managing Money",
+    bankH2: "Opening a French Bank Account",
+    bankLede: "A French bank account with a RIB (Relevé d'Identité Bancaire / IBAN) is essential for receiving CAF aid, setting up phone plans, paying rent, and managing daily expenses.",
+    bankPartnerTitle: "Société Générale: Official Partner of BDE & WELCOM'",
+    bankPartnerBody: "Through this partnership, students receive exclusive advantages: a welcome cash bonus, credit card perks, discounts for the WEI (integration weekend) and association memberships, and streamlined account opening procedures tailored for campus students.",
+    bankDocsTitle: "Required Documents for Account Opening:",
+    bankDocs: [
+      "Valid Passport with your student visa (VLS-TS).",
+      "Proof of Address in France (Attestation de Logement from Maisel or lease agreement).",
+      "School Enrollment Certificate (Certificat de Scolarité) or student card."
+    ],
+    bankTip: "<strong>What is a RIB?</strong> In France, a RIB contains your IBAN and BIC. You will share your RIB with CAF for housing subsidies, with Maisel for rent direct debit, and with phone operators.",
+
+    ribEyebrow: "Step 3: Banking Basics",
+    ribH2: "Understanding the RIB & Payment Methods in France",
+    ribLede: "In France, banking relies heavily on the RIB and contactless card payments. Here is how daily payments work.",
+    ribCards: [
+      {
+        title: "What is a RIB?",
+        desc: "A <strong>RIB</strong> (Relevé d'Identité Bancaire) contains your account numbers (IBAN and BIC). You will share your RIB with CAF for housing subsidies, Maisel for rent direct debit, mobile operators, and employers."
+      },
+      {
+        title: "Carte Bancaire (CB)",
+        desc: "Debit cards (Visa/Mastercard) are accepted everywhere. Contactless (<em>sans contact</em>) works up to 50 €. Apple Pay and Google Pay are accepted virtually everywhere, even for a 1 € baguette!"
+      },
+      {
+        title: "SEPA Bank Transfers",
+        desc: "Transfers between European accounts (<em>virement SEPA</em>) are free and usually arrive within 1 business day. Instant transfers (<em>virement instantané</em>) are offered by most French banks."
+      },
+      {
+        title: "Cheques (Chèque Bancaire)",
+        desc: "French traditional banks provide a free chequebook upon request. Cheques are sometimes requested as security deposits for housing or equipment."
+      }
+    ],
+
+    budgetEyebrow: "Step 4: Smart Budgeting",
+    budgetH2: "Managing Money & Student Perks",
+    budgetLede: "Maximize your student budget in Évry with smart transfer tools, CROUS dining, and campus internet.",
+    budgetItems: [
+      {
+        title: "Wero (Instant European Transfers)",
+        desc: "Use <strong>Wero</strong>, the European instant payment service supported by major French banks, for fast, zero-fee instant money transfers between accounts and friends using just a phone number or email."
+      },
+      {
+        title: "CROUS Student Dining (Restaurant universitaire Le Sablier)",
+        desc: "Located in Évry center near building U6, right next to Université Évry Paris-Saclay, <a href=\"https://maps.app.goo.gl/jkgWSUNCtizFmyFv6\" target=\"_blank\" rel=\"noopener noreferrer\">Restaurant universitaire Le Sablier</a> offers complete warm meals (starter, main course, dessert) for just <strong>3.30 €</strong> (or <strong>1.00 €</strong> for scholarship holders!)."
+      },
+      {
+        title: "Dorm Wi-Fi & Fiber Internet (MiNET)",
+        desc: "High-speed optical fiber and Wi-Fi in Maisel dorms are provided by the student association <a href=\"https://minet.net/fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MiNET</a>: no need to buy an expensive personal internet router!"
+      }
+    ],
+
+    supportEyebrow: "Need Help?",
+    supportH2: "Questions about your bank account or phone plan?",
+    supportBody: "Drop by the WELCOM' room in the Foyer! Our team can walk you through bank appointments, help you pick a mobile plan, or explain your French banking documents.",
+    supportBtn: "Find the Welcom' Office"
+  },
+
+  guidesPage: {
+    heroTitle: "Student Guides",
+    heroLede: "Everything you need to navigate life at Télécom SudParis & IMT Business School: from arriving in France to housing, transit, banking, and student aid.",
+    guidesSectionEyebrow: "Essential Guides",
+    guidesSectionTitle: "Explore Our Guides",
+    gettingHere: {
+      title: "Getting Here",
+      badge: "Arrival & Directions",
+      desc: "Step-by-step directions from airports (CDG, Orly), train stations, RER D routes, and walking directions to campus.",
+      tag: "Airports • RER D • Walking maps",
+      btn: "Read Arrival Guide"
+    },
+    gettingAround: {
+      title: "Getting Around",
+      badge: "Public Transit",
+      desc: "Navigo pass breakdown (Imagine R vs Liberté+), Paris Métro, regional trains across France, and local transit tips.",
+      tag: "Navigo Pass • RER & Métro • Travel tips",
+      btn: "Read Transit Guide"
+    },
+    housing: {
+      title: "Housing & Maisel Residence",
+      badge: "Campus Accommodation",
+      desc: "Complete guide to Maisel student housing in Évry: buildings U1–U7, room types, booking, deposit, and guarantor rules.",
+      tag: "Maisel U1–U7 • Booking • 600€ Deposit",
+      btn: "Read Housing Guide"
+    },
+    adminAid: {
+      title: "Admin & Student Aid",
+      badge: "Official Formalities",
+      desc: "Step-by-step guide to visa validation (ANEF), CVEC student tax, school registration, Social Security (Ameli), and CAF housing aid.",
+      tag: "ANEF Visa • CAF APL • Ameli Health",
+      btn: "Read Admin Guide"
+    },
+    moneyPhone: {
+      title: "Money & Mobile Phone",
+      badge: "Finances & Telecom",
+      desc: "Setting up French SIM cards, mobile operators (Free, Sosh, B&You), Société Générale bank account, RIB, and Revolut/Wise.",
+      tag: "French SIM • RIB & Banking • Money tips",
+      btn: "Read Money & Phone Guide"
+    },
+    supportEyebrow: "Need Personal Help?",
+    supportTitle: "Have Questions About Admin or Housing?",
+    supportBody: "Drop by the WELCOM’ room in the Foyer! Our team can walk you through bank appointments, help you pick a mobile plan, or explain your French paperwork.",
+    supportBtn: "Find the Welcom' Office"
+  }
 };
 
 export type Translation = typeof en;

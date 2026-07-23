@@ -12,12 +12,12 @@ const t = useTranslations(lang);
 const categories = [
   { id: "getting-here", color: "var(--hive-blue)", href: "/guides/getting-here" },
   { id: "housing", color: "var(--hive-yellow)", href: "/guides/housing" },
-  { id: "admin-aid", color: "var(--hive-peach)", href: "#admin" },
-  { id: "money-phone", color: "var(--hive-green)", href: "#money" },
+  { id: "admin-aid", color: "var(--hive-peach)", href: "/guides/admin-aid" },
+  { id: "money-phone", color: "var(--hive-green)", href: "/guides/money-phone" },
   { id: "getting-around", color: "var(--hive-yellow)", href: "/guides/getting-around" },
   { id: "daily-life", color: "var(--hive-green)", href: "#daily-life" },
   { id: "studies", color: "var(--hive-blue)", href: "#studies" },
-  { id: "events-buddy", color: "var(--hive-peach)", href: "#events" },
+  { id: "events-buddy", color: "var(--hive-peach)", href: "/events" },
 ] as const;
 ---
 
@@ -27,7 +27,7 @@ const categories = [
   <div class="hive-grid" aria-label={t.hive.ariaGrid}>
     {
       categories.map((cat, idx) => {
-        const href = (cat.id === "getting-here" || cat.id === "getting-around" || cat.id === "housing")
+        const href = cat.href.startsWith("/")
           ? localizedPath(cat.href, lang)
           : cat.href;
         return (
@@ -73,7 +73,7 @@ const categories = [
   <div class="hive-list" aria-label={t.hive.ariaList}>
     {
       categories.map((cat) => {
-        const href = (cat.id === "getting-here" || cat.id === "getting-around" || cat.id === "housing")
+        const href = cat.href.startsWith("/")
           ? localizedPath(cat.href, lang)
           : cat.href;
         return (

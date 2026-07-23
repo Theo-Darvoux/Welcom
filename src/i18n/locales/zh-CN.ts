@@ -27,6 +27,10 @@ export const zhCN: Translation = {
       title: "住宿与 Maisel 宿舍 | 指南 | WELCOM’",
       description: "埃夫里 Maisel 学生宿舍完整指南：U1–U7 楼栋、房型介绍、预订流程、600€ 押金、担保人要求及 CAF 住房补贴 (APL/ALS)。",
     },
+    guidesMoneyPhone: {
+      title: "银行与电话卡 | 指南 | WELCOM’",
+      description: "法国电话卡与运营商 (Free, Sosh, B&You) 办理、法国兴业银行 (Société Générale) 账户开户、RIB 账户明细、Revolut/Wise 跨境汇款及埃夫里留学理财完整指南。",
+    },
     foyer: {
       title: "Foyer 休息室 | WELCOM’",
     },
@@ -208,7 +212,7 @@ export const zhCN: Translation = {
       },
       stpatrick: {
         title: "圣帕特里克节",
-        body: "满眼绿色、欢快的音乐，以蜂巢的方式向爱尔兰文化致以愉快的问候。",
+        body: "满眼绿色、欢快的音乐，向爱尔兰文化致以愉快的问候。",
       },
       oktoberfest: {
         title: "慕尼黑啤酒节",
@@ -278,6 +282,10 @@ export const zhCN: Translation = {
   lexicon: {
     INT: "埃夫里校区的历史名称，如今由 Télécom SudParis 与 IMT-BS 共用。",
     Maisel: "Maison des Élèves，校园里的学生宿舍楼，你将住在这里。",
+    "MAISEL SudParis": "Maison des Élèves，Télécom SudParis 与 IMT Business School 官方的非营利性学生宿舍管理协会。",
+    "Maisel SudParis": "Maison des Élèves，Télécom SudParis 与 IMT Business School 官方的非营利性学生宿舍管理协会。",
+    "Le Bras de Fer": "位于埃夫里校区旁的 RER D 火车站。",
+    "RER B": "连接戴高乐机场（CDG）与巴黎市中心的区域列车线路。",
     AbsINThe: "深受喜爱、由学生运营的校园酒吧，举办各种主题之夜和轻松的聚会。",
     ACO: "AbsINThe Chill Out, AbsINThe校园酒吧举办的主题之夜的名称。",
     CAF: "Caisse d’Allocations Familiales，向你按月发放住房补助（APL）的法国政府机构。",
@@ -543,4 +551,176 @@ export const zhCN: Translation = {
       },
     ],
   },
+  moneyPhone: {
+    heroTitle: "银行与电话卡",
+    heroLede: "从办理法国手机套餐、开立法国银行账户、解读 RIB，到管理在埃夫里求学期间的日常预算，这里有你需要的一切指南。",
+    roadmapEyebrow: "分步指引",
+    roadmapH2: "您的财务与通信办理路线图",
+    roadmapLede: "抵达法国后，按以下 4 个关键步骤依次办理，轻松搞定网络与银行账户。",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "临时流量 / eSIM",
+        time: "第 1 天 / 抵法",
+        desc: "使用国际漫游或 eSIM 保持网络畅通，方便办理入住和出行。",
+        url: "#step-phone"
+      },
+      {
+        step: "02",
+        title: "法国手机卡 (SIM)",
+        time: "第 1 周",
+        desc: "办理 +33 法国手机套餐 (Free Mobile, Sosh, B&You, RED)，用于接收银行 SMS 验证码和各类政务注册。",
+        url: "#step-phone"
+      },
+      {
+        step: "03",
+        title: "法国银行账户",
+        time: "第 1–2 周",
+        desc: "在 Société Générale（BDE 与 WELCOM' 官方合作银行）开户，获取您的 RIB (IBAN)。",
+        url: "#step-bank"
+      },
+      {
+        step: "04",
+        title: "预算与 Wero 即时转账",
+        time: "日常",
+        desc: "使用 Wero 进行欧洲银行卡即时免费转账，在 U6 楼旁的 Restaurant universitaire Le Sablier 享用 3.30 € 的 CROUS 学生餐，并使用 MiNET 宿舍光纤。",
+        url: "#step-budget"
+      }
+    ],
+
+    phoneEyebrow: "步骤 1：通信与网络",
+    phoneH2: "法国手机运营商与 SIM 卡办理",
+    phoneLede: "法国手机号码 (+33) 是留法生活的必备工具，用于接收银行验证码、CAF 补贴通知、快递配送及各类行政门户的安全验证短信。",
+    phoneOperatorsTitle: "法国主要手机运营商",
+    phoneOperators: [
+      {
+        name: "Syma Mobile",
+        badge: "低价 & 多国通话",
+        desc: "超低价无合约套餐，提供大容量流量，并包含赠送多国国际长途通话时长。",
+        url: "https://www.symamobile.com"
+      },
+      {
+        name: "B&You (Bouygues 旗下)",
+        badge: "高性价比",
+        desc: "无合约灵活套餐，包含法国本土及欧洲漫游的大容量高速流量。",
+        url: "https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement"
+      },
+      {
+        name: "Prixtel",
+        badge: "阶梯计费 & 环保",
+        desc: "使用 SFR 网络的灵活阶梯套餐，每月根据您的实际流量消耗自动调整档位，用多少付多少。",
+        url: "https://www.prixtel.com"
+      }
+    ],
+    phoneTipsTitle: "购买手机卡前的核心注意事项：",
+    phoneTips: [
+      "<strong>请认准 'Sans Engagement'：</strong> 意为“无合约绑定期”。您可以随时注销或更换运营商，无需缴纳违约金。",
+      "<strong>eSIM 选项：</strong> 如果您的手机支持 eSIM，许多运营商支持在线即时下载电子卡，无需等待邮寄实体卡。",
+      "<strong>包含欧盟漫游：</strong> 所有法国手机套餐均包含在欧盟国家的免费通话与漫游流量！"
+    ],
+
+    bankEyebrow: "步骤 2：资金管理",
+    bankH2: "开立法国银行账户",
+    bankLede: "拥有附带 RIB (Relevé d'Identité Bancaire / IBAN) 的法国银行账户是领取 CAF 住房补贴、扣缴手机月租、支付 Maisel 房租以及日常消费的必要条件。",
+    bankPartnerTitle: "Société Générale：BDE 与 WELCOM' 官方合作银行",
+    bankPartnerBody: "通过此合作协议，学生可享受专属优惠：现金开户礼金、银行卡专属福利、WEI（破冰周末）及社团会费折扣，以及专为校园留学生定制的简化开户流程。",
+    bankDocsTitle: "开户所需材料清单：",
+    bankDocs: [
+      "有效护照及学生签证 (VLS-TS)。",
+      "法国住房证明（Maisel 住宿证明 Attestation de Logement 或租房合同）。",
+      "学校注册证明（Certificat de Scolarité）或学生证。"
+    ],
+    bankTip: "<strong>什么是 RIB？</strong> 在法国，RIB 包含您的 IBAN 和 BIC 代码。您需要向 CAF（住房补贴）、Maisel（房租扣款）及电话运营商提供 RIB。",
+
+    ribEyebrow: "步骤 3：银行基础知识",
+    ribH2: "解读 RIB 与法国日常支付方式",
+    ribLede: "在法国，银行业务高度依赖 RIB 和无接触刷卡支付。以下是日常支付的运作方式。",
+    ribCards: [
+      {
+        title: "什么是 RIB？",
+        desc: "<strong>RIB</strong>（银行账户明细表）包含您的 IBAN 和 BIC 账户代码。您需要将 RIB 提供给 CAF（补贴）、Maisel（房租自动扣款）、电信运营商及雇主。"
+      },
+      {
+        title: "银行卡 (CB / Carte Bancaire)",
+        desc: "借记卡（Visa/Mastercard）普及率极高。50 € 以下支持无接触支付 (<em>sans contact</em>)。Apple Pay 和 Google Pay 几乎随处可用，哪怕只买 1 € 的法棍！"
+      },
+      {
+        title: "SEPA 银行转账",
+        desc: "欧洲账户间的转账（<em>virement SEPA</em>）完全免费，通常在 1 个工作日内到账。多数法国银行还提供即时转账服务。"
+      },
+      {
+        title: "支票本 (Chèque)",
+        desc: "传统法国银行可根据申请免费提供支票本。支票有时用作房屋或设备的押金担保。"
+      }
+    ],
+
+    budgetEyebrow: "步骤 4：理性理财",
+    budgetH2: "资金管理与学生专属福利",
+    budgetLede: "善用快捷汇款工具、CROUS 学生食堂与校园网络，最大化您的留学预算。",
+    budgetItems: [
+      {
+        title: "Wero 欧洲即时转账",
+        desc: "使用由法国各大主流银行支持的欧洲即时支付服务 <strong>Wero</strong>，只需手机号码或邮箱，即可在好友及账户之间即时、免费地转账与收款。"
+      },
+      {
+        title: "CROUS 学生食堂 (Restaurant universitaire Le Sablier)",
+        desc: "位于埃夫里市中心 U6 楼附近、紧邻 Université Évry Paris-Saclay 的 <a href=\"https://maps.app.goo.gl/jkgWSUNCtizFmyFv6\" target=\"_blank\" rel=\"noopener noreferrer\">Restaurant universitaire Le Sablier</a> 提供完整的热套餐（前菜、主菜、甜点），只需 <strong>3.30 €</strong>（奖学金生只需 <strong>1.00 €</strong>！）。"
+      },
+      {
+        title: "宿舍 Wi-Fi 与光纤网络 (MiNET)",
+        desc: "Maisel 宿舍的高速光纤与 Wi-Fi 由学生协会 <a href=\"https://minet.net/fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MiNET</a> 运营维护，无需额外购买昂贵的新机顶盒与私人宽带！"
+      }
+    ],
+
+    supportEyebrow: "需要帮助？",
+    supportH2: "对银行开户或手机套餐有疑问？",
+    supportBody: "欢迎来到 Foyer 休息室的 WELCOM' 办公室！我们的团队可以协助您预约银行开户、挑选最划算的花费套餐，或帮您解读法国银行文件。",
+    supportBtn: "查找 Welcom' 办公室位置"
+  },
+
+  guidesPage: {
+    heroTitle: "国际学生指南",
+    heroLede: "助你轻松开启 Télécom SudParis 与 IMT Business School 校园生活所需的一切：从入境抵校到宿舍申请、交通出行、银行开户与政府补贴。",
+    guidesSectionEyebrow: "必备指南",
+    guidesSectionTitle: "浏览所有指南",
+    gettingHere: {
+      title: "如何抵校",
+      badge: "入境与路线",
+      desc: "从巴黎戴高乐/奥利机场、各大火车站乘 RER D 线及步行前往埃夫里校区的详细路线指引。",
+      tag: "机场指引 • RER D 快铁 • 步行地图",
+      btn: "查看抵校指南"
+    },
+    gettingAround: {
+      title: "交通出行",
+      badge: "公共交通",
+      desc: "Navigo 交通卡全解（Imagine R 与 Liberté+）、巴黎地铁、全法火车及埃夫里本地公交路线。",
+      tag: "Navigo 交通卡 • RER 与地铁 • 出行技巧",
+      btn: "查看交通指南"
+    },
+    housing: {
+      title: "住房与 Maisel 宿舍",
+      badge: "校园住宿",
+      desc: "埃夫里 Maisel 学生宿舍全攻略：U1–U7 各楼栋介绍、房型分类、线上预订、押金及担保人规则。",
+      tag: "Maisel U1–U7 • 线上预订 • 600€ 押金",
+      btn: "查看住房指南"
+    },
+    adminAid: {
+      title: "行政手续与 CAF 补贴",
+      badge: "官方办事流程",
+      desc: "法国学生行政手续一步步详解：签证生效（ANEF）、CVEC 缴费、注册报到、医保（Ameli）与 CAF 住房补贴。",
+      tag: "ANEF 签证 • CAF 房补 • Ameli 医保",
+      btn: "查看行政指南"
+    },
+    moneyPhone: {
+      title: "银行开户与电话卡",
+      badge: "财务与通讯",
+      desc: "办理法国手机卡（Free, Sosh, B&You）、Société Générale 银行开户、获取 RIB 及 Revolut/Wise 使用技巧。",
+      tag: "法国手机卡 • RIB 与银行 • 理财技巧",
+      btn: "查看通讯理财指南"
+    },
+    supportEyebrow: "需要面对面帮助？",
+    supportTitle: "关于手续或住宿还有疑问？",
+    supportBody: "欢迎来到 Foyer 的 Welcom’ 办公室！我们的团队可以协助你预约银行开户、选择手机套餐或解答法国行政表格。",
+    supportBtn: "寻找 Welcom’ 办公室"
+  }
 };

@@ -27,6 +27,14 @@ export const fr: Translation = {
       title: "Logement & Résidence Maisel | Guides | WELCOM’",
       description: "Guide complet du logement Maisel à Évry : bâtiments U1–U7, types de chambres, réservation, caution de 600€, garant et aides CAF (APL/ALS).",
     },
+    guidesAdminAid: {
+      title: "Démarches & Aides | Guides | WELCOM’",
+      description: "Guide étape par étape des démarches administratives : validation de visa (ANEF), CVEC, inscription administrative, compte bancaire Société Générale, Sécurité Sociale (Ameli) et CAF.",
+    },
+    guidesMoneyPhone: {
+      title: "Argent & Téléphone | Guides | WELCOM’",
+      description: "Guide complet pour installer votre forfait mobile français (Free, Sosh, B&You), ouvrir votre compte bancaire Société Générale, comprendre le RIB, et gérer votre budget à Évry.",
+    },
     foyer: {
       title: "Foyer | WELCOM’",
     },
@@ -208,7 +216,7 @@ export const fr: Translation = {
       },
       stpatrick: {
         title: "Saint-Patrick",
-        body: "Du vert, de la musique et une ambiance festive pour célébrer la culture irlandaise à notre façon.",
+        body: "Du vert, de la musique et une ambiance festive pour célébrer la culture irlandaise.",
       },
       oktoberfest: {
         title: "Oktoberfest",
@@ -278,6 +286,10 @@ export const fr: Translation = {
   lexicon: {
     INT: "Le nom historique du campus d’Évry, désormais partagé par Télécom SudParis & IMT-BS.",
     Maisel: "La Maison des Élèves, les bâtiments de la résidence étudiante du campus où vous allez vivre.",
+    "MAISEL SudParis": "Maison des Élèves, l'association à but non lucratif de logement étudiant officielle de Télécom SudParis et IMT Business School.",
+    "Maisel SudParis": "Maison des Élèves, l'association à but non lucratif de logement étudiant officielle de Télécom SudParis et IMT Business School.",
+    "Le Bras de Fer": "La gare du RER D située juste à côté du campus d'Évry.",
+    "RER B": "La ligne de RER reliant l'aéroport Charles de Gaulle (CDG) au centre de Paris.",
     AbsINThe: "Le bar étudiant adoré du campus, hôte des soirées à thème et des moments détendus.",
     ACO: "AbsINThe Chill Out, le nom des soirées à thème organisées au bar étudiant AbsINThe.",
     CAF: "Caisse d’Allocations Familiales, l’organisme public français qui vous verse une aide au logement mensuelle (APL).",
@@ -543,4 +555,277 @@ export const fr: Translation = {
       },
     ],
   },
+  adminAid: {
+    heroTitle: "Démarches & Aides",
+    heroLede: "Naviguez dans l'administration française étape par étape : de la validation de visa à la Sécurité Sociale, aux comptes bancaires et aux aides financières.",
+    roadmapEyebrow: "Feuille de route étape par étape",
+    roadmapH2: "Votre calendrier administratif",
+    roadmapLede: "Suivez ces cinq étapes essentielles dans l'ordre après votre arrivée en France pour installer votre vie étudiante sereinement.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "CVEC & Inscription administrative",
+        time: "Avant / Jour 1",
+        desc: "Réglez la CVEC sur cvec.etudiant.gouv.fr pour obtenir votre attestation, puis complétez votre inscription à TSP ou IMT-BS pour recevoir votre Certificat de Scolarité.",
+        url: "https://cvec.etudiant.gouv.fr"
+      },
+      {
+        step: "02",
+        title: "Compte bancaire français",
+        time: "Semaine 1",
+        desc: "Ouvrez votre compte bancaire auprès de la Société Générale (partenaire officiel du BDE et de Welcom') pour obtenir votre RIB français.",
+        url: "#step-bank"
+      },
+      {
+        step: "03",
+        title: "Validation de visa (ANEF)",
+        time: "Sous 3 mois",
+        desc: "Validez votre visa étudiant VLS-TS en ligne sur le portail ANEF pour garantir votre séjour légal et votre droit de travailler.",
+        url: "https://administration-etrangers-en-france.interieur.gouv.fr"
+      },
+      {
+        step: "04",
+        title: "Sécurité Sociale (Ameli)",
+        time: "Mois 1",
+        desc: "Inscrivez-vous gratuitement à la Sécurité Sociale française sur etudiant-etranger.ameli.fr pour recevoir votre Carte Vitale et couvrir vos frais de santé.",
+        url: "https://etudiant-etranger.ameli.fr"
+      },
+      {
+        step: "05",
+        title: "Aides au logement CAF",
+        time: "Mois 1 (Avant fin de mois)",
+        desc: "Soumettez votre demande d'APL ou d'ALS sur caf.fr pour recevoir vos aides mensuelles versées pour votre logement Maisel.",
+        url: "https://www.caf.fr"
+      }
+    ],
+    cvecEyebrow: "Étape 1 : Inscription académique",
+    cvecH2: "CVEC & Certificat de scolarité",
+    cvecLede: "Avant de finaliser votre inscription administrative à Télécom SudParis ou IMT Business School, vous devez obtenir votre attestation de paiement de la CVEC.",
+    cvecTitle: "Qu'est-ce que la CVEC ?",
+    cvecDesc: "La CVEC (Contribution Vie Étudiante et de Campus) est une contribution annuelle obligatoire (~103 €) collectée par l'État pour financer la vie étudiante, le sport, la santé et la culture.",
+    cvecStepsTitle: "Comment réaliser cette étape :",
+    cvecSteps: [
+      "Rendez-vous sur le portail officiel <a href=\"https://cvec.etudiant.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> et créez votre compte.",
+      "Réglez la CVEC en ligne par carte bancaire (ou téléchargez votre attestation d'exonération si vous êtes boursier).",
+      "Téléchargez votre <strong>Attestation de paiement CVEC</strong>.",
+      "Transmettez l'attestation au service de Scolarité lors de votre inscription administrative.",
+      "Obtenez votre <strong>Certificat de Scolarité</strong> officiel et votre carte d'étudiant."
+    ],
+    cvecTip: "<strong>Conservez précieusement votre Certificat de Scolarité :</strong> Ce document est indispensable pour l'ouverture de votre compte bancaire, la CAF, votre pass Navigo et votre validation de visa !",
+    bankEyebrow: "Étape 2 : Gérer son argent",
+    bankH2: "Ouvrir un compte bancaire français",
+    bankLede: "Un compte bancaire français doté d'un RIB (Relevé d'Identité Bancaire / IBAN) est indispensable pour percevoir la CAF, souscrire à un forfait téléphonique, payer son loyer et gérer le quotidien.",
+    bankPartnerTitle: "Société Générale : Partenaire officiel du BDE & WELCOM'",
+    bankPartnerBody: "Grâce à ce partenariat, les étudiants bénéficient d'avantages exclusifs : prime de bienvenue, avantages sur les cartes bancaires, réductions pour le WEI et les cotisations aux associations et démarches d'ouverture simplifiées adaptées aux étudiants du campus.",
+    bankDocsTitle: "Documents requis pour l'ouverture du compte :",
+    bankDocs: [
+      "Passeport valide avec votre visa étudiant (VLS-TS).",
+      "Justificatif de domicile en France (Attestation de logement Maisel ou bail).",
+      "Certificat de Scolarité ou carte d'étudiant."
+    ],
+    bankTip: "<strong>Qu'est-ce qu'un RIB ?</strong> En France, le RIB contient votre IBAN et votre BIC. Vous le transmettez à la CAF pour les aides, à la Maisel pour les prélèvements et aux opérateurs téléphoniques.",
+    visaEyebrow: "Étape 3 : Séjour légal",
+    visaH2: "Validation de visa & Titre de séjour (ANEF)",
+    visaLede: "Si vous êtes arrivé en France avec un Visa Long Séjour valant Titre de Séjour (VLS-TS), vous DEVEZ le valider en ligne dans les 3 mois suivant votre date d'arrivée.",
+    visaStepsTitle: "Procédure de validation en ligne sur l'ANEF :",
+    visaSteps: [
+      "Accédez au portail officiel ANEF : <a href=\"https://administration-etrangers-en-france.interieur.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">administration-etrangers-en-france.interieur.gouv.fr</a>.",
+      "Cliquez sur <strong>Valider votre VLS-TS</strong>.",
+      "Saisissez votre numéro de visa, votre date d'entrée en France, votre adresse française et vos coordonnées.",
+      "Réglez la taxe de séjour (environ 50 €) en ligne par carte bancaire.",
+      "Téléchargez et imprimez votre <strong>Attestation de validation du VLS-TS</strong>."
+    ],
+    healthEyebrow: "Étape 4 : Santé",
+    healthH2: "Sécurité Sociale & Mutuelle",
+    healthLede: "La France dispose d'un système de santé universel. En tant qu'étudiant international, l'inscription à la Sécurité Sociale française (CPAM) est totalement gratuite.",
+    healthAmeliTitle: "1. Inscription à la Sécurité Sociale (Ameli)",
+    healthAmeliBody: "Inscrivez-vous en ligne sur <a href=\"https://etudiant-etranger.ameli.fr\" target=\"_blank\" rel=\"noopener noreferrer\">etudiant-etranger.ameli.fr</a>. Déposez votre passeport, visa, attestation VLS-TS, certificat de scolarité, acte de naissance et RIB. Vous recevrez un numéro de Sécurité Sociale provisoire, puis votre numéro définitif et votre <strong>Carte Vitale</strong> verte.",
+    healthMutuelleTitle: "2. Complémentaire santé (Mutuelle)",
+    healthMutuelleBody: "La Sécurité Sociale rembourse environ 70 % des frais médicaux courants. Pour couvrir les 30 % restants (médicaments, spécialistes, frais hospitaliers, soins dentaires et optiques), souscrire une <strong>Mutuelle</strong> étudiante (comme Heyme ou LMDE) est vivement recommandé.",
+    healthCampusTitle: "3. Consultations médicales sur le campus",
+    healthCampusBody: "Des services de médecine viennent régulièrement sur le campus pour proposer des consultations gratuites (dépistage IST, soins dentaires, ophtalmologie...).",
+    healthDoctolibTitle: "4. Prendre rendez-vous avec Doctolib",
+    healthDoctolibBody: "Pour trouver un médecin généraliste ou un spécialiste près d'Évry et prendre rendez-vous en ligne, utilisez l'application ou le site <a href=\"https://www.doctolib.fr\" target=\"_blank\" rel=\"noopener noreferrer\">Doctolib</a>.",
+    cafEyebrow: "Étape 5 : Aides financières",
+    cafH2: "Aides au logement CAF (APL & ALS)",
+    cafLede: "Les étudiants internationaux résidant en France ont droit aux aides au logement versées par la CAF (Caisse d'Allocations Familiales).",
+    cafBody: "Veillez à soumettre votre demande sur caf.fr avant le dernier jour du mois de votre arrivée. Pour un guide complet sur la résidence Maisel, l'éligibilité et la procédure, consultez notre guide Logement.",
+    cafBtn: "Consulter le guide Logement & CAF",
+    supportEyebrow: "Besoin d'aide ?",
+    supportH2: "Venez nous voir au Foyer !",
+    supportBody: "Les démarches administratives dans une langue étrangère peuvent paraître complexes. L'équipe WELCOM' est disponible dans notre local du Foyer pour vous accompagner pas à pas dans vos démarches en ligne.",
+    supportBtn: "Trouver le local Welcom'"
+  },
+  moneyPhone: {
+    heroTitle: "Argent & Téléphone",
+    heroLede: "Tout ce dont vous avez besoin pour installer votre forfait mobile, ouvrir un compte bancaire français, comprendre votre RIB et gérer votre budget pendant vos études à Évry.",
+    roadmapEyebrow: "Feuille de route étape par étape",
+    roadmapH2: "Votre installation financière & mobile",
+    roadmapLede: "Suivez ces 4 étapes essentielles dès votre arrivée en France pour être connecté et serein financièrement.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "Données temporaires / eSIM",
+        time: "Jour 1 / Arrivée",
+        desc: "Restez connecté dès l'aéroport et sur le campus grâce au roaming ou une eSIM pendant votre installation.",
+        url: "#step-phone"
+      },
+      {
+        step: "02",
+        title: "Carte SIM française",
+        time: "Semaine 1",
+        desc: "Obtenez un forfait mobile français +33 (Free Mobile, Sosh, B&You, RED) indispensable pour la validation bancaire par SMS et les démarches.",
+        url: "#step-phone"
+      },
+      {
+        step: "03",
+        title: "Compte bancaire français",
+        time: "Semaines 1–2",
+        desc: "Ouvrez votre compte auprès de la Société Générale (partenaire officiel du BDE et de WELCOM') pour obtenir votre RIB (IBAN).",
+        url: "#step-bank"
+      },
+      {
+        step: "04",
+        title: "Budget & Virements Wero",
+        time: "Au quotidien",
+        desc: "Utilisez Wero pour vos virements instantanés en Europe, profitez des repas CROUS à 3,30 € au Restaurant universitaire Le Sablier près de U6, et profitez de la fibre MiNET.",
+        url: "#step-budget"
+      }
+    ],
+
+    phoneEyebrow: "Étape 1 : Mobile & Connectivité",
+    phoneH2: "Opérateurs mobiles & cartes SIM françaises",
+    phoneLede: "Un numéro de téléphone français (+33) est indispensable pour recevoir les codes de sécurité SMS des banques, de la CAF, des livreurs et des portails administratifs.",
+    phoneOperatorsTitle: "Principaux opérateurs mobiles en France",
+    phoneOperators: [
+      {
+        name: "Syma Mobile",
+        badge: "Bas coût & International",
+        desc: "Forfaits sans engagement à petit prix avec de grandes enveloppes internet et des options d'appels internationaux incluses vers de nombreux pays.",
+        url: "https://www.symamobile.com"
+      },
+      {
+        name: "B&You (par Bouygues)",
+        badge: "Excellent rapport qualité/prix",
+        desc: "Forfaits mobiles flexibles sans engagement avec des enveloppes internet très généreuses en France et en Europe.",
+        url: "https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement"
+      },
+      {
+        name: "Prixtel",
+        badge: "Flexible & Éco-responsable",
+        desc: "Forfaits ajustables sur le réseau SFR qui s'adaptent automatiquement à votre consommation de données chaque mois pour ne payer que ce que vous consommez.",
+        url: "https://www.prixtel.com"
+      }
+    ],
+    phoneTipsTitle: "Ce qu'il faut savoir avant d'acheter une carte SIM :",
+    phoneTips: [
+      "<strong>Choisissez toujours 'Sans Engagement' :</strong> Cela signifie que vous n'avez pas de contrat de durée minimale et pouvez changer d'opérateur à tout moment sans frais.",
+      "<strong>Option eSIM :</strong> Si votre smartphone est compatible eSIM, de nombreux opérateurs vous permettent de la télécharger en ligne instantanément sans attendre de courrier.",
+      "<strong>Roaming UE inclus :</strong> Tous les forfaits français incluent l'utilisation de vos appels et données mobiles dans les pays de l'Union Européenne."
+    ],
+
+    bankEyebrow: "Étape 2 : Gérer son argent",
+    bankH2: "Ouvrir un compte bancaire français",
+    bankLede: "Un compte bancaire français avec un RIB (Relevé d'Identité Bancaire / IBAN) est indispensable pour recevoir les aides CAF, prélever votre forfait mobile, payer le loyer et gérer vos dépenses quotidiennes.",
+    bankPartnerTitle: "Société Générale : Partenaire Officiel du BDE & WELCOM'",
+    bankPartnerBody: "Grâce à ce partenariat, les étudiants bénéficient d'avantages exclusifs : une prime de bienvenue en cash, des avantages sur la carte bancaire, des réductions pour le WEI (week-end d'intégration) et les cotisations associatives, ainsi qu'une procédure d'ouverture de compte simplifiée dédiée aux étudiants du campus.",
+    bankDocsTitle: "Documents requis pour l'ouverture de compte :",
+    bankDocs: [
+      "Passeport valide avec visa étudiant (VLS-TS).",
+      "Justificatif de domicile en France (Attestation de Logement de la Maisel ou contrat de bail).",
+      "Certificat de scolarité ou carte d'étudiant."
+    ],
+    bankTip: "<strong>Qu'est-ce qu'un RIB ?</strong> En France, un RIB contient votre IBAN et votre BIC. Vous transmettrez votre RIB à la CAF pour l'aide au logement, à la Maisel pour le prélèvement du loyer et aux opérateurs télécoms.",
+
+    ribEyebrow: "Étape 3 : Comprendre la banque",
+    ribH2: "Comprendre le RIB & les moyens de paiement",
+    ribLede: "En France, les opérations bancaires reposent principalement sur le RIB et la carte bancaire sans contact. Voici comment fonctionnent les paiements au quotidien.",
+    ribCards: [
+      {
+        title: "Qu'est-ce qu'un RIB ?",
+        desc: "Un <strong>RIB</strong> (Relevé d'Identité Bancaire) contient vos identifiants bancaires (IBAN et BIC). Vous le transmettrez à la CAF (aides), à la Maisel (loyer), aux opérateurs télécoms et à vos employeurs."
+      },
+      {
+        title: "Carte Bancaire (CB)",
+        desc: "Les cartes bancaires (Visa/Mastercard) sont acceptées partout. Le paiement sans contact fonctionne jusqu'à 50 €. Apple Pay et Google Pay sont acceptés pratiquement partout, même pour une baguette à 1 € !"
+      },
+      {
+        title: "Virements bancaires SEPA",
+        desc: "Les virements entre comptes européens (<em>virement SEPA</em>) sont gratuits et arrivent en 1 jour ouvré. Les virements instantanés sont proposés par la plupart des banques."
+      },
+      {
+        title: "Chéquier",
+        desc: "Les banques traditionnelles fournissent un chéquier gratuit sur demande. Les chèques sont parfois demandés comme chèque de caution pour le logement ou du matériel."
+      }
+    ],
+
+    budgetEyebrow: "Étape 4 : Budget intelligent",
+    budgetH2: "Gérer son budget & avantages étudiants",
+    budgetLede: "Optimisez votre budget étudiant à Évry grâce aux outils de transfert avantageux, aux repas CROUS et aux services du campus.",
+    budgetItems: [
+      {
+        title: "Virements instantanés Wero",
+        desc: "Utilisez <strong>Wero</strong>, la solution de paiement instantané européenne intégrée aux principales banques françaises, pour envoyer et recevoir de l'argent gratuitement et instantanément entre amis ou comptes avec un simple numéro de téléphone."
+      },
+      {
+        title: "Restauration CROUS (Restaurant universitaire Le Sablier)",
+        desc: "Situé au centre-ville d'Évry près du bâtiment U6, juste à côté de l'Université Évry Paris-Saclay, le <a href=\"https://maps.app.goo.gl/jkgWSUNCtizFmyFv6\" target=\"_blank\" rel=\"noopener noreferrer\">Restaurant universitaire Le Sablier</a> propose des repas chauds complets (entrée, plat, dessert) pour seulement <strong>3,30 €</strong> (ou <strong>1,00 €</strong> pour les boursiers !)."
+      },
+      {
+        title: "Wi-Fi & Fibre des résidences (MiNET)",
+        desc: "La fibre optique très haut débit et le Wi-Fi dans les résidences Maisel sont gérés par l'association étudiante <a href=\"https://minet.net/fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MiNET</a> : inutile de souscrire une box internet individuelle coûteuse !"
+      }
+    ],
+
+    supportEyebrow: "Besoin d'aide ?",
+    supportH2: "Des questions sur votre banque ou votre forfait ?",
+    supportBody: "Passez nous voir au local WELCOM' dans le Foyer ! Notre équipe peut vous guider dans la prise de rendez-vous bancaire, le choix d'un forfait ou l'explication de vos documents bancaires.",
+    supportBtn: "Trouver le local Welcom'"
+  },
+
+  guidesPage: {
+    heroTitle: "Guides Étudiants",
+    heroLede: "Tout ce qu'il faut savoir pour réussir votre installation à Télécom SudParis & IMT Business School : arrivée en France, logement, transports, banque et démarches administratives.",
+    guidesSectionEyebrow: "Guides essentiels",
+    guidesSectionTitle: "Explorez nos guides",
+    gettingHere: {
+      title: "Venir au campus",
+      badge: "Accès & Itinéraires",
+      desc: "Itinéraires pas à pas depuis les aéroports (CDG, Orly), les gares parisiennes, la ligne RER D et les trajets à pied vers le campus.",
+      tag: "Aéroports • RER D • Cartes d'accès",
+      btn: "Consulter le guide Accès"
+    },
+    gettingAround: {
+      title: "Se déplacer",
+      badge: "Transports en commun",
+      desc: "Tout sur le pass Navigo (Imagine R & Liberté+), le Métro parisien, les trains régionaux/TGV et les bus locaux à Évry.",
+      tag: "Pass Navigo • RER & Métro • Astuces de voyage",
+      btn: "Consulter le guide Transports"
+    },
+    housing: {
+      title: "Logement & Résidence Maisel",
+      badge: "Hébergement campus",
+      desc: "Guide complet du logement étudiant à la Maisel d'Évry : bâtiments U1–U7, types de chambres, réservation, caution et garant.",
+      tag: "Maisel U1–U7 • Réservation • Caution 600€",
+      btn: "Consulter le guide Logement"
+    },
+    adminAid: {
+      title: "Démarches & Aides CAF",
+      badge: "Formalités officielles",
+      desc: "Guide pas à pas des démarches françaises : validation de visa (ANEF), CVEC, inscription, Sécurité sociale (Ameli) et aides au logement CAF.",
+      tag: "Visa ANEF • CAF APL • Ameli Santé",
+      btn: "Consulter le guide Démarches"
+    },
+    moneyPhone: {
+      title: "Argent & Forfait Mobile",
+      badge: "Finances & Télécom",
+      desc: "Obtenir une carte SIM française (Free, Sosh, B&You), ouvrir un compte bancaire (Société Générale, Revolut/Wise) et gérer son budget.",
+      tag: "SIM française • RIB & Banque • Budget",
+      btn: "Consulter le guide Argent & Tel"
+    },
+    supportEyebrow: "Besoin d'aide ?",
+    supportTitle: "Des questions sur vos démarches ?",
+    supportBody: "Passez nous voir au bureau Welcom’ situé au Foyer ! Notre équipe vous aide pour vos rendez-vous bancaires, forfaits mobiles ou dossiers administratifs.",
+    supportBtn: "Trouver le bureau Welcom’"
+  }
 };

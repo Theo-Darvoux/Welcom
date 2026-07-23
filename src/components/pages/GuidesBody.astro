@@ -1,0 +1,548 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import HexBg from "../HexBg.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import RichText from "../RichText.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const g = t.guidesPage;
+
+const guideCards = [
+  {
+    key: "gettingHere",
+    url: localizedPath("/guides/getting-here", lang),
+    data: g.gettingHere,
+    accentColor: "var(--hive-yellow)",
+    borderColor: "#E08A00",
+    icon: `<path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"></path><circle cx="12" cy="10" r="3"></circle>`
+  },
+  {
+    key: "gettingAround",
+    url: localizedPath("/guides/getting-around", lang),
+    data: g.gettingAround,
+    accentColor: "var(--hive-blue)",
+    borderColor: "#293A55",
+    icon: `<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7 11h10"></path><path d="M7 15h10"></path><path d="M9 7h6"></path>`
+  },
+  {
+    key: "housing",
+    url: localizedPath("/guides/housing", lang),
+    data: g.housing,
+    accentColor: "var(--hive-peach)",
+    borderColor: "#D96B43",
+    icon: `<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>`
+  },
+  {
+    key: "adminAid",
+    url: localizedPath("/guides/admin-aid", lang),
+    data: g.adminAid,
+    accentColor: "var(--hive-green)",
+    borderColor: "#2B9338",
+    icon: `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>`
+  },
+  {
+    key: "moneyPhone",
+    url: localizedPath("/guides/money-phone", lang),
+    data: g.moneyPhone,
+    accentColor: "var(--honey)",
+    borderColor: "#DB8D28",
+    icon: `<rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line>`
+  }
+];
+---
+
+<Base title={t.meta.guides.title}>
+  <span id="top"></span>
+  <SiteHeader />
+
+  <main class="guides-hub">
+    <!-- ── Hero Section ───────────────────────────────────── -->
+    <section class="hero">
+      <HexBg
+        radius={46}
+        gap={6}
+        opacity={0.1}
+        color="var(--navy)"
+        strokeWidth={2}
+        hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 50% 45%, white 30%, transparent 85%)"
+      />
+      <div class="container hero__inner">
+        <div class="hero__bee" aria-hidden="true">
+          <img src="/imgs/bee.svg" alt="" width="120" height="120" />
+        </div>
+        {g.heroEyebrow && (
+          <p class="hero__eyebrow">
+            <span class="eyebrow__hex" aria-hidden="true"></span>
+            {g.heroEyebrow}
+          </p>
+        )}
+        <h1 class="hero__title">{g.heroTitle}</h1>
+        <p class="hero__lede"><RichText text={g.heroLede} /></p>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Guides Cards Grid Section ──────────────────────── -->
+    <section class="band band--guides">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="eyebrow__hex" aria-hidden="true"></span>
+            {g.guidesSectionEyebrow}
+          </p>
+          <h2>{g.guidesSectionTitle}</h2>
+          {g.guidesSectionLede && <p class="lede">{g.guidesSectionLede}</p>}
+        </div>
+
+        <div class="guides-grid">
+          {guideCards.map((card, idx) => (
+            <article class="guide-card" style={`--card-accent: ${card.accentColor}; --card-border: ${card.borderColor};`}>
+              <div class="guide-card__body">
+                <h3 class="guide-card__title">
+                  <a href={card.url} class="guide-card__title-link">{card.data.title}</a>
+                </h3>
+                <p class="guide-card__desc">{card.data.desc}</p>
+              </div>
+
+              <div class="guide-card__footer">
+                <span class="guide-card__tag">{card.data.tag}</span>
+                <a href={card.url} class="guide-card__btn">
+                  <span>{card.data.btn}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--navy)" />
+    </section>
+
+    <!-- ── Support & Help CTA Band ────────────────────────── -->
+    <section class="band band--cta">
+      <div class="container cta__inner">
+        <div class="cta__text">
+          <p class="eyebrow eyebrow--light">
+            <span class="eyebrow__hex" aria-hidden="true"></span>
+            {g.supportEyebrow}
+          </p>
+          <h2 class="cta__title">{g.supportTitle}</h2>
+          <p class="cta__lede">{g.supportBody}</p>
+        </div>
+        <div class="cta__action">
+          <a href={localizedPath("/contact", lang)} class="btn btn--primary">
+            <span>{g.supportBtn}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ── Layout & Reset Utilities ────────────────────────── */
+  .container {
+    max-width: var(--container);
+    padding-inline: var(--space-5);
+    margin-inline: auto;
+  }
+
+  .band {
+    padding-block: var(--section-y);
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: var(--font-accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--honey-deep);
+    margin-bottom: var(--space-3);
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .eyebrow--light {
+    color: var(--honey);
+  }
+
+  .eyebrow__hex {
+    width: 13px;
+    height: 11px;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .lede {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-top: var(--space-3);
+    max-width: 65ch;
+  }
+
+  /* ── Hero Section ───────────────────────────────────── */
+  .hero {
+    background: var(--honey);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-top: calc(var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9)));
+    padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  .hero__bee {
+    margin-bottom: var(--space-3);
+    animation: heroBeeFloat 4s ease-in-out infinite alternate;
+  }
+
+  .hero__bee img {
+    width: clamp(70px, 10vw, 110px);
+    height: auto;
+    margin-inline: auto;
+    filter: drop-shadow(4px 6px 0px rgba(30, 42, 61, 0.15));
+  }
+
+  @keyframes heroBeeFloat {
+    0% { transform: translateY(0) rotate(-3deg); }
+    100% { transform: translateY(-8px) rotate(5deg); }
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-accent);
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    margin-bottom: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    color: var(--cream);
+    -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 5px 5px 0px var(--ink);
+    margin-bottom: var(--space-4);
+    transform: rotate(-1.5deg);
+  }
+
+  .hero__lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3rem);
+    line-height: 1.7;
+    color: var(--ink);
+    font-weight: 600;
+    max-width: 58ch;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 979px) {
+    .hero {
+      --nav-h: 78px;
+    }
+    .hero__inner {
+      padding-top: calc(var(--nav-h) + clamp(60px, 12vw, 90px));
+    }
+  }
+
+  /* ── Guides Grid Section ────────────────────────────── */
+  .band--guides {
+    background: var(--cream-deep);
+    background-image: radial-gradient(rgba(41, 58, 85, 0.05) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-top: var(--space-2);
+  }
+
+  .section-header .lede {
+    margin-inline: auto;
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 680px) {
+    .guides-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Guide Card Component ────────────────────────────── */
+  .guide-card {
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.25), box-shadow 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guide-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--card-accent, var(--honey));
+    border-bottom: 2px solid var(--navy);
+  }
+
+  .guide-card:hover {
+    transform: translateY(-4px) rotate(-0.5deg);
+    box-shadow: 0 0 0 1px var(--navy), 10px 10px 0 var(--navy);
+  }
+
+  .guide-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .guide-card__badge {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    background: var(--card-accent, var(--honey-wash));
+    padding: 0.35em 0.8em;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--navy);
+    box-shadow: 2px 2px 0 var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .guide-card__badge-hex {
+    width: 8px;
+    height: 7px;
+    background: var(--navy);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: inline-block;
+  }
+
+  .guide-card__icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--card-accent, var(--honey));
+    border: 2.5px solid var(--navy);
+    box-shadow: 2px 2px 0 var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    flex-shrink: 0;
+  }
+
+  .guide-card__body {
+    flex-grow: 1;
+    margin-bottom: var(--space-5);
+  }
+
+  .guide-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-card__title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .guide-card__title-link:hover {
+    color: var(--honey-deep);
+  }
+
+  .guide-card__desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--navy-soft);
+  }
+
+  .guide-card__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 2px dashed var(--line);
+  }
+
+  .guide-card__tag {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--navy-soft);
+    opacity: 0.85;
+  }
+
+  .guide-card__btn {
+    font-family: var(--font-accent);
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: var(--honey);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-button);
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    padding: 0.6em 1.1em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25), box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+  }
+
+  .guide-card__btn:hover {
+    background: var(--honey-deep);
+    color: var(--cream);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transform: translate(-2px, -2px);
+  }
+
+  .guide-card__btn:active {
+    box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
+    transform: translate(3px, 3px);
+  }
+
+  .guide-card__btn svg {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+
+  .guide-card__btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ── CTA Support Band ───────────────────────────────── */
+  .band--cta {
+    background: var(--navy);
+    color: var(--cream);
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .cta__text {
+    max-width: 620px;
+  }
+
+  .cta__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: var(--cream);
+    margin-bottom: var(--space-3);
+  }
+
+  .cta__lede {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--cream-deep);
+    opacity: 0.95;
+  }
+
+  .btn--primary {
+    font-family: var(--font-accent);
+    font-size: 1.125rem;
+    color: var(--ink);
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: var(--radius-button);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+    padding: 0.8em 1.5em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25), box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+  }
+
+  .btn--primary:hover {
+    background: var(--honey);
+    color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+    transform: translate(-3px, -3px);
+  }
+
+  .btn--primary:active {
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+    transform: translate(5px, 5px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__bee,
+    .guide-card,
+    .guide-card__btn,
+    .btn--primary {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>

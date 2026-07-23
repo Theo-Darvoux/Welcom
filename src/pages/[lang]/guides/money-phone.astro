@@ -1,0 +1,10 @@
+---
+import MoneyPhoneBody from "../../../components/pages/MoneyPhoneBody.astro";
+import { prefixedLocales } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+---
+
+<MoneyPhoneBody />

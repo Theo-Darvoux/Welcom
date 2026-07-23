@@ -1,0 +1,822 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import Footer from "../Footer.astro";
+import RichText from "../RichText.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import HexBg from "../HexBg.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const m = t.moneyPhone;
+
+const operatorLogos = [
+  "/imgs/operators/syma-mobile.svg",
+  "/imgs/operators/b-and-you.png",
+  "/imgs/operators/prixtel.svg"
+];
+---
+
+<Base title={t.meta.guidesMoneyPhone.title} description={t.meta.guidesMoneyPhone.description}>
+  <span id="top"></span>
+  <SiteHeader />
+
+  <main class="money-page">
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero-band">
+      <HexBg
+        radius={56}
+        gap={4}
+        opacity={0.06}
+        color="var(--honey)"
+        strokeWidth={1.5}
+      />
+
+      <div class="container hero-content">
+        <div class="hero-text prose-header">
+          <h1 class="hero-title">{m.heroTitle}</h1>
+          <p class="hero-lede"><RichText text={m.heroLede} /></p>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Roadmap Timeline ────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{m.roadmapEyebrow}</p>
+          <h2>{m.roadmapH2}</h2>
+          <p class="lede">{m.roadmapLede}</p>
+        </div>
+
+        <div class="roadmap-grid">
+          {m.roadmapSteps.map((item) => (
+            <a
+              href={item.url}
+              target={item.url.startsWith("http") ? "_blank" : undefined}
+              rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
+              class="roadmap-card"
+            >
+              <div class="roadmap-card__top">
+                <div class="roadmap-card__number">{item.step}</div>
+                <span class="roadmap-card__link-icon" aria-hidden="true">
+                  {item.url.startsWith("http") ? (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                  )}
+                </span>
+              </div>
+              <div class="roadmap-card__content">
+                <span class="roadmap-card__time">{item.time}</span>
+                <h3 class="roadmap-card__title">{item.title}</h3>
+                <p class="roadmap-card__desc">{item.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Step 1: Mobile Operators & SIM Cards ────────── -->
+    <section class="band" id="step-phone">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{m.phoneEyebrow}</p>
+          <h2>{m.phoneH2}</h2>
+          <p class="lede">{m.phoneLede}</p>
+        </div>
+
+        <h3 class="subsection-heading">{m.phoneOperatorsTitle}</h3>
+        <div class="operators-grid">
+          {m.phoneOperators.map((op, idx) => (
+            <div class="operator-card">
+              <div class="operator-card__header">
+                <h4 class="operator-card__name">{op.name}</h4>
+                <img
+                  src={operatorLogos[idx]}
+                  alt={`${op.name} logo`}
+                  class="operator-card__logo"
+                  width="70"
+                  height="32"
+                  loading="lazy"
+                />
+              </div>
+              <p class="operator-card__desc">{op.desc}</p>
+              <a
+                href={op.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="operator-card__btn"
+              >
+                <span>Visit {op.name}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="subsection-heading">{m.phoneTipsTitle}</h3>
+        <ul class="step-list">
+          {m.phoneTips.map((tip) => (
+            <li class="step-item">
+              <RichText text={tip} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Step 2: Bank Account (Société Générale) ─────── -->
+    <section class="band band--alt" id="step-bank">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{m.bankEyebrow}</p>
+          <h2>{m.bankH2}</h2>
+          <p class="lede">{m.bankLede}</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card__header">
+            <div class="partner-card__logo-wrapper">
+              <img
+                src="/imgs/assoc/partner-sg.webp"
+                alt="Société Générale logo"
+                class="partner-card__logo"
+                width="140"
+                height="40"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="partner-card__title">{m.bankPartnerTitle}</h3>
+          </div>
+          <p class="partner-card__body"><RichText text={m.bankPartnerBody} /></p>
+        </div>
+
+        <h3 class="subsection-heading">{m.bankDocsTitle}</h3>
+        <ul class="docs-list">
+          {m.bankDocs.map((doc) => (
+            <li class="doc-item">
+              <svg class="doc-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>{doc}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="tip-box">
+          <p><RichText text={m.bankTip} /></p>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Step 3: Understanding the RIB & Payment Methods ─ -->
+    <section class="band" id="step-rib">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{m.ribEyebrow}</p>
+          <h2>{m.ribH2}</h2>
+          <p class="lede">{m.ribLede}</p>
+        </div>
+
+        <div class="rib-grid">
+          {m.ribCards.map((card) => (
+            <div class="rib-card">
+              <h3>{card.title}</h3>
+              <p><RichText text={card.desc} /></p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Step 4: Smart Budgeting & Student Perks ─────── -->
+    <section class="band band--alt" id="step-budget">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{m.budgetEyebrow}</p>
+          <h2>{m.budgetH2}</h2>
+          <p class="lede">{m.budgetLede}</p>
+        </div>
+
+        <div class="budget-grid">
+          {m.budgetItems.map((item) => (
+            <div class="budget-card">
+              <h3>{item.title}</h3>
+              <p><RichText text={item.desc} /></p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Support & Office Hours ────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose-header support-box">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{m.supportEyebrow}</p>
+          <h2>{m.supportH2}</h2>
+          <p class="lede">{m.supportBody}</p>
+          <div class="action-wrap">
+            <a class="btn btn--primary" href={localizedPath("/foyer", lang)}>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              {m.supportBtn}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+<style>
+  /* ── Shared Layout ──────────────────────────────────── */
+  .money-page {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
+  .band { padding-block: var(--section-y); position: relative; }
+  .band--alt { background-color: var(--cream-deep); }
+  .prose-header { max-width: 72ch; }
+  .prose-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--ink); margin-bottom: var(--space-3); line-height: 1.15; }
+  .prose-header .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
+
+  /* ── Eyebrow ────────────────────────────────────────── */
+  .eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--honey-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-weight: 800;
+  }
+  .eyebrow__hex {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: currentColor;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .hero-band {
+    background-color: var(--ink);
+    color: var(--cream);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    padding-top: calc(var(--nav-h) + clamp(var(--space-6), 6vw, var(--space-8)));
+    padding-bottom: calc(var(--space-8) + 40px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 979px) {
+    .hero-band {
+      --nav-h: 78px;
+    }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+    line-height: 1.05;
+    color: var(--honey);
+    margin-bottom: var(--space-4);
+    text-shadow: 4px 4px 0 var(--navy);
+  }
+
+  .hero-lede {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  /* ── Roadmap Cards ─────────────────────────────────── */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .roadmap-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1050px) {
+    .roadmap-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .roadmap-card,
+  .roadmap-card *,
+  .roadmap-card:hover,
+  .roadmap-card:hover * {
+    text-decoration: none !important;
+  }
+
+  .roadmap-card {
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .roadmap-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 7px 7px 0 var(--navy);
+    background: #FFFBEB;
+  }
+
+  .roadmap-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .roadmap-card__number {
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--honey-deep);
+    width: max-content;
+  }
+
+  .roadmap-card__link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--honey-wash);
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .roadmap-card:hover .roadmap-card__link-icon {
+    transform: scale(1.15) rotate(4deg);
+    background: var(--honey);
+    color: var(--ink);
+  }
+
+  .roadmap-card__time {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--navy-soft);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .roadmap-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+    line-height: 1.2;
+  }
+
+  .roadmap-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Subsections & Operators Grid ───────────────────── */
+  .subsection-heading {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .operators-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .operators-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .operator-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .operator-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .operator-card__name {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .operator-card__logo {
+    max-height: 32px;
+    max-width: 90px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .operator-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .operator-card__kiosk {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(58, 181, 74, 0.12);
+    border: 1.5px solid var(--green);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .operator-card__kiosk svg {
+    color: var(--green-deep);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .operator-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cream-deep);
+    border: 2px solid var(--navy);
+    border-radius: var(--radius-button);
+    padding: 8px 14px;
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    color: var(--navy);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: auto;
+  }
+
+  .operator-card__btn:hover {
+    background: var(--honey);
+    transform: translateY(-2px);
+  }
+
+  /* ── Step Lists & Info Cards ────────────────────────── */
+  .step-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+  }
+
+  .step-item {
+    background: var(--cream-deep);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--navy);
+    box-shadow: 3px 3px 0 var(--navy);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .info-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    margin-top: var(--space-6);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .info-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+  }
+
+  .info-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Partner Card (Société Générale) ─────────────────── */
+  .partner-card {
+    background: #FFFBEB;
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-6);
+    box-shadow: 5px 5px 0 var(--navy);
+    margin-block: var(--space-6);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .partner-card__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    text-align: center;
+  }
+
+  .partner-card__logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 8px 18px;
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 0 var(--navy);
+    margin-inline: auto;
+  }
+
+  .partner-card__logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .partner-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin: 0;
+    text-align: center;
+  }
+
+  .partner-card__body {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Docs List ──────────────────────────────────────── */
+  .docs-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+  }
+
+  .doc-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--cream);
+    border: 2px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.95rem;
+    color: var(--navy);
+    box-shadow: 2px 2px 0 var(--navy);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .doc-item__icon {
+    color: var(--honey-deep);
+    flex-shrink: 0;
+  }
+
+  /* ── Tip Boxes ──────────────────────────────────────── */
+  .tip-box {
+    background: rgba(239, 171, 67, 0.15);
+    border: 2.5px dashed var(--honey-deep);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-5);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tip-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--navy);
+  }
+
+  /* ── RIB Grid & Budget Grid ─────────────────────────── */
+  .rib-grid,
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .rib-grid,
+    .budget-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .rib-card,
+  .budget-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .rib-card h3,
+  .budget-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .rib-card p,
+  .budget-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Action Buttons & Support ────────────────────────── */
+  .action-wrap {
+    margin-top: var(--space-5);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+    padding: 0.7em 1.3em;
+    border-radius: var(--radius-button);
+    border: 2.5px solid var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .btn--primary {
+    background: var(--honey);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--navy);
+  }
+
+  .btn--primary:hover {
+    background: var(--honey-deep);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--navy);
+  }
+
+  .support-box {
+    text-align: center;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .support-box .eyebrow {
+    justify-content: center;
+  }
+
+  .support-box .action-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ── Responsive adjustments ──────────────────────────── */
+  @media (max-width: 640px) {
+    .container {
+      padding-inline: var(--space-4);
+    }
+    .partner-card {
+      padding: var(--space-4);
+    }
+    .partner-card__title {
+      font-size: 1.15rem;
+    }
+    .partner-card__logo {
+      height: 32px;
+    }
+    .roadmap-card,
+    .operator-card,
+    .rib-card,
+    .budget-card,
+    .info-card,
+    .step-item,
+    .tip-box {
+      padding: var(--space-4);
+    }
+    .doc-item {
+      align-items: flex-start;
+    }
+    .btn {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+</style>

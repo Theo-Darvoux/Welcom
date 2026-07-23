@@ -2,13 +2,13 @@
 import PlaceholderBody from "../../components/pages/PlaceholderBody.astro";
 import ContactBody from "../../components/pages/ContactBody.astro";
 import EventsBody from "../../components/pages/EventsBody.astro";
+import GuidesBody from "../../components/pages/GuidesBody.astro";
 import { prefixedLocales } from "../../i18n/config";
 import { localizedPath, type Locale } from "../../i18n/utils";
 
 type PageSlug = "guides" | "events" | "contact" | "foyer";
 
-// Each placeholder page per non-default locale: /fr/guides, /es/contact, …
-// (getStaticPaths runs in an isolated scope, so its data lives inside it.)
+// Each page per non-default locale: /fr/guides, /es/contact, …
 export function getStaticPaths() {
   const pages: PageSlug[] = ["guides", "events", "contact", "foyer"];
   return prefixedLocales.flatMap((lang) =>
@@ -28,7 +28,9 @@ if (slug === "foyer") {
     <ContactBody />
   ) : slug === "events" ? (
     <EventsBody />
+  ) : slug === "guides" ? (
+    <GuidesBody />
   ) : (
-    <PlaceholderBody page={slug as Exclude<PageSlug, "contact" | "events" | "foyer">} />
+    <PlaceholderBody page={slug as Exclude<PageSlug, "contact" | "events" | "foyer" | "guides">} />
   )
 }
