@@ -5,7 +5,7 @@ import HexBg from "../HexBg.astro";
 import HoneyDrip from "../HoneyDrip.astro";
 import RichText from "../RichText.astro";
 import Footer from "../Footer.astro";
-import { getLangFromUrl } from "../../i18n/utils";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
@@ -241,6 +241,27 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
             <p class="direct-card__foyer">
               <RichText text={t.contactPage.directFoyer} />
             </p>
+            <a
+              class="btn btn--primary direct-card__foyer-btn"
+              href={localizedPath("/foyer", lang)}
+              id="contact-foyer-map-btn"
+            >
+              <svg
+                class="direct-card__foyer-btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                <line x1="9" y1="3" x2="9" y2="18"></line>
+                <line x1="15" y1="6" x2="15" y2="21"></line>
+              </svg>
+              <span>{t.contactBand.foyerBtn}</span>
+            </a>
           </div>
 
           <div class="team-contacts-card" id="team-contacts-card">
@@ -800,6 +821,17 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     line-height: 1.6;
     border-top: 2px dashed rgba(41, 58, 85, 0.15);
     padding-top: var(--space-4);
+  }
+
+  .direct-card__foyer-btn {
+    margin-top: var(--space-3);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .direct-card__foyer-btn-icon {
+    width: 20px;
+    height: 20px;
   }
 
   /* ── Team contacts card ─────────────────────────────────── */

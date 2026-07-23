@@ -1,0 +1,75 @@
+---
+/* Foyer map — multi-floor isometric map with floor subpages. */
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import Footer from "../Footer.astro";
+import FoyerMap from "../FoyerMap.astro";
+import RichText from "../RichText.astro";
+import { floors } from "../../data/foyer";
+import { getLangFromUrl } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+interface Props {
+  activeFloorId?: string;
+}
+
+const { activeFloorId = "rdc" } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const foyerDict = (t as any).foyer ?? {
+  hero: {
+    title: "Explore the Foyer 3D Map",
+    intro: "Discover the interactive 3D map of the student center."
+  }
+};
+const currentFloorObj = floors.find((f) => f.id === activeFloorId) || floors[0];
+const floorName = foyerDict.floors?.[currentFloorObj.id] ?? currentFloorObj.id;
+const pageTitle = `${floorName} ${(t.meta as any).foyer?.title ?? 'Foyer'}`;
+---
+
+<Base title={pageTitle}>
+  <SiteHeader />
+  <main class="foyer-page">
+    <section class="foyer-hero">
+      <h1 class="foyer-title">{foyerDict.hero?.title ?? foyerDict.title ?? "Explore the Foyer Map"}</h1>
+      <p class="foyer-intro">
+        <RichText text={foyerDict.hero?.intro ?? foyerDict.description ?? "Discover the interactive map of the student center."} />
+      </p>
+    </section>
+
+    <FoyerMap floors={floors} activeFloorId={activeFloorId} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .foyer-page {
+    padding-block: var(--space-8) var(--space-9);
+    padding-inline: var(--space-5);
+  }
+
+  .foyer-hero {
+    max-width: var(--measure);
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: var(--space-7);
+  }
+
+  .foyer-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: var(--space-4);
+  }
+
+  .foyer-intro {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+  }
+  .foyer-intro strong { color: var(--navy); }
+</style>

@@ -430,11 +430,10 @@ const partners = [
             </svg>
             association.welcom@imtbs-tsp.eu
           </a>
-          <button
-            type="button"
+          <a
             class="btn btn--green"
             id="foyer-map-btn"
-            data-alert={t.contactBand.foyerAlert}
+            href={localizedPath("foyer", lang)}
           >
             <svg
               class="btn__icon"
@@ -451,55 +450,12 @@ const partners = [
               <line x1="15" y1="6" x2="15" y2="21"></line>
             </svg>
             {t.contactBand.foyerBtn}
-          </button>
+          </a>
         </div>
         <p class="contact__bises"><RichText text={t.contactBand.bises} /></p>
         </div>
       </div>
     </section>
-
-    <script>
-      function initFoyerMapButton() {
-        const btn = document.getElementById('foyer-map-btn');
-        if (!btn) return;
-
-        btn.addEventListener('click', () => {
-          const alertMsg = btn.getAttribute('data-alert');
-          if (alertMsg) {
-            // Remove existing toast if clicked again quickly
-            const existing = document.querySelector('.foyer-toast');
-            if (existing) {
-              existing.remove();
-            }
-
-            // Create a cartoonish popup toast
-            const toast = document.createElement('div');
-            toast.className = 'foyer-toast';
-            toast.innerHTML = `
-              <div class="foyer-toast__card"></div>
-              <span class="foyer-toast__text">${alertMsg}</span>
-            `;
-            document.body.appendChild(toast);
-
-            // Animate in
-            requestAnimationFrame(() => {
-              toast.classList.add('is-visible');
-            });
-
-            // Auto-remove after 3s
-            setTimeout(() => {
-              toast.classList.remove('is-visible');
-              setTimeout(() => {
-                toast.remove();
-              }, 300);
-            }, 3000);
-          }
-        });
-      }
-
-      initFoyerMapButton();
-      document.addEventListener('astro:after-swap', initFoyerMapButton);
-    </script>
 
     <Footer />
   </main>
@@ -1668,50 +1624,6 @@ const partners = [
   }
   .band--contact :global(.lexicon-term) {
     --lex-cue: var(--honey);
-  }
-
-  /* Foyer Toast popup styling */
-  :global(.foyer-toast) {
-    position: fixed;
-    bottom: var(--space-6);
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15), opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    max-width: 90vw;
-    padding: var(--space-3) var(--space-5);
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--navy);
-    text-align: center;
-  }
-  :global(.foyer-toast.is-visible) {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-  }
-  :global(.foyer-toast__card) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--cream);
-    border: 3px solid var(--navy);
-    border-radius: 12px;
-    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
-    z-index: 1;
-  }
-  :global(.foyer-toast__text) {
-    position: relative;
-    z-index: 2;
   }
 
   /* ── Hero: buttons on honey background ──────────────────────── */

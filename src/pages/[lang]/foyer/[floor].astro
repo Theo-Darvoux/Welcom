@@ -1,0 +1,15 @@
+---
+import FoyerBody from "../../../components/pages/FoyerBody.astro";
+import { prefixedLocales } from "../../../i18n/config";
+import { floors } from "../../../data/foyer";
+
+export function getStaticPaths() {
+  return prefixedLocales.flatMap((lang) =>
+    floors.map((f) => ({ params: { lang, floor: f.id } })),
+  );
+}
+
+const { floor } = Astro.params;
+---
+
+<FoyerBody activeFloorId={floor} />

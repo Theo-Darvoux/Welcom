@@ -2,7 +2,7 @@
 /* The 8 guide categories as a honeycomb grid on desktop, a card list on mobile. */
 
 import HiveIcon from "./HiveIcon.astro";
-import { getLangFromUrl } from "../i18n/utils";
+import { getLangFromUrl, localizedPath } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
@@ -10,11 +10,11 @@ const t = useTranslations(lang);
 
 // Layout-only data; title + description come from the dictionary by id.
 const categories = [
-  { id: "getting-here", color: "var(--hive-blue)", href: "#getting-here" },
-  { id: "housing", color: "var(--hive-yellow)", href: "#housing" },
+  { id: "getting-here", color: "var(--hive-blue)", href: "/guides/getting-here" },
+  { id: "housing", color: "var(--hive-yellow)", href: "/guides/housing" },
   { id: "admin-aid", color: "var(--hive-peach)", href: "#admin" },
   { id: "money-phone", color: "var(--hive-green)", href: "#money" },
-  { id: "getting-around", color: "var(--hive-yellow)", href: "#transport" },
+  { id: "getting-around", color: "var(--hive-yellow)", href: "/guides/getting-around" },
   { id: "daily-life", color: "var(--hive-green)", href: "#daily-life" },
   { id: "studies", color: "var(--hive-blue)", href: "#studies" },
   { id: "events-buddy", color: "var(--hive-peach)", href: "#events" },
@@ -26,63 +26,73 @@ const categories = [
   <!-- Desktop Honeycomb Grid -->
   <div class="hive-grid" aria-label={t.hive.ariaGrid}>
     {
-      categories.map((cat, idx) => (
-        <a
-          href={cat.href}
-          class={`hive-cell hive-cell--${cat.id}`}
-          style={`animation-delay: ${idx * 0.15}s; --cell-bg: ${cat.color};`}
-        >
-          <svg class="hive-cell__bg" viewBox="0 0 120 104" preserveAspectRatio="none" aria-hidden="true">
-            <!-- Main solid/thick wobbly border -->
-            <path class="hive-cell__bg-main" d="
-              M 30,3 
-              Q 60,1 90,3 
-              Q 104,27 117,52 
-              Q 104,77 90,101 
-              Q 60,103 30,101 
-              Q 16,77 3,52 
-              Q 16,27 30,3 Z
-            " />
-            <!-- Sketch outline overlay -->
-            <path class="hive-cell__bg-sketch" d="
-              M 29,4 
-              Q 59,2 91,4 
-              Q 105,28 118,51 
-              Q 105,76 91,100 
-              Q 59,102 29,100 
-              Q 15,76 2,51 
-              Q 15,28 29,4 Z
-            " />
-          </svg>
-          <div class="hive-cell__content">
-            <HiveIcon id={cat.id} class="hive-cell__icon" />
-            <span class="hive-cell__title">{t.hive.categories[cat.id].title}</span>
-            <span class="hive-cell__peek">{t.hive.peek}</span>
-          </div>
-        </a>
-      ))
+      categories.map((cat, idx) => {
+        const href = (cat.id === "getting-here" || cat.id === "getting-around" || cat.id === "housing")
+          ? localizedPath(cat.href, lang)
+          : cat.href;
+        return (
+          <a
+            href={href}
+            class={`hive-cell hive-cell--${cat.id}`}
+            style={`animation-delay: ${idx * 0.15}s; --cell-bg: ${cat.color};`}
+          >
+            <svg class="hive-cell__bg" viewBox="0 0 120 104" preserveAspectRatio="none" aria-hidden="true">
+              <!-- Main solid/thick wobbly border -->
+              <path class="hive-cell__bg-main" d="
+                M 30,3 
+                Q 60,1 90,3 
+                Q 104,27 117,52 
+                Q 104,77 90,101 
+                Q 60,103 30,101 
+                Q 16,77 3,52 
+                Q 16,27 30,3 Z
+              " />
+              <!-- Sketch outline overlay -->
+              <path class="hive-cell__bg-sketch" d="
+                M 29,4 
+                Q 59,2 91,4 
+                Q 105,28 118,51 
+                Q 105,76 91,100 
+                Q 59,102 29,100 
+                Q 15,76 2,51 
+                Q 15,28 29,4 Z
+              " />
+            </svg>
+            <div class="hive-cell__content">
+              <HiveIcon id={cat.id} class="hive-cell__icon" />
+              <span class="hive-cell__title">{t.hive.categories[cat.id].title}</span>
+              <span class="hive-cell__peek">{t.hive.peek}</span>
+            </div>
+          </a>
+        );
+      })
     }
   </div>
 
   <!-- Mobile List (degrades gracefully) -->
   <div class="hive-list" aria-label={t.hive.ariaList}>
     {
-      categories.map((cat) => (
-        <a
-          href={cat.href}
-          class={`hive-list-item hive-list-item--${cat.id}`}
-          style={`--cell-bg: ${cat.color};`}
-        >
-          <div class="hive-list-item__icon-wrapper">
-            <HiveIcon id={cat.id} class="hive-list-item__icon" />
-          </div>
-          <div class="hive-list-item__text">
-            <h3 class="hive-list-item__title">{t.hive.categories[cat.id].title}</h3>
-            <p class="hive-list-item__description">{t.hive.categories[cat.id].description}</p>
-          </div>
-          <span class="hive-list-item__arrow" aria-hidden="true">→</span>
-        </a>
-      ))
+      categories.map((cat) => {
+        const href = (cat.id === "getting-here" || cat.id === "getting-around" || cat.id === "housing")
+          ? localizedPath(cat.href, lang)
+          : cat.href;
+        return (
+          <a
+            href={href}
+            class={`hive-list-item hive-list-item--${cat.id}`}
+            style={`--cell-bg: ${cat.color};`}
+          >
+            <div class="hive-list-item__icon-wrapper">
+              <HiveIcon id={cat.id} class="hive-list-item__icon" />
+            </div>
+            <div class="hive-list-item__text">
+              <h3 class="hive-list-item__title">{t.hive.categories[cat.id].title}</h3>
+              <p class="hive-list-item__description">{t.hive.categories[cat.id].description}</p>
+            </div>
+            <span class="hive-list-item__arrow" aria-hidden="true">→</span>
+          </a>
+        );
+      })
     }
   </div>
 </div>

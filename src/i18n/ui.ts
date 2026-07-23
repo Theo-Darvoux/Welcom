@@ -25,9 +25,11 @@ const dictionaries: Record<Locale, Translation> = {
   ar,
 };
 
-/** Get the full string table for a locale (falls back to the default). */
+/** Get the full string table for a locale (falls back to the default for missing keys). */
 export function useTranslations(lang: Locale): Translation {
-  return dictionaries[lang] ?? dictionaries[defaultLang];
+  const dict = dictionaries[lang];
+  if (lang === defaultLang || !dict) return en;
+  return { ...en, ...dict, meta: { ...en.meta, ...dict.meta } };
 }
 
 export type { Translation };

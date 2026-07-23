@@ -1,0 +1,12 @@
+---
+import FoyerBody from "../../components/pages/FoyerBody.astro";
+import { floors } from "../../data/foyer";
+
+export function getStaticPaths() {
+  return floors.map((f) => ({ params: { floor: f.id } }));
+}
+
+const { floor } = Astro.params;
+---
+
+<FoyerBody activeFloorId={floor} />

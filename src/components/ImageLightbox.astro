@@ -126,19 +126,30 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     const maxScale = 6;
     const zoomStep = 0.3;
 
+    function extractTextWithoutPopovers(el: Element): string {
+      const clone = el.cloneNode(true) as Element;
+      clone.querySelectorAll('.lexicon-popover').forEach((popover) => popover.remove());
+      return (clone.textContent || '').trim();
+    }
+
     // Retrieve caption text based on target element's markup container
     function getCaption(img: HTMLImageElement): string {
       if (img.closest('.orga')) {
         const captionEl = img.closest('.orga')!.querySelector('figcaption');
-        return captionEl ? captionEl.textContent || '' : '';
+        return captionEl ? extractTextWithoutPopovers(captionEl) : '';
       }
       if (img.closest('.president__polaroid')) {
         const labelEl = img.closest('.president__polaroid')!.querySelector('.president__polaroid-label');
-        return labelEl ? labelEl.textContent || '' : '';
+        return labelEl ? extractTextWithoutPopovers(labelEl) : '';
       }
       if (img.closest('.photo-strip__polaroid')) {
         const captionEl = img.closest('.photo-strip__polaroid')!.querySelector('.photo-strip__caption');
-        return captionEl ? captionEl.textContent || '' : '';
+        return captionEl ? extractTextWithoutPopovers(captionEl) : '';
+      }
+      const figureEl = img.closest('.feature__photo') || img.closest('figure');
+      if (figureEl) {
+        const captionEl = figureEl.querySelector('figcaption');
+        return captionEl ? extractTextWithoutPopovers(captionEl) : '';
       }
       return img.alt || '';
     }

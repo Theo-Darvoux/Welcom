@@ -1,0 +1,1019 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import HexBg from "../HexBg.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import RichText from "../RichText.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const g = t.gettingAround;
+
+const appLogos = [
+  { name: "Île-de-France Mobilités", src: "/imgs/guides/getting-around/app-idfm.webp" },
+  { name: "Citymapper", src: "/imgs/guides/getting-around/app-citymapper.svg" },
+  { name: "SNCF Connect", src: "/imgs/guides/getting-around/app-sncf.webp" },
+  { name: "Google Maps", src: "/imgs/guides/getting-around/app-gmaps.svg" },
+];
+---
+
+<Base title={t.meta.guidesGettingAround.title} description={t.meta.guidesGettingAround.description}>
+  <span id="top"></span>
+  <SiteHeader />
+  <main>
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section class="hero">
+      <HexBg
+        radius={46} gap={6} opacity={0.1} color="var(--navy)"
+        strokeWidth={2} hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 50% 45%, white 30%, transparent 85%)"
+      />
+      <div class="container hero__inner">
+
+        <div class="hero__bee" aria-hidden="true">
+          <img src="/imgs/bee.svg" alt="" width="100" height="100" />
+        </div>
+        <h1 class="hero__title">{g.heroTitle}</h1>
+        <p class="hero__lede"><RichText text={g.heroLede} /></p>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Navigo pass ──────────────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.navigoEyebrow}</p>
+          <h2>{g.navigoH2}</h2>
+          <p class="lede">{g.navigoLede}</p>
+        </div>
+
+        <div class="navigo-layout">
+          <!-- Featured Spotlight: Imagine R -->
+          <div class="navigo-spotlight">
+            <div class="navigo-spotlight__header">
+              <div class="navigo-spotlight__head-left">
+                <div class="navigo-badge-hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="navigo-spotlight__title">
+                    <a href="https://www.iledefrance-mobilites.fr/en/imagine-r" target="_blank" rel="noopener noreferrer" class="navigo-card-link">
+                      {g.navigoImagineRTitle}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="navigo-spotlight__body-wrap">
+              <p class="navigo-spotlight__body"><RichText text={g.navigoImagineRBody} /></p>
+              <div class="navigo-spotlight__tip">
+                <div class="navigo-spotlight__tip-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                  </svg>
+                </div>
+                <p class="navigo-spotlight__tip-text"><RichText text={g.navigoImagineRTip} /></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Options side-by-side -->
+          <div class="navigo-secondary-grid">
+            <!-- Liberté+ -->
+            <div class="navigo-card">
+              <div class="navigo-card__header">
+                <div class="navigo-badge-hex navigo-badge-hex--secondary" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/>
+                  </svg>
+                </div>
+                <h3 class="navigo-card__title">
+                  <a href="https://www.iledefrance-mobilites.fr/titres-tarifs/detail/navigo-liberte-plus" target="_blank" rel="noopener noreferrer" class="navigo-card-link">
+                    {g.navigoLiberteTitle}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon" aria-hidden="true">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
+                </h3>
+              </div>
+              <p class="navigo-card__body"><RichText text={g.navigoLiberteBody} /></p>
+            </div>
+
+            <!-- Monthly -->
+            <div class="navigo-card">
+              <div class="navigo-card__header">
+                <div class="navigo-badge-hex navigo-badge-hex--secondary" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
+                <h3 class="navigo-card__title">
+                  <a href="https://www.iledefrance-mobilites.fr/titres-tarifs/detail/forfait-navigo-mois" target="_blank" rel="noopener noreferrer" class="navigo-card-link">
+                    {g.navigoMonthlyTitle}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="external-icon" aria-hidden="true">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
+                </h3>
+              </div>
+              <p class="navigo-card__body"><RichText text={g.navigoMonthlyBody} /></p>
+            </div>
+          </div>
+
+          <!-- Where to Buy Banner -->
+          <div class="navigo-where-banner">
+            <div class="navigo-where-banner__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="navigo-where-banner__content">
+              <h3 class="navigo-where-banner__title">{g.navigoWhereTitle}</h3>
+              <p class="navigo-where-banner__body"><RichText text={g.navigoWhereBody} /></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── RER D to Paris ───────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.rerEyebrow}</p>
+          <h2><RichText text={g.rerH2} /></h2>
+          <p class="lede"><RichText text={g.rerLede} /></p>
+
+          <ol class="steps">
+            {g.rerStops.map((s) => <li><RichText text={s} /></li>)}
+          </ol>
+
+          <div class="warning">
+            <p><RichText text={g.rerWarningMelun} /></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container--wide">
+        <figure class="guide-figure">
+          <div class="guide-image-container guide-image-container--rer-map">
+            <img
+              src="/imgs/guides/arriving/rer-d-map.webp"
+              alt="RER D line map showing stations and connections between Paris and Évry"
+              class="guide-image zoomable-image"
+              width="2200"
+              height="1000"
+              loading="lazy"
+            />
+          </div>
+        </figure>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Paris Métro ──────────────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.metroEyebrow}</p>
+          <h2>{g.metroH2}</h2>
+          <p class="lede">{g.metroLede}</p>
+          <ol class="steps">
+            {g.metroSteps.map((s) => <li><RichText text={s} /></li>)}
+          </ol>
+          <p class="tip"><RichText text={g.metroTip} /></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <figure class="guide-figure guide-figure--compact">
+          <div class="guide-image-container guide-image-container--metro-map">
+            <img
+              src="/imgs/guides/arriving/metro-plan.webp"
+              alt="Paris Métro network map"
+              class="guide-image zoomable-image"
+              width="3765"
+              height="2872"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="guide-caption">
+            <a href="https://www.ratp.fr/en/plan-metro" target="_blank" rel="noopener noreferrer" class="external-caption-link">
+              Interactive Paris Métro plan on ratp.fr ↗
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Trains across France ──────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.sncfEyebrow}</p>
+          <h2>{g.sncfH2}</h2>
+          <p class="lede">{g.sncfLede}</p>
+          <ol class="steps">
+            {g.sncfSteps.map((s) => <li><RichText text={s} /></li>)}
+          </ol>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Taxis & ride-sharing ──────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.taxiEyebrow}</p>
+          <h2>{g.taxiH2}</h2>
+          <p class="lede">{g.taxiLede}</p>
+
+          <ul class="bullet-list">
+            {g.taxiItems.map((s) => <li><RichText text={s} /></li>)}
+          </ul>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Bus to Palaiseau ─────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.busEyebrow}</p>
+          <h2>{g.busH2}</h2>
+          <p class="lede"><RichText text={g.busLede} /></p>
+          <ol class="steps">
+            {g.busSteps.map((s) => <li><RichText text={s} /></li>)}
+          </ol>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Useful apps ──────────────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.appsEyebrow}</p>
+          <h2>{g.appsH2}</h2>
+          <p class="lede">{g.appsLede}</p>
+        </div>
+
+        <div class="apps-grid">
+          {g.appsItems.map((app, index) => (
+            <a class="app-card" href={app.url} target="_blank" rel="noopener noreferrer">
+              <div class="app-card__header">
+                <div class="app-card__logo-wrapper" aria-hidden="true">
+                  <img
+                    src={appLogos[index]?.src || appLogos[0].src}
+                    alt={`${app.name} logo`}
+                    class="app-card__logo"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                  />
+                </div>
+                <span class="app-card__badge" aria-label="Open website">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="app-card__name">{app.name}</h3>
+              <p class="app-card__desc">{app.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+
+
+<style>
+  /* ── Shared ─────────────────────────────────────────── */
+  .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
+  .band { padding-block: var(--section-y); position: relative; }
+  .band--alt {
+    background-color: var(--cream-deep);
+    background-image: radial-gradient(rgba(41,58,85,0.04) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+  .prose { max-width: 72ch; margin-inline: auto; }
+  .eyebrow {
+    font-family: var(--font-accent); font-size: 0.95rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--honey-deep); margin-bottom: var(--space-3);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+  }
+  .eyebrow__hex {
+    display: inline-block; width: 13px; height: 11px;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+  }
+  .lede {
+    font-size: 1.125rem; line-height: 1.7;
+    color: var(--navy-soft); margin-top: var(--space-4);
+  }
+  h2 { max-width: 24ch; }
+  .body-text { font-size: 1.0625rem; line-height: 1.7; color: var(--navy-soft); margin-top: var(--space-4); }
+
+  /* ── Hero ──────────────────────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden; background: var(--honey);
+    --nav-h: 96px; margin-top: calc(-1 * var(--nav-h)); text-align: center;
+  }
+  .hero__inner {
+    position: relative; z-index: 2;
+    padding-top: calc(var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9)));
+    padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
+  }
+  .hero__bee { margin-bottom: var(--space-4); }
+  .hero__bee img {
+    width: clamp(64px, 10vw, 100px); height: auto; margin-inline: auto;
+    filter: drop-shadow(4px 6px 0 rgba(30,42,61,0.15));
+    animation: beeBob 4s ease-in-out infinite;
+  }
+  @keyframes beeBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(1.5deg); }
+  }
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.98;
+    color: var(--cream); -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill; text-shadow: 5px 5px 0 var(--ink);
+    transform: rotate(-1.5deg); margin-bottom: var(--space-4);
+  }
+  .hero__lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.7;
+    font-weight: 600; color: var(--ink); max-width: 50ch; margin-inline: auto;
+  }
+
+  @media (max-width: 979px) {
+    .hero { --nav-h: 78px; }
+    .hero__inner { padding-top: calc(var(--nav-h) + clamp(72px, 14vw, 110px)); }
+  }
+
+  /* ── Navigo Layout ────────────────────────────────── */
+  .navigo-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-top: var(--space-7);
+  }
+
+  /* ── Featured Spotlight (Imagine R) ─────────────── */
+  .navigo-spotlight {
+    position: relative;
+    cursor: pointer;
+    background: var(--cream-deep);
+    border: 3px solid var(--honey-deep);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    box-shadow: 0 0 0 1px var(--honey-deep), 6px 6px 0 var(--honey-deep);
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25);
+  }
+  .navigo-spotlight:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--honey-deep), 9px 9px 0 var(--honey-deep);
+  }
+
+  .navigo-spotlight__header {
+    margin-bottom: var(--space-4);
+  }
+  .navigo-spotlight__head-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .navigo-tag {
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--honey);
+    color: var(--ink);
+    padding: 0.25em 0.75em;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--navy);
+    margin-bottom: var(--space-1);
+    box-shadow: 2px 2px 0 var(--navy);
+  }
+
+  .navigo-spotlight__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .navigo-card-link {
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    transition: color 0.15s ease;
+  }
+  .navigo-card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .navigo-card-link:hover,
+  .navigo-spotlight:hover .navigo-card-link,
+  .navigo-card:hover .navigo-card-link {
+    color: var(--honey-deep);
+  }
+  .external-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.65;
+    flex-shrink: 0;
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25), opacity 0.15s ease;
+  }
+  .navigo-card-link:hover .external-icon,
+  .navigo-spotlight:hover .external-icon,
+  .navigo-card:hover .external-icon {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  .navigo-spotlight__body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--navy);
+    margin-bottom: var(--space-5);
+  }
+
+  .navigo-spotlight__tip {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    background: var(--honey-wash);
+    border-left: 4px solid var(--honey-deep);
+    border-radius: 6px var(--radius-button) var(--radius-button) 6px;
+  }
+  .navigo-spotlight__tip-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--honey-deep);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .navigo-spotlight__tip-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .navigo-spotlight__tip-text {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--navy-soft);
+    margin: 0;
+  }
+
+  .navigo-spotlight__tip-text :global(a) {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Hexagon Badge ───────────────────────────────── */
+  .navigo-badge-hex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    background: var(--honey);
+    color: var(--ink);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.25s ease;
+  }
+  .navigo-badge-hex svg {
+    width: 22px;
+    height: 22px;
+  }
+  .navigo-spotlight:hover .navigo-badge-hex {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.1) rotate(-8deg);
+  }
+  .navigo-card:hover .navigo-badge-hex {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.1) rotate(-8deg);
+  }
+  .navigo-badge-hex--secondary {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .navigo-badge-hex--secondary svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ── Secondary Grid ──────────────────────────────── */
+  .navigo-secondary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+  }
+  @media (max-width: 768px) {
+    .navigo-secondary-grid { grid-template-columns: 1fr; }
+    .navigo-spotlight { padding: var(--space-5); }
+    .navigo-spotlight__head-left { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+  }
+
+  .navigo-card {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                background 0.15s;
+  }
+  .navigo-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    background: #fff8ee;
+  }
+  .navigo-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  .navigo-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+  .navigo-card__body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Where to Buy Banner ────────────────────────── */
+  .navigo-where-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25);
+  }
+  .navigo-where-banner:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+  }
+  .navigo-where-banner__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: var(--honey);
+    color: var(--ink);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.25s ease;
+  }
+  .navigo-where-banner__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .navigo-where-banner:hover .navigo-where-banner__icon {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.1) rotate(6deg);
+  }
+  .navigo-where-banner__content {
+    flex: 1;
+  }
+  .navigo-where-banner__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+    color: var(--ink);
+    margin: 0 0 var(--space-2) 0;
+  }
+  .navigo-where-banner__body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin: 0;
+  }
+  @media (max-width: 600px) {
+    .navigo-where-banner {
+      flex-direction: column;
+    }
+  }
+
+  /* ── Tip callout ──────────────────────────────────── */
+  .tip {
+    font-size: 0.95rem; line-height: 1.65;
+    color: var(--navy-soft);
+    padding: var(--space-3) var(--space-4);
+    background: var(--honey-wash);
+    border-left: 4px solid var(--honey-deep);
+    border-radius: 4px var(--radius) var(--radius) 4px;
+    margin-top: var(--space-5);
+  }
+
+  /* ── Links inside prose and tips ─────────────────── */
+  .prose :global(a), .tip :global(a) {
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--honey-deep);
+    text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s;
+  }
+  .prose :global(a:hover), .tip :global(a:hover) {
+    color: var(--honey-deep);
+    text-decoration-color: var(--navy);
+  }
+
+  /* ── Route blocks ──────────────────────────────────── */
+  .route-block {
+    margin: 0;
+    padding: 0;
+  }
+  .route-block__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-2);
+  }
+  .route-title-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-left: -0.5rem;
+    background: var(--honey);
+    color: var(--ink);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
+  }
+  .route-title-badge svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s ease;
+  }
+  .route-block:hover .route-title-badge {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.1) rotate(-8deg);
+  }
+  .route-block:hover .route-title-badge svg {
+    transform: scale(1.1) rotate(5deg);
+  }
+  .route-block__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── Steps ─────────────────────────────────────────── */
+  .steps {
+    margin: var(--space-5) 0; padding: 0;
+    list-style: none; counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step; position: relative;
+    padding-left: 3.25rem; padding-bottom: var(--space-5);
+    font-size: 1.0625rem; line-height: 1.7; color: var(--navy);
+    transition: color 0.25s ease;
+  }
+  .steps li:hover {
+    color: var(--ink);
+  }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0.1rem;
+    width: 2rem; height: 2rem; display: grid; place-items: center;
+    font-family: var(--font-accent); font-size: 0.95rem;
+    background: var(--honey); color: var(--ink);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
+  }
+  .steps li:hover::before {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.15) rotate(15deg);
+  }
+  .steps li:not(:last-child)::after {
+    content: ""; position: absolute; left: calc(1rem - 1px); top: 2.2rem;
+    width: 0; bottom: -0.6rem;
+    border-left: 2.5px dashed var(--line);
+    transition: border-color 0.25s ease;
+  }
+  .steps li:hover:not(:last-child)::after {
+    border-left-color: var(--honey);
+  }
+  @media (max-width: 480px) {
+    .route-title-badge {
+      margin-left: -0.625rem;
+    }
+    .steps li {
+      padding-left: 2.75rem;
+      font-size: 1rem;
+    }
+    .steps li::before {
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: 0.85rem;
+    }
+    .steps li:not(:last-child)::after {
+      left: calc(0.875rem - 1px);
+      top: 1.95rem;
+      bottom: -0.6rem;
+    }
+  }
+
+  /* ── Bullet list (taxis section) ────────────────────── */
+  .bullet-list {
+    margin: var(--space-5) 0;
+    padding: 0;
+    list-style: none;
+  }
+  .bullet-list li {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: var(--space-4);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--navy);
+    transition: color 0.25s ease;
+  }
+  .bullet-list li:hover { color: var(--ink); }
+  .bullet-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.5rem;
+    width: 10px; height: 10px;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .bullet-list li:hover::before {
+    background: var(--honey-deep);
+    transform: scale(1.3) rotate(15deg);
+  }
+
+  /* ── Warning callout ───────────────────────────────── */
+  .warning {
+    margin-top: var(--space-6); padding: var(--space-4) var(--space-5);
+    background: #fdf3f2;
+    border-left: 4px solid #e05a47;
+    border-radius: 4px var(--radius) var(--radius) 4px;
+  }
+  .warning p {
+    font-size: 0.95rem; line-height: 1.6; color: var(--navy); margin: 0;
+  }
+
+  /* ── Apps Grid ─────────────────────────────────────── */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    margin-top: var(--space-7);
+  }
+  @media (max-width: 768px) {
+    .apps-grid { grid-template-columns: 1fr; }
+  }
+
+  .app-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                background 0.15s;
+  }
+  .app-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    background: #fff8ee;
+  }
+  .app-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+  .app-card__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .app-card:hover .app-card__badge {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  .app-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    background: #fff8ee;
+  }
+  .app-card__logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    padding: 6px;
+    background: #ffffff;
+    border: 2.5px solid var(--navy);
+    border-radius: 12px;
+    box-shadow: 2px 2px 0 var(--navy);
+    margin-bottom: var(--space-3);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+    overflow: hidden;
+  }
+  .app-card__logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+  .app-card:hover .app-card__logo-wrapper {
+    transform: scale(1.08) rotate(-4deg);
+    box-shadow: 3px 3px 0 var(--navy);
+  }
+  .app-card__name {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0 0 var(--space-2) 0;
+  }
+  .app-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--navy-soft);
+    margin: 0;
+  }
+
+  /* ── Guide Images / Placeholder ─────────────────────── */
+  .container--wide {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+  }
+  .guide-figure {
+    margin-block: var(--space-6) var(--space-5);
+  }
+  .guide-figure--compact {
+    max-width: 680px;
+    margin-inline: auto;
+  }
+  .guide-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25);
+  }
+  .guide-image-container--rer-map {
+    aspect-ratio: 22 / 10;
+  }
+  .guide-image-container--metro-map {
+    aspect-ratio: 3765 / 2872;
+  }
+  .guide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .external-caption-link {
+    color: var(--navy-soft);
+    text-decoration: underline;
+    text-decoration-color: var(--honey-deep);
+    transition: color 0.15s;
+  }
+  .external-caption-link:hover {
+    color: var(--honey-deep);
+  }
+
+  .image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: var(--space-3);
+    color: var(--navy-soft);
+    opacity: 0.5;
+  }
+  .image-placeholder svg {
+    width: 48px;
+    height: 48px;
+  }
+  .image-placeholder span {
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Buttons ───────────────────────────────────────── */
+  .guide-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .btn {
+    position: relative; display: inline-flex; align-items: center;
+    gap: var(--space-2); font-family: var(--font-accent);
+    font-size: 1.0625rem; text-decoration: none;
+    padding: 0.8em 1.4em; border-radius: var(--radius-button);
+    border: 3px solid var(--navy); min-height: 44px;
+    margin-top: var(--space-5);
+    transition: transform 0.15s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.15s cubic-bezier(0.175,0.885,0.32,1.25),
+                background-color 0.15s ease-out;
+  }
+  .btn__icon { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.15s cubic-bezier(0.175,0.885,0.32,1.25); }
+  .btn:hover .btn__icon { transform: scale(1.18) rotate(-8deg); }
+  .btn--primary {
+    background: var(--honey); color: var(--ink); border-color: var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+  .btn--primary:hover {
+    background: var(--honey-deep); transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+  .btn--primary:active { transform: translate(4px,4px); box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy); }
+</style>

@@ -1,0 +1,1192 @@
+---
+/* Isometric foyer map with elevator-style floor selection.
+ *
+ * Each traced room footprint (2D floor-plan polygon) is projected into a 2:1
+ * isometric view and extruded into a low prism: a lit "top" face plus the
+ * front-facing wall quads. Rooms are painted back-to-front so they occlude
+ * correctly. Hovering / focusing / tapping a room reveals its info card.
+ *
+ * See src/data/foyer.ts for the geometry.
+ */
+import type { Floor, Room } from "../data/foyer";
+import { getLangFromUrl, localizedPath } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  floor?: Floor;
+  floors?: Floor[];
+  activeFloorId?: string;
+}
+const { floor, floors: propFloors, activeFloorId = "rdc" } = Astro.props;
+const floorList: Floor[] = propFloors ?? (floor ? [floor] : []);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// ── Isometric projection ──────────────────────────────────────────────
+const ISO_COS = Math.cos(Math.PI / 6); // 30°
+const ISO_SIN = Math.sin(Math.PI / 6);
+const WALL = 34; // wall height, in floor-plan units — uniform across every room
+const SLAB_DROP = 12; // thickness of the unifying floor slab below the rooms
+
+// Camera yaw about the vertical axis. Positive = counter-clockwise on screen.
+const YAW = Math.PI / 7;
+const COS_Y = Math.cos(YAW),
+  SIN_Y = Math.sin(YAW);
+const VIEW_X = COS_Y - SIN_Y,
+  VIEW_Y = COS_Y + SIN_Y;
+
+type P = { x: number; y: number };
+const proj = (x: number, y: number, z: number): P => {
+  const rx = x * COS_Y + y * SIN_Y;
+  const ry = -x * SIN_Y + y * COS_Y;
+  return { x: (rx - ry) * ISO_COS, y: (rx + ry) * ISO_SIN - z };
+};
+
+const toPath = (pts: P[]) =>
+  pts
+    .map((p, i) => `${i ? "L" : "M"}${p.x.toFixed(1)},${p.y.toFixed(1)}`)
+    .join(" ") + " Z";
+
+function centroid(poly: [number, number][]): [number, number] {
+  let a = 0,
+    cx = 0,
+    cy = 0;
+  for (let i = 0; i < poly.length; i++) {
+    const [x0, y0] = poly[i];
+    const [x1, y1] = poly[(i + 1) % poly.length];
+    const f = x0 * y1 - x1 * y0;
+    a += f;
+    cx += (x0 + x1) * f;
+    cy += (y0 + y1) * f;
+  }
+  if (Math.abs(a) < 1e-6) {
+    const n = poly.length;
+    return [
+      poly.reduce((s, p) => s + p[0], 0) / n,
+      poly.reduce((s, p) => s + p[1], 0) / n,
+    ];
+  }
+  return [cx / (3 * a), cy / (3 * a)];
+}
+
+function signedArea(poly: [number, number][]): number {
+  let a = 0;
+  for (let i = 0; i < poly.length; i++) {
+    const [x0, y0] = poly[i];
+    const [x1, y1] = poly[(i + 1) % poly.length];
+    a += x0 * y1 - x1 * y0;
+  }
+  return a / 2;
+}
+
+function outwardNormal(
+  ax: number,
+  ay: number,
+  bx: number,
+  by: number,
+  wind: number,
+): [number, number] {
+  const dx = bx - ax,
+    dy = by - ay;
+  const nx = wind >= 0 ? dy : -dy;
+  const ny = wind >= 0 ? -dx : dx;
+  const len = Math.hypot(nx, ny) || 1;
+  return [nx / len, ny / len];
+}
+
+function inPoly(px: number, py: number, poly: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const [xi, yi] = poly[i];
+    const [xj, yj] = poly[j];
+    if (yi > py !== yj > py && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+function neighboursAcross(
+  a: [number, number],
+  b: [number, number],
+  nx: number,
+  ny: number,
+  polys: Room[],
+  selfIdx: number,
+): Room[] {
+  const len = Math.hypot(nx, ny) || 1;
+  const ox = (nx / len) * 2, oy = (ny / len) * 2;
+  const hits = new Set<Room>();
+  for (const t of [0.15, 0.38, 0.62, 0.85]) {
+    const sx = a[0] + (b[0] - a[0]) * t + ox;
+    const sy = a[1] + (b[1] - a[1]) * t + oy;
+    for (let k = 0; k < polys.length; k++) {
+      if (k !== selfIdx && inPoly(sx, sy, polys[k].poly)) hits.add(polys[k]);
+    }
+  }
+  return [...hits];
+}
+
+type Wall = { pts: P[]; depth: number; wallZBot: number };
+function frontWalls(
+  poly: [number, number][],
+  zTop: number,
+  zBot: number,
+  allPolys: Room[] = [],
+  selfIdx = -1,
+): Wall[] {
+  const wind = signedArea(poly);
+  const walls: Wall[] = [];
+  for (let i = 0; i < poly.length; i++) {
+    const j = (i + 1) % poly.length;
+    const [ax, ay] = poly[i];
+    const [bx, by] = poly[j];
+    const [nx, ny] = outwardNormal(ax, ay, bx, by, wind);
+
+    const neighbors =
+      selfIdx >= 0 ? neighboursAcross([ax, ay], [bx, by], nx, ny, allPolys, selfIdx) : [];
+    const neighbor = neighbors[0];
+
+    const facing = nx * VIEW_X + ny * VIEW_Y > 0;
+    if (!facing && !neighbor) continue;
+
+    let wallZBot = zBot;
+    if (neighbor) {
+      wallZBot = Math.max(zBot, Math.min(zTop, WALL));
+    }
+
+    const depth = (ax + bx) / 2 + (ay + by) / 2;
+    walls.push({
+      pts: [
+        proj(ax, ay, zTop),
+        proj(bx, by, zTop),
+        proj(bx, by, wallZBot),
+        proj(ax, ay, wallZBot),
+      ],
+      depth,
+      wallZBot,
+    });
+  }
+
+  walls.sort((a, b) => a.depth - b.depth);
+  return walls;
+}
+
+function paintOrder(rooms: Room[]): Room[] {
+  const n = rooms.length;
+  const polys = rooms.map((r) => r.poly);
+  const depth = rooms.map((r) => {
+    const [cx, cy] = centroid(r.poly);
+    return cx * VIEW_X + cy * VIEW_Y;
+  });
+  const indeg = new Array(n).fill(0);
+  const succ: number[][] = rooms.map(() => []);
+  const seen = new Set<string>();
+  for (let i = 0; i < n; i++) {
+    const poly = polys[i];
+    const wind = signedArea(poly);
+    for (let e = 0; e < poly.length; e++) {
+      const [ax, ay] = poly[e];
+      const [bx, by] = poly[(e + 1) % poly.length];
+      const [nx, ny] = outwardNormal(ax, ay, bx, by, wind);
+      if (nx * VIEW_X + ny * VIEW_Y <= 0) continue;
+      for (const room of neighboursAcross([ax, ay], [bx, by], nx, ny, rooms, i)) {
+        const j = rooms.indexOf(room);
+        if (j === -1) continue;
+        const key = `${i}>${j}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        succ[i].push(j);
+        indeg[j]++;
+      }
+    }
+  }
+
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      if (succ[i].includes(j) && succ[j].includes(i)) {
+        if (depth[i] < depth[j]) {
+          succ[j] = succ[j].filter((x) => x !== i);
+          indeg[i]--;
+        } else {
+          succ[i] = succ[i].filter((x) => x !== j);
+          indeg[j]--;
+        }
+      }
+    }
+  }
+
+  const order: Room[] = [];
+  const done = new Array(n).fill(false);
+  for (let count = 0; count < n; count++) {
+    let pick = -1;
+    for (let k = 0; k < n; k++) {
+      if (done[k] || indeg[k] > 0) continue;
+      if (pick === -1 || depth[k] < depth[pick]) pick = k;
+    }
+    if (pick === -1) {
+      for (let k = 0; k < n; k++) {
+        if (!done[k] && (pick === -1 || depth[k] < depth[pick])) pick = k;
+      }
+    }
+    done[pick] = true;
+    order.push(rooms[pick]);
+    for (const j of succ[pick]) indeg[j]--;
+  }
+  return order;
+}
+
+type EntranceGlyph = {
+  chevron: P[];
+  labelPos: P;
+  textAnchor: "start" | "middle" | "end";
+  fromId: string;
+};
+function entranceChevrons(
+  outline: [number, number][],
+  entrances: { gap: [[number, number], [number, number]]; from: string }[],
+): EntranceGlyph[] {
+  const wind = signedArea(outline);
+  const glyphs: EntranceGlyph[] = [];
+
+  const distToSeg = (p: number[], a: number[], b: number[]) => {
+    const dx = b[0] - a[0],
+      dy = b[1] - a[1];
+    const len2 = dx * dx + dy * dy || 1;
+    const t = Math.max(
+      0,
+      Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / len2),
+    );
+    return Math.hypot(p[0] - (a[0] + dx * t), p[1] - (a[1] + dy * t));
+  };
+
+  for (const e of entrances) {
+    const [A, B] = e.gap;
+
+    let bi = 0,
+      bd = Infinity;
+    for (let i = 0; i < outline.length; i++) {
+      const P = outline[i],
+        Q = outline[(i + 1) % outline.length];
+      const d = distToSeg(A, P, Q) + distToSeg(B, P, Q);
+      if (d < bd) {
+        bd = d;
+        bi = i;
+      }
+    }
+
+    const P = outline[bi],
+      Q = outline[(bi + 1) % outline.length];
+    const ex = Q[0] - P[0],
+      ey = Q[1] - P[1];
+    const elen2 = ex * ex + ey * ey || 1;
+    const elen = Math.sqrt(elen2);
+    const projT = (pt: number[]) =>
+      Math.max(
+        0,
+        Math.min(1, ((pt[0] - P[0]) * ex + (pt[1] - P[1]) * ey) / elen2),
+      );
+    const tLo = Math.min(projT(A), projT(B));
+    const tHi = Math.max(projT(A), projT(B));
+    const lo: [number, number] = [P[0] + ex * tLo, P[1] + ey * tLo];
+    const hi: [number, number] = [P[0] + ex * tHi, P[1] + ey * tHi];
+
+    let nx = wind >= 0 ? -ey / elen : ey / elen,
+      ny = wind >= 0 ? ex / elen : -ex / elen;
+    const mx = (lo[0] + hi[0]) / 2,
+      my = (lo[1] + hi[1]) / 2;
+
+    const dx = ex / elen,
+      dy = ey / elen;
+    const STANDOFF = 22;
+    const LENGTH = 34;
+    const SPREAD = 30;
+    const tip: [number, number] = [mx - nx * STANDOFF, my - ny * STANDOFF];
+    const base: [number, number] = [tip[0] - nx * LENGTH, tip[1] - ny * LENGTH];
+    const armA: [number, number] = [
+      base[0] + dx * SPREAD,
+      base[1] + dy * SPREAD,
+    ];
+    const armB: [number, number] = [
+      base[0] - dx * SPREAD,
+      base[1] - dy * SPREAD,
+    ];
+
+    const LABEL_GAP = 20;
+    const labelFloor: [number, number] = [
+      base[0] - nx * LABEL_GAP,
+      base[1] - ny * LABEL_GAP,
+    ];
+    const labelP = proj(labelFloor[0], labelFloor[1], 0);
+
+    const inP = proj(mx, my, 0);
+    const outP = proj(mx - nx * 10, my - ny * 10, 0);
+    const screenDx = outP.x - inP.x;
+    const textAnchor: "start" | "middle" | "end" =
+      Math.abs(screenDx) < 8 ? "middle" : screenDx > 0 ? "start" : "end";
+
+    glyphs.push({
+      chevron: [
+        proj(armA[0], armA[1], 0),
+        proj(tip[0], tip[1], 0),
+        proj(armB[0], armB[1], 0),
+      ],
+      labelPos: labelP,
+      textAnchor,
+      fromId: e.from,
+    });
+  }
+
+  return glyphs;
+}
+
+function build(room: Room, idx: number, painted: Room[]) {
+  const [cx, cy] = centroid(room.poly);
+  const zTop = WALL;
+  const top = room.poly.map(([x, y]) => proj(x, y, zTop));
+  const walls = frontWalls(room.poly, zTop, 0, painted, idx);
+  const anchor = proj(cx, cy, zTop); 
+  return { room, walls, topPath: toPath(top), anchor };
+}
+
+const labelWidth = (text: string) => {
+  const isCJK = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]/.test(text);
+  const charWidth = isCJK ? 13 : 8.5;
+  return text.length * charWidth;
+};
+
+const SHOW_VERTEX_COORDS = false;
+const DEBUG = import.meta.env.DEV && SHOW_VERTEX_COORDS;
+const vertsAttr = (room: Room) =>
+  JSON.stringify(
+    room.poly.map(([x, y]) => {
+      const p = proj(x, y, WALL);
+      return [x, y, +p.x.toFixed(1), +p.y.toFixed(1)];
+    }),
+  );
+
+const floorModels = floorList.map((fl) => {
+  const painted = paintOrder(fl.rooms);
+  const models = painted.map((room, idx) => build(room, idx, painted));
+  const courtyard = fl.courtyard
+    ? toPath(fl.courtyard.map(([x, y]) => proj(x, y, 0)))
+    : null;
+
+  const entranceGlyphs = entranceChevrons(fl.outline, fl.entrances ?? []);
+  const slabTopPath = toPath(fl.outline.map(([x, y]) => proj(x, y, 0)));
+  const slabWalls = frontWalls(fl.outline, 0, -SLAB_DROP, [], -1);
+  const chevronPaths = entranceGlyphs.map(
+    (g) =>
+      `M${g.chevron[0].x.toFixed(1)},${g.chevron[0].y.toFixed(1)} L${g.chevron[1].x.toFixed(1)},${g.chevron[1].y.toFixed(1)} L${g.chevron[2].x.toFixed(1)},${g.chevron[2].y.toFixed(1)}`,
+  );
+
+  const labelBoundPoints: P[] = entranceGlyphs.flatMap((g) => {
+    const labelText = (t as any).foyer?.entranceLabels?.[g.fromId] ?? g.fromId;
+    const w = labelWidth(labelText);
+    const pts: P[] = [g.labelPos];
+    
+    if (g.textAnchor === "end") {
+      pts.push({ x: g.labelPos.x - w, y: g.labelPos.y });
+    } else if (g.textAnchor === "start") {
+      pts.push({ x: g.labelPos.x + w, y: g.labelPos.y });
+    } else {
+      pts.push({ x: g.labelPos.x - w / 2, y: g.labelPos.y });
+      pts.push({ x: g.labelPos.x + w / 2, y: g.labelPos.y });
+    }
+    return pts;
+  });
+
+  const all: P[] = [
+    ...fl.outline.map(([x, y]) => proj(x, y, 0)),
+    ...fl.outline.map(([x, y]) => proj(x, y, -SLAB_DROP)),
+    ...models.flatMap((m) => [
+      m.anchor,
+      ...m.room.poly.map(([x, y]) => proj(x, y, WALL)),
+      ...m.room.poly.map(([x, y]) => proj(x, y, WALL + 16)),
+      ...m.walls.flatMap((w) => w.pts),
+    ]),
+    ...slabWalls.flatMap((w) => w.pts),
+    ...entranceGlyphs.flatMap((g) => g.chevron),
+    ...labelBoundPoints,
+  ];
+  const xs = all.map((p) => p.x);
+  const ys = all.map((p) => p.y);
+  const PAD = 36;
+  const minX = Math.min(...xs) - PAD;
+  const minY = Math.min(...ys) - PAD;
+  const vbW = Math.max(...xs) - minX + PAD;
+  const vbH = Math.max(...ys) - minY + PAD;
+
+  return {
+    floor: fl,
+    painted,
+    models,
+    courtyard,
+    entranceGlyphs,
+    slabTopPath,
+    slabWalls,
+    chevronPaths,
+    viewBox: `${minX.toFixed(1)} ${minY.toFixed(1)} ${vbW.toFixed(1)} ${vbH.toFixed(1)}`,
+  };
+});
+---
+
+<div class="foyer" data-foyer>
+  {floorList.length > 1 && (
+    <div class="foyer__elevator-panel" role="region" aria-label={(t as any).foyer?.floorNavAriaLabel ?? "Choix de l'étage"}>
+      <nav class="foyer__elevator-buttons" aria-label={(t as any).foyer?.floorNavAriaLabel ?? "Étages"}>
+        {floorList.map((fl) => {
+          const floorLabel = (t as any).foyer?.floors?.[fl.id] ?? fl.id;
+          const badge = fl.id === "rdc" ? "0" : fl.id === "ss1" ? "-1" : fl.id;
+          const isActive = fl.id === activeFloorId;
+          const href = localizedPath(`/foyer/${fl.id}`, lang);
+          return (
+            <a
+              href={href}
+              class:list={["foyer__elevator-btn", { "is-active": isActive }]}
+              aria-current={isActive ? "page" : undefined}
+              data-floor-tab={fl.id}
+              data-floor-badge={badge}
+            >
+              <span class="foyer__elevator-btn-num">{badge}</span>
+              <span class="foyer__elevator-btn-label">{floorLabel}</span>
+            </a>
+          );
+        })}
+      </nav>
+    </div>
+  )}
+
+  <div class="foyer__map-container">
+    {floorModels.map(({ floor: fl, painted, models, courtyard, entranceGlyphs, slabTopPath, slabWalls, chevronPaths, viewBox }) => {
+      const isActiveFloor = fl.id === activeFloorId;
+      return (
+        <div
+          class:list={["foyer__floor-layer", { "is-hidden": !isActiveFloor }]}
+          id={`foyer-floor-${fl.id}`}
+          data-floor-layer={fl.id}
+        >
+          <svg
+            class="foyer__svg"
+            viewBox={viewBox}
+            role="group"
+            aria-label={`${(t as any).foyer?.mapAriaLabel ?? 'Foyer map'} - ${(t as any).foyer?.floors?.[fl.id] ?? fl.id}`}
+          >
+          {slabWalls.map((w) => <path class="foyer__slab-wall" d={toPath(w.pts)} />)}
+          <path class="foyer__slab-top" d={slabTopPath}></path>
+          {courtyard && <path class="foyer__courtyard" d={courtyard} />}
+          {
+            models.map(({ room, anchor, walls, topPath }, idx) => {
+              const translatedBlurb = (t as any).foyer?.rooms?.[room.id] ?? room.blurb;
+              const translatedLabel = (t as any).foyer?.labels?.[room.id] ?? room.label;
+              const hasBlurb = Boolean(translatedBlurb && translatedBlurb.trim().length > 0);
+              const zTop = WALL;
+              const activeZTop = zTop + 16; 
+              const zBot = 0;
+              const activeWalls = frontWalls(room.poly, activeZTop, zBot, painted, idx);
+              const activeTopPath = toPath(room.poly.map((p) => proj(p[0], p[1], activeZTop)));
+
+              return (
+                <g
+                  class:list={["room", { "room--interactive": hasBlurb }]}
+                  id={room.id}
+                  data-id={room.id}
+                  data-label={translatedLabel}
+                  data-blurb={hasBlurb ? translatedBlurb : undefined}
+                  data-verts={DEBUG ? vertsAttr(room) : undefined}
+                  data-anchor-x={anchor.x.toFixed(1)}
+                  data-anchor-y={anchor.y.toFixed(1)}
+                  tabindex={hasBlurb ? "0" : undefined}
+                  role={hasBlurb ? "button" : undefined}
+                  aria-label={hasBlurb ? `${translatedLabel}. ${translatedBlurb}` : (translatedLabel || undefined)}
+                >
+                  {walls.map((w, i) => (
+                    <path
+                      class:list={["room__wall", { "room__wall--hidden": Math.abs(zTop - w.wallZBot) < 0.1 }]}
+                      d={toPath(w.pts)}
+                      data-d-rest={toPath(w.pts)}
+                      data-d-active={toPath(activeWalls[i].pts)}
+                    />
+                  ))}
+                  <g id={`${room.id}-top`} class="room__top-group">
+                    <path
+                      class="room__top"
+                      d={topPath}
+                      data-d-rest={topPath}
+                      data-d-active={activeTopPath}
+                      style={`--accent:${room.accent}`}
+                    />
+                    <text
+                      class="room__label"
+                      x={anchor.x}
+                      y={anchor.y + 4}
+                      text-anchor="middle"
+                    >
+                      {translatedLabel}
+                    </text>
+                  </g>
+                </g>
+              );
+            })
+          }
+          {chevronPaths.map((d, i) => {
+            const g = entranceGlyphs[i];
+            const label = (t as any).foyer?.entranceLabels?.[g.fromId] ?? g.fromId;
+            return (
+              <g class="foyer__entrance-group">
+                <path class="foyer__entrance" d={d} />
+                <text
+                  class="foyer__entrance-label"
+                  x={g.labelPos.x}
+                  y={g.labelPos.y}
+                  text-anchor={g.textAnchor}
+                >
+                  {label}
+                </text>
+              </g>
+            );
+          })}
+          {DEBUG && <g class="foyer__debug" data-debug aria-hidden="true" />}
+          <use class="active-room-overlay" style="pointer-events: none;" href="" />
+        </svg>
+      </div>
+    );
+  })}
+  </div>
+
+  <div class="foyer__tip" data-tip aria-hidden="true">
+    <span class="foyer__tip-name" data-tip-name></span>
+    <span class="foyer__tip-blurb" data-tip-blurb></span>
+  </div>
+</div>
+
+<style>
+  .foyer {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  /* ── Elevator-Style Floor Selector ──────────────────────────────────── */
+  .foyer__elevator-panel {
+    position: relative;
+    z-index: 25;
+    margin: 0 auto var(--space-5) auto;
+    width: fit-content;
+    max-width: 100%;
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: 9999px;
+    padding: 5px;
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  .foyer__elevator-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .foyer__elevator-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 7px 18px 7px 10px;
+    border: 2.5px solid transparent;
+    border-radius: 9999px;
+    background: transparent;
+    color: var(--navy);
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+  }
+
+  .foyer__elevator-btn:hover:not(.is-active) {
+    background: var(--honey-wash);
+    border-color: rgba(30, 41, 59, 0.15);
+  }
+
+  .foyer__elevator-btn:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+  }
+
+  .foyer__elevator-btn.is-active {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .foyer__elevator-btn-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    font-size: 0.82rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 1px 0 var(--navy);
+    transition: all 0.2s ease;
+  }
+
+  .foyer__elevator-btn:hover:not(.is-active) .foyer__elevator-btn-num {
+    background: var(--honey);
+    box-shadow: 0 1px 0 var(--navy);
+  }
+
+  .foyer__elevator-btn.is-active .foyer__elevator-btn-num {
+    background: var(--honey);
+    color: var(--navy);
+    border-color: var(--navy);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  }
+
+  .foyer__elevator-btn-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 0.05em;
+  }
+
+  @media (max-width: 480px) {
+    .foyer__elevator-btn-label {
+      display: none;
+    }
+    .foyer__elevator-btn {
+      padding: 7px 10px;
+    }
+  }
+
+  .foyer__floor-layer {
+    width: 100%;
+  }
+
+  .foyer__floor-layer.is-hidden {
+    display: none;
+  }
+
+  /* Fade indicators for horizontal scroll on mobile */
+  .foyer::before,
+  .foyer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .foyer::before {
+    left: 0;
+    background: linear-gradient(to right, var(--cream) 20%, transparent);
+  }
+  .foyer::after {
+    right: 0;
+    background: linear-gradient(to left, var(--cream) 20%, transparent);
+  }
+  .foyer.can-scroll-left::before {
+    opacity: 1;
+  }
+  .foyer.can-scroll-right::after {
+    opacity: 1;
+  }
+
+  .foyer__map-container {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy) var(--cream-deep);
+    cursor: grab;
+  }
+  .foyer__map-container.is-grabbing {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .foyer__map-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .foyer__map-container::-webkit-scrollbar-track {
+    background: var(--cream-deep);
+    border-radius: 4px;
+  }
+  .foyer__map-container::-webkit-scrollbar-thumb {
+    background: var(--navy);
+    border-radius: 4px;
+  }
+
+  .foyer__debug {
+    pointer-events: none;
+  }
+  .foyer__debug-dot {
+    fill: #db2777;
+    stroke: #fff;
+    stroke-width: 0.75;
+  }
+  .foyer__debug-text {
+    font:
+      700 8.5px ui-monospace,
+      "SFMono-Regular",
+      monospace;
+    fill: var(--ink);
+    stroke: var(--cream);
+    stroke-width: 2.4px;
+    paint-order: stroke fill;
+    text-anchor: middle;
+  }
+
+  .foyer__svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .foyer__svg {
+      min-width: 768px;
+    }
+  }
+
+  .foyer__slab-top {
+    fill: var(--cream-deep);
+    stroke: var(--navy);
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+  .foyer__slab-wall {
+    fill: var(--line);
+    stroke: var(--navy);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+
+  .foyer__courtyard {
+    fill: var(--cream-deep);
+    stroke: var(--line);
+    stroke-width: 2;
+    opacity: 0.7;
+  }
+
+  .foyer__entrance {
+    fill: none;
+    stroke: var(--honey-deep);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .foyer__entrance-label {
+    font-family: var(--font-accent);
+    font-size: 13px;
+    fill: var(--navy-soft, #5a607a);
+    stroke: var(--cream, #fffdf5);
+    stroke-width: 3px;
+    paint-order: stroke fill;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .room--interactive {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .room__wall {
+    fill: var(--honey-deep);
+    stroke: var(--navy);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+
+  .room__wall--hidden {
+    opacity: 0;
+  }
+
+  .room__top {
+    fill: var(--accent, var(--honey-wash));
+    stroke: var(--navy);
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+
+  .room__wall, .room__top {
+    transition: d 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.25), fill 0.18s ease, opacity 0.18s ease;
+  }
+
+  .room__label {
+    font-family: var(--font-accent);
+    font-size: 13px;
+    fill: var(--navy);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: 0.01em;
+  }
+  @media (max-width: 768px) {
+    .room__label {
+      font-size: 15px;
+    }
+    .foyer__entrance-label {
+      font-size: 15px;
+    }
+  }
+
+  .room__label {
+    transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+  .room--interactive:hover .room__label,
+  .room--interactive:focus-visible .room__label,
+  .room--interactive.is-active .room__label,
+  .room__top-group.is-active .room__label {
+    transform: translateY(-16px);
+  }
+  .room--interactive:hover .room__top,
+  .room--interactive:focus-visible .room__top,
+  .room--interactive.is-active .room__top {
+    fill: var(--honey);
+  }
+  .room--interactive:hover .room__wall,
+  .room--interactive:focus-visible .room__wall,
+  .room--interactive.is-active .room__wall {
+    fill: var(--honey-deep);
+  }
+  .room--interactive:hover .room__wall--hidden,
+  .room--interactive:focus-visible .room__wall--hidden,
+  .room--interactive.is-active .room__wall--hidden {
+    opacity: 1;
+  }
+  .room--interactive:focus-visible .room__top {
+    stroke: var(--ink);
+    stroke-width: 3;
+  }
+
+  .foyer__tip {
+    position: absolute;
+    z-index: 15;
+    max-width: 230px;
+    padding: var(--space-3) var(--space-4);
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-button);
+    box-shadow: 4px 4px 0 var(--navy);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -90%) scale(0.9);
+    transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25), visibility 0.15s;
+  }
+  .foyer__tip.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -100%) scale(1);
+  }
+
+  .foyer__tip-name {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    line-height: 1.1;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .foyer__tip-blurb {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--navy-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .room,
+    .room__top,
+    .room__wall {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-foyer]").forEach((foyer) => {
+    const mapContainer = foyer.querySelector<HTMLElement>(".foyer__map-container")!;
+    const tip = foyer.querySelector<HTMLElement>("[data-tip]")!;
+    const nameEl = foyer.querySelector<HTMLElement>("[data-tip-name]")!;
+    const tabs = foyer.querySelectorAll<HTMLAnchorElement>("[data-floor-tab]");
+    const layers = foyer.querySelectorAll<HTMLElement>("[data-floor-layer]");
+    let active: Element | null = null;
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("keydown", (e) => {
+        let targetIndex = -1;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          targetIndex = (index + 1) % tabs.length;
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          targetIndex = (index - 1 + tabs.length) % tabs.length;
+        }
+        if (targetIndex !== -1) {
+          e.preventDefault();
+          const targetTab = tabs[targetIndex];
+          targetTab.focus();
+        }
+      });
+    });
+
+    const SVGNS = "http://www.w3.org/2000/svg";
+    const LIFT = 16;
+    const debug = foyer.querySelector("[data-debug]");
+    const clearDebug = () => debug?.replaceChildren();
+    const paintDebug = (room: Element) => {
+      if (!debug) return;
+      clearDebug();
+      const verts = JSON.parse(
+        room.getAttribute("data-verts") || "[]",
+      ) as number[][];
+      for (const [fx, fy, px, py] of verts) {
+        const y = py - LIFT;
+        const dot = document.createElementNS(SVGNS, "circle");
+        dot.setAttribute("cx", `${px}`);
+        dot.setAttribute("cy", `${y}`);
+        dot.setAttribute("r", "2.5");
+        dot.setAttribute("class", "foyer__debug-dot");
+        const txt = document.createElementNS(SVGNS, "text");
+        txt.setAttribute("x", `${px}`);
+        txt.setAttribute("y", `${y - 5}`);
+        txt.setAttribute("class", "foyer__debug-text");
+        txt.textContent = `${fx},${fy}`;
+        debug.append(dot, txt);
+      }
+    };
+
+    const updateTipPosition = () => {
+      if (!active || !tip.classList.contains("is-visible")) return;
+      const room = active;
+      
+      const ax = parseFloat(room.getAttribute("data-anchor-x")!);
+      const ay = parseFloat(room.getAttribute("data-anchor-y")!);
+      
+      const activeLayer = foyer.querySelector<HTMLElement>(".foyer__floor-layer:not(.is-hidden)");
+      if (!activeLayer) return;
+      const svg = activeLayer.querySelector<SVGSVGElement>(".foyer__svg");
+      if (!svg) return;
+
+      const rect = svg.getBoundingClientRect();
+      const host = mapContainer.getBoundingClientRect();
+      const foyerRect = foyer.getBoundingClientRect();
+      
+      const vb = svg.viewBox.baseVal;
+      const scale = rect.width / vb.width;
+      
+      const activeAy = ay - 16;
+      
+      const svgX = (ax - vb.x) * scale;
+      const svgY = (activeAy - vb.y) * scale;
+      
+      const targetX = rect.left + svgX;
+      const targetY = rect.top + svgY - 6 * scale;
+      
+      const preferredLeft = targetX - foyerRect.left;
+      const preferredTop = targetY - foyerRect.top;
+      
+      const tipWidth = tip.offsetWidth;
+      const padding = 8;
+      const minCenter = tipWidth / 2 + padding;
+      const maxCenter = foyerRect.width - tipWidth / 2 - padding;
+      const clampedLeft = Math.max(minCenter, Math.min(maxCenter, preferredLeft));
+      
+      const isOutOfView = targetX < host.left || targetX > host.right;
+      if (isOutOfView) {
+        tip.style.opacity = "0";
+        tip.style.visibility = "hidden";
+        tip.style.pointerEvents = "none";
+      } else {
+        tip.style.opacity = "";
+        tip.style.visibility = "";
+        tip.style.pointerEvents = "";
+      }
+      
+      tip.style.left = `${clampedLeft}px`;
+      tip.style.top = `${preferredTop}px`;
+    };
+
+    const hide = (room?: Element) => {
+      if (room && active !== room) return;
+      tip.classList.remove("is-visible");
+      if (active) {
+        active.classList.remove("is-active");
+        const activeTop = document.getElementById(`${active.id}-top`);
+        if (activeTop) activeTop.classList.remove("is-active");
+        active.querySelectorAll("[data-d-rest]").forEach((el) => {
+          el.setAttribute("d", el.getAttribute("data-d-rest")!);
+        });
+      }
+      active = null;
+      foyer.querySelectorAll(".active-room-overlay").forEach((overlay) => {
+        overlay.setAttribute("href", "");
+      });
+      clearDebug();
+    };
+
+    const show = (room: Element) => {
+      if (active && active !== room) {
+        active.classList.remove("is-active");
+        const activeTop = document.getElementById(`${active.id}-top`);
+        if (activeTop) activeTop.classList.remove("is-active");
+        active.querySelectorAll("[data-d-rest]").forEach((el) => {
+          el.setAttribute("d", el.getAttribute("data-d-rest")!);
+        });
+      }
+      active = room;
+      room.classList.add("is-active");
+      const roomTop = document.getElementById(`${room.id}-top`);
+      if (roomTop) roomTop.classList.add("is-active");
+
+      room.querySelectorAll("[data-d-active]").forEach((el) => {
+        el.setAttribute("d", el.getAttribute("data-d-active")!);
+      });
+      
+      const overlay = active.closest("svg")?.querySelector(".active-room-overlay");
+      if (overlay) {
+        overlay.setAttribute("href", `#${room.id}-top`);
+      }
+
+      nameEl.textContent = room.getAttribute("data-label");
+      blurbEl.textContent = room.getAttribute("data-blurb");
+      paintDebug(room);
+      tip.classList.add("is-visible");
+      
+      updateTipPosition();
+    };
+
+    foyer.querySelectorAll<SVGGElement>(".room--interactive").forEach((room) => {
+      room.addEventListener("pointerenter", (e) => {
+        if (e.pointerType !== "touch") show(room);
+      });
+      room.addEventListener("pointerleave", (e) => {
+        if (e.pointerType !== "touch") hide(room);
+      });
+      let lastPointerType = "";
+      let focusFromPointer = false;
+      room.addEventListener("pointerdown", (e) => {
+        lastPointerType = e.pointerType;
+        focusFromPointer = true;
+      });
+      room.addEventListener("focus", () => {
+        if (focusFromPointer) { focusFromPointer = false; return; }
+        show(room);
+      });
+      room.addEventListener("click", () => {
+        if (lastPointerType === "touch") {
+          active === room ? hide() : show(room);
+        }
+      });
+      room.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          hide();
+          (room as SVGElement).blur();
+        }
+      });
+    });
+
+    foyer.addEventListener("pointerdown", (e) => {
+      if (!(e.target as Element).closest(".room--interactive") && !(e.target as Element).closest("[data-floor-tab]")) hide();
+    });
+
+    const updateScrollShadows = () => {
+      const scrollLeft = mapContainer.scrollLeft;
+      const maxScrollLeft = mapContainer.scrollWidth - mapContainer.clientWidth;
+      
+      if (scrollLeft > 5) {
+        foyer.classList.add("can-scroll-left");
+      } else {
+        foyer.classList.remove("can-scroll-left");
+      }
+      
+      if (scrollLeft < maxScrollLeft - 5) {
+        foyer.classList.add("can-scroll-right");
+      } else {
+        foyer.classList.remove("can-scroll-right");
+      }
+    };
+
+    mapContainer.addEventListener("scroll", () => {
+      updateScrollShadows();
+      updateTipPosition();
+    });
+    window.addEventListener("resize", () => {
+      updateScrollShadows();
+      updateTipPosition();
+    });
+    updateScrollShadows();
+
+    let isDown = false;
+    let startX: number;
+    let scrollLeft: number;
+    
+    mapContainer.addEventListener("mousedown", (e) => {
+      if (e.button !== 0) return;
+      if ((e.target as Element).closest(".room--interactive")) return;
+      
+      isDown = true;
+      mapContainer.classList.add("is-grabbing");
+      startX = e.pageX - mapContainer.offsetLeft;
+      scrollLeft = mapContainer.scrollLeft;
+      e.preventDefault();
+    });
+    
+    mapContainer.addEventListener("mouseleave", () => {
+      isDown = false;
+      mapContainer.classList.remove("is-grabbing");
+    });
+    
+    mapContainer.addEventListener("mouseup", () => {
+      isDown = false;
+      mapContainer.classList.remove("is-grabbing");
+    });
+    
+    mapContainer.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - mapContainer.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      mapContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    const centerScroll = () => {
+      if (mapContainer.scrollWidth > mapContainer.clientWidth) {
+        mapContainer.scrollLeft = (mapContainer.scrollWidth - mapContainer.clientWidth) / 2;
+        updateScrollShadows();
+      }
+    };
+    setTimeout(centerScroll, 100);
+  });
+</script>

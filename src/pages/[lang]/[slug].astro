@@ -3,19 +3,24 @@ import PlaceholderBody from "../../components/pages/PlaceholderBody.astro";
 import ContactBody from "../../components/pages/ContactBody.astro";
 import EventsBody from "../../components/pages/EventsBody.astro";
 import { prefixedLocales } from "../../i18n/config";
+import { localizedPath, type Locale } from "../../i18n/utils";
 
-type PageSlug = "guides" | "team" | "events" | "contact";
+type PageSlug = "guides" | "events" | "contact" | "foyer";
 
-// Each placeholder page per non-default locale: /fr/guides, /es/team, …
+// Each placeholder page per non-default locale: /fr/guides, /es/contact, …
 // (getStaticPaths runs in an isolated scope, so its data lives inside it.)
 export function getStaticPaths() {
-  const pages: PageSlug[] = ["guides", "team", "events", "contact"];
+  const pages: PageSlug[] = ["guides", "events", "contact", "foyer"];
   return prefixedLocales.flatMap((lang) =>
     pages.map((slug) => ({ params: { lang, slug } })),
   );
 }
 
-const { slug } = Astro.params;
+const { lang, slug } = Astro.params;
+
+if (slug === "foyer") {
+  return Astro.redirect(localizedPath("/foyer/rdc", lang as Locale));
+}
 ---
 
 {
@@ -24,6 +29,6 @@ const { slug } = Astro.params;
   ) : slug === "events" ? (
     <EventsBody />
   ) : (
-    <PlaceholderBody page={slug as Exclude<PageSlug, "contact" | "events">} />
+    <PlaceholderBody page={slug as Exclude<PageSlug, "contact" | "events" | "foyer">} />
   )
 }

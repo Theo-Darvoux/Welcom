@@ -1,0 +1,10 @@
+---
+import GettingHereBody from "../../../components/pages/GettingHereBody.astro";
+import { prefixedLocales } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+---
+
+<GettingHereBody />

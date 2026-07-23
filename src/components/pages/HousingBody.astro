@@ -1,0 +1,769 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import Footer from "../Footer.astro";
+import RichText from "../RichText.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import HexBg from "../HexBg.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const g = t.housing;
+---
+
+<Base title={t.meta.guidesHousing.title} description={t.meta.guidesHousing.description}>
+  <span id="top"></span>
+  <SiteHeader />
+
+  <main class="housing-page">
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero-band">
+      <HexBg
+        radius={56}
+        gap={4}
+        opacity={0.06}
+        color="var(--honey)"
+        strokeWidth={1.5}
+      />
+
+      <div class="container hero-content">
+        <div class="hero-text prose">
+          <h1 class="hero-title">{g.heroTitle}</h1>
+          <p class="hero-lede"><RichText text={g.heroLede} /></p>
+        </div>
+
+        <div class="hero-logo-card">
+          <img
+            src="/imgs/guides/housing/maisel.webp"
+            alt="Maisel SudParis logo"
+            class="hero-logo-img"
+            width="501"
+            height="211"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Overview ────────────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container prose">
+        <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.overviewEyebrow}</p>
+        <h2><RichText text={g.overviewH2} /></h2>
+        <p class="lede"><RichText text={g.overviewLede} /></p>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Room Types ───────────────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.roomsEyebrow}</p>
+          <h2>{g.roomsH2}</h2>
+          <p class="lede"><RichText text={g.roomsLede} /></p>
+        </div>
+
+        <div class="rooms-grid">
+          {g.roomsItems.map((room) => (
+            <div class="room-card">
+              <div class="room-card__header">
+                <h3 class="room-card__title">{room.title}</h3>
+                <p class="room-card__specs">{room.specs}</p>
+              </div>
+              <p class="room-card__desc"><RichText text={room.desc} /></p>
+            </div>
+          ))}
+        </div>
+
+        <div class="rates-card">
+          <div class="rates-card__content">
+            <span class="rates-card__badge">{g.ratesBadge}</span>
+            <h3 class="rates-card__title">{g.ratesTitle}</h3>
+            <p class="rates-card__desc">{g.ratesDesc}</p>
+          </div>
+          <a
+            href={g.ratesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rates-card__btn"
+          >
+            <span>{g.ratesBtn}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div class="warning-box">
+          <h3><RichText text={g.roomsNoiseWarningTitle} /></h3>
+          <p><RichText text={g.roomsNoiseWarningBody} /></p>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Booking & Check-in ────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.bookingEyebrow}</p>
+          <h2>{g.bookingH2}</h2>
+          <p class="lede">{g.bookingLede}</p>
+
+          <ol class="booking-steps">
+            {g.bookingSteps.map((step) => (
+              <li class="booking-step">
+                <RichText text={step} />
+              </li>
+            ))}
+          </ol>
+
+          <div class="tip-box">
+            <p><RichText text={g.bookingBeddingTip} /></p>
+          </div>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── CAF Subsidies (APL vs ALS) ───────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.cafEyebrow}</p>
+          <h2>{g.cafH2}</h2>
+          <p class="lede"><RichText text={g.cafLede} /></p>
+
+          <div class="caf-grid">
+            <div class="caf-card caf-card--apl">
+              <h3>{g.cafApnTitle}</h3>
+              <p><RichText text={g.cafApnBody} /></p>
+            </div>
+
+            <div class="caf-card caf-card--als">
+              <h3>{g.cafAlsTitle}</h3>
+              <p><RichText text={g.cafAlsBody} /></p>
+            </div>
+          </div>
+
+          <div class="caf-guide-card">
+            <div class="caf-guide-card__content">
+              <span class="caf-guide-card__badge">{g.cafGuideBadge}</span>
+              <h3 class="caf-guide-card__title">{g.cafGuideTitle}</h3>
+              <p class="caf-guide-card__desc">{g.cafGuideDesc}</p>
+            </div>
+            <a
+              href={g.cafGuideUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="caf-guide-card__btn"
+            >
+              <span>{g.cafGuideBtn}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <div class="warning-box">
+            <h3><RichText text={g.cafWarningTitle} /></h3>
+            <p><RichText text={g.cafWarningBody} /></p>
+          </div>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Services & Amenities ─────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.servicesEyebrow}</p>
+          <h2>{g.servicesH2}</h2>
+          <p class="lede">{g.servicesLede}</p>
+
+          <div class="services-grid">
+            {g.servicesItems.map((item) => (
+              <div class="service-card">
+                <h3>{item.title}</h3>
+                <p><RichText text={item.desc} /></p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+<style>
+  /* ── Shared ─────────────────────────────────────────── */
+  .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
+  .band { padding-block: var(--section-y); position: relative; }
+  .band--alt { background-color: var(--cream-deep); }
+  .prose h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--ink); margin-bottom: var(--space-3); line-height: 1.15; }
+  .prose .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
+
+  /* ── Eyebrow ────────────────────────────────────────── */
+  .eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--honey-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-weight: 800;
+  }
+  .eyebrow__hex {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: currentColor;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .hero-band {
+    background-color: var(--ink);
+    color: var(--cream);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    padding-top: calc(var(--nav-h) + clamp(var(--space-6), 6vw, var(--space-8)));
+    padding-bottom: calc(var(--space-8) + 40px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 979px) {
+    .hero-band {
+      --nav-h: 78px;
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 900px) {
+    .hero-content {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(239, 171, 67, 0.15);
+    border: 1.5px solid var(--honey);
+    color: var(--honey);
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    padding: 0.4em 0.9em;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-badge__dot {
+    width: 8px;
+    height: 8px;
+    background: var(--honey);
+    border-radius: 50%;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+    line-height: 1.05;
+    color: var(--honey);
+    margin-bottom: var(--space-4);
+    text-shadow: 4px 4px 0 var(--navy);
+  }
+
+  .hero-lede {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  .hero-logo-card {
+    display: none;
+    justify-self: center;
+    align-self: center;
+    background: #ffffff;
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-card);
+    border: 3px solid var(--honey);
+    box-shadow: 6px 6px 0 var(--navy);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .hero-logo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 0 var(--navy);
+  }
+
+  .hero-logo-img {
+    display: block;
+    width: min(280px, 100%);
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (min-width: 640px) {
+    .hero-logo-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* ── Room Cards Grid ────────────────────────────────── */
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 850px) {
+    .rooms-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .room-card {
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 var(--navy);
+  }
+
+  .room-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .room-card__badge {
+    align-self: flex-start;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: var(--honey);
+    color: var(--ink);
+    padding: 0.2em 0.7em;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--navy);
+  }
+
+  .room-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .room-card__specs {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--honey-deep);
+    margin: 0;
+  }
+
+  .room-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Booking Steps ──────────────────────────────────── */
+  .booking-steps {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .booking-step {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--navy);
+    box-shadow: 3px 3px 0 var(--navy);
+  }
+
+  /* ── CAF Cards ──────────────────────────────────────── */
+  .caf-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    margin-block: var(--space-6);
+  }
+
+  @media (min-width: 700px) {
+    .caf-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .caf-card {
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    position: relative;
+  }
+
+  .caf-card__tag {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--honey-deep);
+    background: var(--cream);
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--navy);
+  }
+
+  .caf-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+  }
+
+  .caf-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Rates Callout Card ─────────────────────────────── */
+  .rates-card {
+    background: #FFFBEB;
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    margin-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+    width: 100%;
+    max-width: none;
+  }
+
+  @media (min-width: 640px) {
+    .rates-card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .rates-card__badge {
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--honey-deep);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
+  }
+
+  .rates-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .rates-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--navy);
+    margin: 0;
+    max-width: none !important;
+  }
+
+  .rates-card__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--honey);
+    color: var(--ink);
+    font-family: var(--font-accent);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    padding: 0.75rem 1.25rem;
+    border: 2.5px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 0 var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .rates-card__btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+    background: var(--honey-deep);
+    color: #ffffff;
+  }
+
+  /* ── CAF Guide Callout Card ─────────────────────────── */
+  .caf-guide-card {
+    background: #FFFBEB;
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    margin-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+    width: 100%;
+    max-width: none;
+  }
+
+  @media (min-width: 640px) {
+    .caf-guide-card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .caf-guide-card__badge {
+    display: inline-block;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--honey-deep);
+    text-transform: uppercase;
+    margin-bottom: var(--space-1);
+  }
+
+  .caf-guide-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .caf-guide-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--navy);
+    margin: 0;
+    max-width: none !important;
+  }
+
+  .caf-guide-card__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--honey);
+    color: var(--ink);
+    font-family: var(--font-accent);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    padding: 0.75rem 1.25rem;
+    border: 2.5px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 0 var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .caf-guide-card__btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+    background: var(--honey-deep);
+    color: #ffffff;
+  }
+
+  /* ── Warning & Tip Boxes ────────────────────────────── */
+  .warning-box {
+    background: #FFF4E5;
+    border: 3px solid #E08A00;
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 #E08A00;
+    margin-top: var(--space-6);
+    width: 100%;
+    max-width: none;
+  }
+
+  .warning-box h3 {
+    font-family: var(--font-accent);
+    font-size: 1.1875rem;
+    color: #9C5B00;
+    margin-bottom: var(--space-2);
+    max-width: none;
+  }
+
+  .warning-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #5C3500;
+    margin: 0;
+    max-width: none !important;
+  }
+
+  .tip-box {
+    background: rgba(239, 171, 67, 0.15);
+    border: 2.5px dashed var(--honey-deep);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-5);
+    width: 100%;
+    max-width: none;
+  }
+
+  .tip-box p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--navy);
+    max-width: none !important;
+  }
+
+  /* ── Services Grid ──────────────────────────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 700px) {
+    .services-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .service-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+  }
+
+  .service-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+  }
+
+  .service-card p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Rules List ─────────────────────────────────────── */
+  .rules-list {
+    margin-block: var(--space-6);
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .rules-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--navy);
+  }
+
+  /* ── Guide Nav CTA ───────────────────────────────────── */
+  .guide-nav-cta {
+    background: var(--cream-deep);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-6);
+    box-shadow: 6px 6px 0 var(--navy);
+    margin-top: var(--space-8);
+  }
+
+  .guide-nav-cta h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .guide-nav-cta p {
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: var(--space-5);
+  }
+
+  .btn--primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ink);
+    background: var(--honey);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-button);
+    padding: 0.6em 1.2em;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn--primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--navy);
+    background: var(--honey-deep);
+  }
+</style>

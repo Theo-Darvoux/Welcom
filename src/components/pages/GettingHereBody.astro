@@ -1,0 +1,691 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import HexBg from "../HexBg.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import RichText from "../RichText.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const g = t.gettingHere;
+---
+
+<Base title={t.meta.guidesGettingHere.title} description={t.meta.guidesGettingHere.description}>
+  <span id="top"></span>
+  <SiteHeader />
+  <main>
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section class="hero">
+      <HexBg
+        radius={46} gap={6} opacity={0.1} color="var(--navy)"
+        strokeWidth={2} hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 50% 45%, white 30%, transparent 85%)"
+      />
+      <div class="container hero__inner">
+
+        <div class="hero__bee" aria-hidden="true">
+          <img src="/imgs/bee.svg" alt="" width="100" height="100" />
+        </div>
+        <h1 class="hero__title">{g.heroTitle}</h1>
+        <p class="hero__lede"><RichText text={g.heroLede} /></p>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Campus address ────────────────────────────────── -->
+    <section class="band">
+      <div class="container prose">
+        <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.addressEyebrow}</p>
+        <h2>{g.addressH2}</h2>
+        <a
+          class="address-card"
+          href="https://maps.app.goo.gl/RhREJFX3VDkjYMP4A"
+          target="_blank" rel="noopener noreferrer"
+        >
+          <div class="address-card__pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div>
+            <strong class="address-card__name">{g.addressName}</strong>
+            <p class="address-card__line">{g.addressLine}</p>
+          </div>
+          <span class="address-card__maps-badge" aria-label="Open in Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </span>
+        </a>
+        <p class="note"><RichText text={g.addressNote} /></p>
+      </div>
+      <div class="container--wide">
+        <div class="campus-figures">
+          <figure class="guide-figure">
+            <div class="guide-image-container">
+              <img src="/imgs/guides/arriving/campus.webp" alt={g.campusPhotoAlt} class="guide-image zoomable-image" width="1280" height="854" loading="lazy" />
+            </div>
+            <figcaption class="guide-caption">{g.campusPhotoAlt}</figcaption>
+          </figure>
+
+          <figure class="guide-figure">
+            <div class="guide-image-container guide-image-container--map">
+              <img src="/imgs/guides/arriving/plan.webp" alt={g.campusPlanAlt} class="guide-image zoomable-image" width="1427" height="1022" loading="lazy" />
+            </div>
+            <figcaption class="guide-caption">{g.campusPlanAlt}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── From the airports ─────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.airportsEyebrow}</p>
+          <h2>{g.airportsH2}</h2>
+          <p class="lede">{g.airportsLede}</p>
+        </div>
+
+        <div class="airports-grid">
+          <div class="route-block">
+            <div class="route-block__header">
+              <div class="route-title-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.8 19.2L16 11l3.5-3.5c.8-.8.8-2 0-2.8s-2-.8-2.8 0L13 8.2 4.8 6.4c-.6-.1-1.2.2-1.4.8-.2.6 0 1.2.6 1.4L11 11.5l-4.5 4.5-2.8-.9c-.5-.2-1.1 0-1.3.5-.2.5 0 1.1.5 1.3L7 18l1.1 4.1c.1.5.7.8 1.2.6s.7-.7.5-1.2l-.9-2.8 4.5-4.5 2.9 7.1c.2.5.8.8 1.4.6.6-.2.9-.8.8-1.4z"></path>
+                </svg>
+              </div>
+              <h3 class="route-block__title">
+                {g.cdgTitle}
+              </h3>
+            </div>
+            <ol class="steps">
+              {g.cdgSteps.map((s) => <li><RichText text={s} /></li>)}
+            </ol>
+          </div>
+
+          <div class="route-block">
+            <div class="route-block__header">
+              <div class="route-title-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.8 19.2L16 11l3.5-3.5c.8-.8.8-2 0-2.8s-2-.8-2.8 0L13 8.2 4.8 6.4c-.6-.1-1.2.2-1.4.8-.2.6 0 1.2.6 1.4L11 11.5l-4.5 4.5-2.8-.9c-.5-.2-1.1 0-1.3.5-.2.5 0 1.1.5 1.3L7 18l1.1 4.1c.1.5.7.8 1.2.6s.7-.7.5-1.2l-.9-2.8 4.5-4.5 2.9 7.1c.2.5.8.8 1.4.6.6-.2.9-.8.8-1.4z"></path>
+                </svg>
+              </div>
+              <h3 class="route-block__title">
+                {g.orlyTitle}
+              </h3>
+            </div>
+            <ol class="steps">
+              {g.orlySteps.map((s) => <li><RichText text={s} /></li>)}
+            </ol>
+          </div>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── RER D ─────────────────────────────────────────── -->
+    <section class="band">
+      <div class="container two-col-layout">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.rerEyebrow}</p>
+          <h2><RichText text={g.rerH2} /></h2>
+          <p class="lede"><RichText text={g.rerLede} /></p>
+          <ol class="steps">
+            {g.rerSteps.map((s) => <li><RichText text={s} /></li>)}
+          </ol>
+          <div class="warning">
+            <p>{g.rerWarning}</p>
+          </div>
+        </div>
+        <div class="media-col">
+          <figure class="guide-figure">
+            <div class="guide-image-container">
+              <img src="/imgs/guides/arriving/rer_d.webp" alt={g.rerPhotoAlt} class="guide-image zoomable-image" width="960" height="640" loading="lazy" />
+            </div>
+            <figcaption class="guide-caption">{g.rerPhotoAlt}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Walking from station ──────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container two-col-layout">
+        <div class="prose">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.walkEyebrow}</p>
+          <h2>{g.walkH2}</h2>
+          <p class="lede">{g.walkLede}</p>
+          <ol class="steps">
+            {g.walkSteps.map((s) => <li><RichText text={s} /></li>)}
+          </ol>
+
+        </div>
+        <div class="media-col">
+          <div class="map-selector">
+            <button class="map-btn active" data-station="evry">Évry-Courcouronnes</button>
+            <button class="map-btn" data-station="bras">Le Bras de Fer</button>
+          </div>
+          <figure class="guide-figure">
+            <div class="guide-image-container">
+              <img id="img-evry" src="/imgs/guides/arriving/walk_evry.webp" alt={g.walkPhotoAlt} class="guide-image zoomable-image" width="721" height="384" loading="lazy" />
+              <img id="img-bras" src="/imgs/guides/arriving/walk_bras_de_fer.webp" alt={g.walkPhotoAlt.replace("Évry-Courcouronnes", "Le Bras de Fer")} class="guide-image zoomable-image hidden" width="721" height="384" loading="lazy" />
+            </div>
+            <figcaption class="guide-caption" id="map-caption">{g.walkPhotoAlt}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+
+      <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+          const btnEvry = document.querySelector('[data-station="evry"]');
+          const btnBras = document.querySelector('[data-station="bras"]');
+          const imgEvry = document.getElementById('img-evry');
+          const imgBras = document.getElementById('img-bras');
+          const caption = document.getElementById('map-caption');
+          
+          if (!btnEvry || !btnBras || !imgEvry || !imgBras || !caption) return;
+          
+          const altEvry = imgEvry.getAttribute('alt');
+          const altBras = imgBras.getAttribute('alt');
+          
+          btnEvry.addEventListener('click', () => {
+            btnEvry.classList.add('active');
+            btnBras.classList.remove('active');
+            imgEvry.classList.remove('hidden');
+            imgBras.classList.add('hidden');
+            caption.textContent = altEvry;
+          });
+          
+          btnBras.addEventListener('click', () => {
+            btnBras.classList.add('active');
+            btnEvry.classList.remove('active');
+            imgBras.classList.remove('hidden');
+            imgEvry.classList.add('hidden');
+            caption.textContent = altBras;
+          });
+        });
+      </script>
+    </section>
+
+    <!-- ── Getting around guide link ─────────────────────── -->
+    <section class="band">
+      <div class="container prose">
+        <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.naviGoEyebrow}</p>
+        <h2>{g.naviGoH2}</h2>
+        <p class="body-text">{g.naviGoBody}</p>
+        <div class="guide-actions">
+          <a class="btn btn--primary" href={localizedPath("/guides/getting-around", lang)}>
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+            {g.naviGoTip}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+
+
+<style>
+  /* ── Shared ─────────────────────────────────────────── */
+  .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
+  .band { padding-block: var(--section-y); position: relative; }
+  .band--alt {
+    background-color: var(--cream-deep);
+    background-image: radial-gradient(rgba(41,58,85,0.04) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+  .prose { max-width: 72ch; margin-inline: auto; }
+  .eyebrow {
+    font-family: var(--font-accent); font-size: 0.95rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--honey-deep); margin-bottom: var(--space-3);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+  }
+  .eyebrow--light { color: var(--honey); }
+  .eyebrow__hex {
+    display: inline-block; width: 13px; height: 11px;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+  }
+  .lede {
+    font-size: 1.125rem; line-height: 1.7;
+    color: var(--navy-soft); margin-top: var(--space-4);
+  }
+  h2 { max-width: 24ch; }
+  .body-text { font-size: 1.0625rem; line-height: 1.7; color: var(--navy-soft); margin-top: var(--space-4); }
+  .note { font-size: 1rem; line-height: 1.7; color: var(--navy-soft); margin-top: var(--space-4); }
+
+  /* ── Hero ──────────────────────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden; background: var(--honey);
+    --nav-h: 96px; margin-top: calc(-1 * var(--nav-h)); text-align: center;
+  }
+  .hero__inner {
+    position: relative; z-index: 2;
+    padding-top: calc(var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9)));
+    padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
+  }
+  .hero__bee { margin-bottom: var(--space-4); }
+  .hero__bee img {
+    width: clamp(64px, 10vw, 100px); height: auto; margin-inline: auto;
+    filter: drop-shadow(4px 6px 0 rgba(30,42,61,0.15));
+    animation: beeBob 4s ease-in-out infinite;
+  }
+  @keyframes beeBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(1.5deg); }
+  }
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.98;
+    color: var(--cream); -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill; text-shadow: 5px 5px 0 var(--ink);
+    transform: rotate(-1.5deg); margin-bottom: var(--space-4);
+  }
+  .hero__lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.7;
+    font-weight: 600; color: var(--ink); max-width: 50ch; margin-inline: auto;
+  }
+
+  @media (max-width: 979px) {
+    .hero { --nav-h: 78px; }
+    .hero__inner { padding-top: calc(var(--nav-h) + clamp(72px, 14vw, 110px)); }
+  }
+
+  /* ── Address card ──────────────────────────────────── */
+  .address-card {
+    position: relative;
+    display: flex; align-items: flex-start; gap: var(--space-4);
+    margin-top: var(--space-6); padding: var(--space-5);
+    background: var(--cream-deep); border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                background 0.15s;
+  }
+  .address-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    background: #fff8ee;
+  }
+  .address-card:active {
+    transform: translate(0,0);
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+  }
+  .address-card__maps-badge {
+    margin-left: auto;
+    flex-shrink: 0;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #4285F4;
+    color: white;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .address-card:hover .address-card__maps-badge {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  .address-card__pin { color: var(--honey-deep); flex-shrink: 0; margin-top: 2px; }
+  .address-card__name {
+    font-family: var(--font-accent); font-size: 1.15rem;
+    color: var(--navy); display: block; margin-bottom: var(--space-1);
+  }
+  .address-card__line { font-size: 1rem; color: var(--navy-soft); margin: 0; }
+
+  /* ── Route blocks ──────────────────────────────────── */
+  .route-block {
+    margin: 0;
+    padding: 0;
+  }
+  .route-block__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+  .route-title-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-left: -0.5rem; /* Centering aligning it perfectly with the 2rem step hexagons below */
+    background: var(--honey);
+    color: var(--ink);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    flex-shrink: 0;
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
+  }
+  .route-title-badge svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s ease;
+  }
+  .route-block:hover .route-title-badge {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.1) rotate(-8deg);
+  }
+  .route-block:hover .route-title-badge svg {
+    transform: scale(1.1) rotate(5deg);
+  }
+  .route-block__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── Airports Grid ─────────────────────────────────── */
+  .airports-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-7);
+    position: relative;
+  }
+  @media (min-width: 769px) {
+    .airports-grid::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      border-left: 2px dashed var(--line);
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+  }
+  @media (max-width: 768px) {
+    .airports-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-7);
+    }
+  }
+
+  /* ── Steps ─────────────────────────────────────────── */
+  .steps {
+    margin: var(--space-5) 0; padding: 0;
+    list-style: none; counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step; position: relative;
+    padding-left: 3.25rem; padding-bottom: var(--space-5);
+    font-size: 1.0625rem; line-height: 1.7; color: var(--navy);
+    transition: color 0.25s ease;
+  }
+  .steps li:hover {
+    color: var(--ink);
+  }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0.1rem;
+    width: 2rem; height: 2rem; display: grid; place-items: center;
+    font-family: var(--font-accent); font-size: 0.95rem;
+    background: var(--honey); color: var(--ink);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease;
+  }
+  .steps li:hover::before {
+    background: var(--honey-deep);
+    color: var(--cream);
+    transform: scale(1.15) rotate(15deg);
+  }
+  .steps li:not(:last-child)::after {
+    content: ""; position: absolute; left: calc(1rem - 1px); top: 2.2rem;
+    width: 0; bottom: -0.6rem;
+    border-left: 2.5px dashed var(--line);
+    transition: border-color 0.25s ease;
+  }
+  .steps li:hover:not(:last-child)::after {
+    border-left-color: var(--honey);
+  }
+  @media (max-width: 480px) {
+    .route-title-badge {
+      margin-left: -0.625rem;
+    }
+    .steps li {
+      padding-left: 2.75rem;
+      font-size: 1rem;
+    }
+    .steps li::before {
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: 0.85rem;
+    }
+    .steps li:not(:last-child)::after {
+      left: calc(0.875rem - 1px);
+      top: 1.95rem;
+      bottom: -0.6rem;
+    }
+  }
+
+  /* ── Duration badge ────────────────────────────────── */
+  .duration {
+    font-family: var(--font-accent); font-size: 0.9rem;
+    color: var(--navy); background: var(--cream-deep);
+    border: 2px solid var(--navy); border-radius: var(--radius-pill);
+    padding: 0.4em 0.8em; display: inline-flex; align-items: center;
+    gap: var(--space-2); box-shadow: 2px 2px 0 var(--navy);
+    margin-top: var(--space-4);
+  }
+  .duration::before {
+    content: "⏱"; font-size: 1.05rem;
+  }
+
+  /* ── Warning callout ───────────────────────────────── */
+  .warning {
+    margin-top: var(--space-6); padding: var(--space-4) var(--space-5);
+    background: #fdf3f2; /* soft warm red wash */
+    border-left: 4px solid #e05a47; /* curated warm warning red */
+    border-radius: 4px var(--radius) var(--radius) 4px;
+  }
+  .warning p {
+    font-size: 0.95rem; line-height: 1.6; color: var(--navy); margin: 0;
+  }
+
+  /* ── Campus figures side-by-side ──────────────────── */
+  .container--wide {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+  }
+  .campus-figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .campus-figures .guide-figure {
+    margin-block: 0;
+  }
+  .campus-figures .guide-image-container,
+  .campus-figures .guide-image-container--map {
+    aspect-ratio: unset;
+    height: 340px;
+  }
+  @media (max-width: 768px) {
+    .campus-figures {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Guide Images ──────────────────────────────────── */
+  .guide-figure {
+    margin-block: var(--space-6) var(--space-5);
+  }
+  .guide-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--cream-deep);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25);
+  }
+  .guide-image-container--map {
+    aspect-ratio: 1427 / 1022;
+  }
+  .guide-image-container:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+  }
+  .guide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .guide-image-container:hover .guide-image {
+    transform: scale(1.05);
+  }
+
+  /* ── Map selector tabs ─────────────────────────────── */
+  .map-selector {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    background: var(--cream-deep);
+    padding: 4px;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--navy);
+    align-self: center;
+    width: max-content;
+  }
+  .map-btn {
+    background: transparent;
+    border: none;
+    color: var(--navy);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5em 1.2em;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .map-btn:hover {
+    background: var(--cream);
+  }
+  .map-btn.active {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .hidden {
+    display: none !important;
+  }
+  .guide-caption {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--navy-soft);
+    margin-top: var(--space-3);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ── Buttons ───────────────────────────────────────── */
+  .guide-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .btn {
+    position: relative; display: inline-flex; align-items: center;
+    gap: var(--space-2); font-family: var(--font-accent);
+    font-size: 1.0625rem; text-decoration: none;
+    padding: 0.8em 1.4em; border-radius: var(--radius-button);
+    border: 3px solid var(--navy); min-height: 44px;
+    margin-top: var(--space-5);
+    transition: transform 0.15s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.15s cubic-bezier(0.175,0.885,0.32,1.25),
+                background-color 0.15s ease-out;
+  }
+  .btn__icon { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.15s cubic-bezier(0.175,0.885,0.32,1.25); }
+  .btn:hover .btn__icon { transform: scale(1.18) rotate(-8deg); }
+  .btn--primary {
+    background: var(--honey); color: var(--ink); border-color: var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+  .btn--primary:hover {
+    background: var(--honey-deep); transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+  .btn--primary:active { transform: translate(4px,4px); box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy); }
+  .btn--ghost {
+    background: var(--cream); color: var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+  }
+  .btn--ghost:hover {
+    background: var(--cream-deep); transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+  .btn--ghost:active { transform: translate(4px,4px); box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy); }
+
+
+
+  /* ── Two Column Layout ─────────────────────────────── */
+  .two-col-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-7);
+    align-items: center; /* center image vertically with content on desktop */
+  }
+  .two-col-layout .prose {
+    margin-inline: 0;
+    max-width: 100%;
+  }
+  .two-col-layout .media-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  @media (min-width: 980px) {
+    .two-col-layout .media-col .guide-figure {
+      margin-block: 0; /* clean margins for perfect vertical centering */
+    }
+  }
+  @media (max-width: 979px) {
+    .two-col-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .two-col-layout .prose {
+      margin-inline: auto;
+      max-width: 72ch;
+    }
+  }
+</style>

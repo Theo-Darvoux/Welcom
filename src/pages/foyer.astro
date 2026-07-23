@@ -1,0 +1,6 @@
+---
+import { defaultLang } from "../i18n/config";
+import { localizedPath } from "../i18n/utils";
+
+return Astro.redirect(localizedPath("/foyer/rdc", defaultLang));
+---
