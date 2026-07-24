@@ -25,11 +25,36 @@ const dictionaries: Record<Locale, Translation> = {
   ar,
 };
 
+function deepMerge<T>(target: T, source: any): T {
+  if (!source || typeof source !== "object") return target;
+  if (!target || typeof target !== "object") return source;
+  const result: any = Array.isArray(target) ? [...target] : { ...target };
+  for (const key of Object.keys(source)) {
+    const targetVal = (target as any)[key];
+    const sourceVal = source[key];
+    if (sourceVal !== undefined) {
+      if (
+        typeof sourceVal === "object" &&
+        sourceVal !== null &&
+        !Array.isArray(sourceVal) &&
+        typeof targetVal === "object" &&
+        targetVal !== null &&
+        !Array.isArray(targetVal)
+      ) {
+        result[key] = deepMerge(targetVal, sourceVal);
+      } else {
+        result[key] = sourceVal;
+      }
+    }
+  }
+  return result;
+}
+
 /** Get the full string table for a locale (falls back to the default for missing keys). */
 export function useTranslations(lang: Locale): Translation {
   const dict = dictionaries[lang];
   if (lang === defaultLang || !dict) return en;
-  return { ...en, ...dict, meta: { ...en.meta, ...dict.meta } };
+  return deepMerge(en, dict);
 }
 
 export type { Translation };

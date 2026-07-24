@@ -2,6 +2,17 @@ import type { Translation } from "./en";
 
 export const fr: Translation = {
   meta: {
+    team: {
+      title: "Notre Équipe | WELCOM’",
+    },
+    guidesAdminAid: {
+      title: "Démarches & Aides | Guides | WELCOM’",
+      description: "Guide étape par étape des démarches administratives : validation de visa (ANEF), CVEC, inscription administrative, compte bancaire Société Générale, Sécurité Sociale (Ameli) et CAF.",
+    },
+    guidesDailyLife: {
+      title: "Vie Quotidienne & Courses | Guides | WELCOM’",
+      description: "Guide pratique de la vie quotidienne à Évry pour les étudiants internationaux : courses alimentaires (Le Spot, G20), laveries dans les bâtiments Maisel, tri des déchets & poubelles, pharmacies et colis.",
+    },
     home: {
       title: "WELCOM’ : BDI de Télécom SudParis et IMT Business-School",
       description: "WELCOM, la ruche qui aide les étudiants internationaux à s’installer à Télécom SudParis & IMT-BS, campus d’Évry.",
@@ -14,6 +25,10 @@ export const fr: Translation = {
     },
     contact: {
       title: "Contact | WELCOM’",
+    },
+    foyer: {
+      title: "Carte 3D Interactive du Foyer | WELCOM’",
+      description: "Carte 3D interactive du Foyer des élèves de Télécom SudParis & IMT-BS. Explorez les locaux associatifs et les services du campus.",
     },
     guidesGettingHere: {
       title: "Comment Venir | Guides | WELCOM’",
@@ -35,11 +50,16 @@ export const fr: Translation = {
       title: "Argent & Téléphone | Guides | WELCOM’",
       description: "Guide complet pour installer votre forfait mobile français (Free, Sosh, B&You), ouvrir votre compte bancaire Société Générale, comprendre le RIB, et gérer votre budget à Évry.",
     },
+    guidesDailyLife: {
+      title: "Vie Quotidienne & Courses | Guides | WELCOM’",
+      description: "Guide pratique de la vie quotidienne à Évry pour les étudiants internationaux : courses alimentaires (Le Spot, G20), laveries dans les bâtiments Maisel, tri des déchets & poubelles, pharmacies et colis.",
+    },
     foyer: {
       title: "Foyer | WELCOM’",
     },
   },
   nav: {
+    team: "Équipe",
     home: "Accueil",
     foyer: "Foyer",
     guides: "Guides",
@@ -57,6 +77,7 @@ export const fr: Translation = {
     lede: "Tout juste arrivé, ou sur le point de l’être ? Nous sommes le club étudiant qui aide les étudiants internationaux à s’installer à l’{INT}, et tout ce qu’il vous faut se trouve ici ! N’hésitez pas à nous contacter !",
     ctaTeam: "Rencontrer l’équipe",
     ctaGuides: "Voir les guides",
+    ctaFoyer: "Plan du Foyer",
   },
   about: {
     eyebrow: "Découvrez la ruche",
@@ -278,8 +299,8 @@ export const fr: Translation = {
         description: "ECTS, wifi, bibliothèque, et cours",
       },
       "events-buddy": {
-        title: "Événements & Parrain",
-        description: "BBQ de bienvenue, programme de parrainage, voyages",
+        title: "Événements",
+        description: "BBQ de bienvenue, voyages",
       },
     },
   },
@@ -290,8 +311,8 @@ export const fr: Translation = {
     "Maisel SudParis": "Maison des Élèves, l'association à but non lucratif de logement étudiant officielle de Télécom SudParis et IMT Business School.",
     "Le Bras de Fer": "La gare du RER D située juste à côté du campus d'Évry.",
     "RER B": "La ligne de RER reliant l'aéroport Charles de Gaulle (CDG) au centre de Paris.",
-    AbsINThe: "Le bar étudiant adoré du campus, hôte des soirées à thème et des moments détendus.",
-    ACO: "AbsINThe Chill Out, le nom des soirées à thème organisées au bar étudiant AbsINThe.",
+    AbsINThe: "Le bar étudiant adoré du campus, hôte de moments détendus et conviviaux.",
+    ACO: "AbsINThe Chill Out, le nom des soirées organisées au bar étudiant AbsINThe.",
     CAF: "Caisse d’Allocations Familiales, l’organisme public français qui vous verse une aide au logement mensuelle (APL).",
     "RER D": "La ligne de train régionale qui relie Évry au centre de Paris en 40 minutes.",
     ECTS: "Système européen de transfert de crédits, les crédits académiques nécessaires pour valider vos modules.",
@@ -305,36 +326,79 @@ export const fr: Translation = {
     Foyer: "Le foyer associatif regroupe les locaux des associations du campus. Il est situé entre les bâtiments U1, U4 et l'école.",
     "Global Village": "Une soirée où les étudiants tiennent des stands aux couleurs de leur pays, cuisinent leurs spécialités et partagent leur culture au forum de l'école.",
     ritz: "Nom donné à la nourriture gratuite proposée lors des événements. Il tire son nom du Rits, le restaurant de l'école, et fait un clin d'œil au Ritz, le célèbre palace parisien.",
+    shotgun: "Un terme étudiant désignant une réservation « premier arrivé, premier servi » où la rapidité est essentielle.",
     fallback: "Un mot d’argot du campus.",
   },
   foyer: {
     title: "Carte Interactive du Foyer",
-    description: "Explorez la carte du Foyer, découvrez les locaux et associations.",
+    description: "Explorez la carte du Foyer, découvrez les locaux et associations du campus.",
     floors: {
-      rdc: "RDC",
-      ss1: "SS1",
+      rdc: "Rez-de-chaussée",
+      ss1: "Sous-sol",
     },
     rooms: {
-      bds: "BDS",
-      bda: "BDA",
-      bde: "BDE",
-      welcom: "Welcom’",
-      minet: "MiNET",
-      declic: "Déclic",
-      evrything: "Evry-thing",
+      "club-zik": "Local de répétition et matériel de musique pour les musiciens du campus.",
+      intv: "Vous finirez bien par les rencontrer.",
+      intech: "Club d'informatique, robotique et projets technologiques étudiants.",
+      "club-jeux": "Jeux de société, jeux de rôle et soirées gaming entre étudiants.",
+      asint: "Bureau des Sports (ASINT) : tournois, entraînements et événements sportifs.",
+      welcom: "Association d'accueil et d'intégration des étudiants internationaux.",
+      bde: "Bureau des Élèves : organisation de la vie étudiante et grands événements.",
+      bda: "Bureau des Arts : théâtre, musique, danse, culture et soirées artistiques.",
+      minet: "Fournisseur d'accès Internet associatif du campus et réseau très haut débit.",
+      emotys: "Troupe de comédie musicale du campus et spectacles étudiants.",
+      bpm: "Association de musique électronique, DJing, sonorisation et éclairage.",
+      declic: "Club photo du campus : couverture des événements et cours de photographie.",
+      cookit: "Association culinaire : ateliers de cuisine, dégustations et évènements gourmands.",
+      bar: "Comptoir et espace bar du Foyer pour se retrouver entre cours.",
+      reserve: "Local de stockage géré par le bar AbsINThe.",
+      absinthe: "Le bar étudiant du campus pour des moments de détente et de convivialité.",
+      tijet: "Local principal de l'association TiJET (Junior-Entreprise du campus).",
+      cave: "Local partagé par le Club Code, la CELL (création de jeux : vidéo, plateau, escape games...), Gam'INT et Model'IT.",
+      bagagerie: "Local de stockage principal de MiNET contenant leur équipement réseau de rechange.",
+      evryone: "La radio étudiante du campus : émissions en direct et podcasts.",
+      tabernacle: "Local de stockage du BDE (Bureau des Élèves).",
+      minet2: "Salle serveur principale gérée par l'association MiNET.",
+      xtreme: "Local partagé par Xtreme (course en extérieur, trail, organisateurs du Bike&Run) et Dolph'INT (club de voile & nautisme).",
+      univert: "Local partagé par Univert (écologie & développement durable) et INTervenir (association humanitaire).",
+      equality: "Local partagé par EquALLity (féminisme & égalité) et IN&acT (association LGBTQIA+ du campus).",
+      hackademint: "Club de cybersécurité, de hacking éthique et de CTF.",
+      paintit: "Local partagé par Paint'IT (peinture & dessin), TellTheTale (narration & JDR) et INTimes (journal étudiant).",
     },
     labels: {
-      bds: "Bureau des Sports",
-      bda: "Bureau des Arts",
-      bde: "Bureau des Élèves",
-      welcom: "Welcom’ BDI",
-      minet: "Association Réseau MiNET",
-      declic: "Club Photo Déclic",
-      evrything: "Association Evry-thing",
+      "club-zik": "Club Zik",
+      intv: "",
+      intech: "INTech",
+      "club-jeux": "Club Jeux",
+      asint: "ASINT",
+      welcom: "Welcom' BDI",
+      bde: "BDE",
+      bda: "BDA",
+      minet: "MiNET",
+      emotys: "Emoty:S",
+      bpm: "BPM Club Sono",
+      declic: "Déclic Photo",
+      cookit: "Cook'IT",
+      bar: "Bar",
+      reserve: "Réserve",
+      absinthe: "AbsINThe",
+      tijet: "TiJET",
+      cave: "La Cave",
+      bagagerie: "Bagagerie",
+      evryone: "Evryone Radio",
+      tabernacle: "Tabernacle",
+      minet2: "Salle Serveur",
+      xtreme: "Xtreme / Dolph'INT",
+      univert: "Univert & INTervenir",
+      equality: "EquALLity & IN&acT",
+      hackademint: "Hackadem'INT",
+      paintit: "Paint'IT",
     },
     entranceLabels: {
-      main: "Entrée Principale",
-      patio: "Accès Patio",
+      rer: "Vers gare RER",
+      "espace-t": "Vers Espace T",
+      u2: "Bâtiment U2",
+      u4: "Bâtiment U4",
     },
   },
   gettingHere: {
@@ -514,7 +578,7 @@ export const fr: Translation = {
     bookingH2: "Comment réserver votre chambre",
     bookingLede: "La réservation de votre logement s'effectue en ligne directement sur le portail officiel de la Maisel.",
     bookingSteps: [
-      "<strong>1. Réservation en ligne :</strong> Réservez en ligne sur <a href=\"https://maisel.imtbs-tsp.eu\" target=\"_blank\" rel=\"noopener noreferrer\">maisel.imtbs-tsp.eu</a> à partir de juin pour la rentrée de septembre. Payez un <strong>acompte de réservation de 200 € (arrhes)</strong> par carte bancaire (non remboursable, déduit de votre premier loyer).",
+      "<strong>1. Réservation en ligne :</strong> Les réservations Maisel se font au {shotgun} (premier arrivé, premier servi). Les horaires des shotguns sont communiqués à l'avance et sont différents pour chaque filière. Réservez en ligne sur <a href=\"https://maisel.imtbs-tsp.eu\" target=\"_blank\" rel=\"noopener noreferrer\">maisel.imtbs-tsp.eu</a> (généralement à partir de juin pour la rentrée de septembre). Payez un <strong>acompte de réservation de 200 € (arrhes)</strong> par carte bancaire (non remboursable, déduit de votre premier loyer).",
       "<strong>2. Garant physique (Cautionnaire) :</strong> Vous devez fournir un garant physique (une personne solvable). <strong>Important :</strong> La Maisel <em>n'accepte pas</em> la garantie Visale.",
       "<strong>3. Dépôt de garantie & Arrivée :</strong> Un <strong>dépôt de garantie de 600 € (caution)</strong> est réglé à l'arrivée et restitué lors du départ. La signature du bail et la remise des clés/badges ont lieu à l'accueil de la Maisel.",
     ],
@@ -547,7 +611,7 @@ export const fr: Translation = {
       },
       {
         title: "Laverie / Équipements de lavage communs",
-        desc: "Chaque bâtiment dispose d'une laverie équipée de lave-linges (payants, lessive fournie), de sèche-linges gratuits et de tables à repasser.",
+        desc: "Les résidents de la Maisel ont accès à des laveries communes équipées de lave-linges (payants par sans contact) et de sèche-linges.",
       },
       {
         title: "Maintenance & Assistance",
@@ -567,7 +631,7 @@ export const fr: Translation = {
         title: "CVEC & Inscription administrative",
         time: "Avant / Jour 1",
         desc: "Réglez la CVEC sur cvec.etudiant.gouv.fr pour obtenir votre attestation, puis complétez votre inscription à TSP ou IMT-BS pour recevoir votre Certificat de Scolarité.",
-        url: "https://cvec.etudiant.gouv.fr"
+        url: "https://cvec.etudiant.gouv.fr/?_locale=en"
       },
       {
         step: "02",
@@ -605,7 +669,7 @@ export const fr: Translation = {
     cvecDesc: "La CVEC (Contribution Vie Étudiante et de Campus) est une contribution annuelle obligatoire (~103 €) collectée par l'État pour financer la vie étudiante, le sport, la santé et la culture.",
     cvecStepsTitle: "Comment réaliser cette étape :",
     cvecSteps: [
-      "Rendez-vous sur le portail officiel <a href=\"https://cvec.etudiant.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> et créez votre compte.",
+      "Rendez-vous sur le portail officiel <a href=\"https://cvec.etudiant.gouv.fr/?_locale=en\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> et créez votre compte.",
       "Réglez la CVEC en ligne par carte bancaire (ou téléchargez votre attestation d'exonération si vous êtes boursier).",
       "Téléchargez votre <strong>Attestation de paiement CVEC</strong>.",
       "Transmettez l'attestation au service de Scolarité lors de votre inscription administrative.",
@@ -783,6 +847,139 @@ export const fr: Translation = {
     supportBtn: "Trouver le local Welcom'"
   },
 
+  dailyLife: {
+    heroTitle: "Vie Quotidienne à Évry",
+    heroLede: "Tout ce qu'il faut savoir au quotidien sur le campus et à Évry : courses, laveries des résidences, poubelles & tri sélectif, pharmacies et réception de colis.",
+    roadmapEyebrow: "Aperçu rapide",
+    roadmapH2: "Les Essentiels du Quotidien",
+    roadmapLede: "Retrouvez toutes les infos clés et adresses utiles pour faciliter votre quotidien dès votre arrivée sur le campus.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "Courses & Alimentation",
+        time: "Quotidien / Hebdo",
+        desc: "Supermarchés comme le G20 à côté du campus, le centre commercial Le Spot (Carrefour) et les options économiques.",
+        url: "#step-groceries"
+      },
+      {
+        step: "02",
+        title: "Laveries (Lave-linge)",
+        time: "Hebdomadaire",
+        desc: "Machines à laver et séchoirs dans les bâtiments Maisel (U1, U2, U3, U4, U5, U6, U7).",
+        url: "#step-laundry"
+      },
+      {
+        step: "03",
+        title: "Poubelles & Tri sélectif",
+        time: "Quotidien",
+        desc: "Accès aux locaux poubelles, bacs jaunes de recyclage, conteneurs à verre et consignes de tri.",
+        url: "#step-garbage"
+      },
+      {
+        step: "04",
+        title: "Pharmacies & Courrier",
+        time: "Au besoin",
+        desc: "Pharmacies à proximité, achats de santé et réception de votre courrier & colis à l'accueil Maisel.",
+        url: "#step-services"
+      }
+    ],
+
+    groceriesEyebrow: "Étape 1 : Supermarchés & Alimentation",
+    groceriesH2: "Où faire ses courses à Évry",
+    groceriesLede: "Du petit appoint juste à côté du campus aux grands hypermarchés et épiceries du monde, voici les meilleures adresses pour faire vos courses.",
+    groceriesStoresTitle: "Supermarchés & Lieux de courses populaires",
+    groceriesStores: [
+      {
+        name: "Supermarché G20",
+        desc: "Situé juste à côté du campus (5 min à pied). Parfait pour les courses rapides, produits frais, pain et essentiels du quotidien.",
+        url: "https://maps.app.goo.gl/GVbdNA3yUtnY4v5H9"
+      },
+      {
+        name: "Le Spot Évry (Carrefour)",
+        desc: "Le grand centre commercial d'Évry-Courcouronnes (10–12 min à pied / 1 station de RER D). Abrite un immense Carrefour avec des prix plus bas, vaisselle, vêtements, multimédia et +150 boutiques.",
+        url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      }
+    ],
+    groceriesTipsTitle: "À savoir absolument pour vos courses :",
+    groceriesTips: [
+      "<strong>Pensez à vos sacs réutilisables (Sac Cabas) :</strong> Les sacs plastiques à usage unique sont payants en caisse (~0,15€–0,30€). Gardez un sac réutilisable dans votre sac à dos.",
+      "<strong>Applications Anti-Gaspillage (Too Good To Go) :</strong> Téléchargez l'application <em>Too Good To Go</em> pour acheter des paniers invendus de boulangeries et supermarchés autour d'Évry pour seulement 3€ à 5€."
+    ],
+
+    laundryEyebrow: "Étape 2 : Laverie & Séchage",
+    laundryH2: "Laveries dans les Bâtiments Maisel",
+    laundryLede: "Chaque bâtiment de la résidence Maisel (U1 à U7) donne accès à une laverie pour laver et sécher votre linge directement sur le campus.",
+    laundryLocationsTitle: "Où se trouvent les laveries par bâtiment :",
+    laundryLocations: [
+      { building: "Bâtiments U1, U2 & U4", location: "Laverie unique située au 1er étage du bâtiment U4.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
+      { building: "Bâtiment U3", location: "Rez-de-chaussée (RDC) salle dédiée à la laverie.", url: "https://gad.touchnpay.fr/fr/public/material/406jkjom1ann1k2" },
+      { building: "Bâtiment U5", location: "Laverie au niveau -1, au fond du couloir sur la droite en sortant de l'ascenseur.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9ezrig" },
+      { building: "Bâtiment U6", location: "Rez-de-chaussée (RDC) espace laverie.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80gljgu5fxu" },
+      { building: "Bâtiment U7", location: "Rez-de-chaussée (RDC) espace laverie.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9ezzr9" }
+    ],
+    laundryLiveStatusBtn: "Voir les machines disponibles ↗",
+    laundryTipsTitle: "Mode d'emploi & conseils pratiques :",
+    laundryTips: [
+      "<strong>Moyen de paiement :</strong> Paiement uniquement par sans contact (carte bancaire sans contact ou smartphone via Apple Pay / Google Pay). Les pièces et espèces ne sont pas acceptées.",
+      "<strong>Lessive :</strong> La lessive est directement incluse dans les machines à laver. Inutile d'apporter la vôtre !",
+      "<strong>Sèche-linge gratuits :</strong> Les sèche-linge dans les laveries sont entièrement gratuits."
+    ],
+
+    garbageEyebrow: "Étape 3 : Gestion des Déchets",
+    garbageH2: "Poubelles & Tri Sélectif",
+    garbageLede: "En France, le tri des déchets est obligatoire. Garder votre résidence propre et bien trier participe au confort et à la propreté du campus.",
+    garbageLocationsTitle: "Où se trouvent les locaux poubelles :",
+    garbageLocations: [
+      { building: "Bâtiments U1, U2 & U4", location: "Devant le bâtiment, juste sur le côté droit de l'entrée." },
+      { building: "Bâtiment U3", location: "À gauche de l'entrée (très grand espace poubelles)." },
+      { building: "Bâtiment U5", location: "Près de l'entrée principale." },
+      { building: "Bâtiment U6", location: "Emplacement à confirmer." },
+      { building: "Bâtiment U7", location: "Près de l'entrée principale." }
+    ],
+    garbageSortingTitle: "Guide du Tri Sélectif :",
+    garbageSorting: [
+      {
+        type: "Bac Jaune : Recyclables",
+        desc: "Bouteilles plastiques, briques alimentaires, boîtes de conserve, canettes, papiers, cartons et couvercles métalliques. NE PAS y jeter de restes alimentaires."
+      },
+      {
+        type: "Bac Bordeaux / Rouge : Ordures Ménagères",
+        desc: "Déchets ménagers non recyclables, restes de repas, emballages souillés et produits d'hygiène. Pensez à bien fermer vos sacs poubelles avant de les déposer dans le bac bordeaux."
+      },
+      {
+        type: "Conteneurs à Verre",
+        desc: "Bouteilles, pots et bocaux en verre. Un conteneur à verre unique est situé juste devant le bâtiment U5 (ne jamais jeter de verre dans les poubelles de chambre ou bacs classiques)."
+      }
+    ],
+
+    servicesEyebrow: "Étape 4 : Pharmacies, Courrier & Services",
+    servicesH2: "Pharmacies, Colis & Courrier",
+    servicesLede: "Tout ce qu'il faut savoir pour vos besoins de santé, votre courrier et la réception de vos commandes en ligne.",
+    servicesCards: [
+      {
+        title: "Pharmacies & Produits de santé",
+        desc: "La pharmacie la plus proche est la <a href=\"https://maps.app.goo.gl/q9BrfpF19DyxtoqD9\" target=\"_blank\" rel=\"noopener noreferrer\">Pharmacie des Épinettes</a> (à quelques pas du campus). En France, les pharmaciens peuvent vous conseiller pour les petits maux du quotidien et vous délivrer des médicaments sans ordonnance."
+      },
+      {
+        title: "Réception du Courrier",
+        desc: "Chaque chambre dispose d'une boîte aux lettres attribuée à l'entrée du bâtiment. Assurez-vous que votre nom complet y soit clairement indiqué pour La Poste."
+      },
+      {
+        title: "Livraison de Colis & Commandes",
+        desc: "La résidence Maisel <strong>n'accepte PAS</strong> la livraison de vos colis. Vous devez être présent en personne pour récupérer votre colis en main propre auprès du livreur lorsqu'il arrive (les livreurs Amazon ne peuvent pas entrer dans les bâtiments). Vous pouvez également utiliser les points relais ou lockers à proximité du campus."
+      },
+      {
+        title: "Numéros d'Urgence en France",
+        desc: "<strong>15 :</strong> SAMU (Urgence Médicale) • <strong>17 :</strong> Police • <strong>18 :</strong> Sapeurs-Pompiers • <strong>112 :</strong> Numéro d'urgence européen."
+      }
+    ],
+
+    supportEyebrow: "Besoin d'aide ?",
+    supportH2: "Des questions sur la vie quotidienne ?",
+    supportBody: "Passez nous voir au local WELCOM' dans le Foyer ! Notre équipe se fera un plaisir de vous orienter vers les meilleurs commerces et de répondre à vos questions.",
+    supportBtn: "Trouver le bureau Welcom’"
+  },
+
   guidesPage: {
     heroTitle: "Guides Étudiants",
     heroLede: "Tout ce qu'il faut savoir pour réussir votre installation à Télécom SudParis & IMT Business School : arrivée en France, logement, transports, banque et démarches administratives.",
@@ -822,6 +1019,13 @@ export const fr: Translation = {
       desc: "Obtenir une carte SIM française (Free, Sosh, B&You), ouvrir un compte bancaire (Société Générale, Revolut/Wise) et gérer son budget.",
       tag: "SIM française • RIB & Banque • Budget",
       btn: "Consulter le guide Argent & Tel"
+    },
+    dailyLife: {
+      title: "Vie Quotidienne & Courses",
+      badge: "Vie sur le campus",
+      desc: "Supermarchés (G20, Le Spot), laveries des résidences (U1–U7), poubelles & tri sélectif, pharmacies et réception des colis.",
+      tag: "G20 & Le Spot • Laveries U1–U7 • Tri sélectif",
+      btn: "Consulter le guide Vie Quotidienne"
     },
     supportEyebrow: "Besoin d'aide ?",
     supportTitle: "Des questions sur vos démarches ?",

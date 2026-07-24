@@ -1,0 +1,10 @@
+---
+import DailyLifeBody from "../../../components/pages/DailyLifeBody.astro";
+import { prefixedLocales } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+---
+
+<DailyLifeBody />

@@ -120,6 +120,26 @@ const partners = [
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
+            <a
+              class="btn btn--green"
+              href={localizedPath("/foyer/rdc", lang)}
+            >
+              {(t.hero as any).ctaFoyer ?? t.contactBand.foyerBtn}
+              <svg
+                class="btn__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                <line x1="8" y1="2" x2="8" y2="18"></line>
+                <line x1="16" y1="6" x2="16" y2="22"></line>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -433,7 +453,7 @@ const partners = [
           <a
             class="btn btn--green"
             id="foyer-map-btn"
-            href={localizedPath("foyer", lang)}
+            href={localizedPath("/foyer/rdc", lang)}
           >
             <svg
               class="btn__icon"
@@ -651,7 +671,7 @@ const partners = [
   }
 
   .hero__intro {
-    max-width: 34rem;
+    max-width: 38rem;
   }
 
   .hero__title {
@@ -1629,8 +1649,8 @@ const partners = [
   /* ── Hero: buttons on honey background ──────────────────────── */
   /* Chunkier, solid, comic-shadow pair: Navy / Ink + Cream */
   .hero .btn {
-    font-size: 1.125rem;
-    padding: 0.9em 1.5em;
+    font-size: 1.05rem;
+    padding: 0.8em 1.25em;
     border-width: 3px;
   }
 
@@ -1666,6 +1686,24 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
   }
   .hero .btn--ghost:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+
+  /* Green = pine green background, cream text */
+  .hero .btn--green {
+    background: #2e8b57;
+    color: var(--cream);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .hero .btn--green:hover {
+    background: #236b43;
+    color: var(--cream);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .hero .btn--green:active {
     transform: translate(5px, 5px);
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }

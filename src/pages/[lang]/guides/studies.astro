@@ -1,0 +1,11 @@
+---
+import { getLangFromUrl, localizedPath } from "../../../i18n/utils";
+import { prefixedLocales } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+return Astro.redirect(localizedPath("/wip", lang), 302);
+---

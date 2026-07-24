@@ -6,11 +6,11 @@ import GuidesBody from "../../components/pages/GuidesBody.astro";
 import { prefixedLocales } from "../../i18n/config";
 import { localizedPath, type Locale } from "../../i18n/utils";
 
-type PageSlug = "guides" | "events" | "contact" | "foyer";
+type PageSlug = "guides" | "events" | "contact" | "foyer" | "wip";
 
 // Each page per non-default locale: /fr/guides, /es/contact, …
 export function getStaticPaths() {
-  const pages: PageSlug[] = ["guides", "events", "contact", "foyer"];
+  const pages: PageSlug[] = ["guides", "events", "contact", "foyer", "wip"];
   return prefixedLocales.flatMap((lang) =>
     pages.map((slug) => ({ params: { lang, slug } })),
   );

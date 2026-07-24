@@ -356,6 +356,24 @@ const labelWidth = (text: string) => {
   return text.length * charWidth;
 };
 
+function splitLabel(label: string): string[] {
+  if (!label) return [];
+  if (label.includes(" & ")) {
+    const parts = label.split(" & ");
+    return [parts[0], `& ${parts[1]}`];
+  }
+  if (label.includes(" / ")) {
+    const parts = label.split(" / ");
+    return [parts[0], `/ ${parts[1]}`];
+  }
+  if (label.length > 13 && label.includes(" ")) {
+    const words = label.split(" ");
+    const mid = Math.ceil(words.length / 2);
+    return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
+  }
+  return [label];
+}
+
 const SHOW_VERTEX_COORDS = false;
 const DEBUG = import.meta.env.DEV && SHOW_VERTEX_COORDS;
 const vertsAttr = (room: Room) =>
@@ -489,7 +507,7 @@ const floorModels = floorList.map((fl) => {
 
               return (
                 <g
-                  class:list={["room", { "room--interactive": hasBlurb }]}
+                  class:list={["room", { "room--interactive": hasBlurb, "room--welcom": room.id === "welcom" }]}
                   id={room.id}
                   data-id={room.id}
                   data-label={translatedLabel}
@@ -499,37 +517,64 @@ const floorModels = floorList.map((fl) => {
                   data-anchor-y={anchor.y.toFixed(1)}
                   tabindex={hasBlurb ? "0" : undefined}
                   role={hasBlurb ? "button" : undefined}
-                  aria-label={hasBlurb ? `${translatedLabel}. ${translatedBlurb}` : (translatedLabel || undefined)}
+                  aria-label={hasBlurb ? (translatedLabel ? `${translatedLabel}. ${translatedBlurb}` : translatedBlurb) : (translatedLabel || undefined)}
                 >
                   {walls.map((w, i) => (
                     <path
                       class:list={["room__wall", { "room__wall--hidden": Math.abs(zTop - w.wallZBot) < 0.1 }]}
                       d={toPath(w.pts)}
                       data-d-rest={toPath(w.pts)}
-                      data-d-active={toPath(activeWalls[i].pts)}
+                      data-d-active={activeWalls[i].pts ? toPath(activeWalls[i].pts) : undefined}
                     />
                   ))}
-                  <g id={`${room.id}-top`} class="room__top-group">
-                    <path
-                      class="room__top"
-                      d={topPath}
-                      data-d-rest={topPath}
-                      data-d-active={activeTopPath}
-                      style={`--accent:${room.accent}`}
-                    />
-                    <text
-                      class="room__label"
-                      x={anchor.x}
-                      y={anchor.y + 4}
-                      text-anchor="middle"
-                    >
-                      {translatedLabel}
-                    </text>
-                  </g>
+                  <path
+                    id={`${room.id}-top`}
+                    class="room__top"
+                    d={topPath}
+                    data-d-rest={topPath}
+                    data-d-active={activeTopPath}
+                    style={`--accent:${room.accent}`}
+                  />
                 </g>
               );
             })
           }
+          <g class="foyer__labels-layer" style="pointer-events: none;">
+            {
+              models.map(({ room, anchor }) => {
+                const translatedLabel = (t as any).foyer?.labels?.[room.id] ?? room.label;
+                if (!translatedLabel || !translatedLabel.trim()) return null;
+                const lines = splitLabel(translatedLabel);
+                return (
+                  <g>
+                    {room.id === "welcom" && (
+                      <g class="welcom-beacon" transform={`translate(${anchor.x}, ${anchor.y - 20})`} aria-hidden="true">
+                        <circle class="welcom-beacon__pulse" cx="0" cy="0" r="10" />
+                        <circle class="welcom-beacon__core" cx="0" cy="0" r="5" />
+                        <circle class="welcom-beacon__dot" cx="0" cy="0" r="2" />
+                      </g>
+                    )}
+                    <text
+                      id={`${room.id}-label`}
+                      class:list={["room__label", { "room__label--welcom": room.id === "welcom" }]}
+                      x={anchor.x}
+                      y={anchor.y}
+                      text-anchor="middle"
+                    >
+                      {lines.map((line, i) => (
+                        <tspan
+                          x={anchor.x}
+                          dy={i === 0 ? (lines.length > 1 ? -(lines.length - 1) * 6.5 + 4 : 4) : 13}
+                        >
+                          {line}
+                        </tspan>
+                      ))}
+                    </text>
+                  </g>
+                );
+              })
+            }
+          </g>
           {chevronPaths.map((d, i) => {
             const g = entranceGlyphs[i];
             const label = (t as any).foyer?.entranceLabels?.[g.fromId] ?? g.fromId;
@@ -837,6 +882,67 @@ const floorModels = floorList.map((fl) => {
     stroke-linejoin: round;
   }
 
+  /* ── Highlighted WELCOM' Room ─────────────────────────────────────── */
+  .room--welcom .room__top {
+    fill: var(--hive-green) !important;
+    stroke: var(--ink);
+    stroke-width: 3.5px;
+    filter: drop-shadow(0 0 10px rgba(43, 147, 56, 0.75));
+    animation: welcomGlow 3s ease-in-out infinite alternate;
+  }
+  .room--welcom .room__wall {
+    fill: #20782a !important;
+    stroke: var(--ink);
+    stroke-width: 2.5px;
+  }
+  .room__label--welcom {
+    font-weight: 900;
+    fill: var(--ink);
+    font-size: 14px;
+    paint-order: stroke fill;
+    stroke: var(--cream);
+    stroke-width: 3px;
+  }
+
+  .welcom-beacon {
+    pointer-events: none;
+  }
+  .welcom-beacon__pulse {
+    fill: var(--hive-green);
+    stroke: #20782a;
+    stroke-width: 1px;
+    animation: welcomBeaconPulse 2s ease-out infinite;
+    transform-origin: center;
+  }
+  .welcom-beacon__core {
+    fill: #20782a;
+    stroke: var(--ink);
+    stroke-width: 2px;
+  }
+  .welcom-beacon__dot {
+    fill: var(--cream);
+  }
+
+  @keyframes welcomGlow {
+    0% {
+      filter: drop-shadow(0 0 6px rgba(43, 147, 56, 0.5));
+    }
+    100% {
+      filter: drop-shadow(0 0 14px rgba(43, 147, 56, 0.95));
+    }
+  }
+
+  @keyframes welcomBeaconPulse {
+    0% {
+      r: 4px;
+      opacity: 0.95;
+    }
+    100% {
+      r: 18px;
+      opacity: 0;
+    }
+  }
+
   .room__wall, .room__top {
     transition: d 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.25), fill 0.18s ease, opacity 0.18s ease;
   }
@@ -864,7 +970,8 @@ const floorModels = floorList.map((fl) => {
   .room--interactive:hover .room__label,
   .room--interactive:focus-visible .room__label,
   .room--interactive.is-active .room__label,
-  .room__top-group.is-active .room__label {
+  .room__top-group.is-active .room__label,
+  .room__label.is-active {
     transform: translateY(-16px);
   }
   .room--interactive:hover .room__top,
@@ -890,7 +997,9 @@ const floorModels = floorList.map((fl) => {
   .foyer__tip {
     position: absolute;
     z-index: 15;
-    max-width: 230px;
+    width: max-content;
+    min-width: 280px;
+    max-width: 380px;
     padding: var(--space-3) var(--space-4);
     background: var(--cream);
     border: 3px solid var(--navy);
@@ -899,12 +1008,18 @@ const floorModels = floorList.map((fl) => {
     pointer-events: none;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
 
     opacity: 0;
     visibility: hidden;
     transform: translate(-50%, -90%) scale(0.9);
     transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.25), visibility 0.15s;
+  }
+  @media (max-width: 640px) {
+    .foyer__tip {
+      min-width: 220px;
+      max-width: calc(100vw - 32px);
+    }
   }
   .foyer__tip.is-visible {
     opacity: 1;
@@ -941,6 +1056,7 @@ const floorModels = floorList.map((fl) => {
     const mapContainer = foyer.querySelector<HTMLElement>(".foyer__map-container")!;
     const tip = foyer.querySelector<HTMLElement>("[data-tip]")!;
     const nameEl = foyer.querySelector<HTMLElement>("[data-tip-name]")!;
+    const blurbEl = foyer.querySelector<HTMLElement>("[data-tip-blurb]")!;
     const tabs = foyer.querySelectorAll<HTMLAnchorElement>("[data-floor-tab]");
     const layers = foyer.querySelectorAll<HTMLElement>("[data-floor-layer]");
     let active: Element | null = null;
@@ -1045,6 +1161,8 @@ const floorModels = floorList.map((fl) => {
         active.classList.remove("is-active");
         const activeTop = document.getElementById(`${active.id}-top`);
         if (activeTop) activeTop.classList.remove("is-active");
+        const activeLabel = document.getElementById(`${active.id}-label`);
+        if (activeLabel) activeLabel.classList.remove("is-active");
         active.querySelectorAll("[data-d-rest]").forEach((el) => {
           el.setAttribute("d", el.getAttribute("data-d-rest")!);
         });
@@ -1061,6 +1179,8 @@ const floorModels = floorList.map((fl) => {
         active.classList.remove("is-active");
         const activeTop = document.getElementById(`${active.id}-top`);
         if (activeTop) activeTop.classList.remove("is-active");
+        const activeLabel = document.getElementById(`${active.id}-label`);
+        if (activeLabel) activeLabel.classList.remove("is-active");
         active.querySelectorAll("[data-d-rest]").forEach((el) => {
           el.setAttribute("d", el.getAttribute("data-d-rest")!);
         });
@@ -1069,6 +1189,8 @@ const floorModels = floorList.map((fl) => {
       room.classList.add("is-active");
       const roomTop = document.getElementById(`${room.id}-top`);
       if (roomTop) roomTop.classList.add("is-active");
+      const roomLabel = document.getElementById(`${room.id}-label`);
+      if (roomLabel) roomLabel.classList.add("is-active");
 
       room.querySelectorAll("[data-d-active]").forEach((el) => {
         el.setAttribute("d", el.getAttribute("data-d-active")!);
@@ -1079,8 +1201,10 @@ const floorModels = floorList.map((fl) => {
         overlay.setAttribute("href", `#${room.id}-top`);
       }
 
-      nameEl.textContent = room.getAttribute("data-label");
-      blurbEl.textContent = room.getAttribute("data-blurb");
+      const labelText = room.getAttribute("data-label") || "";
+      nameEl.textContent = labelText;
+      nameEl.style.display = labelText ? "" : "none";
+      blurbEl.textContent = room.getAttribute("data-blurb") || "";
       paintDebug(room);
       tip.classList.add("is-visible");
       
@@ -1110,7 +1234,10 @@ const floorModels = floorList.map((fl) => {
         }
       });
       room.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          active === room ? hide() : show(room);
+        } else if (e.key === "Escape") {
           hide();
           (room as SVGElement).blur();
         }

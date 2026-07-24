@@ -1,0 +1,891 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import Footer from "../Footer.astro";
+import RichText from "../RichText.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import HexBg from "../HexBg.astro";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const d = t.dailyLife;
+
+const storeLogos = [
+  "/imgs/stores/g20.webp",
+  "/imgs/stores/carrefour.webp"
+];
+---
+
+<Base title={t.meta.guidesDailyLife.title} description={t.meta.guidesDailyLife.description}>
+  <span id="top"></span>
+  <SiteHeader />
+
+  <main class="daily-page">
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero-band">
+      <HexBg
+        radius={56}
+        gap={4}
+        opacity={0.06}
+        color="var(--honey)"
+        strokeWidth={1.5}
+      />
+
+      <div class="container hero-content">
+        <div class="hero-text prose-header">
+          <h1 class="hero-title">{d.heroTitle}</h1>
+          <p class="hero-lede"><RichText text={d.heroLede} /></p>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Roadmap Timeline ────────────────────────────── -->
+    <section class="band band--alt">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{d.roadmapEyebrow}</p>
+          <h2>{d.roadmapH2}</h2>
+          <p class="lede">{d.roadmapLede}</p>
+        </div>
+
+        <div class="roadmap-grid">
+          {d.roadmapSteps.map((item) => (
+            <a
+              href={item.url}
+              class="roadmap-card"
+            >
+              <div class="roadmap-card__top">
+                <div class="roadmap-card__number">{item.step}</div>
+                <span class="roadmap-card__link-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </span>
+              </div>
+              <div class="roadmap-card__content">
+                <span class="roadmap-card__time">{item.time}</span>
+                <h3 class="roadmap-card__title">{item.title}</h3>
+                <p class="roadmap-card__desc">{item.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Step 1: Groceries & Supermarkets ───────────── -->
+    <section class="band" id="step-groceries">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{d.groceriesEyebrow}</p>
+          <h2>{d.groceriesH2}</h2>
+          <p class="lede">{d.groceriesLede}</p>
+        </div>
+
+        <h3 class="subsection-heading">{d.groceriesStoresTitle}</h3>
+        <div class="stores-grid">
+          {d.groceriesStores.map((store, idx) => (
+            <div class="store-card">
+              <div class="store-card__header">
+                <h4 class="store-card__name">{store.name}</h4>
+                <img
+                  src={storeLogos[idx]}
+                  alt={`${store.name} logo`}
+                  class="store-card__logo"
+                  width="70"
+                  height="32"
+                  loading="lazy"
+                />
+              </div>
+              <p class="store-card__desc">{store.desc}</p>
+              {store.url && (
+                <a
+                  href={store.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="store-card__btn"
+                >
+                  <span>Directions & Info</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <h3 class="subsection-heading">{d.groceriesTipsTitle}</h3>
+        <ul class="step-list">
+          {d.groceriesTips.map((tip) => (
+            <li class="step-item">
+              <RichText text={tip} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Step 2: Laundry Facilities (Laveries) ───────── -->
+    <section class="band band--alt" id="step-laundry">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{d.laundryEyebrow}</p>
+          <h2>{d.laundryH2}</h2>
+          <p class="lede">{d.laundryLede}</p>
+        </div>
+
+        <h3 class="subsection-heading">{d.laundryLocationsTitle}</h3>
+        <div class="laundry-grid">
+          {d.laundryLocations.map((item) => {
+            const CardTag = item.url ? 'a' : 'div';
+            return (
+              <CardTag
+                href={item.url}
+                target={item.url ? "_blank" : undefined}
+                rel={item.url ? "noopener noreferrer" : undefined}
+                class:list={["laundry-card", { "laundry-card--link": !!item.url }]}
+              >
+                <div class="laundry-card__header">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" class="laundry-card__icon" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    <circle cx="12" cy="13" r="5"></circle>
+                    <path d="M12 8v.01"></path>
+                  </svg>
+                  <h4 class="laundry-card__title">{item.building}</h4>
+                  {item.url && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" class="laundry-card__ext" aria-hidden="true">
+                      <path d="M18 13v6a2 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  )}
+                </div>
+                <p class="laundry-card__location">{item.location}</p>
+                {item.url && (
+                  <div class="laundry-card__status-btn">
+                    <span class="laundry-card__dot" aria-hidden="true"></span>
+                    <span>{d.laundryLiveStatusBtn || "Check Machine Availability ↗"}</span>
+                  </div>
+                )}
+              </CardTag>
+            );
+          })}
+        </div>
+
+        <h3 class="subsection-heading">{d.laundryTipsTitle}</h3>
+        <ul class="step-list">
+          {d.laundryTips.map((tip) => (
+            <li class="step-item">
+              <RichText text={tip} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Step 3: Garbage Bins & Recycling ───────────── -->
+    <section class="band" id="step-garbage">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{d.garbageEyebrow}</p>
+          <h2>{d.garbageH2}</h2>
+          <p class="lede">{d.garbageLede}</p>
+        </div>
+
+        <h3 class="subsection-heading">{d.garbageLocationsTitle}</h3>
+        <div class="garbage-locations-grid">
+          {d.garbageLocations.map((item) => (
+            <div class="garbage-loc-card">
+              <h4>{item.building}</h4>
+              <p>{item.location}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="subsection-heading">{d.garbageSortingTitle}</h3>
+        <div class="sorting-grid">
+          {d.garbageSorting.map((item) => (
+            <div class="sorting-card">
+              <div class="sorting-card__header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" class="sorting-card__icon" aria-hidden="true">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+                <h3>{item.type}</h3>
+              </div>
+              <p><RichText text={item.desc} /></p>
+            </div>
+          ))}
+        </div>
+
+        {d.garbageTip && (
+          <div class="tip-box">
+            <p><RichText text={d.garbageTip} /></p>
+          </div>
+        )}
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Step 4: Pharmacies, Mail & Emergency ────────── -->
+    <section class="band band--alt" id="step-services">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{d.servicesEyebrow}</p>
+          <h2>{d.servicesH2}</h2>
+          <p class="lede">{d.servicesLede}</p>
+        </div>
+
+        <div class="services-grid">
+          {d.servicesCards.map((card) => (
+            <div class="services-card">
+              <h3>{card.title}</h3>
+              <p><RichText text={card.desc} /></p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Support & Office Hours ────────────────────────── -->
+    <section class="band">
+      <div class="container">
+        <div class="prose-header support-box">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{d.supportEyebrow}</p>
+          <h2>{d.supportH2}</h2>
+          <p class="lede">{d.supportBody}</p>
+          <div class="action-wrap">
+            <a class="btn btn--primary" href={localizedPath("/foyer/rdc", lang)}>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              {d.supportBtn}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+<style>
+  /* ── Shared Layout ──────────────────────────────────── */
+  .daily-page {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
+  .band { padding-block: var(--section-y); position: relative; }
+  .band--alt { background-color: var(--cream-deep); }
+  .prose-header { max-width: 72ch; }
+  .prose-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--ink); margin-bottom: var(--space-3); line-height: 1.15; }
+  .prose-header .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
+
+  /* ── Eyebrow ────────────────────────────────────────── */
+  .eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--honey-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-weight: 800;
+  }
+  .eyebrow__hex {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: currentColor;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .hero-band {
+    background-color: var(--ink);
+    color: var(--cream);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    padding-top: calc(var(--nav-h) + clamp(var(--space-6), 6vw, var(--space-8)));
+    padding-bottom: calc(var(--space-8) + 40px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 979px) {
+    .hero-band {
+      --nav-h: 78px;
+    }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+    line-height: 1.05;
+    color: var(--honey);
+    margin-bottom: var(--space-4);
+    text-shadow: 4px 4px 0 var(--navy);
+  }
+
+  .hero-lede {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  /* ── Roadmap Cards ─────────────────────────────────── */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .roadmap-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1050px) {
+    .roadmap-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .roadmap-card,
+  .roadmap-card *,
+  .roadmap-card:hover,
+  .roadmap-card:hover * {
+    text-decoration: none !important;
+  }
+
+  .roadmap-card {
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 4px 4px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .roadmap-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 7px 7px 0 var(--navy);
+    background: #FFFBEB;
+  }
+
+  .roadmap-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .roadmap-card__number {
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--honey-deep);
+    width: max-content;
+  }
+
+  .roadmap-card__link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--honey-wash);
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .roadmap-card:hover .roadmap-card__link-icon {
+    transform: scale(1.15) rotate(4deg);
+    background: var(--honey);
+    color: var(--ink);
+  }
+
+  .roadmap-card__time {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--navy-soft);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .roadmap-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+    line-height: 1.2;
+  }
+
+  .roadmap-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Subsections & Stores Grid ─────────────────────── */
+  .subsection-heading {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .stores-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .stores-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .store-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .store-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .store-card__name {
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .store-card__logo {
+    max-height: 36px;
+    max-width: 90px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .store-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .store-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cream-deep);
+    border: 2px solid var(--navy);
+    border-radius: var(--radius-button);
+    padding: 8px 14px;
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    color: var(--navy);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: auto;
+  }
+
+  .store-card__btn:hover {
+    background: var(--honey);
+    transform: translateY(-2px);
+  }
+
+  /* ── Step Lists & Info Cards ────────────────────────── */
+  .step-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+  }
+
+  .step-item {
+    background: var(--cream-deep);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--navy);
+    box-shadow: 3px 3px 0 var(--navy);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Laundry Grid ───────────────────────────────────── */
+  .laundry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .laundry-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .laundry-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .laundry-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+
+  a.laundry-card--link {
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    cursor: pointer;
+  }
+
+  a.laundry-card--link:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0 var(--navy);
+    background: var(--cream-deep);
+  }
+
+  .laundry-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .laundry-card__icon {
+    color: var(--honey-deep);
+    flex-shrink: 0;
+  }
+
+  .laundry-card__ext {
+    margin-left: auto;
+    color: var(--navy-soft);
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  a.laundry-card--link:hover .laundry-card__ext {
+    color: var(--honey-deep);
+    transform: translate(2px, -2px);
+  }
+
+  .laundry-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .laundry-card__location {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .laundry-card__status-btn {
+    margin-top: auto;
+    padding-top: var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    color: var(--navy);
+  }
+
+  .laundry-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--green);
+    display: inline-block;
+    box-shadow: 0 0 0 2px rgba(58, 181, 74, 0.25);
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 rgba(58, 181, 74, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 6px rgba(58, 181, 74, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(58, 181, 74, 0);
+    }
+  }
+
+  /* ── Garbage & Sorting Grids ────────────────────────── */
+  .garbage-locations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .garbage-locations-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .garbage-loc-card {
+    background: var(--cream-deep);
+    border: 2px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+    box-shadow: 2px 2px 0 var(--navy);
+  }
+
+  .garbage-loc-card h4 {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+  }
+
+  .garbage-loc-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .sorting-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .sorting-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .sorting-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .sorting-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .sorting-card__icon {
+    color: var(--honey-deep);
+    flex-shrink: 0;
+  }
+
+  .sorting-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .sorting-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Tip Boxes ──────────────────────────────────────── */
+  .tip-box {
+    background: rgba(239, 171, 67, 0.15);
+    border: 2.5px dashed var(--honey-deep);
+    border-radius: var(--radius);
+    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-5);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tip-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--navy);
+  }
+
+  /* ── Services Grid ──────────────────────────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .services-card {
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .services-card h3 {
+    font-family: var(--font-accent);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .services-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* ── Action Buttons & Support ────────────────────────── */
+  .action-wrap {
+    margin-top: var(--space-5);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+    padding: 0.7em 1.3em;
+    border-radius: var(--radius-button);
+    border: 2.5px solid var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .btn--primary {
+    background: var(--honey);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--navy);
+  }
+
+  .btn--primary:hover {
+    background: var(--honey-deep);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--navy);
+  }
+
+  .support-box {
+    text-align: center;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .support-box .eyebrow {
+    justify-content: center;
+  }
+
+  .support-box .action-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ── Responsive adjustments ──────────────────────────── */
+  @media (max-width: 640px) {
+    .container {
+      padding-inline: var(--space-4);
+    }
+  }
+</style>

@@ -6,15 +6,17 @@ import { getLangFromUrl } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/ui";
 
 interface Props {
-  page: "guides" | "events" | "contact";
+  page?: "guides" | "events" | "contact" | "wip" | string;
 }
 
-const { page } = Astro.props;
+const { page = "guides" } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const metaObj = t.meta as Record<string, { title?: string }>;
+const pageTitle = metaObj[page]?.title || "WIP | WELCOM’";
 ---
 
-<Base title={t.meta[page].title}>
+<Base title={pageTitle}>
   <SiteHeader />
 
   <main class="wip">

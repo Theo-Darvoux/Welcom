@@ -27,6 +27,10 @@ export const en = {
     contact: {
       title: "Contact | WELCOM’",
     },
+    foyer: {
+      title: "Interactive Foyer 3D Map | WELCOM’",
+      description: "Interactive 3D map of the Foyer student center at Télécom SudParis & IMT-BS. Explore association rooms and campus services.",
+    },
     guidesGettingHere: {
       title: "Getting Here | Guides | WELCOM’",
       description: "Step-by-step directions to the Télécom SudParis & IMT-BS campus in Évry-Courcouronnes, from airports, by train, or on foot.",
@@ -46,6 +50,10 @@ export const en = {
     guidesMoneyPhone: {
       title: "Money & Phone | Guides | WELCOM’",
       description: "Complete guide to setting up French SIM cards, mobile operators (Free, Sosh, B&You), Société Générale bank account, RIB, Revolut/Wise, and student money management in Évry.",
+    },
+    guidesDailyLife: {
+      title: "Daily Life & Groceries | Guides | WELCOM’",
+      description: "Essential guide to daily life in Évry for international students: grocery shopping (Le Spot, G20), laundry rooms (laveries) in Maisel buildings, waste management & recycling, pharmacies, and mail/packages.",
     },
     foyer: {
       title: "Foyer | WELCOM’",
@@ -70,6 +78,7 @@ export const en = {
     lede: "Just arrived, or about to? We’re the student club that helps international students settle into life at {INT}, and everything you need is right here! Feel free to contact us!",
     ctaTeam: "Meet the team",
     ctaGuides: "View guides",
+    ctaFoyer: "Foyer Map",
   },
   about: {
     eyebrow: "Meet the hive",
@@ -291,8 +300,8 @@ export const en = {
         description: "ECTS, wifi, library, and courses",
       },
       "events-buddy": {
-        title: "Events & Buddy",
-        description: "Welcome BBQ, buddy program, trips",
+        title: "Events",
+        description: "Welcome BBQ, trips",
       },
     },
   },
@@ -318,36 +327,79 @@ export const en = {
     Foyer: "The student center (foyer) houses the offices of the campus student associations. It is located between buildings U1, U4, and the school.",
     "Global Village": "An evening where students set up stands in the colors of their countries, cook traditional specialties, and share their cultures at the school forum.",
     ritz: "The name given to the free food offered during events, named after the school's restaurant, the Rits, with a cheeky nod to the famous Parisian hotel, the Ritz.",
+    shotgun: "A campus term for a first-come, first-served registration process where speed is key.",
     fallback: "A campus slang word.",
   },
   foyer: {
     title: "Interactive Foyer Map",
     description: "Explore the Foyer map, discover campus associations and rooms.",
     floors: {
-      rdc: "RDC",
-      ss1: "SS1",
+      rdc: "Ground Floor",
+      ss1: "Basement",
     },
     rooms: {
-      bds: "BDS",
-      bda: "BDA",
-      bde: "BDE",
-      welcom: "Welcom’",
-      minet: "MiNET",
-      declic: "Déclic",
-      evrything: "Evry-thing",
+      "club-zik": "Music club rehearsal room and equipment for campus musicians.",
+      intv: "You'll meet them eventually.",
+      intech: "Computer science, robotics, and tech projects club.",
+      "club-jeux": "Board games, role-playing games, and gaming evenings.",
+      asint: "Sports Office (ASINT): sports tournaments, training, and athletic events.",
+      welcom: "Welcom' BDI: international student welcome and integration association.",
+      bde: "Student Union (BDE): student life management and major campus events.",
+      bda: "Arts Office (BDA): theater, music, dance, culture, and artistic events.",
+      minet: "MiNET: student internet service provider & campus high-speed fiber network.",
+      emotys: "Musical theater troupe and student performing arts shows.",
+      bpm: "Electronic music, DJing, sound engineering, and lighting association.",
+      declic: "Déclic Photo Club: campus event coverage and photography workshops.",
+      cookit: "Cook'IT: culinary association, cooking workshops, and food tastings.",
+      bar: "Foyer main bar counter and central student gathering space.",
+      reserve: "Storage room managed by the AbsINThe campus bar.",
+      absinthe: "The campus student bar for social gatherings and relaxed evenings.",
+      tijet: "Main office of the TiJET Junior Enterprise association.",
+      cave: "Shared room for Club Code, the CELL (game creation: video games, board games, escape games...), Gam'INT, and Model'IT.",
+      bagagerie: "Main MiNET storage room containing their spare network equipment.",
+      evryone: "Campus student radio station, live broadcasts, and podcasts.",
+      tabernacle: "Storage room of the BDE (Student Union).",
+      minet2: "Main server room managed by the MiNET association.",
+      xtreme: "Shared room for Xtreme (outdoor running, trail, Bike&Run organizers) and Dolph'INT (sailing & nautical club).",
+      univert: "Shared room for Univert (ecology & sustainability) and INTervenir (humanitarian association).",
+      equality: "Shared room for EquALLity (feminism & gender equality) and IN&acT (campus LGBTQIA+ association).",
+      hackademint: "Cybersecurity, ethical hacking, and CTF competition club.",
+      paintit: "Shared room for Paint'IT (painting & drawing), TellTheTale (narration & RPGs), and INTimes (student newspaper).",
     },
     labels: {
-      bds: "Sports Office",
-      bda: "Arts Office",
-      bde: "Student Union",
-      welcom: "Welcom’ BDI",
-      minet: "MiNET Network Association",
-      declic: "Déclic Photo Club",
-      evrything: "Evry-thing Association",
+      "club-zik": "Club Zik",
+      intv: "",
+      intech: "INTech",
+      "club-jeux": "Board Games Club",
+      asint: "ASINT",
+      welcom: "Welcom' BDI",
+      bde: "BDE",
+      bda: "BDA",
+      minet: "MiNET",
+      emotys: "Emoty:S",
+      bpm: "BPM Club Sono",
+      declic: "Déclic Photo",
+      cookit: "Cook'IT",
+      bar: "Bar",
+      reserve: "Réserve",
+      absinthe: "AbsINThe",
+      tijet: "TiJET",
+      cave: "La Cave",
+      bagagerie: "Bagagerie",
+      evryone: "Evryone Radio",
+      tabernacle: "Tabernacle",
+      minet2: "Salle Serveur",
+      xtreme: "Xtreme / Dolph'INT",
+      univert: "Univert & INTervenir",
+      equality: "EquALLity & IN&acT",
+      hackademint: "Hackadem'INT",
+      paintit: "Paint'IT",
     },
     entranceLabels: {
-      main: "Main Entrance",
-      patio: "Patio Access",
+      rer: "To RER Station",
+      "espace-t": "To Espace T",
+      u2: "Building U2",
+      u4: "Building U4",
     },
   },
   gettingHere: {
@@ -527,7 +579,7 @@ export const en = {
     bookingH2: "How to Book Your Room",
     bookingLede: "Reserving your accommodation is done online directly through the official Maisel portal.",
     bookingSteps: [
-      "<strong>1. Online Booking:</strong> Book online at <a href=\"https://maisel.imtbs-tsp.eu\" target=\"_blank\" rel=\"noopener noreferrer\">maisel.imtbs-tsp.eu</a> starting in June for September intake. Pay a <strong>200 € earnest deposit (arrhes)</strong> by credit card (non-refundable, deducted from your first month's rent).",
+      "<strong>1. Online Booking:</strong> Maisel reservations are a {shotgun} (first-come, first-served). The exact dates and times for the shotgun are communicated in advance and differ for each program/filière. Book online at <a href=\"https://maisel.imtbs-tsp.eu\" target=\"_blank\" rel=\"noopener noreferrer\">maisel.imtbs-tsp.eu</a> (usually starting in June for September intake). Pay a <strong>200 € earnest deposit (arrhes)</strong> by credit card (non-refundable, deducted from your first month's rent).",
       "<strong>2. Physical Guarantor (Cautionnaire):</strong> You must provide a physical guarantor (a financially capable person). <strong>Important:</strong> Maisel <em>does not</em> accept Visale guarantee.",
       "<strong>3. Security Deposit & Arrival:</strong> A <strong>600 € security deposit (dépôt de garantie)</strong> is paid on arrival and refunded upon departure. Lease signing and key/badge collection take place at Maisel reception.",
     ],
@@ -560,7 +612,7 @@ export const en = {
       },
       {
         title: "Laverie / Shared Laundry Facilities",
-        desc: "Every building features a laundry room with washing machines (paid, detergent provided), free tumble dryers, and ironing boards.",
+        desc: "Maisel residents have access to shared laundry rooms with washing machines (paid via contactless) and tumble dryers.",
       },
       {
         title: "Maintenance & Support",
@@ -580,7 +632,7 @@ export const en = {
         title: "CVEC & School Registration",
         time: "Before / Day 1",
         desc: "Pay the CVEC fee on cvec.etudiant.gouv.fr to get your certificate, then complete registration at TSP or IMT-BS to obtain your official Certificat de Scolarité.",
-        url: "https://cvec.etudiant.gouv.fr"
+        url: "https://cvec.etudiant.gouv.fr/?_locale=en"
       },
       {
         step: "02",
@@ -618,7 +670,7 @@ export const en = {
     cvecDesc: "The CVEC (Contribution Vie Étudiante et de Campus) is a mandatory annual contribution (~103 €) collected by the French government to fund student life, sports, health, and cultural initiatives.",
     cvecStepsTitle: "How to complete this step:",
     cvecSteps: [
-      "Visit the official portal <a href=\"https://cvec.etudiant.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> and create your account.",
+      "Visit the official portal <a href=\"https://cvec.etudiant.gouv.fr/?_locale=en\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> and create your account.",
       "Pay the CVEC fee online by credit card (or download your exemption certificate if you are a scholarship holder).",
       "Download your <strong>Attestation de paiement CVEC</strong> (CVEC Certificate).",
       "Submit your CVEC certificate to the school registrar (Scolarité) during administrative registration.",
@@ -796,6 +848,139 @@ export const en = {
     supportBtn: "Find the Welcom' Office"
   },
 
+  dailyLife: {
+    heroTitle: "Daily Life in Évry",
+    heroLede: "Everything you need for day-to-day living on campus and in Évry: groceries, laundry in your dorm, trash & recycling, pharmacies, and receiving packages.",
+    roadmapEyebrow: "Step-by-step roadmap",
+    roadmapH2: "Your Daily Life Essentials",
+    roadmapLede: "Follow these essential steps and locations to make your daily routine smooth from your very first day on campus.",
+    roadmapSteps: [
+      {
+        step: "01",
+        title: "Groceries & Food",
+        time: "Daily / Weekly",
+        desc: "Supermarkets like G20 right next to campus, Le Spot shopping mall (Carrefour), and budget options.",
+        url: "#step-groceries"
+      },
+      {
+        step: "02",
+        title: "Laundry Rooms (Laveries)",
+        time: "Weekly",
+        desc: "Washing machines and dryers in Maisel buildings (U1, U2, U3, U4, U5, U6, U7).",
+        url: "#step-laundry"
+      },
+      {
+        step: "03",
+        title: "Garbage & Recycling",
+        time: "Daily",
+        desc: "Where to throw household trash, yellow recycling bins, glass collection, and sorting rules.",
+        url: "#step-garbage"
+      },
+      {
+        step: "04",
+        title: "Pharmacies & Mail",
+        time: "As needed",
+        desc: "Nearby pharmacies, health supplies, and receiving letters & packages at Maisel reception.",
+        url: "#step-services"
+      }
+    ],
+
+    groceriesEyebrow: "Step 1: Supermarkets & Food",
+    groceriesH2: "Where to Buy Groceries in Évry",
+    groceriesLede: "From quick top-ups right next to campus to large hypermarkets and international food markets, here are the best places to buy food.",
+    groceriesStoresTitle: "Popular Supermarkets & Shopping Spots",
+    groceriesStores: [
+      {
+        name: "Supermarché G20",
+        desc: "Located right near campus (5 min walk). Perfect for quick grocery runs, fresh produce, bread, snacks, and daily essentials.",
+        url: "https://maps.app.goo.gl/GVbdNA3yUtnY4v5H9"
+      },
+      {
+        name: "Le Spot Évry (Carrefour)",
+        desc: "The major shopping mall in Évry-Courcouronnes (10–12 min walk / 1 stop RER D). Features a massive Carrefour hypermarket for lower prices, cookware, electronics, clothing, plus 150+ stores.",
+        url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      }
+    ],
+    groceriesTipsTitle: "Key Things to Know When Grocery Shopping:",
+    groceriesTips: [
+      "<strong>Bring reusable shopping bags (Sac Cabas):</strong> Single-use plastic bags are not provided for free at French checkout counters (~0.15€–0.30€). Keep a reusable cloth bag in your backpack.",
+      "<strong>Anti-Food-Waste Apps (Too Good To Go):</strong> Download <em>Too Good To Go</em> on your phone to buy surplus food baskets from local bakeries and supermarkets around Évry for just 3€ to 5€."
+    ],
+
+    laundryEyebrow: "Step 2: Washing & Drying",
+    laundryH2: "Laveries & Laundry Facilities in Maisel Buildings",
+    laundryLede: "Every Maisel building (U1 to U7) has access to laundry facilities so you can wash and dry your clothes conveniently on campus.",
+    laundryLocationsTitle: "Where Laundry Rooms (Laveries) are Located:",
+    laundryLocations: [
+      { building: "Buildings U1, U2 & U4", location: "Singular laundry room located on the 1st floor of Building U4.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
+      { building: "Building U3", location: "Ground floor (RDC) dedicated laundry room.", url: "https://gad.touchnpay.fr/fr/public/material/406jkjom1ann1k2" },
+      { building: "Building U5", location: "Floor -1 (basement), at the end of the corridor on the right side when exiting the elevator.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9ezrig" },
+      { building: "Building U6", location: "Ground floor (RDC) laundry facility.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80gljgu5fxu" },
+      { building: "Building U7", location: "Ground floor (RDC) laundry facility.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9ezzr9" }
+    ],
+    laundryLiveStatusBtn: "Check Machine Availability ↗",
+    laundryTipsTitle: "How to Use the Laundry Facilities:",
+    laundryTips: [
+      "<strong>Payment Method:</strong> Payment is strictly via contactless payment (contactless bank card or smartphone with Apple Pay / Google Pay). Cash and coins are not accepted.",
+      "<strong>Detergent (Lessive):</strong> Detergent is automatically included in the washing machines. There is no need to bring your own!",
+      "<strong>Free Dryers (Sèche-linge):</strong> Tumble dryers in the laundry rooms are completely free to use."
+    ],
+
+    garbageEyebrow: "Step 3: Waste Management",
+    garbageH2: "Garbage Bins & Recycling (Tri Sélectif)",
+    garbageLede: "France enforces waste sorting rules. Keeping your residence clean and recycling properly helps campus stay clean and pleasant for everyone.",
+    garbageLocationsTitle: "Where Garbage Bins (Local Poubelles) are Located:",
+    garbageLocations: [
+      { building: "Buildings U1, U2 & U4", location: "In front of the building, just on the right side of the entrance." },
+      { building: "Building U3", location: "On the left side of the entrance (large bin area)." },
+      { building: "Building U5", location: "Near the main entrance." },
+      { building: "Building U6", location: "Location to be confirmed." },
+      { building: "Building U7", location: "Near the main entrance." }
+    ],
+    garbageSortingTitle: "Waste Sorting Guide (Tri Sélectif):",
+    garbageSorting: [
+      {
+        type: "Yellow Bin (Bac Jaune): Recyclables",
+        desc: "Plastic bottles, food containers, tin cans, drink cartons, paper, cardboard, and metal lids. Do NOT put food waste or organic trash in the yellow bin."
+      },
+      {
+        type: "Bordeaux / Red Bin (Bac Ordures Ménagères): Household Waste",
+        desc: "Non-recyclable household waste, food scraps, dirty food wrappers, and hygiene products. Always tie your trash bags securely before depositing them in the red/bordeaux bin."
+      },
+      {
+        type: "Glass Containers (Conteneurs à Verre)",
+        desc: "Glass bottles, jars, and glass containers. There is a single dedicated glass collection container located right in front of Building U5 (never put glass in room or standard bins)."
+      }
+    ],
+
+    servicesEyebrow: "Step 4: Pharmacies, Post & Extras",
+    servicesH2: "Pharmacies, Packages & Mail",
+    servicesLede: "Everything you need to know about getting medical supplies, receiving mail, and picking up online packages.",
+    servicesCards: [
+      {
+        title: "Pharmacies & Health Supplies",
+        desc: "The nearest pharmacy is <a href=\"https://maps.app.goo.gl/q9BrfpF19DyxtoqD9\" target=\"_blank\" rel=\"noopener noreferrer\">Pharmacie des Épinettes</a> (just a short walk from campus). Pharmacists in France can give advice on minor health issues, cold medication, and over-the-counter remedies."
+      },
+      {
+        title: "Receiving Letters & Mail",
+        desc: "Every student room has an assigned mailbox at the building entrance. Make sure your full name (matching your lease) is clearly labeled on your mailbox for La Poste delivery."
+      },
+      {
+        title: "Package & Online Deliveries",
+        desc: "The Maisel residence does <strong>NOT</strong> accept package deliveries on your behalf. You must be present in person to receive your package by hand when the delivery driver arrives (for example, Amazon delivery drivers cannot enter residence buildings). Alternatively, you can use pickup relay points (Points Relais) or lockers near campus."
+      },
+      {
+        title: "Emergency Numbers in France",
+        desc: "<strong>15:</strong> SAMU (Medical Emergency) • <strong>17:</strong> Police • <strong>18:</strong> Sapeurs-Pompiers (Fire & Rescue) • <strong>112:</strong> European Emergency Number (English-speaking)."
+      }
+    ],
+
+    supportEyebrow: "Need Help?",
+    supportH2: "Questions about daily life on campus?",
+    supportBody: "Drop by the WELCOM' room in the Foyer! Our team is happy to point you toward the best markets, help with dorm questions, or show you around Évry.",
+    supportBtn: "Find the Welcom' Office"
+  },
+
   guidesPage: {
     heroTitle: "Student Guides",
     heroLede: "Everything you need to navigate life at Télécom SudParis & IMT Business School: from arriving in France to housing, transit, banking, and student aid.",
@@ -835,6 +1020,13 @@ export const en = {
       desc: "Setting up French SIM cards, mobile operators (Free, Sosh, B&You), Société Générale bank account, RIB, and Revolut/Wise.",
       tag: "French SIM • RIB & Banking • Money tips",
       btn: "Read Money & Phone Guide"
+    },
+    dailyLife: {
+      title: "Daily Life & Groceries",
+      badge: "Campus Living",
+      desc: "Supermarkets (G20, Le Spot), laundry room (laverie) locations by building, garbage & recycling (tri sélectif), pharmacies, and packages.",
+      tag: "G20 & Le Spot • Laveries U1–U7 • Trash sorting",
+      btn: "Read Daily Life Guide"
     },
     supportEyebrow: "Need Personal Help?",
     supportTitle: "Have Questions About Admin or Housing?",
