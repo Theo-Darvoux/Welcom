@@ -348,7 +348,7 @@ export const en = {
       bda: "Arts Office (BDA): theater, music, dance, culture, and artistic events.",
       minet: "MiNET: student internet service provider & campus high-speed fiber network.",
       emotys: "Musical theater troupe and student performing arts shows.",
-      bpm: "Electronic music, DJing, sound engineering, and lighting association.",
+      bpm: "DJing, sound engineering, and lighting association.",
       declic: "Déclic Photo Club: campus event coverage and photography workshops.",
       cookit: "Cook'IT: culinary association, cooking workshops, and food tastings.",
       bar: "Foyer main bar counter and central student gathering space.",
@@ -370,7 +370,7 @@ export const en = {
       "club-zik": "Club Zik",
       intv: "",
       intech: "INTech",
-      "club-jeux": "Board Games Club",
+      "club-jeux": "Club Jeux",
       asint: "ASINT",
       welcom: "Welcom' BDI",
       bde: "BDE",
@@ -424,10 +424,8 @@ export const en = {
     ],
     orlyTitle: "From Paris-Orly",
     orlySteps: [
-      "Take the <strong>OrlyVal</strong> shuttle or <strong>Tram T7</strong> to connect to the Paris rail network.",
-      "Head to a {RER D} station (for example via Métro Line 14 → Châtelet, or RER C → Juvisy then RER D).",
-      "Take the {RER D} south, direction <strong>Corbeil-Essonnes</strong>.",
-      "Exit at <strong>Évry-Courcouronnes</strong> station.",
+      "<strong>Option 1: Direct Bus (Fastest, ~25-30 min):</strong> Take <strong>Express Bus 91.12</strong> directly from Orly Airport to <strong>{Le Bras de Fer}</strong> (located right next to campus - no train or RER D needed!).",
+      "<strong>Option 2: By Train:</strong> Take <strong>OrlyVal</strong>, <strong>Tram T7</strong>, or <strong>Métro Line 14</strong> to connect to the Paris rail network, transfer to the {RER D} heading south (direction <strong>Corbeil-Essonnes</strong>), and exit at <strong>Évry-Courcouronnes</strong> or <strong>{Le Bras de Fer}</strong>.",
     ],
     rerEyebrow: "By train",
     rerH2: "The {RER D}: your main line.",
@@ -618,6 +616,77 @@ export const en = {
         title: "Maintenance & Support",
         desc: "Technical repairs are handled by Maisel technicians via ticketing or email (<code>entretien-maisel@imtbs-tsp.eu</code>). Office hours: Mon–Thu 13:30–17:30, Fri 13:30–16:30.",
       },
+    ],
+    palaiseauEyebrow: "Palaiseau Campus",
+    palaiseauH2: "External Housing Resources for Palaiseau",
+    palaiseauLede: "If you are studying on the Palaiseau campus or looking for off-campus accommodation, the International Relations team recommends these trusted housing platforms, residences, and portals:",
+    visitWebsiteBtn: "Visit website",
+    palaiseauItems: [
+      {
+        name: "UXCO Student Residences",
+        badge: "Palaiseau",
+        desc: "Modern, fully furnished student apartments and co-living residences directly in Palaiseau.",
+        url: "https://www.uxco.com/fr/"
+      },
+      {
+        name: "ECLA Campus",
+        badge: "Massy-Palaiseau",
+        desc: "Large co-living student residence with extensive amenities located near Massy-Palaiseau station.",
+        url: "https://www.ecla.com/fr/"
+      },
+      {
+        name: "Rentola",
+        badge: "Filtered Search",
+        desc: "Aggregated rental listing platform filtered specifically for apartments and rooms in Palaiseau.",
+        url: "https://rentola.fr/"
+      },
+      {
+        name: "Mairie de Palaiseau",
+        badge: "Social Housing",
+        desc: "Official municipality housing portal for submitting social housing requests in Palaiseau.",
+        url: "https://www.ville-palaiseau.fr/mes-services/solidarite-logement-et-handicap/demande-de-logement-social"
+      },
+      {
+        name: "Résidences CROUS & Monlogementetudiant",
+        badge: "Public CROUS",
+        desc: "Official CROUS Versailles public student housing directory and national student portal.",
+        url: "https://www.crous-versailles.fr/se-loger/liste-de-nos-logements/"
+      },
+      {
+        name: "Lokaviz",
+        badge: "CROUS Portal",
+        desc: "Official CROUS student housing portal featuring verified private landlords and rooms.",
+        url: "https://www.lokaviz.fr/"
+      },
+      {
+        name: "Studapart",
+        badge: "Verified Rentals",
+        desc: "Student housing platform offering verified private studio listings, room shares, and landlord guarantees.",
+        url: "https://www.studapart.com/fr"
+      },
+      {
+        name: "Fac-Habitat",
+        badge: "Student Association",
+        desc: "Non-profit housing association providing affordable student apartments across the Paris region.",
+        url: "https://logement.smerra.fr/fac-habitat/"
+      },
+      {
+        name: "Seqens",
+        badge: "Social Housing",
+        desc: "Major social housing provider offering intermediate and student accommodation in Île-de-France.",
+        url: "https://www.seqens.fr/"
+      },
+      {
+        name: "Twenty Campus",
+        badge: "Student Residences",
+        desc: "Fully equipped student residences with services included (breakfast, cleaning, internet).",
+        url: "https://www.twenty-campus.com/fr/"
+      },
+      {
+        name: "Private Housing & Room Sharing",
+        badge: "Private Landlords",
+        desc: "Individual landlords, private rentals, shared apartments (colocation), and sublets.",
+      }
     ],
   },
   adminAid: {

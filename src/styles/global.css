@@ -88,3 +88,12 @@ a {
 :lang(vi) .president__sign {
   text-transform: uppercase;
 }
+
+/* ── Home Hero Foyer Map Button Mobile Visibility ───────── */
+@media (max-width: 768px) {
+  .hero__foyer-btn,
+  #hero-foyer-map-btn {
+    display: none !important;
+  }
+}
+

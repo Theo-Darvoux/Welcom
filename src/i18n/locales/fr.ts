@@ -347,7 +347,7 @@ export const fr: Translation = {
       bda: "Bureau des Arts : théâtre, musique, danse, culture et soirées artistiques.",
       minet: "Fournisseur d'accès Internet associatif du campus et réseau très haut débit.",
       emotys: "Troupe de comédie musicale du campus et spectacles étudiants.",
-      bpm: "Association de musique électronique, DJing, sonorisation et éclairage.",
+      bpm: "Association de DJing, sonorisation et éclairage.",
       declic: "Club photo du campus : couverture des événements et cours de photographie.",
       cookit: "Association culinaire : ateliers de cuisine, dégustations et évènements gourmands.",
       bar: "Comptoir et espace bar du Foyer pour se retrouver entre cours.",
@@ -423,10 +423,8 @@ export const fr: Translation = {
     ],
     orlyTitle: "Depuis Paris-Orly",
     orlySteps: [
-      "Prenez la navette <strong>OrlyVal</strong> ou le <strong>Tram T7</strong> pour rejoindre le réseau ferré francilien.",
-      "Rejoignez une gare du {RER D} (par exemple via la ligne 14 du métro → Châtelet, ou le RER C → Juvisy puis RER D).",
-      "Prenez le {RER D} vers le sud, direction <strong>Corbeil-Essonnes</strong>.",
-      "Descendez à la gare d'<strong>Évry-Courcouronnes</strong>.",
+      "<strong>Option 1 : Bus direct (Le plus rapide, ~25-30 min) :</strong> Prenez le <strong>Bus Express 91.12</strong> directement depuis l'aéroport d'Orly jusqu'à <strong>{Le Bras de Fer}</strong> (situé juste à côté du campus - pas besoin de prendre le RER D ou le train !).",
+      "<strong>Option 2 : En train :</strong> Prenez la navette <strong>OrlyVal</strong>, le <strong>Tram T7</strong> ou la <strong>Ligne 14</strong> du métro pour rejoindre le réseau ferré, puis le {RER D} vers le sud (direction <strong>Corbeil-Essonnes</strong>) et descendez à <strong>Évry-Courcouronnes</strong> ou au <strong>{Le Bras de Fer}</strong>.",
     ],
     rerEyebrow: "En train",
     rerH2: "Le {RER D} : votre ligne principale.",
@@ -617,6 +615,77 @@ export const fr: Translation = {
         title: "Maintenance & Assistance",
         desc: "Les réparations techniques sont assurées par les techniciens de la Maisel via ticket ou par email (<code>entretien-maisel@imtbs-tsp.eu</code>). Horaires de bureau : Lun–Jeu 13h30–17h30, Ven 13h30–16h30.",
       },
+    ],
+    palaiseauEyebrow: "Campus de Palaiseau",
+    palaiseauH2: "Logements Extérieurs : Campus de Palaiseau",
+    palaiseauLede: "Si vous étudiez sur le campus de Palaiseau ou recherchez un logement hors campus, l'équipe des Relations Internationales recommande ces résidences, plateformes et portails partenaires :",
+    visitWebsiteBtn: "Visiter le site",
+    palaiseauItems: [
+      {
+        name: "Résidences UXCO",
+        badge: "Palaiseau",
+        desc: "Résidences étudiantes modernes et meublées situées directement à Palaiseau.",
+        url: "https://www.uxco.com/fr/"
+      },
+      {
+        name: "ECLA Campus",
+        badge: "Massy-Palaiseau",
+        desc: "Grande résidence étudiante en coliving avec de nombreux services près de la gare Massy-Palaiseau.",
+        url: "https://www.ecla.com/fr/"
+      },
+      {
+        name: "Rentola",
+        badge: "Recherche Filtrée",
+        desc: "Moteur de recherche de logements de location filtré spécialement sur la ville de Palaiseau.",
+        url: "https://rentola.fr/"
+      },
+      {
+        name: "Mairie de Palaiseau",
+        badge: "Logement Social",
+        desc: "Portail municipal officiel pour effectuer vos démarches de demande de logement social à Palaiseau.",
+        url: "https://www.ville-palaiseau.fr/mes-services/solidarite-logement-et-handicap/demande-de-logement-social"
+      },
+      {
+        name: "Résidences CROUS & Monlogementetudiant",
+        badge: "CROUS Public",
+        desc: "Liste officielle des logements étudiants du CROUS de Versailles et portail national public.",
+        url: "https://www.crous-versailles.fr/se-loger/liste-de-nos-logements/"
+      },
+      {
+        name: "Lokaviz",
+        badge: "Portail CROUS",
+        desc: "Centrale du logement étudiant du CROUS certifiant les offres chez des particuliers.",
+        url: "https://www.lokaviz.fr/"
+      },
+      {
+        name: "Studapart",
+        badge: "Locations Vérifiées",
+        desc: "Plateforme de logement étudiant proposant des annonces vérifiées et des garanties propriétaires.",
+        url: "https://www.studapart.com/fr"
+      },
+      {
+        name: "Fac-Habitat",
+        badge: "Association",
+        desc: "Association spécialisée dans la location de logements étudiants abordables en Île-de-France.",
+        url: "https://logement.smerra.fr/fac-habitat/"
+      },
+      {
+        name: "Seqens",
+        badge: "Logement Social",
+        desc: "Bailleur social majeur proposant des résidences pour étudiants et jeunes actifs en Île-de-France.",
+        url: "https://www.seqens.fr/"
+      },
+      {
+        name: "Twenty Campus",
+        badge: "Résidences Étudiantes",
+        desc: "Résidences étudiantes équipées avec des services inclus (petit-déjeuner, ménage, internet).",
+        url: "https://www.twenty-campus.com/fr/"
+      },
+      {
+        name: "Logement Privé & Colocation",
+        badge: "Particuliers",
+        desc: "Offres de particuliers, chambres chez l'habitant, colocations et sous-locations.",
+      }
     ],
   },
   adminAid: {

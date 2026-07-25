@@ -121,7 +121,8 @@ const partners = [
               </svg>
             </a>
             <a
-              class="btn btn--green"
+              class="btn btn--green hero__foyer-btn foyer-map-btn"
+              id="hero-foyer-map-btn"
               href={localizedPath("/foyer/rdc", lang)}
             >
               {(t.hero as any).ctaFoyer ?? t.contactBand.foyerBtn}
@@ -451,7 +452,7 @@ const partners = [
             association.welcom@imtbs-tsp.eu
           </a>
           <a
-            class="btn btn--green"
+            class="btn btn--green foyer-map-btn"
             id="foyer-map-btn"
             href={localizedPath("/foyer/rdc", lang)}
           >
@@ -790,8 +791,10 @@ const partners = [
   }
 
   @media (max-width: 768px) {
-    .hero__bee {
-      display: none;
+    .hero__bee,
+    .hero__foyer-btn,
+    #hero-foyer-map-btn {
+      display: none !important;
     }
   }
 

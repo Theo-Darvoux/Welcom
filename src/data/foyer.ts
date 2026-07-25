@@ -40,7 +40,7 @@ export const rdc: Floor = {
     { id: "bda", label: "BDA", accent: A[3], blurb: "Bureau des Arts : théâtre, musique, danse, culture et soirées artistiques.", poly: [[480, 350], [600, 350], [600, 420], [520, 420], [520, 400], [480, 400]] },
     { id: "minet", label: "MiNET", accent: A[0], blurb: "Fournisseur d'accès Internet associatif du campus et réseau très haut débit.", poly: [[480, 400], [520, 400], [520, 420], [600, 420], [600, 480], [480, 480]] },
     { id: "emotys", label: "Emoty:S", accent: A[2], blurb: "Troupe de comédie musicale du campus et spectacles étudiants.", poly: [[480, 480], [600, 480], [600, 580], [480, 580]] },
-    { id: "bpm", label: "BPM Club Sono", accent: A[1], blurb: "Association de musique électronique, DJing, sonorisation et éclairage.", poly: [[318, 400], [400, 400], [400, 500], [318, 500]] },
+    { id: "bpm", label: "BPM Club Sono", accent: A[1], blurb: "Association de DJing, sonorisation et éclairage.", poly: [[318, 400], [400, 400], [400, 500], [318, 500]] },
     { id: "declic", label: "DÉCLIC", accent: A[2], blurb: "Club photo du campus : couverture des événements et cours de photographie.", poly: [[260, 500], [400, 500], [400, 600], [260, 600]] },
     { id: "cookit", label: "Cook'IT", accent: A[1], blurb: "Association culinaire : ateliers de cuisine, dégustations et évènements gourmands.", poly: [[920, 550], [920, 700], [800, 700], [800, 550]] },
     { id: "bar", label: "Bar", accent: A[5], blurb: "Comptoir et espace bar du Foyer pour se retrouver entre cours.", poly: [[800, 570], [800, 700], [750, 700], [700, 660]] },

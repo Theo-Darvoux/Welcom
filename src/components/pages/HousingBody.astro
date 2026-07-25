@@ -196,7 +196,46 @@ const g = t.housing;
           </div>
         </div>
       </div>
+
+      <HoneyDrip fill="var(--cream)" />
     </section>
+
+    <!-- ── Palaiseau Campus External Housing ───────────── -->
+    {g.palaiseauItems && (
+      <section class="band">
+        <div class="container">
+          <div class="prose">
+            <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.palaiseauEyebrow}</p>
+            <h2>{g.palaiseauH2}</h2>
+            <p class="lede"><RichText text={g.palaiseauLede} /></p>
+
+            <div class="palaiseau-grid">
+              {g.palaiseauItems.map((item) => (
+                <div class="palaiseau-card">
+                  <div class="palaiseau-card__top">
+                    <div class="palaiseau-card__header">
+                      <h3 class="palaiseau-card__title">{item.name}</h3>
+                    </div>
+                    <p class="palaiseau-card__desc"><RichText text={item.desc} /></p>
+                  </div>
+                  {item.url && (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="palaiseau-card__link"
+                    >
+                      <span>{g.visitWebsiteBtn}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <Footer />
   </main>
@@ -764,5 +803,103 @@ const g = t.housing;
     transform: translate(-2px, -2px);
     box-shadow: 5px 5px 0 var(--navy);
     background: var(--honey-deep);
+  }
+
+  /* ── Palaiseau Housing Grid ─────────────────────────── */
+  .palaiseau-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .palaiseau-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .palaiseau-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .palaiseau-card {
+    background: var(--cream-deep);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    box-shadow: 3px 3px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .palaiseau-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 0 var(--navy);
+  }
+
+  .palaiseau-card__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .palaiseau-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .palaiseau-card__title {
+    font-family: var(--font-accent);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .palaiseau-card__badge {
+    font-family: var(--font-accent);
+    font-size: 0.725rem;
+    text-transform: uppercase;
+    background: var(--honey);
+    color: var(--ink);
+    padding: 0.25em 0.65em;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--navy);
+    font-weight: 800;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .palaiseau-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .palaiseau-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-accent);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--honey-deep);
+    text-decoration: none;
+    margin-top: var(--space-2);
+    align-self: flex-start;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .palaiseau-card__link:hover {
+    color: var(--ink);
+    transform: translateX(2px);
   }
 </style>

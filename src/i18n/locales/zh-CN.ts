@@ -340,6 +340,7 @@ export const zhCN: Translation = {
     },
     labels: {
       intv: "",
+      "club-jeux": "Club Jeux",
       bds: "体育理事会 (BDS)",
       bda: "艺术理事会 (BDA)",
       bde: "学生理事会 (BDE)",
@@ -377,10 +378,8 @@ export const zhCN: Translation = {
     ],
     orlyTitle: "从奥利机场 (Paris-Orly) 出发",
     orlySteps: [
-      "乘坐 <strong>OrlyVal</strong> 穿梭轨道车或 <strong>Tram T7</strong> 有轨电车接入巴黎轨道交通网。",
-      "前往 {RER D} 车站（例如乘坐地铁 14 号线 → Châtelet，或 RER C → Juvisy 再换乘 RER D）。",
-      "乘坐 {RER D} 向南行驶，方向选择 <strong>Corbeil-Essonnes</strong>。",
-      "在 <strong>Évry-Courcouronnes</strong> 站下车。",
+      "<strong>方案 1：直达快速巴士（最快，约 25-30 分钟）：</strong>从奥利机场直接乘坐 <strong>Express Bus 91.12</strong> 快速巴士到达 <strong>{Le Bras de Fer}</strong> 站（紧邻校区，无需换乘 RER D 或火车！）。",
+      "<strong>方案 2：轨道交通换乘：</strong>乘坐 <strong>OrlyVal</strong> 穿梭轨道车、<strong>Tram T7</strong> 有轨电车或<strong>地铁 14 号线</strong>接入轨道交通网，换乘 {RER D} 向南行驶（方向 <strong>Corbeil-Essonnes</strong>），在 <strong>Évry-Courcouronnes</strong> 或 <strong>{Le Bras de Fer}</strong> 站下车。",
     ],
     rerEyebrow: "铁路交通",
     rerH2: "{RER D}：你的核心出行线路",
@@ -568,111 +567,182 @@ export const zhCN: Translation = {
         desc: "每栋楼都设有洗衣房，配备投币/付费洗衣机（免费提供洗衣液）、免费干衣机以及熨衣板。",
       },
       {
-        title: "维修与技术支持",
-        desc: "设施故障维修由 Maisel 技术人员负责，可通过工单系统或电子邮件提交申请（<code>entretien-maisel@imtbs-tsp.eu</code>）。办公时间：周一至周四 13:30–17:30，周五 13:30–16:30。",
+        title: "报修与客服支持",
+        desc: "维修均由 Maisel 维修人员通过工单系统或 Email (<code>entretien-maisel@imtbs-tsp.eu</code>) 处理。办公时间：周一至周四 13:30–17:30，周五 13:30–16:30。",
       },
+    ],
+    palaiseauEyebrow: "Palaiseau 校区",
+    palaiseauH2: "Palaiseau 校区校外租房资源",
+    palaiseauLede: "如果您在 Palaiseau 校区就读或正在寻找校外住宿，国际关系团队为您推荐以下可靠的公寓和租房平台：",
+    visitWebsiteBtn: "访问网站",
+    palaiseauItems: [
+      {
+        name: "UXCO 学生公寓",
+        badge: "Palaiseau",
+        desc: "位于 Palaiseau 的现代精装学生公寓和共居住宅。",
+        url: "https://www.uxco.com/fr/"
+      },
+      {
+        name: "ECLA Campus",
+        badge: "Massy-Palaiseau",
+        desc: "靠近 Massy-Palaiseau 车站的大型 Co-living 学生公寓，设施健全。",
+        url: "https://www.ecla.com/fr/"
+      },
+      {
+        name: "Rentola",
+        badge: "筛选搜索",
+        desc: "专门针对 Palaiseau 地区的公寓和房间租房信息搜索引擎。",
+        url: "https://rentola.fr/"
+      },
+      {
+        name: "Palaiseau 市政厅",
+        badge: "保障性住房",
+        desc: "在 Palaiseau 申请社会保障住房的市政官方门户网站。",
+        url: "https://www.ville-palaiseau.fr/mes-services/solidarite-logement-et-handicap/demande-de-logement-social"
+      },
+      {
+        name: "CROUS 公寓 & Monlogementetudiant",
+        badge: "公立 CROUS",
+        desc: "CROUS Versailles 官方公立学生公寓名录及国家学生租房门户。",
+        url: "https://www.crous-versailles.fr/se-loger/liste-de-nos-logements/"
+      },
+      {
+        name: "Lokaviz",
+        badge: "CROUS 门户",
+        desc: "CROUS 官方认证的私房出租及个人房东租房平台。",
+        url: "https://www.lokaviz.fr/"
+      },
+      {
+        name: "Studapart",
+        badge: "认证房源",
+        desc: "提供认证私房房源、合租及房东担保服务的学生租房平台。",
+        url: "https://www.studapart.com/fr"
+      },
+      {
+        name: "Fac-Habitat",
+        badge: "公益协会",
+        desc: "在巴黎大区提供高性价比学生公寓的非营利住房协会。",
+        url: "https://logement.smerra.fr/fac-habitat/"
+      },
+      {
+        name: "Seqens",
+        badge: "社会住房",
+        desc: "在法兰西岛大区为学生和青年提供社会住房和过渡公寓的机构。",
+        url: "https://www.seqens.fr/"
+      },
+      {
+        name: "Twenty Campus",
+        badge: "学生公寓",
+        desc: "配备全套设施及包含服务（早餐、保洁、网络）的学生公寓。",
+        url: "https://www.twenty-campus.com/fr/"
+      },
+      {
+        name: "私人房源 & 合租 (Colocation)",
+        badge: "个人房东",
+        desc: "个人房东直租、套房合租 (Colocation) 及房间分租。",
+      }
     ],
   },
   adminAid: {
     heroTitle: "行政于学生补助指南",
-    heroLede: "Navigating French administration step by step: from visa validation to health insurance, bank accounts, and student financial aid.",
-    roadmapEyebrow: "Step-by-step roadmap",
-    roadmapH2: "Your Administrative Timeline",
-    roadmapLede: "Follow these five essential steps in order after arriving in France to set up your student life smoothly.",
+    heroLede: "法国行政手续逐步指南：从签证激活到医疗保险、银行开户以及学生经济补助。",
+    roadmapEyebrow: "分步指引",
+    roadmapH2: "您的行政手续时间表",
+    roadmapLede: "抵达法国后，请按顺序完成以下五个基本步骤，以便顺利开启您的学生生活。",
     roadmapSteps: [
       {
         step: "01",
-        title: "CVEC & School Registration",
-        time: "Before / Day 1",
-        desc: "Pay the CVEC fee on cvec.etudiant.gouv.fr to get your certificate, then complete registration at TSP or IMT-BS to obtain your official Certificat de Scolarité.",
+        title: "CVEC 与学校注册",
+        time: "抵达前 / 第 1 天",
+        desc: "在 cvec.etudiant.gouv.fr 缴纳 CVEC 费用以获取证明，随后在 TSP 或 IMT-BS 完成注册，以获得正式的注册证明（Certificat de Scolarité）。",
         url: "https://cvec.etudiant.gouv.fr/?_locale=en"
       },
       {
         step: "02",
-        title: "French Bank Account",
-        time: "Week 1",
-        desc: "Open your bank account with Société Générale (official partner of BDE and WELCOM') to obtain your French IBAN (RIB).",
+        title: "法国银行账户",
+        time: "第 1 周",
+        desc: "在 Société Générale（BDE 和 WELCOM' 的官方合作伙伴）开立银行账户，以获取您的法国 IBAN（RIB）。",
         url: "#step-bank"
       },
       {
         step: "03",
-        title: "Visa Validation (ANEF)",
-        time: "Within 3 Months",
-        desc: "Validate your VLS-TS student visa online on the ANEF portal to secure your legal stay and right to work.",
+        title: "签证激活 (ANEF)",
+        time: "3 个月内",
+        desc: "在 ANEF 门户网站上在线激活您的 VLS-TS 学生签证，以确保您的合法居留及工作权利。",
         url: "https://administration-etrangers-en-france.interieur.gouv.fr"
       },
       {
         step: "04",
-        title: "Social Security (Ameli)",
-        time: "Month 1",
-        desc: "Register for free French Social Security on etudiant-etranger.ameli.fr to receive your Carte Vitale and cover your healthcare costs.",
+        title: "社会医疗保险 (Ameli)",
+        time: "第 1 个月",
+        desc: "在 etudiant-etranger.ameli.fr 免费注册法国社会医疗保险，以获取您的医保卡（Carte Vitale）并报销医疗费用。",
         url: "https://etudiant-etranger.ameli.fr"
       },
       {
         step: "05",
-        title: "CAF Housing Subsidies",
-        time: "Month 1 (Before month-end)",
-        desc: "Submit your APL or ALS application on caf.fr to receive monthly housing aid towards your Maisel rent.",
+        title: "CAF 住房补贴",
+        time: "第 1 个月 (月底前)",
+        desc: "在 caf.fr 提交您的 APL 或 ALS 申请，以获得每月发放的住房补助来抵扣 Maisel 房租。",
         url: "https://www.caf.fr"
       }
     ],
-    cvecEyebrow: "Step 1: Academic Registration",
-    cvecH2: "CVEC & School Certificate",
-    cvecLede: "Before finalizing your enrollment at Télécom SudParis or IMT Business School, you must obtain your CVEC payment receipt.",
-    cvecTitle: "What is the CVEC?",
-    cvecDesc: "The CVEC (Contribution Vie Étudiante et de Campus) is a mandatory annual contribution (~103 €) collected by the French government to fund student life, sports, health, and cultural initiatives.",
-    cvecStepsTitle: "How to complete this step:",
+    cvecEyebrow: "步骤 1：学术注册",
+    cvecH2: "CVEC 与学校注册证明",
+    cvecLede: "在最终完成 Télécom SudParis 或 IMT Business School 的注册之前，您必须先获得 CVEC 缴费凭证。",
+    cvecTitle: "什么是 CVEC？",
+    cvecDesc: "CVEC（学生和校园生活贡献费）是法国政府收取的一项强制性年度费用（约 103 欧元），用于资助学生生活、体育、健康和文化活动。",
+    cvecStepsTitle: "如何完成此步骤：",
     cvecSteps: [
       "Visit the official portal <a href=\"https://cvec.etudiant.gouv.fr/?_locale=en\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> and create your account.",
-      "Pay the CVEC fee online by credit card (or download your exemption certificate if you are a scholarship holder).",
-      "Download your <strong>Attestation de paiement CVEC</strong> (CVEC Certificate).",
-      "Submit your CVEC certificate to the school registrar (Scolarité) during administrative registration.",
-      "Receive your official <strong>Certificat de Scolarité</strong> (School Certificate) and your student badge."
+      "通过信用卡在线缴纳 CVEC 费用（如果您是奖学金生，请下载免缴证明）。",
+      "下载您的 <strong>Attestation de paiement CVEC</strong>（CVEC 缴费证明）。",
+      "在办理行政注册时，将您的 CVEC 证明提交给学校教务处（Scolarité）。",
+      "领取您的正式 <strong>Certificat de Scolarité</strong>（注册证明）和学生卡。"
     ],
-    cvecTip: "<strong>Keep your Certificat de Scolarité safe:</strong> You will need this document for your bank account, CAF, Navigo pass, and visa validation!",
-    bankEyebrow: "Step 2: Managing Money",
-    bankH2: "Opening a French Bank Account",
-    bankLede: "A French bank account with a RIB (Relevé d'Identité Bancaire / IBAN) is essential for receiving CAF aid, setting up phone plans, paying rent, and managing daily expenses.",
-    bankPartnerTitle: "Société Générale: Official Partner of BDE & WELCOM'",
-    bankPartnerBody: "Through this partnership, students receive exclusive advantages: a welcome cash bonus, credit card perks, discounts for the WEI (integration weekend) and association memberships, and streamlined account opening procedures tailored for campus students.",
-    bankDocsTitle: "Required Documents for Account Opening:",
+    cvecTip: "<strong>妥善保管您的 Certificat de Scolarité：</strong> 在办理银行开户、CAF、Navigo 交通卡以及签证激活时，您都会需要这份文件！",
+    bankEyebrow: "步骤 2：资金管理",
+    bankH2: "开立法国银行账户",
+    bankLede: "拥有一个带有 RIB（Relevé d'Identité Bancaire / IBAN）的法国银行账户，对于领取 CAF 补贴、办理手机套餐、支付房租和管理日常开销来说必不可少。",
+    bankPartnerTitle: "Société Générale：BDE 和 WELCOM' 的官方合作伙伴",
+    bankPartnerBody: "通过这项合作，学生可以享受独家优惠：迎新现金红包、信用卡特权、WEI（迎新周末）及社团注册折扣，以及为校园学生量身定制的简化开户流程。",
+    bankDocsTitle: "开户所需材料：",
     bankDocs: [
-      "Valid Passport with your student visa (VLS-TS).",
-      "Proof of Address in France (Attestation de Logement from Maisel or lease agreement).",
-      "School Enrollment Certificate (Certificat de Scolarité) or student card."
+      "带有学生签证（VLS-TS）的有效护照。",
+      "法国居住证明（Maisel 的住宿证明或租房合同）。",
+      "学校注册证明（Certificat de Scolarité）或学生卡。"
     ],
-    bankTip: "<strong>What is a RIB?</strong> In France, a RIB contains your IBAN and BIC. You will share your RIB with CAF for housing subsidies, with Maisel for rent direct debit, and with phone operators.",
-    visaEyebrow: "Step 3: Legal Stay",
-    visaH2: "Visa Validation & Titre de Séjour (ANEF)",
-    visaLede: "If you arrived in France with a Long-Stay Visa valid as a Residence Permit (VLS-TS), you MUST validate it online within 3 months of your arrival date.",
-    visaStepsTitle: "Online Validation Process on ANEF:",
+    bankTip: "<strong>什么是 RIB？</strong> 在法国，RIB 包含了您的 IBAN 和 BIC。您需要将您的 RIB 提供给 CAF 以获取住房补贴，提供给 Maisel 以设置房租自动扣款，以及提供给电信运营商。",
+    visaEyebrow: "步骤 3：合法居留",
+    visaH2: "签证激活与居留证 (ANEF)",
+    visaLede: "如果您持长期学生签证（VLS-TS）抵达法国，您必须在入境后的 3 个月内完成在线激活。",
+    visaStepsTitle: "ANEF 上的在线激活流程：",
     visaSteps: [
       "Go to the official ANEF portal: <a href=\"https://administration-etrangers-en-france.interieur.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">administration-etrangers-en-france.interieur.gouv.fr</a>.",
-      "Click on <strong>Validate your VLS-TS</strong>.",
-      "Enter your visa number, date of entry into France, French address, and contact details.",
-      "Pay the residence tax stamp (Taxe de Séjour, approx. 50 €) online using a payment card.",
-      "Download and print your <strong>Attestation de validation du VLS-TS</strong>."
+      "点击 <strong>Validate your VLS-TS</strong>（激活您的 VLS-TS）。",
+      "输入您的签证号码、入境法国的日期、法国住址及联系方式。",
+      "使用银行卡在线支付居留税票（Taxe de Séjour，约 50 欧元）。",
+      "下载并打印您的 <strong>Attestation de validation du VLS-TS</strong>（签证激活证明）。"
     ],
-    healthEyebrow: "Step 4: Healthcare",
-    healthH2: "French Social Security & Health Insurance",
-    healthLede: "France offers universal healthcare. As an international student, registering for French Social Security (CPAM) is completely free of charge.",
-    healthAmeliTitle: "1. Social Security Registration (Ameli)",
+    healthEyebrow: "步骤 4：医疗保健",
+    healthH2: "法国社会医疗保险",
+    healthLede: "法国提供全民医疗保障。作为一名国际学生，注册法国社会医疗保险（CPAM）是完全免费的。",
+    healthAmeliTitle: "1. 社会医疗保险注册 (Ameli)",
     healthAmeliBody: "Register online at <a href=\"https://etudiant-etranger.ameli.fr\" target=\"_blank\" rel=\"noopener noreferrer\">etudiant-etranger.ameli.fr</a>. Upload your passport, visa, VLS-TS validation certificate, school certificate, birth certificate, and French RIB. You will receive a temporary Social Security number, then your permanent number and your green <strong>Carte Vitale</strong>.",
-    healthMutuelleTitle: "2. Complementary Health Insurance (Mutuelle)",
-    healthMutuelleBody: "French Social Security reimburses about 70% of standard medical costs. To cover the remaining 30% (prescription drugs, specialist visits, hospital fees, dental and optical care), taking out a student <strong>Mutuelle</strong> (such as Heyme or LMDE) is strongly recommended.",
-    healthCampusTitle: "3. On-Campus Medical Consultations",
-    healthCampusBody: "Visiting medical services regularly come to campus to offer free consultations (STI screening, dental care, ophthalmology, and more).",
-    healthDoctolibTitle: "4. Booking Appointments with Doctolib",
+    healthMutuelleTitle: "2. 补充医疗保险 (Mutuelle)",
+    healthMutuelleBody: "法国社会医疗保险大约报销标准医疗费用的 70%。为了覆盖剩余的 30%（处方药、专科门诊、住院费、牙科和眼科护理），强烈建议您购买一份学生补充医疗保险（<strong>Mutuelle</strong>，例如 Heyme 或 LMDE）。",
+    healthCampusTitle: "3. 校园内的医疗咨询",
+    healthCampusBody: "流动医疗服务会定期来到校园提供免费咨询（性传播疾病筛查、牙科护理、眼科等）。",
+    healthDoctolibTitle: "4. 使用 Doctolib 预约就诊",
     healthDoctolibBody: "To find a general practitioner or specialist near Évry and book online appointments, use the <a href=\"https://www.doctolib.fr\" target=\"_blank\" rel=\"noopener noreferrer\">Doctolib</a> website or app.",
-    cafEyebrow: "Step 5: Financial Assistance",
-    cafH2: "CAF Housing Subsidies (APL & ALS)",
-    cafLede: "International students residing in France are eligible for monthly housing subsidies paid by the CAF (Caisse d'Allocations Familiales).",
-    cafBody: "Be sure to submit your application on caf.fr before the last day of your arrival month. For a detailed guide on Maisel residence eligibility, APL vs ALS, and step-by-step instructions, view our Housing Guide.",
-    cafBtn: "View Housing & CAF Guide",
+    cafEyebrow: "步骤 5：经济补助",
+    cafH2: "CAF 住房补贴 (APL & ALS)",
+    cafLede: "在法国居住的国际学生有资格获得由 CAF (Caisse d'Allocations Familiales) 每月发放的住房补贴。",
+    cafBody: "请务必在您抵达当月的最后一天之前在 caf.fr 上提交申请。有关 Maisel 宿舍的申请资格、APL 与 ALS 的区别以及详细的分步指导，请查看我们的住房指南。",
+    cafBtn: "查看住房与 CAF 指南",
     supportEyebrow: "Need Help?",
-    supportH2: "Come Visit Us at the Foyer!",
-    supportBody: "Administrative portals and paperwork in a foreign language can be daunting. The WELCOM' team is available at our office in the Foyer to assist you step-by-step with your online applications.",
-    supportBtn: "Find the Welcom' Office"
+    supportH2: "来 Foyer 找我们吧！",
+    supportBody: "面对外语的行政门户网站和繁琐文件可能会让人感到头疼。WELCOM' 团队在 Foyer 的办公室随时准备着一步步协助您完成在线申请。",
+    supportBtn: "寻找 Welcom' 办公室"
   },
 
   moneyPhone: {
@@ -804,67 +874,67 @@ export const zhCN: Translation = {
 
   dailyLife: {
     heroTitle: "埃夫里日常生活",
-    heroLede: "Everything you need for day-to-day living on campus and in Évry: groceries, laundry in your dorm, trash & recycling, pharmacies, and receiving packages.",
-    roadmapEyebrow: "Step-by-step roadmap",
-    roadmapH2: "Your Daily Life Essentials",
-    roadmapLede: "Follow these essential steps and locations to make your daily routine smooth from your very first day on campus.",
+    heroLede: "满足您在校园和埃夫里日常所需的一切：超市购物、宿舍洗衣、垃圾分类与回收、药房以及包裹收发。",
+    roadmapEyebrow: "分步指引",
+    roadmapH2: "您的日常生活必备",
+    roadmapLede: "请遵循这些基本步骤并熟悉相关地点，让您从入校第一天起就能顺利开启日常生活。",
     roadmapSteps: [
       {
         step: "01",
-        title: "Groceries & Food",
-        time: "Daily / Weekly",
-        desc: "Supermarkets like G20 right next to campus, Le Spot shopping mall (Carrefour), and budget options.",
+        title: "食品与超市",
+        time: "日常 / 每周",
+        desc: "学校旁边的 G20 超市、Le Spot 购物中心（家乐福）以及平价购物选择。",
         url: "#step-groceries"
       },
       {
         step: "02",
-        title: "Laundry Rooms (Laveries)",
-        time: "Weekly",
-        desc: "Washing machines and dryers in Maisel buildings (U1, U2, U3, U4, U5, U6, U7).",
+        title: "洗衣房 (Laveries)",
+        time: "每周",
+        desc: "Maisel 宿舍楼（U1, U2, U3, U4, U5, U6, U7）内的洗衣机和烘干机。",
         url: "#step-laundry"
       },
       {
         step: "03",
-        title: "Garbage & Recycling",
-        time: "Daily",
-        desc: "Where to throw household trash, yellow recycling bins, glass collection, and sorting rules.",
+        title: "垃圾与回收",
+        time: "日常",
+        desc: "生活垃圾的丢弃地点、黄色回收桶、玻璃收集箱以及分类规则。",
         url: "#step-garbage"
       },
       {
         step: "04",
-        title: "Pharmacies & Mail",
-        time: "As needed",
-        desc: "Nearby pharmacies, health supplies, and receiving letters & packages at Maisel reception.",
+        title: "药房与邮件",
+        time: "按需",
+        desc: "附近的药房、健康用品以及在 Maisel 前台接收信件和包裹。",
         url: "#step-services"
       }
     ],
 
-    groceriesEyebrow: "Step 1: Supermarkets & Food",
-    groceriesH2: "Where to Buy Groceries in Évry",
-    groceriesLede: "From quick top-ups right next to campus to large hypermarkets and international food markets, here are the best places to buy food.",
-    groceriesStoresTitle: "Popular Supermarkets & Shopping Spots",
+    groceriesEyebrow: "步骤 1：超市与食品",
+    groceriesH2: "在埃夫里去哪买菜？",
+    groceriesLede: "从校园附近的快速补给到大型超市和国际食品市场，这里是买菜最好的去处。",
+    groceriesStoresTitle: "热门超市与购物点",
     groceriesStores: [
       {
         name: "Supermarché G20",
-        desc: "Located right near campus (5 min walk). Perfect for quick grocery runs, fresh produce, bread, snacks, and daily essentials.",
+        desc: "位于校园附近（步行 5 分钟）。非常适合快速采买日用品、新鲜农产品、面包、零食和日常必需品。",
         url: "https://maps.app.goo.gl/GVbdNA3yUtnY4v5H9"
       },
       {
         name: "Le Spot Évry (Carrefour)",
-        desc: "The major shopping mall in Évry-Courcouronnes (10–12 min walk / 1 stop RER D). Features a massive Carrefour hypermarket for lower prices, cookware, electronics, clothing, plus 150+ stores.",
+        desc: "埃夫里-库尔库罗讷的主要购物中心（步行 10-12 分钟 / 乘坐 RER D 线 1 站）。内有超大型家乐福超市，商品价格实惠，提供厨具、电子产品、服装以及 150 多家门店。",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
       }
     ],
-    groceriesTipsTitle: "Key Things to Know When Grocery Shopping:",
+    groceriesTipsTitle: "去超市购物的注意事项：",
     groceriesTips: [
-      "<strong>Bring reusable shopping bags (Sac Cabas):</strong> Single-use plastic bags are not provided for free at French checkout counters (~0.15€–0.30€). Keep a reusable cloth bag in your backpack.",
-      "<strong>Anti-Food-Waste Apps (Too Good To Go):</strong> Download <em>Too Good To Go</em> on your phone to buy surplus food baskets from local bakeries and supermarkets around Évry for just 3€ to 5€."
+      "<strong>请自带环保购物袋 (Sac Cabas)：</strong> 法国的收银台不提供免费的一次性塑料袋（约 0.15 欧元至 0.30 欧元）。请在背包里备一个可重复使用的布袋。",
+      "<strong>反食品浪费应用 (Too Good To Go)：</strong> 在手机上下载 <em>Too Good To Go</em>，只需 3 到 5 欧元，就可以从埃夫里当地的面包店和超市购买剩余的食物盲盒。"
     ],
 
-    laundryEyebrow: "Step 2: Washing & Drying",
-    laundryH2: "Laveries & Laundry Facilities in Maisel Buildings",
-    laundryLede: "Every Maisel building (U1 to U7) has access to laundry facilities so you can wash and dry your clothes conveniently on campus.",
-    laundryLocationsTitle: "Where Laundry Rooms (Laveries) are Located:",
+    laundryEyebrow: "步骤 2：洗衣与烘干",
+    laundryH2: "Maisel 宿舍内的 Laveries 与洗衣设施",
+    laundryLede: "每栋 Maisel 楼（U1 至 U7）都配有洗衣设施，方便您在校园内清洗和烘干衣物。",
+    laundryLocationsTitle: "洗衣房 (Laveries) 的位置：",
     laundryLocations: [
       { building: "U1、U2 与 U4 楼", location: "单一公共洗衣房位于 U4 楼一楼（1er étage / 1st floor）。", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
       { building: "U3 楼", location: "一楼地面层（RDC）专用洗衣房。", url: "https://gad.touchnpay.fr/fr/public/material/406jkjom1ann1k2" },
@@ -880,10 +950,10 @@ export const zhCN: Translation = {
       "<strong>免费烘干机（Sèche-linge）：</strong> 洗衣房内的烘干机完全免费使用。"
     ],
 
-    garbageEyebrow: "Step 3: Waste Management",
-    garbageH2: "Garbage Bins & Recycling (Tri Sélectif)",
-    garbageLede: "France enforces waste sorting rules. Keeping your residence clean and recycling properly helps campus stay clean and pleasant for everyone.",
-    garbageLocationsTitle: "Where Garbage Bins (Local Poubelles) are Located:",
+    garbageEyebrow: "步骤 3：垃圾管理",
+    garbageH2: "垃圾桶与回收 (Tri Sélectif)",
+    garbageLede: "法国实行垃圾分类规定。保持住处整洁并正确回收垃圾，有助于保持校园的干净和宜人。",
+    garbageLocationsTitle: "垃圾桶 (Local Poubelles) 的位置：",
     garbageLocations: [
       { building: "U1、U2 与 U4 楼", location: "楼栋正前方，位于入口右侧。" },
       { building: "U3 楼", location: "位于入口左侧（大型垃圾投放区）。" },
@@ -891,11 +961,11 @@ export const zhCN: Translation = {
       { building: "U6 楼", location: "位置待确认。" },
       { building: "U7 楼", location: "位于主入口附近。" }
     ],
-    garbageSortingTitle: "Waste Sorting Guide (Tri Sélectif):",
+    garbageSortingTitle: "垃圾分类指南 (Tri Sélectif)：",
     garbageSorting: [
       {
-        type: "Yellow Bin (Bac Jaune): Recyclables",
-        desc: "Plastic bottles, food containers, tin cans, drink cartons, paper, cardboard, and metal lids. Do NOT put food waste or organic trash in the yellow bin."
+        type: "黄色垃圾桶 (Bac Jaune)：可回收物",
+        desc: "塑料瓶、食品包装盒、易拉罐、饮料纸盒、纸张、硬纸板以及金属盖子。切勿将食物残渣或有机垃圾扔进黄色垃圾桶。"
       },
       {
         type: "枣红色 / 红色垃圾桶（Bac Ordures Ménagères）：生活垃圾",
@@ -930,9 +1000,9 @@ export const zhCN: Translation = {
     ],
 
     supportEyebrow: "Need Help?",
-    supportH2: "Questions about daily life on campus?",
-    supportBody: "Drop by the WELCOM' room in the Foyer! Our team is happy to point you toward the best markets, help with dorm questions, or show you around Évry.",
-    supportBtn: "Find the Welcom' Office"
+    supportH2: "对校园日常生活有疑问？",
+    supportBody: "来 Foyer 的 WELCOM' 房间坐坐吧！我们的团队很乐意为您指点最好的超市，帮您解答宿舍问题，或者带您逛逛埃夫里。",
+    supportBtn: "寻找 Welcom' 办公室"
   },
 
   guidesPage: {
@@ -974,115 +1044,6 @@ export const zhCN: Translation = {
       desc: "法国学生行政手续一步步详解：签证生效（ANEF）、CVEC 缴费、注册报到、医保（Ameli）与 CAF 住房补贴。",
       tag: "ANEF 签证 • CAF 房补 • Ameli 医保",
       btn: "查看行政指南"
-    },
-    adminAid: {
-    heroTitle: "行政于学生补助指南",
-    heroLede: "Navigating French administration step by step: from visa validation to health insurance, bank accounts, and student financial aid.",
-    roadmapEyebrow: "Step-by-step roadmap",
-    roadmapH2: "Your Administrative Timeline",
-    roadmapLede: "Follow these five essential steps in order after arriving in France to set up your student life smoothly.",
-    roadmapSteps: [
-      {
-        step: "01",
-        title: "CVEC & School Registration",
-        time: "Before / Day 1",
-        desc: "Pay the CVEC fee on cvec.etudiant.gouv.fr to get your certificate, then complete registration at TSP or IMT-BS to obtain your official Certificat de Scolarité.",
-        url: "https://cvec.etudiant.gouv.fr/?_locale=en"
-      },
-      {
-        step: "02",
-        title: "French Bank Account",
-        time: "Week 1",
-        desc: "Open your bank account with Société Générale (official partner of BDE and WELCOM') to obtain your French IBAN (RIB).",
-        url: "#step-bank"
-      },
-      {
-        step: "03",
-        title: "Visa Validation (ANEF)",
-        time: "Within 3 Months",
-        desc: "Validate your VLS-TS student visa online on the ANEF portal to secure your legal stay and right to work.",
-        url: "https://administration-etrangers-en-france.interieur.gouv.fr"
-      },
-      {
-        step: "04",
-        title: "Social Security (Ameli)",
-        time: "Month 1",
-        desc: "Register for free French Social Security on etudiant-etranger.ameli.fr to receive your Carte Vitale and cover your healthcare costs.",
-        url: "https://etudiant-etranger.ameli.fr"
-      },
-      {
-        step: "05",
-        title: "CAF Housing Subsidies",
-        time: "Month 1 (Before month-end)",
-        desc: "Submit your APL or ALS application on caf.fr to receive monthly housing aid towards your Maisel rent.",
-        url: "https://www.caf.fr"
-      }
-    ],
-    cvecEyebrow: "Step 1: Academic Registration",
-    cvecH2: "CVEC & School Certificate",
-    cvecLede: "Before finalizing your enrollment at Télécom SudParis or IMT Business School, you must obtain your CVEC payment receipt.",
-    cvecTitle: "What is the CVEC?",
-    cvecDesc: "The CVEC (Contribution Vie Étudiante et de Campus) is a mandatory annual contribution (~103 €) collected by the French government to fund student life, sports, health, and cultural initiatives.",
-    cvecStepsTitle: "How to complete this step:",
-    cvecSteps: [
-      "Visit the official portal <a href=\"https://cvec.etudiant.gouv.fr/?_locale=en\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> and create your account.",
-      "Pay the CVEC fee online by credit card (or download your exemption certificate if you are a scholarship holder).",
-      "Download your <strong>Attestation de paiement CVEC</strong> (CVEC Certificate).",
-      "Submit your CVEC certificate to the school registrar (Scolarité) during administrative registration.",
-      "Receive your official <strong>Certificat de Scolarité</strong> (School Certificate) and your student badge."
-    ],
-    cvecTip: "<strong>Keep your Certificat de Scolarité safe:</strong> You will need this document for your bank account, CAF, Navigo pass, and visa validation!",
-    bankEyebrow: "Step 2: Managing Money",
-    bankH2: "Opening a French Bank Account",
-    bankLede: "A French bank account with a RIB (Relevé d'Identité Bancaire / IBAN) is essential for receiving CAF aid, setting up phone plans, paying rent, and managing daily expenses.",
-    bankPartnerTitle: "Société Générale: Official Partner of BDE & WELCOM'",
-    bankPartnerBody: "Through this partnership, students receive exclusive advantages: a welcome cash bonus, credit card perks, discounts for the WEI (integration weekend) and association memberships, and streamlined account opening procedures tailored for campus students.",
-    bankDocsTitle: "Required Documents for Account Opening:",
-    bankDocs: [
-      "Valid Passport with your student visa (VLS-TS).",
-      "Proof of Address in France (Attestation de Logement from Maisel or lease agreement).",
-      "School Enrollment Certificate (Certificat de Scolarité) or student card."
-    ],
-    bankTip: "<strong>What is a RIB?</strong> In France, a RIB contains your IBAN and BIC. You will share your RIB with CAF for housing subsidies, with Maisel for rent direct debit, and with phone operators.",
-    visaEyebrow: "Step 3: Legal Stay",
-    visaH2: "Visa Validation & Titre de Séjour (ANEF)",
-    visaLede: "If you arrived in France with a Long-Stay Visa valid as a Residence Permit (VLS-TS), you MUST validate it online within 3 months of your arrival date.",
-    visaStepsTitle: "Online Validation Process on ANEF:",
-    visaSteps: [
-      "Go to the official ANEF portal: <a href=\"https://administration-etrangers-en-france.interieur.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">administration-etrangers-en-france.interieur.gouv.fr</a>.",
-      "Click on <strong>Validate your VLS-TS</strong>.",
-      "Enter your visa number, date of entry into France, French address, and contact details.",
-      "Pay the residence tax stamp (Taxe de Séjour, approx. 50 €) online using a payment card.",
-      "Download and print your <strong>Attestation de validation du VLS-TS</strong>."
-    ],
-    healthEyebrow: "Step 4: Healthcare",
-    healthH2: "French Social Security & Health Insurance",
-    healthLede: "France offers universal healthcare. As an international student, registering for French Social Security (CPAM) is completely free of charge.",
-    healthAmeliTitle: "1. Social Security Registration (Ameli)",
-    healthAmeliBody: "Register online at <a href=\"https://etudiant-etranger.ameli.fr\" target=\"_blank\" rel=\"noopener noreferrer\">etudiant-etranger.ameli.fr</a>. Upload your passport, visa, VLS-TS validation certificate, school certificate, birth certificate, and French RIB. You will receive a temporary Social Security number, then your permanent number and your green <strong>Carte Vitale</strong>.",
-    healthMutuelleTitle: "2. Complementary Health Insurance (Mutuelle)",
-    healthMutuelleBody: "French Social Security reimburses about 70% of standard medical costs. To cover the remaining 30% (prescription drugs, specialist visits, hospital fees, dental and optical care), taking out a student <strong>Mutuelle</strong> (such as Heyme or LMDE) is strongly recommended.",
-    healthCampusTitle: "3. On-Campus Medical Consultations",
-    healthCampusBody: "Visiting medical services regularly come to campus to offer free consultations (STI screening, dental care, ophthalmology, and more).",
-    healthDoctolibTitle: "4. Booking Appointments with Doctolib",
-    healthDoctolibBody: "To find a general practitioner or specialist near Évry and book online appointments, use the <a href=\"https://www.doctolib.fr\" target=\"_blank\" rel=\"noopener noreferrer\">Doctolib</a> website or app.",
-    cafEyebrow: "Step 5: Financial Assistance",
-    cafH2: "CAF Housing Subsidies (APL & ALS)",
-    cafLede: "International students residing in France are eligible for monthly housing subsidies paid by the CAF (Caisse d'Allocations Familiales).",
-    cafBody: "Be sure to submit your application on caf.fr before the last day of your arrival month. For a detailed guide on Maisel residence eligibility, APL vs ALS, and step-by-step instructions, view our Housing Guide.",
-    cafBtn: "View Housing & CAF Guide",
-    supportEyebrow: "Need Help?",
-    supportH2: "Come Visit Us at the Foyer!",
-    supportBody: "Administrative portals and paperwork in a foreign language can be daunting. The WELCOM' team is available at our office in the Foyer to assist you step-by-step with your online applications.",
-    supportBtn: "Find the Welcom' Office"
-  },
-
-      adminAid: {
-      title: "Admin & Student Aid",
-      badge: "Official Formalities",
-      desc: "Step-by-step guide to visa validation (ANEF), CVEC student tax, school registration, Social Security (Ameli), and CAF housing aid.",
-      tag: "ANEF Visa • CAF APL • Ameli Health",
-      btn: "Read Admin Guide"
     },
     moneyPhone: {
       title: "银行开户与电话卡",
