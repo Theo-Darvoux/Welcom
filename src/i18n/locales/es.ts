@@ -502,7 +502,7 @@ export const es: LocaleTranslation = {
     overviewLede: "{MAISEL SudParis} (Maison des Élèves) es la asociación oficial sin ánimo de lucro de alojamiento para estudiantes de Télécom SudParis e IMT Business School. Situada directamente en el campus de Évry (además del edificio U6 cerca de la estación), ofrece más de 750 habitaciones y estudios.",
     roomsEyebrow: "Tipos de alojamiento",
     roomsH2: "Habitaciones Individuales, Estudios y Pisos Compartidos",
-    roomsLede: "La Maisel ofrece tres tipos principales de alojamiento dependiendo de tu presupuesto, preferencias y año académico.",
+    roomsLede: "La Maisel ofrece tres tipos principales de alojamiento dependiendo de tu presupuesto, preferencias y año académico. Todas las habitaciones tienen una cama de 90 cm de ancho y un espejo.",
     ratesUrl: "https://maisel.imtbs-tsp.eu/en/rates/",
     ratesBadge: "TARIFAS OFICIALES MAISEL",
     ratesTitle: "Tarifas Oficiales y Desglose del Alquiler Mensual",
@@ -512,7 +512,7 @@ export const es: LocaleTranslation = {
       {
         title: "Habitación Individual (Chambre U2, U3, U4)",
         specs: "15 m² • Amueblada",
-        desc: "Equipada con una cama de 90 cm, mesita de noche, escritorio, silla, estantería, armario y nevera privada en la habitación. Baño privado con ducha y WC. <strong>Importante:</strong> Las habitaciones individuales <em>no</em> tienen cocina privada o pequeña cocina (a diferencia de los estudios): se cocina en la cocina compartida del edificio.",
+        desc: "Equipada con una cama de 90 cm de ancho, mesita de noche, escritorio, silla, estantería, armario y nevera privada en la habitación. Baño privado con ducha y WC. <strong>Importante:</strong> Las habitaciones individuales <em>no</em> tienen cocina privada o pequeña cocina (a diferencia de los estudios): se cocina en la cocina compartida del edificio.",
         badge: "Mejor Precio",
       },
       {
@@ -930,7 +930,7 @@ export const es: LocaleTranslation = {
       },
       {
         name: "Le Spot Évry (Carrefour)",
-        desc: "El principal centro comercial en Évry-Courcouronnes (a 10–12 min a pie / 1 parada en el {RER D}). Cuenta con un enorme hipermercado Carrefour con precios más bajos, utensilios de cocina, electrónica, ropa, además de más de 150 tiendas.",
+        desc: "El principal centro comercial en Évry-Courcouronnes (a 10–12 min a pie / 1 parada en el RER D). Cuenta con un enorme hipermercado Carrefour con precios más bajos, utensilios de cocina, electrónica, ropa, además de más de 150 tiendas.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
       }
     ],

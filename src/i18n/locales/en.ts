@@ -550,7 +550,7 @@ export const en = {
     overviewLede: "{MAISEL SudParis} (Maison des Élèves) is the official non-profit student housing association of Télécom SudParis and IMT Business School. Located directly on the Évry campus (plus building U6 near the station), it offers over 750 rooms and studios.",
     roomsEyebrow: "Housing Types",
     roomsH2: "Single Rooms, Studios & Shared Apartments",
-    roomsLede: "Maisel offers three main housing types depending on your budget, preferences, and academic year.",
+    roomsLede: "Maisel offers three main housing types depending on your budget, preferences, and academic year. All rooms have a 90cm-wide bed and a mirror.",
     ratesUrl: "https://maisel.imtbs-tsp.eu/en/rates/",
     ratesBadge: "OFFICIAL MAISEL RATES",
     ratesTitle: "Official Rates & Monthly Rent Breakdown",
@@ -560,7 +560,7 @@ export const en = {
       {
         title: "Single Room (Chambre U2, U3, U4)",
         specs: "15 m² • Furnished",
-        desc: "Equipped with a 90cm bed, nightstand, desk, chair, bookshelf, closet, and private fridge in the room. Private bathroom with shower and WC. <strong>Important:</strong> Single rooms <em>do not</em> have a private kitchen or kitchenette (unlike studios): cooking is done in the building's shared kitchen.",
+        desc: "Equipped with a 90cm-wide bed, nightstand, desk, chair, bookshelf, closet, and private fridge in the room. Private bathroom with shower and WC. <strong>Important:</strong> Single rooms <em>do not</em> have a private kitchen or kitchenette (unlike studios): cooking is done in the building's shared kitchen.",
         badge: "Best Value",
       },
       {

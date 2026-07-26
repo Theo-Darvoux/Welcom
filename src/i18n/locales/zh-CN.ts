@@ -500,7 +500,7 @@ export const zhCN: LocaleTranslation = {
     overviewLede: "{MAISEL SudParis} (Maison des Élèves) 是 Télécom SudParis 和 IMT Business School 官方的非营利性学生宿舍管理协会。宿舍坐落于埃夫里校区内（另有 U6 楼位于车站附近），共提供 750 多间单人房和独立公寓。",
     roomsEyebrow: "房型分类",
     roomsH2: "单人房、独立单间公寓与合租公寓",
-    roomsLede: "Maisel 根据你的预算、个人喜好及所在年级，提供三种主要的住宿类型。",
+    roomsLede: "Maisel 根据你的预算、个人喜好及所在年级，提供三种主要的住宿类型。所有房间均配有一张宽 90 厘米的床和一面镜子。",
     ratesUrl: "https://maisel.imtbs-tsp.eu/en/rates/",
     ratesBadge: "MAISEL 官方房租标准",
     ratesTitle: "官方租金标准与每月费用明细",
@@ -510,7 +510,7 @@ export const zhCN: LocaleTranslation = {
       {
         title: "单人房 (Chambre U2, U3, U4)",
         specs: "15 m² • 带家具",
-        desc: "配备 90cm 单人床、床头柜、书桌、椅子、书架、衣柜以及房间内的私人冰箱。独立卫生间配有淋浴间和马桶。<strong>重要提示：</strong>单人房<em>不配备</em>私人厨房或小厨房（与单间公寓不同）：做饭需使用楼栋的公共厨房。",
+        desc: "配备一张宽 90 厘米的单人床、床头柜、书桌、椅子、书架、衣柜以及房间内的私人冰箱。独立卫生间配有淋浴间和马桶。<strong>重要提示：</strong>单人房<em>不配备</em>私人厨房或小厨房（与单间公寓不同）：做饭需使用楼栋的公共厨房。",
         badge: "性价比最高",
       },
       {

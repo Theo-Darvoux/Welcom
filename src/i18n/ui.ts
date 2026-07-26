@@ -2,6 +2,7 @@
 
 import { defaultLang, type Locale } from "./config";
 import { en, developerName, developerLink, type LocaleTranslation, type Translation } from "./locales/en";
+import { de } from "./locales/de";
 import { fr } from "./locales/fr";
 import { es } from "./locales/es";
 import { ptBR } from "./locales/pt-BR";
@@ -17,6 +18,7 @@ const dictionaries: Record<Locale, LocaleTranslation> = {
   en,
   fr,
   es,
+  de,
   "pt-BR": ptBR,
   "zh-CN": zhCN,
   "zh-TW": zhTW,

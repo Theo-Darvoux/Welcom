@@ -500,7 +500,7 @@ export const vi: LocaleTranslation = {
     overviewLede: "{MAISEL SudParis} (Maison des Élèves) là tổ chức nhà ở sinh viên phi lợi nhuận chính thức của Télécom SudParis và IMT Business School. Nằm ngay trong khuôn viên Évry (cộng với tòa U6 gần nhà ga), tổ chức này cung cấp hơn 750 phòng và studio.",
     roomsEyebrow: "Các loại phòng ở",
     roomsH2: "Phòng đơn, Studio & Căn hộ ở ghép",
-    roomsLede: "Maisel cung cấp ba loại hình chỗ ở chính tùy thuộc vào ngân sách, sở thích và năm học của bạn.",
+    roomsLede: "Maisel cung cấp ba loại hình chỗ ở chính tùy thuộc vào ngân sách, sở thích và năm học của bạn. Tất cả các phòng đều có giường rộng 90 cm và gương.",
     ratesUrl: "https://maisel.imtbs-tsp.eu/en/rates/",
     ratesBadge: "BẢNG GIÁ MAISEL CHÍNH THỨC",
     ratesTitle: "Bảng Giá Chính Thức & Chi Tiết Giá Thuê Hàng Tháng",
@@ -510,7 +510,7 @@ export const vi: LocaleTranslation = {
       {
         title: "Phòng Đơn (Chambre U2, U3, U4)",
         specs: "15 m² • Có sẵn nội thất",
-        desc: "Được trang bị giường 90cm, tủ đầu giường, bàn, ghế, giá sách, tủ quần áo và tủ lạnh riêng trong phòng. Phòng tắm riêng có vòi sen và WC. <strong>Quan trọng:</strong> Phòng đơn <em>không</em> có bếp riêng hoặc bếp nhỏ (khác với studio): việc nấu ăn sẽ được thực hiện ở nhà bếp chung của tòa nhà.",
+        desc: "Được trang bị giường rộng 90 cm, tủ đầu giường, bàn, ghế, giá sách, tủ quần áo và tủ lạnh riêng trong phòng. Phòng tắm riêng có vòi sen và WC. <strong>Quan trọng:</strong> Phòng đơn <em>không</em> có bếp riêng hoặc bếp nhỏ (khác với studio): việc nấu ăn sẽ được thực hiện ở nhà bếp chung của tòa nhà.",
         badge: "Giá Tốt Nhất",
       },
       {

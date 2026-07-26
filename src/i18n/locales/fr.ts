@@ -110,7 +110,7 @@ export const fr: LocaleTranslation = {
       },
       absinthe: {
         title: "Soirées {AbsINThe}",
-        body: "En partenariat avec le bar de l’école, nous vous proposons des soirées à thème, des jeux et des moments de détente tout au long de l’année.",
+        body: "En partenariat avec {AbsINThe}, le bar de l’école, nous vous proposons des soirées à thème, des jeux et des moments de détente tout au long de l’année.",
       },
       cultural: {
         title: "Rencontres culturelles",
@@ -539,7 +539,7 @@ export const fr: LocaleTranslation = {
     overviewLede: "La {MAISEL SudParis} (Maison des Élèves) est l'association à but non lucratif de logement étudiant officielle de Télécom SudParis et d'IMT Business School. Située directement sur le campus d'Évry (ainsi que le bâtiment U6 près de la gare), elle propose plus de 750 chambres et studios.",
     roomsEyebrow: "Types de logements",
     roomsH2: "Chambres individuelles, Studios et Colocations",
-    roomsLede: "La Maisel propose trois grands types de logements en fonction de votre budget, vos préférences et votre année d'études.",
+    roomsLede: "La Maisel propose trois grands types de logements en fonction de votre budget, vos préférences et votre année d'études. Toutes les chambres disposent d'un lit de 90 cm de large et d'un miroir.",
     ratesUrl: "https://maisel.imtbs-tsp.eu/fr/tarifs/",
     ratesBadge: "TARIFS OFFICIELS MAISEL",
     ratesTitle: "Tarifs officiels et détail des loyers mensuels",
@@ -549,7 +549,7 @@ export const fr: LocaleTranslation = {
       {
         title: "Chambre individuelle (Chambre U2, U3, U4)",
         specs: "15 m² • Meublée",
-        desc: "Équipée d'un lit simple 90 cm, table de chevet, bureau, chaise, bibliothèque, placard et réfrigérateur privé dans la chambre. Salle de bain privée avec douche et WC. <strong>Important :</strong> Les chambres individuelles <em>ne disposent pas</em> de cuisine privée ni de cuisinette (contrairement aux studios) : les repas se préparent dans la cuisine commune du bâtiment.",
+        desc: "Équipée d'un lit simple de 90 cm de large, table de chevet, bureau, chaise, bibliothèque, placard et réfrigérateur privé dans la chambre. Salle de bain privée avec douche et WC. <strong>Important :</strong> Les chambres individuelles <em>ne disposent pas</em> de cuisine privée ni de cuisinette (contrairement aux studios) : les repas se préparent dans la cuisine commune du bâtiment.",
         badge: "Meilleur rapport qualité-prix",
       },
       {
