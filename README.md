@@ -73,6 +73,19 @@ sudo ./deploy/deploy.sh
 
 The script installs dependencies, builds the site, syncs `dist/` to `/var/www/welcom` by default, and reloads nginx. Set `WEBROOT` and `WEB_USER` if the target uses different paths or ownership.
 
+### Automated production deployments
+
+The CI workflow deploys a successful push to `main` over SSH. It fetches and fast-forwards `/opt/Welcom` to the exact commit that passed CI before running the existing deployment script.
+
+**Create the GitHub environment and secrets.** In the repository, open **Settings → Environments**, create an environment named `production`, and add these environment secrets:
+
+   | Secret | Value |
+   | --- | --- |
+   | `DEPLOY_HOST` | Your production server hostname or IP address. |
+   | `DEPLOY_USER` | `assowelcom`. |
+   | `DEPLOY_SSH_KEY` | The complete contents of `~/.ssh/welcom_github_actions` (the private key). |
+   | `DEPLOY_KNOWN_HOSTS` | The verified `ssh-keyscan -H YOUR_SERVER_HOST` output. |
+
 ## License
 
 This project is released under the [MIT License](LICENSE).
