@@ -58,6 +58,10 @@ export const en = {
     foyer: {
       title: "Foyer | WELCOM’",
     },
+    legal: {
+      title: "Legal Mentions | WELCOM’",
+      description: "Official legal notice, publisher information, hosting provider, copyright, and privacy policy for Association Welcom’ (Télécom SudParis & IMT Business School).",
+    },
   },
   nav: {
     home: "Home",
@@ -71,6 +75,7 @@ export const en = {
     closeMenu: "Close menu",
     primary: "Primary",
     language: "Choose your language",
+    legal: "Legal Mentions",
   },
   hero: {
     titleLead: "Welcom’ to",
@@ -264,6 +269,7 @@ export const en = {
     dev: "Developed by {name}",
     backToTop: "Back to top",
     top: "Top",
+    legal: "Legal Mentions",
   },
   hive: {
     title: "GUIDES",
@@ -833,6 +839,12 @@ export const en = {
     phoneOperatorsTitle: "Top Mobile Operators in France",
     phoneOperators: [
       {
+        name: "Lebara",
+        badge: "#1 Choice • Student Deal",
+        desc: "Our #1 recommended operator: **no-contract** and super affordable! Enjoy **50% off for your first 2 months** as a student using promo code **#####** (€15 donated to the association per subscription).",
+        url: "https://www.lebara.fr"
+      },
+      {
         name: "Syma Mobile",
         badge: "Low Cost & Intl",
         desc: "Affordable no-contract plans with large data packages and included international call options to many countries.",
@@ -970,6 +982,19 @@ export const en = {
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
       }
     ],
+    groceriesRestaurantsTitle: "Campus & Student Restaurants (Restos U)",
+    groceriesRestaurants: [
+      {
+        name: "The Rits (Restaurant de l'Institut Télécom SudParis)",
+        desc: "Located right next to the U7 building. Serves meals for ~4€ per meal. Recommended if you don't have much time between classes. Opening hours: 11:30 – 14:00, Monday to Friday. Takeaway (food to go) is available.",
+        url: "https://maps.app.goo.gl/h5yuQvMWpf6Z8Vxa7"
+      },
+      {
+        name: "Restaurant CROUS Le Sablier",
+        desc: "Located near the U6 building. Offers a complete meal (starter, main course, cheese, and dessert) for only 1€. Payment requires installing the <a href=\"https://play.google.com/store/apps/details?id=fr.smoney.android.izly.REC&hl=fr&pli=1\" target=\"_blank\" rel=\"noopener noreferrer\">Izly app</a> and logging in with your <a href=\"https://messervices.etudiant.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MesServices Étudiant account</a>.",
+        url: "https://maps.app.goo.gl/Efb3zcxAUB337avdA"
+      }
+    ],
     groceriesTipsTitle: "Key Things to Know When Grocery Shopping:",
     groceriesTips: [
       "<strong>Bring reusable shopping bags (Sac Cabas):</strong> Single-use plastic bags are not provided for free at French checkout counters (~0.15€–0.30€). Keep a reusable cloth bag in your backpack.",
@@ -1101,6 +1126,60 @@ export const en = {
     supportTitle: "Have Questions About Admin or Housing?",
     supportBody: "Drop by the WELCOM’ room in the Foyer! Our team can walk you through bank appointments, help you pick a mobile plan, or explain your French paperwork.",
     supportBtn: "Find the Welcom' Office"
+  },
+
+  legalPage: {
+    heroTitle: "Legal Mentions",
+    heroLede: "Official legal notice, publication details, hosting information, and privacy policy of Association Welcom’.",
+    sections: {
+      publisherTitle: "1. Website Publisher (Éditeur du site)",
+      publisherContent: [
+        "This website is published by <strong>Association Welcom’</strong>, the student welcome committee for international students at <strong>Télécom SudParis</strong> and <strong>IMT Business School</strong>.",
+        "<strong>Legal Status:</strong> Non-profit association under the French Law of July 1st, 1901 (Association loi 1901).",
+        "<strong>SIRET Number:</strong> 840 108 633 00016",
+        "<strong>Headquarters Address:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>Contact Email:</strong> association.welcom@imtbs-tsp.eu"
+      ],
+      publicationTitle: "2. Director of Publication (Directeur de la publication)",
+      publicationContent: [
+        "<strong>Director of Publication:</strong> Manuel BRILLANTES TAVARES, in his capacity as President of Association Welcom’."
+      ],
+      hostingTitle: "3. Website Hosting Provider (Hébergeur du site)",
+      hostingContent: [
+        "This website is hosted by <strong>MiNET</strong>, student computer network association at Télécom SudParis and IMT Business School.",
+        "<strong>Legal Status:</strong> Non-profit association under the French Law of July 1st, 1901 (Association loi 1901).",
+        "<strong>Address:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>Website:</strong> <a href=\"https://minet.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://minet.net</a>"
+      ],
+      intellectualTitle: "4. Intellectual Property & Credits (Propriété intellectuelle)",
+      intellectualContent: [
+        "All visual, textual, graphic, and multimedia elements of this website (including text, photos, illustrations, logos, mascot designs, and icons) are the property of Association Welcom’ or their respective copyright holders.",
+        "<strong>Website Design & Development:</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>).",
+        "<strong>Photography Credits:</strong> Club Déclic Photo (student photography club at Télécom SudParis & IMT Business School).",
+        "Any unauthorized reproduction, distribution, modification, or publication of all or part of these elements is strictly prohibited without explicit prior written consent from Association Welcom’."
+      ],
+      privacyTitle: "5. Personal Data & Privacy / RGPD (Protection des données)",
+      privacyContent: [
+        "In accordance with the General Data Protection Regulation (GDPR / RGPD) and the French Data Protection Act (Loi Informatique et Libertés):",
+        "<strong>Data Collection:</strong> Browsing this website is completely anonymous. The contact form on this site does not store user data in a server database; it generates a pre-filled direct <code>mailto:</code> link in your default email client.",
+        "<strong>Data Retention:</strong> Any personal information (such as your name or email) voluntarily sent to us via email is retained only for the duration required to handle your inquiry and up to a maximum of 12 months.",
+        "<strong>Data Rights & CNIL Recourse:</strong> You have the right to access, rectify, request erasure of, or object to the processing of your personal data. To exercise these rights, please write to us at: <strong>association.welcom@imtbs-tsp.eu</strong>. You also have the right to lodge a complaint with the French Data Protection Authority (<a href=\"https://www.cnil.fr\" target=\"_blank\" rel=\"noopener noreferrer\">CNIL</a>)."
+      ],
+      cookiesTitle: "6. Cookies & Tracking",
+      cookiesContent: [
+        "This website does not use tracking, advertising, or third-party analytical cookies. Only essential browser preferences (such as your chosen language preference saved in <code>localStorage</code>) are stored locally on your device to improve navigation."
+      ],
+      liabilityTitle: "7. Limitation of Liability (Limitation de responsabilité)",
+      liabilityContent: [
+        "Association Welcom’ strives to provide accurate, complete, and up-to-date practical information to assist international students. However, administrative rules, transportation fares, housing regulations, and third-party services are subject to change. Information is provided for guidance purposes only.",
+        "External links to third-party websites (e.g. CAF, ANEF, SNCF, bank partners) are provided for convenience. Association Welcom’ is not responsible for the content or privacy practices of external sites."
+      ],
+      accessibilityTitle: "8. Digital Accessibility (Accessibilité numérique)",
+      accessibilityContent: [
+        "Association Welcom’ is committed to making its digital services accessible to all international students, including users with disabilities.",
+        "This website is designed according to French RGAA / WCAG 2.1 accessibility guidelines, featuring high-contrast text color palettes, fluid typography, full keyboard navigation support, and light/dark and reduced-motion considerations."
+      ]
+    }
   }
 };
 

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50">
+  <g fill="none" fill-rule="evenodd">
+    <!-- Speech bubble icon -->
+    <path fill="#00A0E2" d="M26 8c-9.94 0-18 7.163-18 16 0 3.687 1.416 7.087 3.813 9.794L9 41l7.452-2.98C19.217 39.289 22.49 40 26 40c9.94 0 18-7.163 18-16S35.94 8 26 8z"/>
+    <!-- Speech bubble dots -->
+    <circle cx="20.5" cy="24" r="2.2" fill="#FFFFFF"/>
+    <circle cx="26" cy="24" r="2.2" fill="#FFFFFF"/>
+    <circle cx="31.5" cy="24" r="2.2" fill="#FFFFFF"/>
+    <!-- Wordmark "lebara" -->
+    <text x="50" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" fill="#00A0E2" letter-spacing="-0.5">lebara</text>
+  </g>
+</svg>

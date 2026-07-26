@@ -49,6 +49,10 @@ export const vi: Translation = {
     foyer: {
       title: "Khu Vực Foyer | WELCOM’",
     },
+    legal: {
+      title: "Thông tin Pháp lý | WELCOM’",
+      description: "Thông báo pháp lý chính thức, thông tin nhà xuất bản, đơn vị lưu trữ, bản quyền và chính sách bảo mật của Association Welcom’.",
+    },
   },
   nav: {
     team: "Đội ngũ",
@@ -61,7 +65,8 @@ export const vi: Translation = {
     openMenu: "Mở menu",
     closeMenu: "Đóng menu",
     primary: "Điều hướng chính",
-    language: "Chọn ngôn ngữ của bạn",
+    language: "Chọn ngôn ngữ",
+    legal: "Thông tin Pháp lý",
   },
   hero: {
     titleLead: "Welcom’ đến với",
@@ -255,6 +260,7 @@ export const vi: Translation = {
     dev: "Được phát triển bởi {name}",
     backToTop: "Quay lại đầu trang",
     top: "Đầu trang",
+    legal: "Thông tin Pháp lý",
   },
   hive: {
     title: "CẨM NANG",
@@ -788,6 +794,12 @@ export const vi: Translation = {
     phoneOperatorsTitle: "Các Nhà Mạng Di Động Hàng Đầu Tại Pháp",
     phoneOperators: [
       {
+        name: "Lebara",
+        badge: "Lựa Chọn Số 1 • Ưu Đãi Sinh Viên",
+        desc: "Nhà mạng được đề xuất số 1 của chúng tôi: **không hợp đồng ràng buộc** và siêu tiết kiệm! Nhận **giảm giá 50% trong 2 tháng đầu** cho sinh viên khi nhập mã **#####** (hội sinh viên được tài trợ 15€ với mỗi lượt đăng ký).",
+        url: "https://www.lebara.fr"
+      },
+      {
         name: "Syma Mobile",
         badge: "Giá Rẻ & Quốc Tế",
         desc: "Gói cước giá rẻ không hợp đồng cam kết với dung lượng data lớn và bao gồm tùy chọn gọi quốc tế đến nhiều quốc gia.",
@@ -925,6 +937,19 @@ export const vi: Translation = {
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
       }
     ],
+    groceriesRestaurantsTitle: "Nhà hàng Sinh viên & Quán ăn Campus (Restos U)",
+    groceriesRestaurants: [
+      {
+        name: "The Rits (Restaurant de l'Institut Télécom SudParis)",
+        desc: "Nằm ngay cạnh tòa nhà U7. Phục vụ bữa ăn khoảng ~4€ mỗi suất, rất khuyên dùng nếu bạn không có nhiều thời gian giữa các tiết học. Giờ mở cửa: 11:30 – 14:00 từ thứ Hai đến thứ Sáu. Có thể mang đồ ăn đi (Takeaway).",
+        url: "https://maps.app.goo.gl/h5yuQvMWpf6Z8Vxa7"
+      },
+      {
+        name: "Restaurant CROUS Le Sablier",
+        desc: "Nằm gần tòa nhà U6. Cung cấp bữa ăn đầy đủ (khai vị, món chính, phô mai và tráng miệng) chỉ với 1 euro (1€). Để thanh toán, bạn cần cài đặt ứng dụng <a href=\"https://play.google.com/store/apps/details?id=fr.smoney.android.izly.REC&hl=fr&pli=1\" target=\"_blank\" rel=\"noopener noreferrer\">Izly</a> và đăng nhập bằng tài khoản <a href=\"https://messervices.etudiant.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MesServices Étudiant</a>.",
+        url: "https://maps.app.goo.gl/Efb3zcxAUB337avdA"
+      }
+    ],
     groceriesTipsTitle: "Những Điều Quan Trọng Cần Biết Khi Đi Mua Sắm:",
     groceriesTips: [
       "<strong>Mang theo túi mua sắm có thể tái sử dụng (Sac Cabas):</strong> Túi ni lông dùng một lần không được cung cấp miễn phí tại quầy thanh toán ở Pháp (~0,15€–0,30€). Hãy luôn để một chiếc túi vải trong balo của bạn.",
@@ -1056,5 +1081,53 @@ export const vi: Translation = {
     supportTitle: "Bạn Có Thắc Mắc Về Thủ Tục Hay Nhà Ở?",
     supportBody: "Hãy ghé qua phòng Welcom’ tại Foyer! Đội ngũ của chúng tôi sẵn sàng giúp bạn đặt lịch hẹn ngân hàng, chọn gói cước điện thoại và làm giấy tờ.",
     supportBtn: "Tìm Phòng Welcom’"
+  },
+
+  legalPage: {
+    heroTitle: "Thông tin Pháp lý",
+    heroLede: "Thông báo pháp lý chính thức, thông tin nhà xuất bản, đơn vị lưu trữ và chính sách bảo mật của Association Welcom’.",
+    sections: {
+      publisherTitle: "1. Đơn vị Xuất bản Trang web (Éditeur du site)",
+      publisherContent: [
+        "Trang web này được xuất bản bởi <strong>Association Welcom’</strong>, ban đón tiếp sinh viên quốc tế tại <strong>Télécom SudParis</strong> và <strong>IMT Business School</strong>.",
+        "<strong>Hình thức pháp lý:</strong> Hiệp hội phi lợi nhuận theo Luật Pháp ngày 1 tháng 7 năm 1901 (Association loi 1901).",
+        "<strong>Mã số SIRET:</strong> 840 108 633 00016",
+        "<strong>Địa chỉ trụ sở:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, Pháp",
+        "<strong>Email liên hệ:</strong> association.welcom@imtbs-tsp.eu"
+      ],
+      publicationTitle: "2. Giám đốc Xuất bản (Directeur de la publication)",
+      publicationContent: [
+        "<strong>Giám đốc Xuất bản:</strong> Manuel BRILLANTES TAVARES, với tư cách là Chủ tịch của Association Welcom’."
+      ],
+      hostingTitle: "3. Đơn vị Lưu trữ Trang web (Hébergeur du site)",
+      hostingContent: [
+        "Trang web này được lưu trữ bởi <strong>MiNET</strong>, hiệp hội mạng máy tính sinh viên tại Télécom SudParis và IMT Business School.",
+        "<strong>Hình thức pháp lý:</strong> Hiệp hội phi lợi nhuận theo Luật Pháp ngày 1 tháng 7 năm 1901 (Association loi 1901).",
+        "<strong>Địa chỉ:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, Pháp",
+        "<strong>Trang web:</strong> <a href=\"https://minet.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://minet.net</a>"
+      ],
+      intellectualTitle: "4. Sở hữu Trí tuệ & Bản quyền (Propriété intellectuelle)",
+      intellectualContent: [
+        "Tất cả các yếu tố hình ảnh, văn bản, đồ họa và đa phương tiện trên trang web này (bao gồm văn bản, hình ảnh, minh họa, logo, linh vật và biểu tượng) đều thuộc sở hữu của Association Welcom’ hoặc các bên nắm giữ bản quyền tương ứng.",
+        "<strong>Thiết kế & Phát triển trang web:</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>).",
+        "<strong>Nguồn ảnh:</strong> Club Déclic Photo (Câu lạc bộ nhiếp ảnh sinh viên Télécom SudParis & IMT Business School).",
+        "Mọi hành vi sao chép, phân phối, chỉnh sửa hoặc xuất bản lại mà không có sự đồng ý bằng văn bản của Association Welcom’ đều bị nghiêm cấm."
+      ],
+      privacyTitle: "5. Bảo vệ Dữ liệu Cá nhân & RGPD (Protection des données)",
+      privacyContent: [
+        "Theo Quy định Chung về Bảo vệ Dữ liệu (GDPR / RGPD) và Luật Bảo vệ Dữ liệu của Pháp:",
+        "<strong>Thu thập dữ liệu:</strong> Việc truy cập trang web này là hoàn toàn ẩn danh. Biểu mẫu liên hệ không lưu trữ dữ liệu trên máy chủ; nó tạo liên kết <code>mailto:</code> soạn sẵn trong ứng dụng email của bạn.",
+        "<strong>Quyền của người dùng:</strong> Bạn có quyền truy cập, sửa đổi, yêu cầu xóa hoặc phản đối việc xử lý dữ liệu cá nhân bạn gửi qua email. Vui lòng liên hệ: <strong>association.welcom@imtbs-tsp.eu</strong>."
+      ],
+      cookiesTitle: "6. Cookie & Công cụ Theo dõi",
+      cookiesContent: [
+        "Trang web này không sử dụng cookie quảng cáo hay phân tích của bên thứ ba. Chỉ có tùy chọn duyệt web cần thiết (như ngôn ngữ đã chọn lưu trong <code>localStorage</code>) được lưu trên thiết bị của bạn."
+      ],
+      liabilityTitle: "7. Giới hạn Trách nhiệm",
+      liabilityContent: [
+        "Association Welcom’ nỗ lực cung cấp thông tin chính xác và cập nhật. Tuy nhiên, các quy định hành chính và chi phí có thể thay đổi, thông tin chỉ mang tính chất tham khảo.",
+        "Các liên kết đến trang web bên thứ ba (CAF, ANEF, SNCF, đối tác ngân hàng) được cung cấp vì sự tiện lợi của bạn. Association Welcom’ không chịu trách nhiệm về nội dung hoặc chính sách bảo mật của các trang web đó."
+      ]
+    }
   }
 };

@@ -49,6 +49,10 @@ export const zhTW: Translation = {
     foyer: {
       title: "Foyer 休息室 | WELCOM’",
     },
+    legal: {
+      title: "法律聲明 | WELCOM’",
+      description: "Welcom’ 協會 (Télécom SudParis & IMT Business School) 官方法律聲明、出版商資訊、託管服務商、版權及隱私政策。",
+    },
   },
   nav: {
     team: "團隊",
@@ -61,7 +65,8 @@ export const zhTW: Translation = {
     openMenu: "開啟選單",
     closeMenu: "關閉選單",
     primary: "主導覽",
-    language: "選擇你的語言",
+    language: "選擇語言",
+    legal: "法律聲明",
   },
   hero: {
     titleLead: "Welcom’ 來到",
@@ -255,6 +260,7 @@ export const zhTW: Translation = {
     dev: "由 {name} 開發",
     backToTop: "回到頂部",
     top: "頂部",
+    legal: "法律聲明",
   },
   hive: {
     title: "指南",
@@ -788,6 +794,12 @@ export const zhTW: Translation = {
     phoneOperatorsTitle: "法國主要電信業者",
     phoneOperators: [
       {
+        name: "Lebara",
+        badge: "首選推薦 • 學生專屬優惠",
+        desc: "首選推薦電信業者：**無合約**且超值劃算！學生使用優惠碼 **#####** 可享**前2個月 50% 折扣**（每筆訂購將為協會帶來 15€ 贊助金）！",
+        url: "https://www.lebara.fr"
+      },
+      {
         name: "Syma Mobile",
         badge: "低價 & 多國通話",
         desc: "超低價無合約套餐，提供大容量流量，並包含贈送多國國際長途通話時長。",
@@ -925,6 +937,19 @@ export const zhTW: Translation = {
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
       }
     ],
+    groceriesRestaurantsTitle: "學生餐廳與校園餐廳 (Restos U)",
+    groceriesRestaurants: [
+      {
+        name: "The Rits (Restaurant de l'Institut Télécom SudParis)",
+        desc: "位於 U7 大樓旁。每餐約 4 歐元，非常適合課間休息時間較短的學生。營業時間：週一至週五 11:30 – 14:00。支援外帶。",
+        url: "https://maps.app.goo.gl/h5yuQvMWpf6Z8Vxa7"
+      },
+      {
+        name: "Restaurant CROUS Le Sablier",
+        desc: "位於 U6 大樓附近。僅需 1 歐元即可享用完整套餐（前菜、主菜、乳酪和甜點）。付款需下載安裝 <a href=\"https://play.google.com/store/apps/details?id=fr.smoney.android.izly.REC&hl=fr&pli=1\" target=\"_blank\" rel=\"noopener noreferrer\">Izly App</a> 並使用您的 <a href=\"https://messervices.etudiant.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MesServices Étudiant 帳號</a> 登入。",
+        url: "https://maps.app.goo.gl/Efb3zcxAUB337avdA"
+      }
+    ],
     groceriesTipsTitle: "去超市購物的注意事項：",
     groceriesTips: [
       "<strong>請自備環保購物袋 (Sac Cabas)：</strong> 法國的收銀台不提供免費的一次性塑膠袋（約 0.15 歐元至 0.30 歐元）。請在背包裡備一個可重複使用的布袋。",
@@ -1056,5 +1081,53 @@ export const zhTW: Translation = {
     supportTitle: "關於手續或住宿還有疑問？",
     supportBody: "歡迎來到 Foyer 的 Welcom’ 辦公室！我們的團隊可以協助你預約銀行開戶、選擇手機套餐或解答法國行政表格。",
     supportBtn: "尋找 Welcom’ 辦公室"
+  },
+
+  legalPage: {
+    heroTitle: "法律聲明",
+    heroLede: "Welcom’ 協會官方法律聲明、出版商資訊、託管服務商及個人隱私政策。",
+    sections: {
+      publisherTitle: "1. 網站出版商 (Éditeur du site)",
+      publisherContent: [
+        "本網站由 <strong>Association Welcom’</strong>（<strong>Télécom SudParis</strong> 與 <strong>IMT Business School</strong> 國際學生迎新委員會）出版與營運。",
+        "<strong>法律形式：</strong> 依據法國 1901 年 7 月 1 日法案成立的非營利性協會 (Association loi 1901)。",
+        "<strong>SIRET 註冊號：</strong> 840 108 633 00016",
+        "<strong>總部地址：</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>聯絡信箱：</strong> association.welcom@imtbs-tsp.eu"
+      ],
+      publicationTitle: "2. 出版負責人 (Directeur de la publication)",
+      publicationContent: [
+        "<strong>出版負責人：</strong> Manuel BRILLANTES TAVARES（以 Welcom’ 協會主席身份）。"
+      ],
+      hostingTitle: "3. 網站託管服務商 (Hébergeur du site)",
+      hostingContent: [
+        "本網站由 <strong>MiNET</strong>（Télécom SudParis 與 IMT Business School 學生網路協會）提供託管支援。",
+        "<strong>法律形式：</strong> 依據法國 1901 年法案成立的非營利性協會 (Association loi 1901)。",
+        "<strong>地址：</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>官方網站：</strong> <a href=\"https://minet.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://minet.net</a>"
+      ],
+      intellectualTitle: "4. 智慧財產權與版權聲明 (Propriété intellectuelle)",
+      intellectualContent: [
+        "本網站包含的所有視覺、文字、圖形及多媒體元素（包括文本、照片、插圖、Logo、吉祥物形象及圖示）均為 Association Welcom’ 或相關權利人的專有財產。",
+        "<strong>網站設計與開發：</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>)。",
+        "<strong>攝影作品來源：</strong> Club Déclic Photo（Télécom SudParis & IMT Business School 學生攝影協會）。",
+        "未經 Association Welcom’ 事先明確書面許可，嚴禁對上述內容進行任何形式的複製、傳播、修改或再版。"
+      ],
+      privacyTitle: "5. 個人資料保護與 RGPD (Protection des données)",
+      privacyContent: [
+        "根據歐盟通用資料保護規則 (GDPR / RGPD) 及法國《資訊技術與自由法》：",
+        "<strong>資料收集：</strong> 瀏覽本網站完全匿名。本站聯絡表單不會在伺服器資料庫中存儲個人資料；它會在您的郵件客戶端中生成一條預填好的 <code>mailto:</code> 直接郵件連結。",
+        "<strong>使用者權利：</strong> 您有權查詢、更正、刪除或反對處理您通過電子郵件自願提交給我們的個人資料。如需行使上述權利，請發送郵件至：<strong>association.welcom@imtbs-tsp.eu</strong>。"
+      ],
+      cookiesTitle: "6. Cookie 與追蹤技術",
+      cookiesContent: [
+        "本網站不使用任何廣告、追蹤或第三方分析 Cookie。您的裝置上僅會保存在本地存儲 (<code>localStorage</code>) 中的必要瀏覽偏好（如您選擇的語言）。"
+      ],
+      liabilityTitle: "7. 責任限制 (Limitation de responsabilité)",
+      liabilityContent: [
+        "Association Welcom’ 致力於為國際學生提供準確、完整且最新的實用資訊。然而，鑑於行政法規、交通票價及住房規定可能隨時變更，本站資訊僅供參考。",
+        "本站提供的第三方網站連結（如 CAF、ANEF、SNCF、合作銀行等）僅為方便使用者而設。Association Welcom’ 對外部網站的內容或隱私政策不承擔責任。"
+      ]
+    }
   }
 };

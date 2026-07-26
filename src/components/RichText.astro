@@ -1,5 +1,5 @@
 ---
-/* Renders a string with {Term} placeholders (glossary terms) and inline <em> HTML. */
+/* Renders a string with {Term} placeholders (glossary terms), inline <strong> markdown (**text**), and inline HTML. */
 import LexiconTerm from "./LexiconTerm.astro";
 
 interface Props {
@@ -17,6 +17,7 @@ const segments = text.split(/(\{[^}]+\})/g);
       const term = match[1];
       return <LexiconTerm term={term}>{term}</LexiconTerm>;
     }
-    return <Fragment set:html={seg} />;
+    const htmlContent = seg.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    return <Fragment set:html={htmlContent} />;
   })
 }

@@ -1,0 +1,277 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import HexBg from "../HexBg.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import RichText from "../RichText.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const sec = t.legalPage.sections as any;
+
+const sections = [
+  {
+    title: sec.publisherTitle,
+    content: sec.publisherContent,
+  },
+  {
+    title: sec.publicationTitle,
+    content: sec.publicationContent,
+  },
+  {
+    title: sec.hostingTitle,
+    content: sec.hostingContent,
+  },
+  {
+    title: sec.intellectualTitle,
+    content: sec.intellectualContent,
+  },
+  {
+    title: sec.privacyTitle,
+    content: sec.privacyContent,
+  },
+  {
+    title: sec.cookiesTitle,
+    content: sec.cookiesContent,
+  },
+  {
+    title: sec.liabilityTitle,
+    content: sec.liabilityContent,
+  },
+  ...(sec.accessibilityTitle && sec.accessibilityContent
+    ? [
+        {
+          title: sec.accessibilityTitle,
+          content: sec.accessibilityContent,
+        },
+      ]
+    : []),
+];
+---
+
+<Base title={t.meta.legal.title} description={t.meta.legal.description}>
+  <span id="top"></span>
+  <SiteHeader />
+  <main>
+    <!-- ── Hero: legal header ─────────────────────────────────── -->
+    <section class="hero">
+      <HexBg
+        radius={46}
+        gap={6}
+        opacity={0.1}
+        color="var(--navy)"
+        strokeWidth={2}
+        hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 50% 45%, white 30%, transparent 85%)"
+      />
+      <div class="container hero__inner">
+        <div class="hero__bee" aria-hidden="true">
+          <img src="/imgs/bee.svg" alt="" width="120" height="120" />
+        </div>
+        <h1 class="hero__title">{t.legalPage.heroTitle}</h1>
+        <p class="hero__lede">{t.legalPage.heroLede}</p>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Legal Content Grid ─────────────────────────────────── -->
+    <section class="band band--legal">
+      <div class="container legal-container">
+        {
+          sections.map((section, idx) => (
+            <article class="legal-card" id={`legal-section-${idx + 1}`}>
+              <h2 class="legal-card__title">{section.title}</h2>
+              <div class="legal-card__content">
+                {section.content.map((paragraph) => (
+                  <p class="legal-card__text">
+                    <RichText text={paragraph} />
+                  </p>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Base>
+
+<style>
+  /* ── Layout & Container ──────────────────────────────────── */
+  .container {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+  }
+
+  .band {
+    padding-block: var(--section-y);
+  }
+
+  /* ── Hero Section ────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--honey);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    text-align: center;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-top: calc(
+      var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9))
+    );
+    padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
+  }
+
+  .hero__bee {
+    margin-bottom: var(--space-4);
+    animation: heroBeeFloat 4s ease-in-out infinite alternate;
+  }
+  .hero__bee img {
+    width: clamp(80px, 12vw, 120px);
+    height: auto;
+    margin-inline: auto;
+    filter: drop-shadow(4px 6px 0 rgba(30, 42, 61, 0.15));
+  }
+
+  @keyframes heroBeeFloat {
+    from {
+      transform: translateY(0) rotate(-3deg);
+    }
+    to {
+      transform: translateY(-8px) rotate(5deg);
+    }
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    color: var(--cream);
+    -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 5px 5px 0 var(--ink);
+    transform: rotate(-1.5deg);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
+    line-height: 1.7;
+    font-weight: 600;
+    color: var(--ink);
+    max-width: 54ch;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 979px) {
+    .hero {
+      --nav-h: 78px;
+    }
+    .hero__inner {
+      padding-top: calc(var(--nav-h) + clamp(72px, 14vw, 110px));
+    }
+  }
+
+  /* ── Legal Cards List ────────────────────────────────────── */
+  .band--legal {
+    position: relative;
+    background: var(--cream);
+  }
+
+  .legal-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 800px;
+  }
+
+  .legal-card {
+    background: var(--cream-deep);
+    border: 4px solid var(--navy);
+    border-radius: 20px;
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    box-shadow:
+      0 0 0 1px var(--navy),
+      6px 6px 0 var(--navy);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .legal-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px var(--navy),
+      8px 8px 0 var(--navy);
+  }
+
+  .legal-card__title {
+    font-family: var(--font-accent);
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: var(--space-4);
+    letter-spacing: 0.01em;
+  }
+
+  .legal-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .legal-card__text {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .legal-card__text :global(strong) {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .legal-card__text :global(a) {
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--honey);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  }
+
+  .legal-card__text :global(a:hover) {
+    color: var(--honey-deep);
+    text-decoration-color: var(--honey-deep);
+  }
+
+  .legal-card__text :global(code) {
+    font-family: monospace;
+    font-size: 0.9em;
+    background: rgba(30, 42, 61, 0.08);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    border: 1px solid rgba(30, 42, 61, 0.15);
+  }
+
+  /* ── Reduced motion ──────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__bee,
+    .legal-card {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>

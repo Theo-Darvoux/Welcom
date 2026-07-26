@@ -92,16 +92,18 @@ const storeLogos = [
             <div class="store-card">
               <div class="store-card__header">
                 <h4 class="store-card__name">{store.name}</h4>
-                <img
-                  src={storeLogos[idx]}
-                  alt={`${store.name} logo`}
-                  class="store-card__logo"
-                  width="70"
-                  height="32"
-                  loading="lazy"
-                />
+                {storeLogos[idx] && (
+                  <img
+                    src={storeLogos[idx]}
+                    alt={`${store.name} logo`}
+                    class="store-card__logo"
+                    width="70"
+                    height="32"
+                    loading="lazy"
+                  />
+                )}
               </div>
-              <p class="store-card__desc">{store.desc}</p>
+              <p class="store-card__desc"><RichText text={store.desc} /></p>
               {store.url && (
                 <a
                   href={store.url}
@@ -120,6 +122,47 @@ const storeLogos = [
             </div>
           ))}
         </div>
+
+        {d.groceriesRestaurantsTitle && d.groceriesRestaurants && (
+          <>
+            <h3 class="subsection-heading">{d.groceriesRestaurantsTitle}</h3>
+            <div class="stores-grid">
+              {d.groceriesRestaurants.map((resto) => (
+                <div class="store-card">
+                  <div class="store-card__header">
+                    <h4 class="store-card__name">{resto.name}</h4>
+                    {resto.name.toLowerCase().includes("crous") && (
+                      <img
+                        src="/imgs/stores/crous.svg"
+                        alt="CROUS logo"
+                        class="store-card__logo"
+                        width="70"
+                        height="32"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                  <p class="store-card__desc"><RichText text={resto.desc} /></p>
+                  {resto.url && (
+                    <a
+                      href={resto.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="store-card__btn"
+                    >
+                      <span>Directions & Info</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
         <h3 class="subsection-heading">{d.groceriesTipsTitle}</h3>
         <ul class="step-list">

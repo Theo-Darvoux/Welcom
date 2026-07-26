@@ -49,6 +49,10 @@ export const ptBR: Translation = {
     foyer: {
       title: "Foyer | WELCOM’",
     },
+    legal: {
+      title: "Menções Legais | WELCOM’",
+      description: "Aviso legal oficial, informações de publicação, hospedagem, direitos autorais e política de privacidade da Associação Welcom’.",
+    },
   },
   nav: {
     team: "Equipe",
@@ -62,6 +66,7 @@ export const ptBR: Translation = {
     closeMenu: "Fechar menu",
     primary: "Navegação principal",
     language: "Escolha seu idioma",
+    legal: "Menções Legais",
   },
   hero: {
     titleLead: "Welcom’ a",
@@ -255,6 +260,7 @@ export const ptBR: Translation = {
     dev: "Desenvolvido por {name}",
     backToTop: "Voltar ao topo",
     top: "Topo",
+    legal: "Menções Legais",
   },
   hive: {
     title: "GUIAS",
@@ -788,6 +794,12 @@ export const ptBR: Translation = {
     phoneOperatorsTitle: "Principais Operadoras Móveis na França",
     phoneOperators: [
       {
+        name: "Lebara",
+        badge: "Escolha N°1 • Oferta Estudantil",
+        desc: "Nossa operadora recomendada nº 1: **sem fidelidade** e super econômica! Ganhe **50% de desconto nos 2 primeiros meses** para estudantes usando o código **#####** (€15 doados à associação por assinatura).",
+        url: "https://www.lebara.fr"
+      },
+      {
         name: "Syma Mobile",
         badge: "Econômico e Internacional",
         desc: "Planos acessíveis sem fidelidade com grandes pacotes de dados e opções de chamadas internacionais incluídas para vários países.",
@@ -923,6 +935,19 @@ export const ptBR: Translation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "O principal shopping em Évry-Courcouronnes (10–12 min de caminhada / 1 estação de {RER D}). Possui um enorme hipermercado Carrefour para preços mais baixos, utensílio de cozinha, eletrônicos, roupas, além de mais de 150 lojas.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      }
+    ],
+    groceriesRestaurantsTitle: "Restaurantes Universitários (Restos U)",
+    groceriesRestaurants: [
+      {
+        name: "The Rits (Restaurant de l'Institut Télécom SudParis)",
+        desc: "Localizado logo ao lado do edifício U7. Refeições por ~4€ cada, recomendado se você tiver pouco tempo entre as aulas. Horário de funcionamento: 11:30 – 14:00 de segunda a sexta-feira. Opção de comida para levar disponível.",
+        url: "https://maps.app.goo.gl/h5yuQvMWpf6Z8Vxa7"
+      },
+      {
+        name: "Restaurant CROUS Le Sablier",
+        desc: "Localizado perto do edifício U6. Oferece uma refeição completa (entrada, prato principal, queijo e sobremesa) por apenas 1€. Para pagar, é necessário instalar o aplicativo <a href=\"https://play.google.com/store/apps/details?id=fr.smoney.android.izly.REC&hl=fr&pli=1\" target=\"_blank\" rel=\"noopener noreferrer\">Izly</a> e fazer login com sua conta <a href=\"https://messervices.etudiant.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MesServices Étudiant</a>.",
+        url: "https://maps.app.goo.gl/Efb3zcxAUB337avdA"
       }
     ],
     groceriesTipsTitle: "Principais Coisas a Saber ao Fazer Compras de Supermercado:",
@@ -1165,5 +1190,53 @@ export const ptBR: Translation = {
     supportTitle: "Dúvidas Sobre Documentos ou Moradia?",
     supportBody: "Venha até a sala da Welcom’ no Foyer! Nossa equipe pode ajudar você com agendamentos no banco, planos de celular e documentos franceses.",
     supportBtn: "Localizar a Sala Welcom’"
+  },
+
+  legalPage: {
+    heroTitle: "Menções Legais",
+    heroLede: "Aviso legal oficial, detalhes de publicação, informações do provedor de hospedagem e política de privacidade da Associação Welcom’.",
+    sections: {
+      publisherTitle: "1. Editor do Site (Éditeur du site)",
+      publisherContent: [
+        "Este site é publicado pela <strong>Associação Welcom’</strong>, comitê de recepção de estudantes internacionais da <strong>Télécom SudParis</strong> e <strong>IMT Business School</strong>.",
+        "<strong>Estatuto Jurídico:</strong> Associação sem fins lucrativos regida pela Lei francesa de 1º de julho de 1901 (Association loi 1901).",
+        "<strong>Número SIRET:</strong> 840 108 633 00016",
+        "<strong>Endereço da Sede:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, França",
+        "<strong>E-mail de Contato:</strong> association.welcom@imtbs-tsp.eu"
+      ],
+      publicationTitle: "2. Diretor de Publicação (Directeur de la publication)",
+      publicationContent: [
+        "<strong>Diretor de Publicação:</strong> Manuel BRILLANTES TAVARES, na qualidade de Presidente da Associação Welcom’."
+      ],
+      hostingTitle: "3. Provedor de Hospedagem Web (Hébergeur du site)",
+      hostingContent: [
+        "Este site é hospedado pela <strong>MiNET</strong>, associação da rede de computadores de estudantes da Télécom SudParis e IMT Business School.",
+        "<strong>Estatuto Jurídico:</strong> Associação sem fins lucrativos regida pela Lei francesa de 1º de julho de 1901 (Association loi 1901).",
+        "<strong>Endereço:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, França",
+        "<strong>Site Web:</strong> <a href=\"https://minet.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://minet.net</a>"
+      ],
+      intellectualTitle: "4. Propriedade Intelectual e Créditos (Propriété intellectuelle)",
+      intellectualContent: [
+        "Todos os elementos visuais, textuais, gráficos e multimídia deste site (incluindo textos, fotografias, ilustrações, logotipos, mascotes e ícones) são propriedade exclusiva da Associação Welcom’ ou de seus respectivos detentores de direitos.",
+        "<strong>Design e Desenvolvimento Web:</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>).",
+        "<strong>Créditos Fotográficos:</strong> Club Déclic Photo (clube de fotografia estudantil da Télécom SudParis & IMT Business School).",
+        "É estritamente proibida qualquer reprodução, distribuição, modificação ou publicação total ou parcial destes elementos sem autorização prévia por escrito da Associação Welcom’."
+      ],
+      privacyTitle: "5. Proteção de Dados Pessoais (RGPD)",
+      privacyContent: [
+        "Em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD) e a legislação francesa de proteção de dados:",
+        "<strong>Coleta de Dados:</strong> A navegação neste site é totalmente anônima. O formulário de contato não armazena dados em servidores; ele gera um link direto <code>mailto:</code> pré-preenchido no seu cliente de e-mail.",
+        "<strong>Direitos dos Usuários:</strong> Você tem o direito de acessar, retificar, solicitar a exclusão ou se opor ao tratamento dos dados pessoais fornecidos por e-mail. Para exercer esses direitos, entre em contato em: <strong>association.welcom@imtbs-tsp.eu</strong>."
+      ],
+      cookiesTitle: "6. Cookies e Rastreamento",
+      cookiesContent: [
+        "Este site não utiliza cookies publicitários, de rastreamento ou de análise de terceiros. Apenas as preferências essenciais de navegação (como seu idioma preferido salvo no <code>localStorage</code>) são armazenadas no seu dispositivo."
+      ],
+      liabilityTitle: "7. Limitação de Responsabilidade",
+      liabilityContent: [
+        "A Associação Welcom’ se esforça para fornecer informações práticas precisas e atualizadas. No entanto, como as regras administrativas e os regulamentos podem mudar, as informações são fornecidas em caráter orientativo.",
+        "Links externos para sites de terceiros (CAF, ANEF, SNCF, parceiros bancários) são fornecidos para sua conveniência. A Associação Welcom’ não é responsável pelo conteúdo ou práticas de privacidade desses sites externos."
+      ]
+    }
   }
 };

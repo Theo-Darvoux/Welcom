@@ -13,6 +13,7 @@ const t = useTranslations(lang);
 const m = t.moneyPhone;
 
 const operatorLogos = [
+  "/imgs/operators/lebara.svg",
   "/imgs/operators/syma-mobile.svg",
   "/imgs/operators/b-and-you.png",
   "/imgs/operators/prixtel.svg"
@@ -96,7 +97,7 @@ const operatorLogos = [
         <h3 class="subsection-heading">{m.phoneOperatorsTitle}</h3>
         <div class="operators-grid">
           {m.phoneOperators.map((op, idx) => (
-            <div class="operator-card">
+            <div class={`operator-card ${idx === 0 ? "operator-card--featured" : ""}`}>
               <div class="operator-card__header">
                 <h4 class="operator-card__name">{op.name}</h4>
                 <img
@@ -108,7 +109,7 @@ const operatorLogos = [
                   loading="lazy"
                 />
               </div>
-              <p class="operator-card__desc">{op.desc}</p>
+              <p class="operator-card__desc"><RichText text={op.desc} /></p>
               <a
                 href={op.url}
                 target="_blank"
@@ -446,9 +447,15 @@ const operatorLogos = [
     margin-bottom: var(--space-6);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     .operators-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1050px) {
+    .operators-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -461,6 +468,13 @@ const operatorLogos = [
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    position: relative;
+  }
+
+  .operator-card--featured {
+    background: #FFFBEB;
+    border: 3px solid var(--honey-deep);
+    box-shadow: 5px 5px 0 var(--navy);
   }
 
   .operator-card__header {
@@ -492,6 +506,12 @@ const operatorLogos = [
     color: var(--navy);
     margin: 0;
     flex-grow: 1;
+  }
+
+  .operator-card__desc strong,
+  .operator-card__desc b {
+    font-weight: 800;
+    color: var(--ink);
   }
 
   .operator-card__kiosk {

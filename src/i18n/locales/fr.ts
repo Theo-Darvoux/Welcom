@@ -57,6 +57,10 @@ export const fr: Translation = {
     foyer: {
       title: "Foyer | WELCOM’",
     },
+    legal: {
+      title: "Mentions Légales | WELCOM’",
+      description: "Mentions légales officielles, informations de l'éditeur, hébergeur, propriété intellectuelle et politique de confidentialité de l'Association Welcom’.",
+    },
   },
   nav: {
     team: "Équipe",
@@ -70,6 +74,7 @@ export const fr: Translation = {
     closeMenu: "Fermer le menu",
     primary: "Navigation principale",
     language: "Choisissez votre langue",
+    legal: "Mentions Légales",
   },
   hero: {
     titleLead: "Welcom’ à",
@@ -263,6 +268,7 @@ export const fr: Translation = {
     dev: "Développé par {name}",
     backToTop: "Retour en haut",
     top: "Haut",
+    legal: "Mentions Légales",
   },
   hive: {
     title: "GUIDES",
@@ -832,6 +838,12 @@ export const fr: Translation = {
     phoneOperatorsTitle: "Principaux opérateurs mobiles en France",
     phoneOperators: [
       {
+        name: "Lebara",
+        badge: "Choix N°1 • Offre Étudiante",
+        desc: "Opérateur recommandé n°1 : **sans engagement** et très économique ! **-50% pendant les 2 premiers mois** pour les étudiants avec le code promo **#####** (et 15€ reversés à l'association par souscription).",
+        url: "https://www.lebara.fr"
+      },
+      {
         name: "Syma Mobile",
         badge: "Bas coût & International",
         desc: "Forfaits sans engagement à petit prix avec de grandes enveloppes internet et des options d'appels internationaux incluses vers de nombreux pays.",
@@ -969,6 +981,19 @@ export const fr: Translation = {
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
       }
     ],
+    groceriesRestaurantsTitle: "Restaurants Universitaires & Restos U",
+    groceriesRestaurants: [
+      {
+        name: "The Rits (Restaurant de l'Institut Télécom SudParis)",
+        desc: "Situé juste à côté du bâtiment U7. Repas à ~4€ par repas, vivement recommandé si vous avez peu de temps entre deux cours. Horaires d'ouverture : 11h30 – 14h du lundi au vendredi. Possibilité de prendre à emporter.",
+        url: "https://maps.app.goo.gl/h5yuQvMWpf6Z8Vxa7"
+      },
+      {
+        name: "Restaurant CROUS Le Sablier",
+        desc: "Situé à proximité du bâtiment U6. Propose un repas complet (entrée, plat, fromage et dessert) pour seulement 1€. Il est nécessaire d'installer l'application <a href=\"https://play.google.com/store/apps/details?id=fr.smoney.android.izly.REC&hl=fr&pli=1\" target=\"_blank\" rel=\"noopener noreferrer\">Izly</a> pour payer et de vous connecter avec votre compte <a href=\"https://messervices.etudiant.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MesServices Étudiant</a>.",
+        url: "https://maps.app.goo.gl/Efb3zcxAUB337avdA"
+      }
+    ],
     groceriesTipsTitle: "À savoir absolument pour vos courses :",
     groceriesTips: [
       "<strong>Pensez à vos sacs réutilisables (Sac Cabas) :</strong> Les sacs plastiques à usage unique sont payants en caisse (~0,15€–0,30€). Gardez un sac réutilisable dans votre sac à dos.",
@@ -1100,5 +1125,59 @@ export const fr: Translation = {
     supportTitle: "Des questions sur vos démarches ?",
     supportBody: "Passez nous voir au bureau Welcom’ situé au Foyer ! Notre équipe vous aide pour vos rendez-vous bancaires, forfaits mobiles ou dossiers administratifs.",
     supportBtn: "Trouver le bureau Welcom’"
+  },
+
+  legalPage: {
+    heroTitle: "Mentions Légales",
+    heroLede: "Mentions légales officielles, informations sur l'éditeur, l'hébergeur et la politique de confidentialité de l'Association Welcom’.",
+    sections: {
+      publisherTitle: "1. Éditeur du site",
+      publisherContent: [
+        "Le présent site web est édité par l'<strong>Association Welcom’</strong>, le comité d'accueil des étudiants internationaux de <strong>Télécom SudParis</strong> et <strong>IMT Business School</strong>.",
+        "<strong>Forme juridique :</strong> Association à but non lucratif régie par la loi du 1er juillet 1901.",
+        "<strong>Numéro SIRET :</strong> 840 108 633 00016",
+        "<strong>Adresse du siège social :</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>Contact électronique :</strong> association.welcom@imtbs-tsp.eu"
+      ],
+      publicationTitle: "2. Directeur de la publication",
+      publicationContent: [
+        "<strong>Directeur de la publication :</strong> Manuel BRILLANTES TAVARES, en sa qualité de Président de l'Association Welcom’."
+      ],
+      hostingTitle: "3. Hébergeur du site",
+      hostingContent: [
+        "Le présent site est hébergé par <strong>MiNET</strong>, association loi 1901 assurant le réseau informatique étudiant de Télécom SudParis et IMT Business School.",
+        "<strong>Forme juridique :</strong> Association régie par la loi du 1er juillet 1901.",
+        "<strong>Adresse :</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>Site web :</strong> <a href=\"https://minet.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://minet.net</a>"
+      ],
+      intellectualTitle: "4. Propriété intellectuelle & Crédits",
+      intellectualContent: [
+        "L'ensemble des éléments visuels, textuels, graphiques et multimédias figurant sur ce site (textes, photographies, illustrations, logos, mascotte et icônes) est la propriété exclusive de l'Association Welcom’ ou de leurs ayants droit respectifs.",
+        "<strong>Conception & Développement web :</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>).",
+        "<strong>Crédits photographiques :</strong> Club Déclic Photo (club photo de Télécom SudParis & IMT Business School).",
+        "Toute reproduction, représentation, modification ou publication totale ou partielle de ces éléments est strictement interdite sans l'autorisation écrite préalable de l'Association Welcom’."
+      ],
+      privacyTitle: "5. Protection des données personnelles (RGPD)",
+      privacyContent: [
+        "Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés :",
+        "<strong>Collecte des données :</strong> La navigation sur ce site est totalement anonyme. Le formulaire de contact n'enregistre aucune donnée dans une base de données serveur ; il génère un lien direct <code>mailto:</code> prérempli dans votre logiciel de messagerie.",
+        "<strong>Durée de conservation :</strong> Les données personnelles transmises volontairement par courriel (nom, adresse email) ne sont conservées que pendant la durée nécessaire au traitement de votre demande, dans la limite de 12 mois.",
+        "<strong>Droits des personnes & Recours CNIL :</strong> Vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles. Pour exercer ces droits, vous pouvez nous contacter à : <strong>association.welcom@imtbs-tsp.eu</strong>. Vous disposez également du droit d'introduire une réclamation auprès de la <a href=\"https://www.cnil.fr\" target=\"_blank\" rel=\"noopener noreferrer\">CNIL</a>."
+      ],
+      cookiesTitle: "6. Cookies & Témoins de connexion",
+      cookiesContent: [
+        "Ce site web n'utilise aucun cookie publicitaire, de traçage ou d'analyse tiers. Seules les préférences indispensables à la navigation (telles que votre choix de langue conservé dans votre navigateur via <code>localStorage</code>) sont stockées sur votre appareil."
+      ],
+      liabilityTitle: "7. Limitation de responsabilité",
+      liabilityContent: [
+        "L'Association Welcom’ s'efforce de fournir des informations pratiques exactes et mises à jour pour aider les étudiants internationaux. Toutefois, les règles administratives, tarifs de transport et règlements de logement étant évolutifs, ces informations sont fournies à titre indicatif.",
+        "Les liens hypertextes pointant vers des sites tiers (CAF, ANEF, SNCF, partenaires bancaires) sont fournis pour votre commodité. L'Association Welcom’ ne saurait être tenue responsable du contenu ou des pratiques de confidentialité de ces sites externes."
+      ],
+      accessibilityTitle: "8. Accessibilité numérique",
+      accessibilityContent: [
+        "L'Association Welcom’ s'engage à rendre son site internet accessible à l'ensemble des étudiants internationaux, y compris les personnes en situation de handicap.",
+        "Ce site est conçu selon les recommandations d'accessibilité RGAA / WCAG 2.1, avec des contrastes de couleurs adaptés, une typographie fluide, la prise en charge de la navigation au clavier et le respect des préférences de mouvement réduit."
+      ]
+    }
   }
 };

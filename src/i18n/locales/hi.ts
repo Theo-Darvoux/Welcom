@@ -49,6 +49,10 @@ export const hi: Translation = {
     foyer: {
       title: "Foyer | WELCOM’",
     },
+    legal: {
+      title: "कानूनी नोटिस | WELCOM’",
+      description: "Association Welcom’ (Télécom SudParis और IMT Business School) की आधिकारिक कानूनी सूचना, प्रकाशक, होस्टिंग और गोपनीयता नीति।",
+    },
   },
   nav: {
     team: "टीम",
@@ -62,6 +66,7 @@ export const hi: Translation = {
     closeMenu: "मेन्यू बंद करें",
     primary: "मुख्य नेविगेशन",
     language: "अपनी भाषा चुनें",
+    legal: "कानूनी नोटिस",
   },
   hero: {
     titleLead: "Welcom’",
@@ -255,6 +260,7 @@ export const hi: Translation = {
     dev: "{name} द्वारा विकसित",
     backToTop: "ऊपर वापस जाएँ",
     top: "ऊपर",
+    legal: "कानूनी नोटिस",
   },
   hive: {
     title: "गाइड",
@@ -788,6 +794,12 @@ export const hi: Translation = {
     phoneOperatorsTitle: "फ़्रांस में शीर्ष मोबाइल ऑपरेटर",
     phoneOperators: [
       {
+        name: "Lebara",
+        badge: "नंबर 1 पसंद • छात्र ऑफर",
+        desc: "हमारा नंबर 1 अनुशंसित ऑपरेटर: **बिना किसी अनुबंध (no-contract)** और बहुत किफायती! प्रोमो कोड **#####** का उपयोग करके छात्रों के लिए **पहले 2 महीनों पर 50% की छूट** पाएं (प्रति सब्स्क्रिप्शन एसोसिएशन को 15€ दान)।",
+        url: "https://www.lebara.fr"
+      },
+      {
         name: "Syma Mobile",
         badge: "कम लागत और अंतरराष्ट्रीय",
         desc: "कई देशों में शामिल अंतरराष्ट्रीय कॉल विकल्पों और बड़े डेटा पैकेजों के साथ किफायती बिना अनुबंध वाले प्लान।",
@@ -923,6 +935,19 @@ export const hi: Translation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "Évry-Courcouronnes में प्रमुख शॉपिंग मॉल (10-12 मिनट की पैदल दूरी / 1 स्टॉप RER D)। कम कीमतों के लिए एक विशाल Carrefour हाइपरमार्केट, कुकवेयर, इलेक्ट्रॉनिक्स, कपड़े और 150+ स्टोर शामिल हैं।",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      }
+    ],
+    groceriesRestaurantsTitle: "छात्र रेस्तरां (Restos U और परिसर भोजन)",
+    groceriesRestaurants: [
+      {
+        name: "The Rits (Restaurant de l'Institut Télécom SudParis)",
+        desc: "U7 भवन के ठीक बगल में स्थित है। प्रति भोजन ~4€ की कीमत पर भोजन उपलब्ध है, यदि कक्षाओं के बीच ज्यादा समय न हो तो इसकी अत्यधिक सिफारिश की जाती है। खुलने का समय: सोमवार से शुक्रवार 11:30 – 14:00। टेकअवे (साथ ले जाने) की सुविधा उपलब्ध है।",
+        url: "https://maps.app.goo.gl/h5yuQvMWpf6Z8Vxa7"
+      },
+      {
+        name: "Restaurant CROUS Le Sablier",
+        desc: "U6 भवन के पास स्थित है। केवल 1€ में पूरा भोजन (स्टार्टर, मुख्य व्यंजन, पनीर और मिठाई) प्रदान करता है। भुगतान करने के लिए <a href=\"https://play.google.com/store/apps/details?id=fr.smoney.android.izly.REC&hl=fr&pli=1\" target=\"_blank\" rel=\"noopener noreferrer\">Izly ऐप</a> इंस्टॉल करना और अपने <a href=\"https://messervices.etudiant.gouv.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">MesServices Étudiant खाते</a> से लॉगिन करना आवश्यक है।",
+        url: "https://maps.app.goo.gl/Efb3zcxAUB337avdA"
       }
     ],
     groceriesTipsTitle: "किराने की खरीदारी करते समय जानने योग्य मुख्य बातें:",
@@ -1165,5 +1190,53 @@ export const hi: Translation = {
     supportTitle: "कागज़ी कार्रवाई या आवास के बारे में सवाल?",
     supportBody: "Foyer में Welcom’ के कमरे में आएं! हमारी टीम बैंक अपॉइंटमेंट लेने, मोबाइल प्लान चुनने या फ़्रांसीसी फ़ॉर्म समझने में आपकी मदद कर सकती है।",
     supportBtn: "Welcom’ कार्यालय खोजें"
+  },
+
+  legalPage: {
+    heroTitle: "कानूनी नोटिस",
+    heroLede: "Association Welcom’ की आधिकारिक कानूनी सूचना, विवरण, होस्टिंग जानकारी और गोपनीयता नीति।",
+    sections: {
+      publisherTitle: "1. वेबसाइट प्रकाशक (Éditeur du site)",
+      publisherContent: [
+        "यह वेबसाइट <strong>Association Welcom’</strong> द्वारा प्रकाशित की गई है, जो <strong>Télécom SudParis</strong> और <strong>IMT Business School</strong> में अंतरराष्ट्रीय छात्रों के लिए छात्र स्वागत समिति है।",
+        "<strong>कानूनी स्थिति:</strong> 1 जुलाई 1901 के फ़्रांसीसी कानून के तहत पंजीकृत गैर-लाभकारी संगठन (Association loi 1901)।",
+        "<strong>SIRET नंबर:</strong> 840 108 633 00016",
+        "<strong>मुख्यालय का पता:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>संपर्क ईमेल:</strong> association.welcom@imtbs-tsp.eu"
+      ],
+      publicationTitle: "2. प्रकाशन निदेशक (Directeur de la publication)",
+      publicationContent: [
+        "<strong>प्रकाशन निदेशक:</strong> Manuel BRILLANTES TAVARES, Association Welcom’ के अध्यक्ष के रूप में।"
+      ],
+      hostingTitle: "3. वेबसाइट होस्टिंग प्रदाता (Hébergeur du site)",
+      hostingContent: [
+        "यह वेबसाइट <strong>MiNET</strong> द्वारा होस्ट की गई है, जो Télécom SudParis और IMT Business School का छात्र नेटवर्क संघ है।",
+        "<strong>कानूनी स्थिति:</strong> 1 जुलाई 1901 के फ़्रांसीसी कानून के तहत पंजीकृत गैर-लाभकारी संघ (Association loi 1901)।",
+        "<strong>पता:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, France",
+        "<strong>वेबसाइट:</strong> <a href=\"https://minet.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://minet.net</a>"
+      ],
+      intellectualTitle: "4. बौद्धिक संपदा और क्रेडिट (Propriété intellectuelle)",
+      intellectualContent: [
+        "इस वेबसाइट के सभी दृश्य, लिखित, ग्राफ़िक और मल्टीमीडिया तत्व (पाठ, फ़ोटो, चित्र, लोगो, शुभंकर और आइकन सहित) Association Welcom’ या उनके संबंधित अधिकार धारकों की संपत्ति हैं।",
+        "<strong>वेब डिज़ाइन और विकास:</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>)।",
+        "<strong>फ़ोटोग्राफ़ी क्रेडिट:</strong> Club Déclic Photo (Télécom SudParis और IMT Business School का फ़ोटोग्राफ़ी क्लब)।",
+        "Association Welcom’ की पूर्व लिखित अनुमति के बिना इन तत्वों के किसी भी हिस्से को पुनः प्रस्तुत, संशोधित या प्रकाशित करना सख्त मना है।"
+      ],
+      privacyTitle: "5. व्यक्तिगत डेटा और गोपनीयता / RGPD (Protection des données)",
+      privacyContent: [
+        "सामान्य डेटा संरक्षण विनियमन (GDPR / RGPD) और फ़्रांसीसी डेटा संरक्षण अधिनियम के अनुसार:",
+        "<strong>डेटा संग्रह:</strong> इस वेबसाइट को देखना पूरी तरह से गुमनाम है। संपर्क फ़ॉर्म सर्वर डेटाबेस में डेटा संग्रहीत नहीं करता है; यह आपके ईमेल क्लाइंट में एक <code>mailto:</code> लिंक उत्पन्न करता है।",
+        "<strong>उपयोगकर्ता के अधिकार:</strong> आपको ईमेल द्वारा प्रदान किए गए किसी भी व्यक्तिगत डेटा तक पहुँचने, सुधारने या हटाने का अधिकार है। इसके लिए हमें यहाँ लिखें: <strong>association.welcom@imtbs-tsp.eu</strong>।"
+      ],
+      cookiesTitle: "6. कुकीज़ और ट्रैकिंग",
+      cookiesContent: [
+        "यह वेबसाइट किसी भी विज्ञापन या तीसरे पक्ष के ट्रैकिंग कुकीज़ का उपयोग नहीं करती है। केवल आवश्यक नेविगेशन प्राथमिकताएँ (जैसे <code>localStorage</code> में सहेजी गई आपकी भाषा) आपके डिवाइस पर संग्रहीत होती हैं।"
+      ],
+      liabilityTitle: "7. दायित्व की सीमा (Limitation de responsabilité)",
+      liabilityContent: [
+        "Association Welcom’ छात्रों की सहायता के लिए सटीक और नवीनतम जानकारी प्रदान करने का प्रयास करती है। हालाँकि, प्रशासनिक नियमों और दरों में बदलाव हो सकता है, इसलिए जानकारी केवल मार्गदर्शन के लिए प्रदान की जाती है।",
+        "तृतीय-पक्ष वेबसाइटों (जैसे CAF, ANEF, SNCF) के बाहरी लिंक केवल आपकी सुविधा के लिए प्रदान किए गए हैं। Association Welcom’ बाहरी साइटों की सामग्री के लिए ज़िम्मेदार नहीं है।"
+      ]
+    }
   }
 };
