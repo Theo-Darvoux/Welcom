@@ -1,7 +1,6 @@
 version: 2
 
 updates:
-  # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -10,7 +9,7 @@ updates:
       time: "09:00"
       timezone: "Europe/Paris"
     open-pull-requests-limit: 10
-    # Group all patch and minor updates together to reduce noise
+
     groups:
       astro-ecosystem:
         patterns:
@@ -36,18 +35,15 @@ updates:
         update-types:
           - "minor"
           - "patch"
-    # Label PRs for easy filtering
+
     labels:
       - "dependencies"
-    # Assign to a reviewer (update to your GitHub username)
-    # assignees:
-    #   - "your-github-username"
+
     commit-message:
       prefix: "chore"
       prefix-development: "chore"
       include: "scope"
 
-  # Also watch GitHub Actions if you add any later
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
