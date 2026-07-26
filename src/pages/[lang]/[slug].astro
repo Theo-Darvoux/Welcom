@@ -4,8 +4,8 @@ import ContactBody from "../../components/pages/ContactBody.astro";
 import EventsBody from "../../components/pages/EventsBody.astro";
 import GuidesBody from "../../components/pages/GuidesBody.astro";
 import LegalBody from "../../components/pages/LegalBody.astro";
-import { prefixedLocales } from "../../i18n/config";
-import { localizedPath, type Locale } from "../../i18n/utils";
+import { prefixedLocales, type Locale } from "../../i18n/config";
+import { localizedPath } from "../../i18n/utils";
 
 type PageSlug = "guides" | "events" | "contact" | "foyer" | "wip" | "legal";
 
@@ -18,9 +18,11 @@ export function getStaticPaths() {
 }
 
 const { lang, slug } = Astro.params;
+const foyerPath = localizedPath("/foyer/rdc", lang as Locale);
+void foyerPath;
 
 if (slug === "foyer") {
-  return Astro.redirect(localizedPath("/foyer/rdc", lang as Locale));
+  return Astro.redirect(foyerPath);
 }
 ---
 
@@ -37,4 +39,3 @@ if (slug === "foyer") {
     <PlaceholderBody page={slug as Exclude<PageSlug, "contact" | "events" | "foyer" | "guides" | "legal">} />
   )
 }
-

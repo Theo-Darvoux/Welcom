@@ -1058,7 +1058,6 @@ const floorModels = floorList.map((fl) => {
     const nameEl = foyer.querySelector<HTMLElement>("[data-tip-name]")!;
     const blurbEl = foyer.querySelector<HTMLElement>("[data-tip-blurb]")!;
     const tabs = foyer.querySelectorAll<HTMLAnchorElement>("[data-floor-tab]");
-    const layers = foyer.querySelectorAll<HTMLElement>("[data-floor-layer]");
     let active: Element | null = null;
 
     tabs.forEach((tab, index) => {

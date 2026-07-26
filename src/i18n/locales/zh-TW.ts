@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const zhTW: Translation = {
+export const zhTW: LocaleTranslation = {
   meta: {
     team: {
       title: "我們的團隊 | WELCOM’",
@@ -45,9 +45,6 @@ export const zhTW: Translation = {
     guidesMoneyPhone: {
       title: "銀行與電話卡 | 指南 | WELCOM’",
       description: "法國電話卡與電信業者 (Free, Sosh, B&You) 申辦、法國興業銀行 (Société Générale) 開戶、RIB 帳號明細、Revolut/Wise 跨境匯款及埃夫里留學理財完整指南。",
-    },
-    foyer: {
-      title: "Foyer 休息室 | WELCOM’",
     },
     legal: {
       title: "法律聲明 | WELCOM’",
@@ -336,24 +333,22 @@ export const zhTW: Translation = {
     },
     rooms: {
       intv: "你遲早會遇到他們的。",
-      bds: "BDS",
       bda: "BDA",
       bde: "BDE",
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
       "club-jeux": "Club Jeux",
-      bds: "體育理事會 (BDS)",
       bda: "藝術理事會 (BDA)",
       bde: "學生理事會 (BDE)",
       welcom: "Welcom’ 國際學生理事會",
       minet: "MiNET 網路協會",
       declic: "Déclic 攝影社",
-      evrything: "Evry-thing 協會",
+      evryone: "Evry-thing 協會",
     },
     entranceLabels: {
       rer: "前往 RER 火車站",
@@ -1127,6 +1122,11 @@ export const zhTW: Translation = {
       liabilityContent: [
         "Association Welcom’ 致力於為國際學生提供準確、完整且最新的實用資訊。然而，鑑於行政法規、交通票價及住房規定可能隨時變更，本站資訊僅供參考。",
         "本站提供的第三方網站連結（如 CAF、ANEF、SNCF、合作銀行等）僅為方便使用者而設。Association Welcom’ 對外部網站的內容或隱私政策不承擔責任。"
+      ],
+      accessibilityTitle: "8. 數位可及性 (Accessibilité numérique)",
+      accessibilityContent: [
+        "Association Welcom' 致力於確保其數位服務對所有國際學生（包括身障用戶）均可無障礙使用。",
+        "本網站依據 RGAA / WCAG 2.1 無障礙指引設計，採用高對比度色彩方案、流暢排版、完整鍵盤導覽支援以及深色模式與減少動畫模式。"
       ]
     }
   }

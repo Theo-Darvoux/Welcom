@@ -1,0 +1,63 @@
+version: 2
+
+updates:
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 10
+    # Group all patch and minor updates together to reduce noise
+    groups:
+      astro-ecosystem:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+        update-types:
+          - "minor"
+          - "patch"
+      react-ecosystem:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+        update-types:
+          - "minor"
+          - "patch"
+      all-patch-updates:
+        dependency-type: "production"
+        update-types:
+          - "patch"
+      all-dev-patch-updates:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+    # Label PRs for easy filtering
+    labels:
+      - "dependencies"
+    # Assign to a reviewer (update to your GitHub username)
+    # assignees:
+    #   - "your-github-username"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
+  # Also watch GitHub Actions if you add any later
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Paris"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

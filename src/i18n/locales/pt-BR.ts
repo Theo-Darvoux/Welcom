@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const ptBR: Translation = {
+export const ptBR: LocaleTranslation = {
   meta: {
     team: {
       title: "Nossa Equipe | WELCOM’",
@@ -45,9 +45,6 @@ export const ptBR: Translation = {
     guidesMoneyPhone: {
       title: "Dinheiro e Telefone | Guia | WELCOM’",
       description: "Guia completo de chips de celular franceses, operadoras móveis (Free, Sosh, B&You), conta bancária no Société Générale, RIB, Revolut/Wise e gestão financeira estudantil em Évry.",
-    },
-    foyer: {
-      title: "Foyer | WELCOM’",
     },
     legal: {
       title: "Menções Legais | WELCOM’",
@@ -336,24 +333,22 @@ export const ptBR: Translation = {
     },
     rooms: {
       intv: "Tarde ou cedo você os conhecerá.",
-      bds: "BDS",
       bda: "BDA",
       bde: "BDE",
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
       "club-jeux": "Club Jeux",
-      bds: "Bureau des Sports",
       bda: "Bureau des Arts",
       bde: "Bureau des Élèves",
       welcom: "Welcom’ BDI",
       minet: "Associação MiNET",
       declic: "Clube de Fotografia Déclic",
-      evrything: "Associação Evry-thing",
+      evryone: "Associação Evry-thing",
     },
     entranceLabels: {
       rer: "Para a estação RER",
@@ -750,7 +745,6 @@ export const ptBR: Translation = {
     supportBody: "Portais administrativos e burocracia em um idioma estrangeiro podem ser assustadores. A equipe WELCOM' está disponível em nosso escritório no Foyer para ajudá-lo passo a passo com suas solicitações online.",
     supportBtn: "Encontre o Escritório da Welcom'"
   },
-
   moneyPhone: {
     heroTitle: "Dinheiro & Telefone",
     heroLede: "Tudo o que você precisa para contratar seu plano móvel, abrir uma conta bancária francesa, entender seu RIB e gerenciar seu orçamento enquanto estuda em Évry.",
@@ -1064,115 +1058,6 @@ export const ptBR: Translation = {
       btn: "Ler Guia de Moradia"
     },
     adminAid: {
-      title: "Burocracia & Auxílios CAF",
-      badge: "Formalidades Oficiais",
-      desc: "Guia passo a passo dos procedimentos franceses: validação de visto (ANEF), CVEC, matrícula, Segurança Social (Ameli) e auxílio CAF.",
-      tag: "Visto ANEF • CAF APL • Saúde Ameli",
-      btn: "Ler Guia Burocrático"
-    },
-    adminAid: {
-    heroTitle: "Processos Administrativos e Ajuda Estudantil",
-    heroLede: "Navegando pela administração francesa passo a passo: desde a validação do visto até o seguro saúde, contas bancárias e auxílio financeiro estudantil.",
-    roadmapEyebrow: "Roteiro passo a passo",
-    roadmapH2: "Seu Cronograma Administrativo",
-    roadmapLede: "Siga estes cinco passos essenciais em ordem após chegar à França para organizar sua vida estudantil sem problemas.",
-    roadmapSteps: [
-      {
-        step: "01",
-        title: "CVEC e Matrícula Escolar",
-        time: "Before / Day 1",
-        desc: "Pague a taxa CVEC em cvec.etudiant.gouv.fr para obter seu certificado, depois conclua sua matrícula na TSP ou IMT-BS para obter seu Certificat de Scolarité oficial.",
-        url: "https://cvec.etudiant.gouv.fr/?_locale=en"
-      },
-      {
-        step: "02",
-        title: "Conta Bancária Francesa",
-        time: "Week 1",
-        desc: "Abra sua conta bancária na Société Générale (parceira oficial do BDE e WELCOM') para obter seu IBAN francês (RIB).",
-        url: "#step-bank"
-      },
-      {
-        step: "03",
-        title: "Validação do Visto (ANEF)",
-        time: "Within 3 Months",
-        desc: "Valide seu visto de estudante VLS-TS online no portal ANEF para garantir sua estadia legal e direito de trabalhar.",
-        url: "https://administration-etrangers-en-france.interieur.gouv.fr"
-      },
-      {
-        step: "04",
-        title: "Seguridade Social (Ameli)",
-        time: "Month 1",
-        desc: "Inscreva-se gratuitamente na Seguridade Social Francesa em etudiant-etranger.ameli.fr para receber sua Carte Vitale e cobrir suas despesas médicas.",
-        url: "https://etudiant-etranger.ameli.fr"
-      },
-      {
-        step: "05",
-        title: "Auxílio-Moradia CAF",
-        time: "Mês 1 (Antes do fim do mês)",
-        desc: "Envie sua solicitação de APL ou ALS no caf.fr para receber auxílio mensal de moradia para seu aluguel na Maisel.",
-        url: "https://www.caf.fr"
-      }
-    ],
-    cvecEyebrow: "Passo 1: Matrícula Acadêmica",
-    cvecH2: "CVEC e Certificado Escolar",
-    cvecLede: "Antes de finalizar sua matrícula na Télécom SudParis ou IMT Business School, você deve obter o recibo de pagamento da CVEC.",
-    cvecTitle: "O que é a CVEC?",
-    cvecDesc: "A CVEC (Contribution Vie Étudiante et de Campus) é uma contribuição anual obrigatória (~103 €) arrecadada pelo governo francês para financiar iniciativas de vida estudantil, esportes, saúde e cultura.",
-    cvecStepsTitle: "Como concluir este passo:",
-    cvecSteps: [
-      "Visit the official portal <a href=\"https://cvec.etudiant.gouv.fr/?_locale=en\" target=\"_blank\" rel=\"noopener noreferrer\">cvec.etudiant.gouv.fr</a> and create your account.",
-      "Pay the CVEC fee online by credit card (or download your exemption certificate if you are a scholarship holder).",
-      "Download your <strong>Attestation de paiement CVEC</strong> (CVEC Certificate).",
-      "Submit your CVEC certificate to the school registrar (Scolarité) during administrative registration.",
-      "Receive your official <strong>Certificat de Scolarité</strong> (School Certificate) and your student badge."
-    ],
-    cvecTip: "<strong>Guarde seu Certificat de Scolarité com segurança:</strong> Você precisará deste documento para sua conta bancária, CAF, passe Navigo e validação do visto!",
-    bankEyebrow: "Passo 2: Gestão Financeira",
-    bankH2: "Abrir uma Conta Bancária Francesa",
-    bankLede: "Uma conta bancária francesa com um RIB (Relevé d'Identité Bancaire / IBAN) é essencial para receber o auxílio CAF, contratar planos de telefone, pagar aluguel e gerenciar despesas diárias.",
-    bankPartnerTitle: "Société Générale: Parceira Oficial do BDE e WELCOM'",
-    bankPartnerBody: "Através dessa parceria, os estudantes recebem vantagens exclusivas: um bônus em dinheiro de boas-vindas, benefícios de cartão de crédito, descontos para o WEI (fim de semana de integração) e associações, além de procedimentos simplificados de abertura de conta adaptados aos estudantes do campus.",
-    bankDocsTitle: "Documentos Necessários para Abrir Conta:",
-    bankDocs: [
-      "Valid Passport with your student visa (VLS-TS).",
-      "Proof of Address in France (Attestation de Logement from Maisel or lease agreement).",
-      "School Enrollment Certificate (Certificat de Scolarité) or student card."
-    ],
-    bankTip: "<strong>O que é um RIB?</strong> Na França, um RIB contém seu IBAN e BIC. Você compartilhará seu RIB com a CAF para auxílio-moradia, com a Maisel para débito direto do aluguel e com as operadoras de telefone.",
-    visaEyebrow: "Passo 3: Estadia Legal",
-    visaH2: "Validação de Visto e Titre de Séjour (ANEF)",
-    visaLede: "Se você chegou à França com um Visto de Longa Duração válido como Autorização de Residência (VLS-TS), DEVE validá-lo online dentro de 3 meses da sua data de chegada.",
-    visaStepsTitle: "Processo de Validação Online no ANEF:",
-    visaSteps: [
-      "Go to the official ANEF portal: <a href=\"https://administration-etrangers-en-france.interieur.gouv.fr\" target=\"_blank\" rel=\"noopener noreferrer\">administration-etrangers-en-france.interieur.gouv.fr</a>.",
-      "Click on <strong>Validate your VLS-TS</strong>.",
-      "Enter your visa number, date of entry into France, French address, and contact details.",
-      "Pay the residence tax stamp (Taxe de Séjour, approx. 50 €) online using a payment card.",
-      "Download and print your <strong>Attestation de validation du VLS-TS</strong>."
-    ],
-    healthEyebrow: "Passo 4: Saúde",
-    healthH2: "Seguridade Social Francesa e Seguro Saúde",
-    healthLede: "A França oferece assistência médica universal. Como estudante internacional, o registro na Seguridade Social Francesa (CPAM) é totalmente gratuito.",
-    healthAmeliTitle: "1. Registro na Seguridade Social (Ameli)",
-    healthAmeliBody: "Register online at <a href=\"https://etudiant-etranger.ameli.fr\" target=\"_blank\" rel=\"noopener noreferrer\">etudiant-etranger.ameli.fr</a>. Upload your passport, visa, VLS-TS validation certificate, school certificate, birth certificate, and French RIB. You will receive a temporary Social Security number, then your permanent number and your green <strong>Carte Vitale</strong>.",
-    healthMutuelleTitle: "2. Seguro de Saúde Complementar (Mutuelle)",
-    healthMutuelleBody: "A Seguridade Social francesa reembolsa cerca de 70% dos custos médicos padrão. Para cobrir os 30% restantes (medicamentos prescritos, consultas com especialistas, despesas hospitalares, atendimento odontológico e oftalmológico), é altamente recomendável contratar uma <strong>Mutuelle</strong> para estudantes (como Heyme ou LMDE).",
-    healthCampusTitle: "3. Consultas Médicas no Campus",
-    healthCampusBody: "Serviços médicos visitam regularmente o campus para oferecer consultas gratuitas (exames de IST, atendimento odontológico, oftalmologia e muito mais).",
-    healthDoctolibTitle: "4. Agendamento de Consultas com o Doctolib",
-    healthDoctolibBody: "To find a general practitioner or specialist near Évry and book online appointments, use the <a href=\"https://www.doctolib.fr\" target=\"_blank\" rel=\"noopener noreferrer\">Doctolib</a> website or app.",
-    cafEyebrow: "Passo 5: Assistência Financeira",
-    cafH2: "Auxílio-Moradia CAF (APL e ALS)",
-    cafLede: "Estudantes internacionais que residem na França são elegíveis para receber auxílio-moradia mensal pago pela CAF (Caisse d'Allocations Familiales).",
-    cafBody: "Certifique-se de enviar sua solicitação no caf.fr antes do último dia do seu mês de chegada. Para um guia detalhado sobre a elegibilidade da residência Maisel, APL vs ALS, e instruções passo a passo, veja nosso Guia de Moradia.",
-    cafBtn: "Ver Guia de Moradia e CAF",
-    supportEyebrow: "Need Help?",
-    supportH2: "Venha nos Visitar no Foyer!",
-    supportBody: "Portais administrativos e burocracia em um idioma estrangeiro podem ser assustadores. A equipe WELCOM' está disponível em nosso escritório no Foyer para ajudá-lo passo a passo com suas solicitações online.",
-    supportBtn: "Encontre o Escritório da Welcom'"
-  },
-
-      adminAid: {
       title: "Administração e Auxílio Estudantil",
       badge: "Formalidades Oficiais",
       desc: "Guia passo a passo para validação do visto (ANEF), imposto estudantil CVEC, matrícula escolar, Seguridade Social (Ameli) e auxílio-moradia CAF.",
@@ -1236,6 +1121,11 @@ export const ptBR: Translation = {
       liabilityContent: [
         "A Associação Welcom’ se esforça para fornecer informações práticas precisas e atualizadas. No entanto, como as regras administrativas e os regulamentos podem mudar, as informações são fornecidas em caráter orientativo.",
         "Links externos para sites de terceiros (CAF, ANEF, SNCF, parceiros bancários) são fornecidos para sua conveniência. A Associação Welcom’ não é responsável pelo conteúdo ou práticas de privacidade desses sites externos."
+      ],
+      accessibilityTitle: "8. Acessibilidade Digital (Accessibilité numérique)",
+      accessibilityContent: [
+        "A Associação Welcom' está comprometida em tornar os seus serviços digitais acessíveis a todos os estudantes internacionais, incluindo utilizadores com deficiência.",
+        "Este site foi concebido de acordo com as diretrizes de acessibilidade RGAA / WCAG 2.1, com paletas de cores de alto contraste, tipografia fluida, navegação completa por teclado e considerações para modos claro/escuro e movimento reduzido."
       ]
     }
   }

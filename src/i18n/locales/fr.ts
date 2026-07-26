@@ -1,13 +1,9 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const fr: Translation = {
+export const fr: LocaleTranslation = {
   meta: {
     team: {
       title: "Notre Équipe | WELCOM’",
-    },
-    guidesAdminAid: {
-      title: "Démarches & Aides | Guides | WELCOM’",
-      description: "Guide étape par étape des démarches administratives : validation de visa (ANEF), CVEC, inscription administrative, compte bancaire Société Générale, Sécurité Sociale (Ameli) et CAF.",
     },
     guidesDailyLife: {
       title: "Vie Quotidienne & Courses | Guides | WELCOM’",
@@ -49,13 +45,6 @@ export const fr: Translation = {
     guidesMoneyPhone: {
       title: "Argent & Téléphone | Guides | WELCOM’",
       description: "Guide complet pour installer votre forfait mobile français (Free, Sosh, B&You), ouvrir votre compte bancaire Société Générale, comprendre le RIB, et gérer votre budget à Évry.",
-    },
-    guidesDailyLife: {
-      title: "Vie Quotidienne & Courses | Guides | WELCOM’",
-      description: "Guide pratique de la vie quotidienne à Évry pour les étudiants internationaux : courses alimentaires (Le Spot, G20), laveries dans les bâtiments Maisel, tri des déchets & poubelles, pharmacies et colis.",
-    },
-    foyer: {
-      title: "Foyer | WELCOM’",
     },
     legal: {
       title: "Mentions Légales | WELCOM’",

@@ -55,9 +55,6 @@ export const en = {
       title: "Daily Life & Groceries | Guides | WELCOM’",
       description: "Essential guide to daily life in Évry for international students: grocery shopping (Le Spot, G20), laundry rooms (laveries) in Maisel buildings, waste management & recycling, pharmacies, and mail/packages.",
     },
-    foyer: {
-      title: "Foyer | WELCOM’",
-    },
     legal: {
       title: "Legal Mentions | WELCOM’",
       description: "Official legal notice, publisher information, hosting provider, copyright, and privacy policy for Association Welcom’ (Télécom SudParis & IMT Business School).",
@@ -345,6 +342,7 @@ export const en = {
     },
     rooms: {
       "club-zik": "Music club rehearsal room and equipment for campus musicians.",
+      bds: "Sports office and equipment storage.",
       intv: "You'll meet them eventually.",
       intech: "Computer science, robotics, and tech projects club.",
       "club-jeux": "Board games, role-playing games, and gaming evenings.",
@@ -374,6 +372,7 @@ export const en = {
     },
     labels: {
       "club-zik": "Club Zik",
+      bds: "BDS",
       intv: "",
       intech: "INTech",
       "club-jeux": "Club Jeux",
@@ -1046,6 +1045,7 @@ export const en = {
         desc: "Glass bottles, jars, and glass containers. There is a single dedicated glass collection container located right in front of Building U5 (never put glass in room or standard bins)."
       }
     ],
+    garbageTip: "Never leave trash bags in hallways: use the designated bins and close bags securely.",
 
     servicesEyebrow: "Step 4: Pharmacies, Post & Extras",
     servicesH2: "Pharmacies, Packages & Mail",
@@ -1078,8 +1078,10 @@ export const en = {
   guidesPage: {
     heroTitle: "Student Guides",
     heroLede: "Everything you need to navigate life at Télécom SudParis & IMT Business School: from arriving in France to housing, transit, banking, and student aid.",
+    heroEyebrow: "Your guide to campus life",
     guidesSectionEyebrow: "Essential Guides",
     guidesSectionTitle: "Explore Our Guides",
+    guidesSectionLede: "Practical information to help you settle in and make the most of student life in Évry.",
     gettingHere: {
       title: "Getting Here",
       badge: "Arrival & Directions",
@@ -1185,3 +1187,11 @@ export const en = {
 
 export type Translation = typeof en;
 
+type DeepPartial<T> = T extends readonly (infer Item)[]
+  ? readonly DeepPartial<Item>[]
+  : T extends object
+    ? { [Key in keyof T]?: DeepPartial<T[Key]> }
+    : T;
+
+/** A locale may omit copy that is supplied by the English fallback at runtime. */
+export type LocaleTranslation = DeepPartial<Translation>;

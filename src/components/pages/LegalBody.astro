@@ -13,7 +13,7 @@ const t = useTranslations(lang);
 
 const sec = t.legalPage.sections as any;
 
-const sections = [
+const sections: { title: string; content: string[] }[] = [
   {
     title: sec.publisherTitle,
     content: sec.publisherContent,

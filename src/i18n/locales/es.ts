@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const es: Translation = {
+export const es: LocaleTranslation = {
   meta: {
     team: {
       title: "Nuestro Equipo | WELCOM’",
@@ -45,9 +45,6 @@ export const es: Translation = {
     guidesMoneyPhone: {
       title: "Dinero y Teléfono | Guías | WELCOM’",
       description: "Guía completa para tarjetas SIM francesas, operadores móviles (Free, Sosh, B&You), cuenta bancaria en Société Générale, RIB, Revolut/Wise y gestión del presupuesto estudiantil en Évry.",
-    },
-    foyer: {
-      title: "Foyer | WELCOM’",
     },
     legal: {
       title: "Avisos Legales | WELCOM’",
@@ -342,7 +339,7 @@ export const es: Translation = {
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
@@ -353,7 +350,7 @@ export const es: Translation = {
       welcom: "Welcom’ BDI",
       minet: "Asociación MiNET",
       declic: "Club de Fotografía Déclic",
-      evrything: "Asociación Evry-thing",
+      evryone: "Asociación Evry-thing",
     },
     entranceLabels: {
       rer: "Hacia estación RER",
@@ -1070,6 +1067,7 @@ export const es: Translation = {
       tag: "Visado ANEF • CAF APL • Salud Ameli",
       btn: "Ver guía de Trámites"
     },
+    /* Obsolete duplicate of the guide-card data below.
     adminAid: {
     heroTitle: "Trámites Administrativos y Ayudas Estudiantiles",
     heroLede: "Navega por la administración francesa paso a paso: desde la validación del visado hasta el seguro médico, cuentas bancarias y ayudas financieras para estudiantes.",
@@ -1172,13 +1170,15 @@ export const es: Translation = {
     supportBtn: "Encuentra la Oficina de Welcom'"
   },
 
+    */
+      /* Duplicate guide card retained in source history:
       adminAid: {
       title: "Trámites y Ayudas Estudiantiles",
       badge: "Trámites Oficiales",
       desc: "Guía paso a paso para la validación del visado (ANEF), impuesto estudiantil CVEC, matrícula escolar, Seguridad Social (Ameli) y ayuda de vivienda CAF.",
       tag: "Visado ANEF • APL CAF • Salud Ameli",
       btn: "Leer la Guía de Trámites"
-    },
+    }, */
     moneyPhone: {
       title: "Dinero y Móvil",
       badge: "Finanzas y Telecom",

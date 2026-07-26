@@ -296,7 +296,7 @@ const current = localeMeta[lang];
 
   /** Re-apply the saved position on the freshly loaded translated page. */
   function restoreScroll() {
-    let raw: string | null = null;
+    let raw: string | null;
     try {
       raw = sessionStorage.getItem(SCROLL_KEY);
     } catch {
@@ -306,7 +306,9 @@ const current = localeMeta[lang];
     // Consume immediately: a manual refresh must not re-trigger this.
     try {
       sessionStorage.removeItem(SCROLL_KEY);
-    } catch {}
+    } catch {
+      // Storage is unavailable; the saved scroll position will naturally expire.
+    }
     // An explicit in-page #hash target wins over restoration.
     if (location.hash && document.querySelector(location.hash)) return;
 
@@ -410,7 +412,9 @@ const current = localeMeta[lang];
             if (link.dataset.locale) {
               localStorage.setItem("welcom:lang", link.dataset.locale);
             }
-          } catch {}
+          } catch {
+            // Language preference cannot be persisted in this browser context.
+          }
           captureScroll();
         });
       });

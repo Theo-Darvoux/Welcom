@@ -33,7 +33,7 @@ const { htmlLang, dir } = localeMeta[lang];
          history entry, so there is no back-button trap. */
       lang === defaultLang && (
         <script is:inline define:vars={{ locales, defaultLang }}>
-          {`(function () {
+          (function () {
   try {
     var path = location.pathname.split("/").filter(Boolean);
     // Safety: never run if we are somehow already on a locale-prefixed path.
@@ -64,7 +64,7 @@ const { htmlLang, dir } = localeMeta[lang];
     }
 
     var stored = null;
-    try { stored = localStorage.getItem("welcom:lang"); } catch (e) {}
+    try { stored = localStorage.getItem("welcom:lang"); } catch { void 0; }
     var target =
       stored && locales.indexOf(stored) !== -1
         ? stored
@@ -72,11 +72,11 @@ const { htmlLang, dir } = localeMeta[lang];
 
     if (!target || target === defaultLang) return;
 
-    var clean = location.pathname.replace(/^\\/+|\\/+$/g, "");
+    var clean = location.pathname.replace(/^\/+|\/+$/g, "");
     var dest = "/" + target + (clean ? "/" + clean : "");
     location.replace(dest + location.search + location.hash);
-  } catch (e) {}
-})();`}
+  } catch { void 0; }
+})();
         </script>
       )
     }

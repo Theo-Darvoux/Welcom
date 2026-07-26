@@ -1,7 +1,7 @@
 /* Locale registry: maps each Locale to its string table (one file per locale under ./locales/). */
 
 import { defaultLang, type Locale } from "./config";
-import { en, developerName, developerLink, type Translation } from "./locales/en";
+import { en, developerName, developerLink, type LocaleTranslation, type Translation } from "./locales/en";
 import { fr } from "./locales/fr";
 import { es } from "./locales/es";
 import { ptBR } from "./locales/pt-BR";
@@ -13,7 +13,7 @@ import { ar } from "./locales/ar";
 
 export { developerName, developerLink };
 
-const dictionaries: Record<Locale, Translation> = {
+const dictionaries: Record<Locale, LocaleTranslation> = {
   en,
   fr,
   es,

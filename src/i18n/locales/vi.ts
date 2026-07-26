@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const vi: Translation = {
+export const vi: LocaleTranslation = {
   meta: {
     team: {
       title: "Đội ngũ của chúng tôi | WELCOM’",
@@ -45,9 +45,6 @@ export const vi: Translation = {
     guidesMoneyPhone: {
       title: "Tiền Bạc & Điện Thoại | Cẩm nang | WELCOM’",
       description: "Cẩm nang đầy đủ về thẻ SIM Pháp, các nhà mạng (Free, Sosh, B&You), mở tài khoản ngân hàng Société Générale, mã RIB, Revolut/Wise và quản lý ngân sách sinh viên tại Évry.",
-    },
-    foyer: {
-      title: "Khu Vực Foyer | WELCOM’",
     },
     legal: {
       title: "Thông tin Pháp lý | WELCOM’",
@@ -336,24 +333,22 @@ export const vi: Translation = {
     },
     rooms: {
       intv: "Rồi bạn cũng sẽ gặp họ thôi.",
-      bds: "BDS",
       bda: "BDA",
       bde: "BDE",
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
       "club-jeux": "Club Jeux",
-      bds: "Hội Thể Thao (BDS)",
       bda: "Hội Nghệ Thuật (BDA)",
       bde: "Hội Sinh Viên (BDE)",
       welcom: "Hội Sinh Viên Quốc Tế Welcom’",
       minet: "Hội Mạng MiNET",
       declic: "CLB Nhiếp Ảnh Déclic",
-      evrything: "Hội Evry-thing",
+      evryone: "Hội Evry-thing",
     },
     entranceLabels: {
       rer: "Hướng ga RER",
@@ -1127,6 +1122,11 @@ export const vi: Translation = {
       liabilityContent: [
         "Association Welcom’ nỗ lực cung cấp thông tin chính xác và cập nhật. Tuy nhiên, các quy định hành chính và chi phí có thể thay đổi, thông tin chỉ mang tính chất tham khảo.",
         "Các liên kết đến trang web bên thứ ba (CAF, ANEF, SNCF, đối tác ngân hàng) được cung cấp vì sự tiện lợi của bạn. Association Welcom’ không chịu trách nhiệm về nội dung hoặc chính sách bảo mật của các trang web đó."
+      ],
+      accessibilityTitle: "8. Khả năng Tiếp cận Kỹ thuật số (Accessibilité numérique)",
+      accessibilityContent: [
+        "Association Welcom' cam kết đảm bảo dịch vụ kỹ thuật số của mình có thể tiếp cận được với tất cả sinh viên quốc tế, kể cả người dùng khuyết tật.",
+        "Trang web này được thiết kế theo hướng dẫn tiếp cận kỹ thuật số RGAA / WCAG 2.1, với bảng màu tương phản cao, kiểu chữ linh hoạt, hỗ trợ điều hướng bàn phím đầy đủ và hỗ trợ chế độ sáng/tối và giảm chuyển động."
       ]
     }
   }

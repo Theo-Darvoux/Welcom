@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const ar: Translation = {
+export const ar: LocaleTranslation = {
   meta: {
     team: {
       title: "فريقنا | WELCOM’",
@@ -45,9 +45,6 @@ export const ar: Translation = {
     guidesMoneyPhone: {
       title: "المال والهاتف | الأدلة | WELCOM’",
       description: "دليل كامل لشرائح الهاتف الفرنسية، وشركات الاتصالات (Free, Sosh, B&You)، وفتح حساب بنكي في Société Générale، ورقم RIB، وRevolut/Wise، وإدارة الميزانية الطلابية في إيفري.",
-    },
-    foyer: {
-      title: "الفوايه | WELCOM’",
     },
     legal: {
       title: "الإشعارات القانونية | WELCOM’",
@@ -342,7 +339,7 @@ export const ar: Translation = {
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
@@ -353,7 +350,7 @@ export const ar: Translation = {
       welcom: "جمعية Welcom’ للطلاب الدوليين",
       minet: "جمعية شبكة MiNET",
       declic: "نادي التصوير Déclic",
-      evrything: "جمعية Evry-thing",
+      evryone: "جمعية Evry-thing",
     },
     entranceLabels: {
       rer: "نحو محطة RER",
@@ -1070,6 +1067,7 @@ export const ar: Translation = {
       tag: "تأشيرة ANEF • مساعدات CAF • التأمين الصحي Ameli",
       btn: "اقرأ دليل الإجراءات"
     },
+    /* Obsolete duplicate of the guide-card data below.
     adminAid: {
     heroTitle: "Admin & Aid",
     heroLede: "خطوة بخطوة في الإدارة الفرنسية: من تفعيل التأشيرة إلى التأمين الصحي، الحسابات البنكية، والمساعدات المالية الطلابية.",
@@ -1172,13 +1170,15 @@ export const ar: Translation = {
     supportBtn: "ابحث عن مكتب Welcom'"
   },
 
+    */
+      /* Duplicate guide card retained in source history:
       adminAid: {
       title: "الإدارة والمساعدات الطلابية",
       badge: "الإجراءات الرسمية",
       desc: "دليل خطوة بخطوة لتفعيل التأشيرة (ANEF)، ضريبة الطلاب CVEC، التسجيل الجامعي، الضمان الاجتماعي (Ameli)، ومساعدات السكن CAF.",
       tag: "تأشيرة ANEF • CAF APL • صحة Ameli",
       btn: "اقرأ دليل الإدارة"
-    },
+    }, */
     moneyPhone: {
       title: "المال وشريحة الهاتف",
       badge: "المالية والاتصالات",

@@ -7,5 +7,7 @@ export function getStaticPaths() {
 }
 
 const lang = getLangFromUrl(Astro.url);
-return Astro.redirect(localizedPath("/events", lang), 302);
+const redirectPath = localizedPath("/events", lang);
+void redirectPath;
+return Astro.redirect(redirectPath, 302);
 ---

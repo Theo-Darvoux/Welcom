@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const zhCN: Translation = {
+export const zhCN: LocaleTranslation = {
   meta: {
     team: {
       title: "我们的团队 | WELCOM’",
@@ -45,9 +45,6 @@ export const zhCN: Translation = {
     guidesMoneyPhone: {
       title: "银行与电话卡 | 指南 | WELCOM’",
       description: "法国电话卡与运营商 (Free, Sosh, B&You) 办理、法国兴业银行 (Société Générale) 账户开户、RIB 账户明细、Revolut/Wise 跨境汇款及埃夫里留学理财完整指南。",
-    },
-    foyer: {
-      title: "Foyer 休息室 | WELCOM’",
     },
     legal: {
       title: "法律声明 | WELCOM’",
@@ -336,24 +333,22 @@ export const zhCN: Translation = {
     },
     rooms: {
       intv: "你迟早会遇到他们的。",
-      bds: "BDS",
       bda: "BDA",
       bde: "BDE",
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
       "club-jeux": "Club Jeux",
-      bds: "体育理事会 (BDS)",
       bda: "艺术理事会 (BDA)",
       bde: "学生理事会 (BDE)",
       welcom: "Welcom’ 国际学生理事会",
       minet: "MiNET 网络协会",
       declic: "Déclic 摄影社",
-      evrything: "Evry-thing 协会",
+      evryone: "Evry-thing 协会",
     },
     entranceLabels: {
       rer: "前往 RER 火车站",
@@ -1127,6 +1122,11 @@ export const zhCN: Translation = {
       liabilityContent: [
         "Association Welcom’ 致力于为国际学生提供准确、完整且最新的实用信息。然而，鉴于行政法规、交通票价及住房规定可能随时变更，本站信息仅供参考。",
         "本站提供的第三方网站链接（如 CAF、ANEF、SNCF、合作银行等）仅为方便使用者而设。Association Welcom’ 对外部网站的内容或隐私政策不承担责任。"
+      ],
+      accessibilityTitle: "8. 数字可访问性 (Accessibilité numérique)",
+      accessibilityContent: [
+        "Association Welcom' 致力于确保其数字服务对所有国际学生（包括残障用户）均可无障碍访问。",
+        "本网站依据 RGAA / WCAG 2.1 无障碍指南设计，采用高对比度色彩方案、流畅排版、完整键盘导航支持以及深色模式与减少动画模式。"
       ]
     }
   }

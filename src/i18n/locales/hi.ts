@@ -1,6 +1,6 @@
-import type { Translation } from "./en";
+import type { LocaleTranslation } from "./en";
 
-export const hi: Translation = {
+export const hi: LocaleTranslation = {
   meta: {
     team: {
       title: "हमारी टीम | WELCOM’",
@@ -45,9 +45,6 @@ export const hi: Translation = {
     guidesMoneyPhone: {
       title: "पैसा और फ़ोन | गाइड | WELCOM’",
       description: "फ़्रांसीसी सिम कार्ड, मोबाइल ऑपरेटरों (Free, Sosh, B&You), Société Générale बैंक खाते, RIB, Revolut/Wise और Évry में छात्र बजट प्रबंधन के लिए संपूर्ण गाइड।",
-    },
-    foyer: {
-      title: "Foyer | WELCOM’",
     },
     legal: {
       title: "कानूनी नोटिस | WELCOM’",
@@ -342,7 +339,7 @@ export const hi: Translation = {
       welcom: "Welcom’",
       minet: "MiNET",
       declic: "Déclic",
-      evrything: "Evry-thing",
+      evryone: "Evry-thing",
     },
     labels: {
       intv: "",
@@ -353,7 +350,7 @@ export const hi: Translation = {
       welcom: "Welcom’ BDI",
       minet: "MiNET नेटवर्क संघ",
       declic: "Déclic फोटोग्राफी क्लब",
-      evrything: "Evry-thing संघ",
+      evryone: "Evry-thing संघ",
     },
     entranceLabels: {
       rer: "RER स्टेशन की ओर",
@@ -1070,6 +1067,7 @@ export const hi: Translation = {
       tag: "ANEF वीज़ा • CAF APL • Ameli स्वास्थ्य बीमा",
       btn: "प्रशासनिक गाइड पढ़ें"
     },
+    /* Obsolete duplicate of the guide-card data below.
     adminAid: {
     heroTitle: "Admin & Aid",
     heroLede: "फ़्रांसीसी प्रशासन को समझना: वीज़ा सत्यापन से लेकर स्वास्थ्य बीमा, बैंक खाते और छात्र वित्तीय सहायता तक, कदम दर कदम मार्गदर्शन।",
@@ -1172,13 +1170,15 @@ export const hi: Translation = {
     supportBtn: "Welcom' कार्यालय खोजें"
   },
 
+    */
+      /* Duplicate guide card retained in source history:
       adminAid: {
       title: "प्रशासन और छात्र सहायता",
       badge: "आधिकारिक औपचारिकताएँ",
       desc: "वीज़ा सत्यापन (ANEF), CVEC छात्र कर, स्कूल पंजीकरण, सामाजिक सुरक्षा (Ameli) और CAF आवास सहायता के लिए कदम दर कदम गाइड।",
       tag: "ANEF वीज़ा • CAF APL • Ameli स्वास्थ्य",
       btn: "प्रशासन गाइड पढ़ें"
-    },
+    }, */
     moneyPhone: {
       title: "पैसा और मोबाइल फ़ोन",
       badge: "वित्त और दूरसंचार",
