@@ -1,5 +1,3 @@
-/* WELCOM 2026: design tokens (framework-agnostic). See CLAUDE.md §3-§5. */
-
 @font-face {
   font-family: "Informal 011 BT";
   src: url("/fonts/Informal011BlackBT.woff2") format("woff2");
@@ -24,14 +22,6 @@
   font-display: swap;
 }
 
-/* ── Script faces for non-Latin locales ─────────────────────────
-   The brand display/accent faces (Informal, Lilita) are Latin-only, so
-   Vietnamese diacritics and Arabic fall back to mismatched system fonts.
-   These keep the chunky, warm vibe in each script. Declared across the
-   full weight range so default-weight display text (hierarchy is built
-   with size, never weight; see CLAUDE.md §3) still renders bold. */
-
-/* Vietnamese: Baloo 2 (Latin + Vietnamese), split by unicode-range. */
 @font-face {
   font-family: "Baloo 2";
   src: url("/fonts/Baloo2-latin-800.woff2") format("woff2");
@@ -52,7 +42,6 @@
     U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
 
-/* Arabic display/accent: Baloo's Arabic sibling, same friendly round weight. */
 @font-face {
   font-family: "Baloo Bhaijaan 2";
   src: url("/fonts/BalooBhaijaan2-arabic-800.woff2") format("woff2");
@@ -61,7 +50,6 @@
   font-display: swap;
 }
 
-/* Arabic body: Cairo, tuned for readable running text. */
 @font-face {
   font-family: "Cairo";
   src: url("/fonts/Cairo-arabic-400.woff2") format("woff2");
