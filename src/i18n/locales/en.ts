@@ -358,7 +358,7 @@ export const en = {
       bar: "Foyer main bar counter and central student gathering space.",
       reserve: "Storage room managed by the AbsINThe campus bar.",
       absinthe: "The campus student bar for social gatherings and relaxed evenings.",
-      tijet: "Main office of the TiJET Junior Enterprise association.",
+      tijet: "Room of the BPM Club Sono association (DJing, sound engineering, and lighting).",
       cave: "Shared room for Club Code, the CELL (game creation: video games, board games, escape games...), Gam'INT, and Model'IT.",
       bagagerie: "Main MiNET storage room containing their spare network equipment.",
       evryone: "Campus student radio station, live broadcasts, and podcasts.",
@@ -368,7 +368,7 @@ export const en = {
       univert: "Shared room for Univert (ecology & sustainability) and INTervenir (humanitarian association).",
       equality: "Shared room for EquALLity (feminism & gender equality) and IN&acT (campus LGBTQIA+ association).",
       hackademint: "Cybersecurity, ethical hacking, and CTF competition club.",
-      paintit: "Shared room for Paint'IT (painting & drawing), TellTheTale (narration & RPGs), and INTimes (student newspaper).",
+      paintit: "Shared room for Paint'IT (painting & drawing), TellTheTale (narration), and INTimes (student newspaper).",
     },
     labels: {
       "club-zik": "Club Zik",
@@ -1005,7 +1005,7 @@ export const en = {
     laundryLede: "Every Maisel building (U1 to U7) has access to laundry facilities so you can wash and dry your clothes conveniently on campus.",
     laundryLocationsTitle: "Where Laundry Rooms (Laveries) are Located:",
     laundryLocations: [
-      { building: "Buildings U1, U2 & U4", location: "Singular laundry room located on the 1st floor of Building U4.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
+      { building: "Buildings U1, U2 & U4", location: "Singular laundry room located on the ground floor (RDC) of Building U4.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
       { building: "Building U3", location: "Ground floor (RDC) dedicated laundry room.", url: "https://gad.touchnpay.fr/fr/public/material/406jkjom1ann1k2" },
       { building: "Building U5", location: "Floor -1 (basement), at the end of the corridor on the right side when exiting the elevator.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9ezrig" },
       { building: "Building U6", location: "Ground floor (RDC) laundry facility.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80gljgu5fxu" },

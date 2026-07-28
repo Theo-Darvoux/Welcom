@@ -53,18 +53,18 @@ export const de: LocaleTranslation = {
     },
   },
   nav: {
-    home: "Home",
+    home: "Startseite",
     foyer: "Foyer",
-    guides: "Guides",
+    guides: "Leitfäden",
     team: "Team",
     events: "Veranstaltungen",
     contact: "Kontakt",
     brandHome: "Willkommen zu Hause",
     openMenu: "Menü öffnen",
     closeMenu: "Menü schließen",
-    primary: "Primär",
+    primary: "Hauptmenü",
     language: "Wählen Sie Ihre Sprache",
-    legal: "Recht Erwähnungen",
+    legal: "Rechtliche Hinweise",
   },
   hero: {
     titleLead: "Willkommen in",
@@ -167,14 +167,14 @@ export const de: LocaleTranslation = {
     directInstagram: "Instagram",
     directAddress: "Adresse",
     directFoyer: "Sie können uns auch persönlich unter erreichen ",
-    teamTitle: "Welcom' Contacts",
-    presidentRole: "President of Welcom’",
-    respoAccueilRole: "Welcome Manager of Welcom’",
-    faqTitle: "Common questions",
+    teamTitle: "Welcom‘-Kontakte",
+    presidentRole: "Präsident von Welcom’",
+    respoAccueilRole: "Willkommensleiter von Welcom’",
+    faqTitle: "Häufige Fragen",
     faq: [
       {
-        q: "When should I contact Welcom'?",
-        a: "Anytime! Whether you haven't arrived yet or you're already on campus, we're here to help.",
+        q: "Wann sollte ich Welcom' kontaktieren?",
+        a: "Jederzeit! Egal, ob Sie noch nicht angekommen sind oder bereits auf dem Campus sind, wir sind hier, um zu helfen.",
       },
       {
         q: "Muss ich Französisch sprechen?",
@@ -288,7 +288,7 @@ export const de: LocaleTranslation = {
       },
       "daily-life": {
         title: "Alltag",
-        description: "Groceries, pharmacies, campus life",
+        description: "Lebensmittel, Apotheken, Campusleben",
       },
       studies: {
         title: "Studium",
@@ -330,7 +330,7 @@ export const de: LocaleTranslation = {
     description: "Erkunden Sie den Foyerplan, entdecken Sie Campusverbände und -räume.",
     floors: {
       rdc: "Erdgeschoss",
-      ss1: "Keller",
+      ss1: "Untergeschoss",
     },
     rooms: {
       "club-zik": "Proberaum und Ausrüstung des Musikclubs für Campusmusiker.",
@@ -350,7 +350,7 @@ export const de: LocaleTranslation = {
       bar: "Hauptbartheke im Foyer und zentraler Treffpunkt für Studenten.",
       reserve: "Lagerraum, der von der Bar des AbsINThe-Campus verwaltet wird.",
       absinthe: "Die Campus-Studentenbar für geselliges Beisammensein und entspannte Abende.",
-      tijet: "Hauptbüro des Vereins TiJET Junior Enterprise.",
+      tijet: "Raum des Vereins BPM Club Sono (DJing, Tontechnik und Beleuchtung).",
       cave: "Gemeinsamer Raum für Club Code, The CELL (Spieleentwicklung: Videospiele, Brettspiele, Fluchtspiele...), Gam'INT und Model'IT.",
       bagagerie: "Hauptlagerraum von MiNET mit ihrem Ersatznetzwerk Ausstattung.",
       evryone: "Campus-Studentenradiosender, Live-Übertragungen und Podcasts.",
@@ -360,7 +360,7 @@ export const de: LocaleTranslation = {
       univert: "Gemeinsamer Raum für Univert (Ökologie und Nachhaltigkeit) und INTERvenir (humanitärer Verein).",
       equality: "Gemeinsamer Raum für EquALLity (Feminismus und Geschlechtergleichheit) und IN&acT (Campus-LGBTQIA+-Verein).",
       hackademint: "Cybersicherheit, ethisches Hacken und CTF-Wettbewerb Club.",
-      paintit: "Gemeinsamer Raum für Paint'IT (Malen und Zeichnen), TellTheTale (Erzählung und Rollenspiele) und INTimes (Studentenzeitung).",
+      paintit: "Gemeinsamer Raum für Paint'IT (Malen und Zeichnen), TellTheTale (Erzählung) und INTimes (Studentenzeitung).",
     },
     labels: {
       "club-zik": "Club Zik",
@@ -400,26 +400,26 @@ export const de: LocaleTranslation = {
     },
   },
   gettingHere: {
-    heroTitle: "Bekommen Hier",
+    heroTitle: "Anreise",
     heroLede: "Schritt-für-Schritt-Anleitung zum Campus von Télécom SudParis & IMT-BS in Évry-Courcouronnes, von Flughäfen, mit dem Zug oder zu Fuß.",
     addressEyebrow: "Standort des Campus",
-    addressH2: "Adresse des Campus",
-    addressName: "Télécom SudParis & IMT Business Schule",
+    addressH2: "Campus-Adresse",
+    addressName: "Télécom SudParis & IMT Business School",
     addressLine: "9 Rue Charles Fourier, 91011 Évry-Courcouronnes, Frankreich",
     addressNote: "Liegt 35 km südlich von Paris im Departement Essonne.",
     campusPhotoAlt: "Ansicht des Évry-Campus und der Gebäude",
-    campusPlanAlt: "Plan des Évry-Campus mit Schulen, Residenzen und Einrichtungen",
+    campusPlanAlt: "Plan des Évry-Campus mit Schulen, Wohnheimen und Einrichtungen",
     airportsEyebrow: "Von den Flughäfen",
     airportsH2: "Landung in Paris?",
-    airportsLede: "Paris verfügt über zwei große internationale Flughäfen. So erreichen Sie den Campus von jedem einzelnen Standort aus.",
+    airportsLede: "Paris verfügt über zwei große internationale Flughäfen. So erreichen Sie den Campus von jedem einzelnen aus.",
     cdgTitle: "Von Paris-CDG (Charles de Gaulle)",
     cdgSteps: [
       "Nehmen Sie den Zug {RER B} von den Flughafenterminals in Richtung Paris.",
-      "Get off at <strong>Châtelet – Les Halles</strong> (a major hub in central Paris).",
-      "Transfer to the {RER D} heading south, direction <strong>Corbeil-Essonnes</strong>.",
-      "Exit at <strong>Évry-Courcouronnes</strong> station.",
+      "Steigen Sie an der Station <strong>Châtelet – Les Halles</strong> aus (einem zentralen Knotenpunkt in Paris).",
+      "Steigen Sie in die {RER D} Richtung Süden um, Richtung <strong>Corbeil-Essonnes</strong>.",
+      "Steigen Sie an der Station <strong>Évry-Courcouronnes</strong> aus.",
     ],
-    orlyTitle: "From Paris-Orly",
+    orlyTitle: "Von Paris-Orly",
     orlySteps: [
       "<strong>Option 1: Direkter Bus (am schnellsten, ca. 25–30 Min.):</strong> Nehmen Sie den <strong>Express-Bus 91.12</strong> direkt vom Flughafen Orly nach <strong>{Le Bras de Fer}</strong> (direkt neben dem Campus gelegen – kein Zug oder RER D erforderlich!).",
       "<strong>Option 2: Mit dem Zug:</strong> Nehmen Sie <strong>OrlyVal</strong>, <strong>Tram T7</strong> oder <strong>Métro-Linie 14</strong>, um eine Verbindung zum Pariser Schienennetz herzustellen, und steigen Sie in die {RER D} Richtung Süden um <strong>Corbeil-Essonnes</strong>) und Ausfahrt <strong>Évry-Courcouronnes</strong> oder <strong>{Le Bras de Fer}</strong>.",
@@ -479,11 +479,11 @@ export const de: LocaleTranslation = {
     metroSteps: [
       "Ihre Navigo-Karte funktioniert auf jeder Métro-Linie.",
       "Finden Sie Ihre Linie und Richtung anhand des Namens der <strong>Endstation</strong> an jedem Ende.",
-      "Verbindungen zwischen Linien sind deutlich gekennzeichnet als „<strong>Correspondance</strong>“ data-i=\"340\">Über Paris hinaus",
-      "Trains run from roughly 5:30 am to 1:00 am (2:00 am on Fridays and Saturdays).",
+      "Verbindungen zwischen Linien sind deutlich gekennzeichnet als „<strong>Correspondance</strong>“.",
+      "Die Züge fahren von etwa 5:30 Uhr bis 1:00 Uhr (freitags und samstags bis 2:00 Uhr).",
     ],
-    metroTip: "At Châtelet – Les Halles, the walking connection between RER D and some Métro lines can take up to 10 minutes underground.",
-    sncfEyebrow: "Beyond Paris",
+    metroTip: "Am Bahnhof Châtelet – Les Halles kann der Umstieg zu Fuß zwischen dem RER D und einigen U-Bahn-Linien unterirdisch bis zu 10 Minuten dauern.",
+    sncfEyebrow: "Über Paris hinaus",
     sncfH2: "Züge in ganz Frankreich",
     sncfLede: "Frankreich verfügt über ein ausgezeichnetes Hochgeschwindigkeitsbahnnetz. Wochenendausflüge nach Lyon, Marseille, Bordeaux oder Brüssel sind leicht zu erreichen.",
     sncfSteps: [
@@ -709,7 +709,7 @@ export const de: LocaleTranslation = {
       },
       {
         step: "03",
-        title: "Visa Validation (ANEF)",
+        title: "Visumvalidierung (ANEF)",
         time: "Innerhalb von 3 Monaten",
         desc: "Validieren Sie Ihr VLS-TS-Studentenvisum online auf dem ANEF-Portal, um Ihren legalen Aufenthalt und Ihr Recht auf Arbeit zu sichern.",
         url: "https://administration-etrangers-en-france.interieur.gouv.fr"
@@ -791,7 +791,7 @@ export const de: LocaleTranslation = {
     heroTitle: "Geld und Telefon",
     heroLede: "Alles, was Sie brauchen, um Ihren Mobilfunkplan einzurichten, ein französisches Bankkonto zu eröffnen, Ihr RIB zu verstehen und Ihr Budget zu verwalten, während Sie in Évry studieren.",
     roadmapEyebrow: "Schritt-für-Schritt-Roadmap",
-    roadmapH2: "Ihr Finanzielle und mobile Einrichtung",
+    roadmapH2: "Ihre finanzielle und mobile Einrichtung",
     roadmapLede: "Befolgen Sie bei Ihrer Ankunft in Frankreich diese 4 wesentlichen Schritte, um sich zu vernetzen und finanziell einzurichten.",
     roadmapSteps: [
       {
@@ -831,7 +831,7 @@ export const de: LocaleTranslation = {
     phoneOperators: [
       {
         name: "Lebara",
-        badge: "#1 Choice • Student Deal",
+        badge: "Empfehlung Nr. 1 • Studentenangebot",
         desc: "Unser empfohlener Anbieter Nr. 1: **ohne Vertrag** und supergünstig! Genießen Sie **50 % Rabatt für Ihre ersten 2 Monate** als Student mit dem Aktionscode **#####** (15 € pro Abonnement an den Verein gespendet).",
         url: "https://www.lebara.fr"
       },
@@ -997,7 +997,7 @@ export const de: LocaleTranslation = {
     laundryLede: "Jedes Maisel-Gebäude (U1 bis U7) verfügt über Wäschemöglichkeiten, sodass Sie Ihre Kleidung bequem auf dem Campus waschen und trocknen können.",
     laundryLocationsTitle: "Wo sich Waschräume (Laveries) befinden:",
     laundryLocations: [
-      { building: "Gebäude U1, U2 und U4", location: "Einzelne Waschküche im 1. Stock von Gebäude U4.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
+      { building: "Gebäude U1, U2 und U4", location: "Einzige Waschküche im Erdgeschoss (RDC) von Gebäude U4.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9eyyff" },
       { building: "Gebäude U3", location: "Eigene Waschküche im Erdgeschoss (RDC).", url: "https://gad.touchnpay.fr/fr/public/material/406jkjom1ann1k2" },
       { building: "Gebäude U5", location: "Etage -1 (Keller), am Ende des Korridors auf der rechten Seite beim Verlassen des Aufzugs.", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80glk9ezrig" },
       { building: "Gebäude U6", location: "Wäscherei im Erdgeschoss (RDC).", url: "https://gad.touchnpay.fr/fr/public/material/30dwf80gljgu5fxu" },
@@ -1107,7 +1107,7 @@ export const de: LocaleTranslation = {
       badge: "Finanzen und Telekommunikation",
       desc: "Einrichten französischer SIM-Karten, Mobilfunkanbieter (Free, Sosh, B&You), Société Générale-Bankkonto, RIB und Revolut/Wise.",
       tag: "Französische SIM • RIB & Banking • Geldtipps",
-      btn: "Lesen Sie Geld & Telefon Leitfaden"
+      btn: "Geld & Telefon Leitfaden lesen"
     },
     dailyLife: {
       title: "Alltagsleben und Lebensmittel",
@@ -1132,9 +1132,9 @@ export const de: LocaleTranslation = {
         "<strong>Legal Status:</strong> Gemeinnütziger Verein nach dem französischen Gesetz vom 1. Juli 1901 (Association loi 1901).",
         "<strong>SIRET Nummer:</strong> 840 108 633 00016",
         "<strong>Hauptsitz Adresse:</strong> 9 Rue Charles Fourier, 91011 Évry-Courcouronnes, Frankreich",
-        "<strong>Contact Email:</strong> association.welcom@imtbs-tsp.eu"
+        "<strong>Kontakt-E-Mail:</strong> association.welcom@imtbs-tsp.eu"
       ],
-      publicationTitle: "2. Director of Publication (Directeur de la publication)",
+      publicationTitle: "2. Publikationsdirektor (Directeur de la publication)",
       publicationContent: [
         "<strong>Publikationsdirektor:</strong> Manuel BRILLANTES TAVARES, in seiner Eigenschaft als Präsident der Association Welcom’."
       ],
@@ -1148,9 +1148,9 @@ export const de: LocaleTranslation = {
       intellectualTitle: "4. Geistiges Eigentum und Credits (Propriété intellectuelle)",
       intellectualContent: [
         "Alle visuellen, textlichen, grafischen und multimedialen Elemente dieser Website (einschließlich Texte, Fotos, Illustrationen, Logos, Maskottchendesigns und Symbole) sind Eigentum der Association Welcom‘ oder ihrer jeweiligen Urheberrechtsinhaber.",
-        "<strong>Website-Design und -Entwicklung:</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>) Willkommen’.",
-        "<strong>Photography Credits:</strong> Club Déclic Photo (student photography club at Télécom SudParis & IMT Business School).",
-        "Any unauthorized reproduction, distribution, modification, or publication of all or part of these elements is strictly prohibited without explicit prior written consent from Association Welcom’."
+        "<strong>Website-Design und -Entwicklung:</strong> Théo DARVOUX (<a href=\"https://github.com/Theo-Darvoux\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>) für Welcom’.",
+        "<strong>Fotokredite:</strong> Club Déclic Photo (studentischer Fotoclub an der Télécom SudParis & IMT Business School).",
+        "Jegliche unbefugte Vervielfältigung, Verbreitung, Veränderung oder Veröffentlichung aller oder eines Teils dieser Elemente ist ohne ausdrückliche vorherige schriftliche Zustimmung der Association Welcom’ strengstens untersagt."
       ],
       privacyTitle: "5. Persönliche Daten und Privatsphäre / RGPD (Protection des données)",
       privacyContent: [
