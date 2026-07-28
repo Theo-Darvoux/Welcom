@@ -438,8 +438,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
   document.addEventListener('DOMContentLoaded', initLightbox);
   document.addEventListener('astro:after-swap', initLightbox);
 
-  // Custom event hook: allows any element to open the lightbox by dispatching
-  // window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src, caption } }))
   function initCustomLightboxEvent() {
     const lightbox = document.getElementById('image-lightbox');
     if (!lightbox) return;
@@ -447,8 +445,11 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     const lightboxCaption = document.getElementById('lightbox-caption');
     if (!lightboxImg || !lightboxCaption) return;
 
-    window.addEventListener('open-lightbox', ((e: CustomEvent) => {
-      const { src, caption } = e.detail as { src: string; caption: string };
+    // Fix: Type 'e' as a standard Event, then cast it inside the function
+    window.addEventListener('open-lightbox', (e: Event) => {
+      const customEvent = e as CustomEvent<{ src: string; caption: string }>;
+      const { src, caption } = customEvent.detail;
+      
       lightboxImg.src = src;
       lightboxImg.alt = caption;
       lightboxCaption.textContent = caption;
@@ -466,7 +467,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       setTimeout(() => {
         if (lightboxImg) lightboxImg.classList.add('lightbox__image--smooth');
       }, 50);
-    }) as EventListener);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', initCustomLightboxEvent);
