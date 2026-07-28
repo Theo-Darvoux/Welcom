@@ -272,12 +272,7 @@ export const en = {
       associative: {
         "title": "Clubs & Assos",
         "description": "BDE, BDA, ASINT, MiNET & 60+ clubs"
-},
-      "events-buddy": {
-        "title": "Clubs & Assos",
-        "description": "BDE, BDA, ASINT, MiNET & 60+ clubs"
-},
-
+      },
       "getting-here": {
         title: "Getting Here",
         description: "Airports, RER D train, and your first day",
@@ -305,11 +300,7 @@ export const en = {
       studies: {
         title: "Studies",
         description: "ECTS, wifi, library, and courses",
-      },
-      "events-buddy": {
-        title: "Events",
-        description: "Welcome BBQ, trips",
-      },
+      }
     },
   },
   lexicon: {

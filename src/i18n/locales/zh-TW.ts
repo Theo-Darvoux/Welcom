@@ -57,7 +57,6 @@ export const zhTW: LocaleTranslation = {
     },
   },
   nav: {
-    team: "團隊",
     home: "首頁",
     foyer: "Foyer 休息室",
     guides: "指南",
@@ -261,8 +260,7 @@ export const zhTW: LocaleTranslation = {
     credits: "© Association Welcom’ 2026-2027 · 由 {MiNET} 提供主機代管 · 照片：Club {Déclic}",
     dev: "由 {name} 開發",
     backToTop: "回到頂部",
-    top: "頂部",
-    legal: "法律聲明",
+    top: "頂部"
   },
   hive: {
     title: "指南",
@@ -273,12 +271,7 @@ export const zhTW: LocaleTranslation = {
       associative: {
         "title": "學生社團",
         "description": "BDE, BDA, ASINT, MiNET及60+社團"
-},
-      "events-buddy": {
-        "title": "學生社團",
-        "description": "BDE, BDA, ASINT, MiNET及60+社團"
-},
-
+      },
       "getting-here": {
         title: "如何抵達",
         description: "機場、RER D 列車，以及你的第一天",
@@ -306,11 +299,7 @@ export const zhTW: LocaleTranslation = {
       studies: {
         title: "學業",
         description: "ECTS 學分、wifi、圖書館和課程",
-      },
-      "events-buddy": {
-        title: "活動",
-        description: "迎新烤肉、旅行",
-      },
+      }
     },
   },
   lexicon: {

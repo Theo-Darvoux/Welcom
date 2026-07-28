@@ -271,12 +271,7 @@ export const vi: LocaleTranslation = {
       associative: {
         "title": "Đời sống CLB",
         "description": "BDE, BDA, ASINT, MiNET & 60+ câu lạc bộ"
-},
-      "events-buddy": {
-        "title": "Đời sống CLB",
-        "description": "BDE, BDA, ASINT, MiNET & 60+ câu lạc bộ"
-},
-
+      },
       "getting-here": {
         title: "Cách đến đây",
         description: "Sân bay, tàu RER D và ngày đầu tiên của bạn",
@@ -304,11 +299,7 @@ export const vi: LocaleTranslation = {
       studies: {
         title: "Học tập",
         description: "ECTS, wifi, thư viện và các môn học",
-      },
-      "events-buddy": {
-        title: "Sự kiện",
-        description: "Tiệc BBQ chào mừng, các chuyến đi",
-      },
+      }
     },
   },
   lexicon: {

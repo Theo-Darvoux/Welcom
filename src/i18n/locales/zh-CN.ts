@@ -57,7 +57,6 @@ export const zhCN: LocaleTranslation = {
     },
   },
   nav: {
-    team: "团队",
     home: "首页",
     foyer: "Foyer 休息室",
     guides: "指南",
@@ -262,7 +261,6 @@ export const zhCN: LocaleTranslation = {
     dev: "由 {name} 开发",
     backToTop: "回到顶部",
     top: "顶部",
-    legal: "法律声明",
   },
   hive: {
     title: "指南",
@@ -273,11 +271,7 @@ export const zhCN: LocaleTranslation = {
       associative: {
         "title": "学生社团",
         "description": "BDE, BDA, ASINT, MiNET及60+社团"
-},
-      "events-buddy": {
-        "title": "学生社团",
-        "description": "BDE, BDA, ASINT, MiNET及60+社团"
-},
+      },
 
       "getting-here": {
         title: "如何抵达",
@@ -306,11 +300,7 @@ export const zhCN: LocaleTranslation = {
       studies: {
         title: "学业",
         description: "ECTS 学分、wifi、图书馆和课程",
-      },
-      "events-buddy": {
-        title: "活动",
-        description: "迎新烧烤、旅行",
-      },
+      }
     },
   },
   lexicon: {

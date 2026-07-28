@@ -271,12 +271,7 @@ export const ar: LocaleTranslation = {
       associative: {
         "title": "الحياة الطلابية",
         "description": "BDE و BDA و ASINT و MiNET و +60 نادياً"
-},
-      "events-buddy": {
-        "title": "الحياة الطلابية",
-        "description": "BDE و BDA و ASINT و MiNET و +60 نادياً"
-},
-
+      },
       "getting-here": {
         title: "كيف تصل",
         description: "المطارات، قطار RER D، ويومك الأول",
@@ -304,11 +299,7 @@ export const ar: LocaleTranslation = {
       studies: {
         title: "الدراسة",
         description: "ECTS، الواي فاي، المكتبة، والمقررات",
-      },
-      "events-buddy": {
-        title: "الفعاليات",
-        description: "حفل شواء الترحيب، الرحلات",
-      },
+      }
     },
   },
   lexicon: {

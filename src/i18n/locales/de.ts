@@ -272,12 +272,7 @@ export const de: LocaleTranslation = {
       associative: {
         "title": "Vereine",
         "description": "BDE, BDA, ASINT, MiNET & 60+ Clubs"
-},
-      "events-buddy": {
-        "title": "Vereine",
-        "description": "BDE, BDA, ASINT, MiNET & 60+ Clubs"
-},
-
+      },
       "getting-here": {
         title: "Anreise",
         description: "Flughäfen, RER D-Zug und Ihr erster Tag",
@@ -305,11 +300,7 @@ export const de: LocaleTranslation = {
       studies: {
         title: "Studium",
         description: "ECTS, WLAN, Bibliothek und Kurse",
-      },
-      "events-buddy": {
-        title: "Veranstaltungen",
-        description: "Willkommensgrillen, Ausflüge",
-      },
+      }
     },
   },
   lexicon: {

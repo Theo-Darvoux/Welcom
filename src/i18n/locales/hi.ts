@@ -57,7 +57,6 @@ export const hi: LocaleTranslation = {
     },
   },
   nav: {
-    team: "टीम",
     home: "मुखपृष्ठ",
     foyer: "Foyer",
     guides: "गाइड",
@@ -262,7 +261,6 @@ export const hi: LocaleTranslation = {
     dev: "{name} द्वारा विकसित",
     backToTop: "ऊपर वापस जाएँ",
     top: "ऊपर",
-    legal: "कानूनी नोटिस",
   },
   hive: {
     title: "गाइड",
@@ -273,11 +271,7 @@ export const hi: LocaleTranslation = {
       associative: {
         "title": "छात्र संगठन",
         "description": "BDE, BDA, ASINT, MiNET और 60+ क्लब"
-},
-      "events-buddy": {
-        "title": "छात्र संगठन",
-        "description": "BDE, BDA, ASINT, MiNET और 60+ क्लब"
-},
+      },
 
       "getting-here": {
         title: "यहाँ कैसे पहुँचें",
@@ -306,11 +300,7 @@ export const hi: LocaleTranslation = {
       studies: {
         title: "पढ़ाई",
         description: "ECTS, wifi, पुस्तकालय और पाठ्यक्रम",
-      },
-      "events-buddy": {
-        title: "आयोजन",
-        description: "स्वागत बारबेक्यू, यात्राएँ",
-      },
+      }
     },
   },
   lexicon: {

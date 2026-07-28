@@ -271,12 +271,7 @@ export const fr: LocaleTranslation = {
       associative: {
         "title": "Associatif",
         "description": "BDE, BDA, ASINT, MiNET & +60 clubs"
-},
-      "events-buddy": {
-        "title": "Associatif",
-        "description": "BDE, BDA, ASINT, MiNET & +60 clubs"
-},
-
+      },
       "getting-here": {
         title: "Arriver",
         description: "Aéroports, RER D, et votre premier jour",
@@ -304,10 +299,6 @@ export const fr: LocaleTranslation = {
       studies: {
         title: "Études",
         description: "ECTS, wifi, bibliothèque, et cours",
-      },
-      "events-buddy": {
-        title: "Événements",
-        description: "BBQ de bienvenue, voyages",
       },
     },
   },

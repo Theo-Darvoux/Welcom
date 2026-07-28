@@ -57,7 +57,6 @@ export const ptBR: LocaleTranslation = {
     },
   },
   nav: {
-    team: "Equipe",
     home: "Início",
     foyer: "Foyer",
     guides: "Guias",
@@ -262,7 +261,6 @@ export const ptBR: LocaleTranslation = {
     dev: "Desenvolvido por {name}",
     backToTop: "Voltar ao topo",
     top: "Topo",
-    legal: "Menções Legais",
   },
   hive: {
     title: "GUIAS",
@@ -273,12 +271,7 @@ export const ptBR: LocaleTranslation = {
       associative: {
         "title": "Associativo",
         "description": "BDE, BDA, ASINT, MiNET e +60 clubes"
-},
-      "events-buddy": {
-        "title": "Associativo",
-        "description": "BDE, BDA, ASINT, MiNET e +60 clubes"
-},
-
+      },
       "getting-here": {
         title: "Como chegar",
         description: "Aeroportos, trem RER D e o seu primeiro dia",
@@ -306,11 +299,7 @@ export const ptBR: LocaleTranslation = {
       studies: {
         title: "Estudos",
         description: "ECTS, wifi, biblioteca e disciplinas",
-      },
-      "events-buddy": {
-        title: "Eventos",
-        description: "Churrasco de boas-vindas, viagens",
-      },
+      }
     },
   },
   lexicon: {
