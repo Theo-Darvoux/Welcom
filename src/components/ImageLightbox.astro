@@ -437,6 +437,40 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
   // Handle standard loading and Astro View Transitions
   document.addEventListener('DOMContentLoaded', initLightbox);
   document.addEventListener('astro:after-swap', initLightbox);
+
+  // Custom event hook: allows any element to open the lightbox by dispatching
+  // window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src, caption } }))
+  function initCustomLightboxEvent() {
+    const lightbox = document.getElementById('image-lightbox');
+    if (!lightbox) return;
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    if (!lightboxImg || !lightboxCaption) return;
+
+    window.addEventListener('open-lightbox', ((e: CustomEvent) => {
+      const { src, caption } = e.detail as { src: string; caption: string };
+      lightboxImg.src = src;
+      lightboxImg.alt = caption;
+      lightboxCaption.textContent = caption;
+
+      // Reset zoom state
+      lightboxImg.classList.remove('lightbox__image--smooth');
+      lightboxImg.style.transform = 'translate(0px, 0px) scale(1)';
+      const zoomVal = document.getElementById('lightbox-zoom-val');
+      if (zoomVal) zoomVal.textContent = '100%';
+
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
+      setTimeout(() => {
+        if (lightboxImg) lightboxImg.classList.add('lightbox__image--smooth');
+      }, 50);
+    }) as EventListener);
+  }
+
+  document.addEventListener('DOMContentLoaded', initCustomLightboxEvent);
+  document.addEventListener('astro:after-swap', initCustomLightboxEvent);
 </script>
 
 <style>

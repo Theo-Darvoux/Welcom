@@ -175,6 +175,7 @@ const definition = lexicon[term] ?? lexicon.fallback;
     /* Reset any text-stroke or case transforms inherited from surfaces like
        the contact band or polaroid captions, so the popover text reads clean. */
     -webkit-text-stroke: 0;
+    text-shadow: none;
     paint-order: normal;
     text-transform: none;
     letter-spacing: normal;

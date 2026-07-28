@@ -1,0 +1,1139 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import Footer from "../Footer.astro";
+import LexiconTerm from "../LexiconTerm.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import HexBg from "../HexBg.astro";
+import RichText from "../RichText.astro";
+import { getLangFromUrl } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const meta = (t.meta as any).guidesAssociative ?? (t.meta as any).guidesAssociatif ?? {
+  title: "Vie Associative & Clubs | Guides | WELCOM'",
+  description: "Découvrez les événements phares, les campagnes, les soirées et la vie associative du campus d'Évry (Télécom SudParis & IMT-BS)."
+};
+const a = (t as any).associative ?? (t as any).associatif;
+---
+
+<Base title={meta.title} description={meta.description}>
+  <span id="top"></span>
+  <SiteHeader />
+
+  <main class="assoc-page">
+
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero">
+      <HexBg
+        radius={46}
+        gap={6}
+        opacity={0.1}
+        color="var(--navy)"
+        strokeWidth={2}
+        hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 50% 45%, white 30%, transparent 85%)"
+      />
+
+      <div class="container hero__inner">
+        <div class="hero__bee" aria-hidden="true">
+          <img src="/imgs/bee.svg" alt="" width="100" height="100" />
+        </div>
+
+        <p class="hero__eyebrow">
+          <span class="eyebrow__hex" aria-hidden="true"></span>
+          {a.heroEyebrow}
+        </p>
+
+        <h1 class="hero__title">{a.heroTitle}</h1>
+
+        <p class="hero__lede">
+          <RichText text={a.heroLede} />
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-card__num">{a.stat1Num}</span>
+            <span class="stat-card__label">{a.stat1Label}</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__num">{a.stat2Num}</span>
+            <span class="stat-card__label">{a.stat2Label}</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__num">{a.stat3Num}</span>
+            <span class="stat-card__label">{a.stat3Label}</span>
+          </div>
+        </div>
+
+        <div class="hero-bde-link">
+          <a href="/resources/plaquette-alpha.pdf" target="_blank" rel="noopener noreferrer" class="hero-bde-btn hero-bde-btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+            <span>{a.alphaPdfBtn}</span>
+          </a>
+          <a href="https://bde-imtbs-tsp.fr/en/associative/" target="_blank" rel="noopener noreferrer" class="hero-bde-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>{a.bdeSiteBtn}</span>
+          </a>
+        </div>
+      </div>
+
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── pré-SEI / SEI / WEI ──────────────────────────── -->
+    <section class="band band--alt" id="integration">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.integrationEyebrow}</p>
+          <h2>{a.integrationH2}</h2>
+          <p class="lede">{a.integrationLede}</p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-tag">{a.preSeiTag}</div>
+              <h3 class="timeline-title">
+                <RichText text={a.preSeiTitle} />
+              </h3>
+              <p class="timeline-text">
+                <RichText text={a.preSeiText} />
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot timeline-dot--honey"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-tag timeline-tag--honey">{a.seiTag}</div>
+              <h3 class="timeline-title">
+                <RichText text={a.seiTitle} />
+              </h3>
+              <p class="timeline-text">
+                <RichText text={a.seiText} />
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot timeline-dot--navy"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-tag timeline-tag--navy">{a.weiTag}</div>
+              <h3 class="timeline-title">
+                <RichText text={a.weiTitle} />
+              </h3>
+              <p class="timeline-text">
+                <RichText text={a.weiText} />
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Photo strip : pré-SEI + WEI color run -->
+        <div class="photo-pair">
+          <figure class="photo-card photo-card--tall zoomable" tabindex="0"
+            data-caption={a.photoPreSeiCaption}
+            style="background-image: url('/imgs/guides/associative/presei.jpg')">
+            <figcaption class="photo-card__caption">{a.photoPreSeiCaption}</figcaption>
+          </figure>
+          <figure class="photo-card zoomable" tabindex="0"
+            data-caption={a.photoWeiDataCaption}
+            style="background-image: url('/imgs/guides/associative/color-run-wei.jpg')">
+            <figcaption class="photo-card__caption">{a.photoWeiCaption}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Les Campagnes ─────────────────────────────────── -->
+    <section class="band" id="campagnes">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.campaignsEyebrow}</p>
+          <h2>{a.campaignsH2}</h2>
+          <p class="lede">{a.campaignsLede}</p>
+        </div>
+
+        <div class="campaign-grid">
+
+          <article class="campaign-card" style="--cc: #005177;">
+            <h3 class="campaign-card__title">{a.bdeTitle}</h3>
+            <p class="campaign-card__desc">
+              <RichText text={a.bdeDesc} />
+            </p>
+          </article>
+
+          <article class="campaign-card" style="--cc: #9B1D1D;">
+            <h3 class="campaign-card__title">{a.bdaTitle}</h3>
+            <p class="campaign-card__desc">
+              <RichText text={a.bdaDesc} />
+            </p>
+          </article>
+
+          <article class="campaign-card" style="--cc: #6FA3E8;">
+            <h3 class="campaign-card__title">{a.minetTitle}</h3>
+            <p class="campaign-card__desc">
+              <RichText text={a.minetDesc} />
+            </p>
+          </article>
+
+        </div>
+
+        <!-- Photo vote / bulletins -->
+        <div class="photo-solo">
+          <figure class="photo-card photo-card--wide zoomable" tabindex="0"
+            data-caption={a.photoVoteCaption}
+            style="background-image: url('/imgs/guides/associative/vote.jpg')">
+            <figcaption class="photo-card__caption">{a.photoVoteCaption}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--navy)" />
+    </section>
+
+    <!-- ── Club B ─────────────────────────────────────────── -->
+    <section class="band band--dark" id="club-b">
+      <div class="container">
+        <div class="club-b-layout">
+          <div class="club-b-text">
+            <p class="eyebrow eyebrow--light"><span class="eyebrow__hex" aria-hidden="true"></span> {a.clubBEyebrow}</p>
+            <h2 class="club-b-title">{a.clubBTitle}</h2>
+            <p class="club-b-lede">
+              <RichText text={a.clubBLede} />
+            </p>
+            <ul class="club-b-details">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><RichText text={a.clubBDetail1} /></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><RichText text={a.clubBDetail2} /></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><RichText text={a.clubBDetail3} /></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><RichText text={a.clubBDetail4} /></span>
+              </li>
+            </ul>
+          </div>
+          <figure class="club-b-photo zoomable" tabindex="0"
+            data-caption={a.photoClubBCaption}
+            style="background-image: url('/imgs/guides/associative/inception.jpg')">
+            <figcaption class="photo-card__caption">{a.photoClubBCaption}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Soirées à thème ──────────────────────────────── -->
+    <section class="band band--alt" id="soirees">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.soireesEyebrow}</p>
+          <h2>{a.soireesH2}</h2>
+          <p class="lede"><RichText text={a.soireesLede} /></p>
+        </div>
+
+        <!-- ── Feature Showcase: Winterfest ── -->
+        <div class="soirees-hero">
+          <div class="soirees-hero__content">
+            <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.winterfestEyebrow}</p>
+            <h3 class="soirees-hero__title">{a.winterfestTitle}</h3>
+            <p class="soirees-hero__meta">{a.winterfestMeta}</p>
+            <p class="soirees-hero__desc">{a.winterfestDesc}</p>
+          </div>
+          <figure class="soirees-hero__photo photo-card photo-card--cinema zoomable" tabindex="0"
+            data-caption={a.photoWinterfestCaption}
+            style="background-image: url('/imgs/guides/associative/winterfest-1.jpg')">
+            <figcaption class="photo-card__caption">{a.photoWinterfestCaption}</figcaption>
+          </figure>
+        </div>
+
+        <!-- ── Grid of Major Theme Events ── -->
+        <div class="soirees-grid">
+          <div class="soiree-card">
+            <p class="soiree-card__eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.parrainageTag}</p>
+            <h4 class="soiree-card__title">{a.parrainageTitle}</h4>
+            <p class="soiree-card__who">{a.parrainageWho}</p>
+            <p class="soiree-card__desc">{a.parrainageDesc}</p>
+          </div>
+
+          <div class="soiree-card">
+            <p class="soiree-card__eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.bdasintTag}</p>
+            <h4 class="soiree-card__title">{a.bdasintTitle}</h4>
+            <p class="soiree-card__who">{a.bdasintWho}</p>
+            <p class="soiree-card__desc">{a.bdasintDesc}</p>
+          </div>
+
+          <div class="soiree-card">
+            <p class="soiree-card__eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.halloweenTag}</p>
+            <h4 class="soiree-card__title">{a.halloweenTitle}</h4>
+            <p class="soiree-card__who">{a.halloweenWho}</p>
+            <p class="soiree-card__desc">{a.halloweenDesc}</p>
+          </div>
+
+          <div class="soiree-card soiree-card--more">
+            <p class="soiree-card__eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.moreSoireesTag}</p>
+            <h4 class="soiree-card__title">{a.moreSoireesTitle}</h4>
+            <p class="soiree-card__who">{a.moreSoireesWho}</p>
+            <p class="soiree-card__desc">{a.moreSoireesDesc}</p>
+          </div>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── Formations ────────────────────────────────────── -->
+    <section class="band" id="formations">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.formationsEyebrow}</p>
+          <h2>{a.formationsH2}</h2>
+          <p class="lede"><RichText text={a.formationsLede} /></p>
+        </div>
+
+        <div class="formations-grid">
+          <div class="formation-card">
+            <div class="formation-card__header" style="--fc: #4F7EC4;">
+              <h3 class="formation-card__title">MiNET</h3>
+            </div>
+            <ul class="formation-list">
+              <li>{a.minetItem1}</li>
+              <li>{a.minetItem2}</li>
+              <li>{a.minetItem3}</li>
+            </ul>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-card__header" style="--fc: #2D3A4A;">
+              <h3 class="formation-card__title">HackademINT</h3>
+            </div>
+            <ul class="formation-list">
+              <li>{a.hackademintItem1}</li>
+              <li>{a.hackademintItem2}</li>
+              <li>{a.hackademintItem3}</li>
+            </ul>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-card__header" style="--fc: #3B7A57;">
+              <h3 class="formation-card__title">Club Code</h3>
+            </div>
+            <ul class="formation-list">
+              <li>{a.codeItem1}</li>
+              <li>{a.codeItem2}</li>
+              <li>{a.codeItem3}</li>
+            </ul>
+          </div>
+
+          <div class="formation-card">
+            <div class="formation-card__header" style="--fc: #9B1D1D;">
+              <h3 class="formation-card__title">Model'IT</h3>
+            </div>
+            <ul class="formation-list">
+              <li>{a.modelitItem1}</li>
+              <li>{a.modelitItem2}</li>
+              <li>{a.modelitItem3}</li>
+            </ul>
+          </div>
+
+          <div class="formations-banner">
+            <h4 class="formations-banner__title"><span class="eyebrow__hex" aria-hidden="true"></span> {a.bannerTitle}</h4>
+            <p class="formations-banner__desc">
+              <RichText text={a.bannerDesc} />
+            </p>
+          </div>
+        </div>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── ASINT ──────────────────────────────────────────── -->
+    <section class="band band--asint" id="asint">
+      <div class="container">
+        <div class="asint-layout">
+          <div class="asint-text">
+            <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.asintEyebrow}</p>
+            <h2>{a.asintH2}</h2>
+            <p class="asint-lede">
+              <RichText text={a.asintLede} />
+            </p>
+
+            <ul class="asint-features">
+              <li class="asint-feature">
+                <h3 class="asint-feature__title"><span class="eyebrow__hex" aria-hidden="true"></span> {a.f1Title}</h3>
+                <p class="asint-feature__desc">{a.f1Desc}</p>
+              </li>
+              <li class="asint-feature">
+                <h3 class="asint-feature__title"><span class="eyebrow__hex" aria-hidden="true"></span> {a.f2Title}</h3>
+                <p class="asint-feature__desc">{a.f2Desc}</p>
+              </li>
+              <li class="asint-feature">
+                <h3 class="asint-feature__title"><span class="eyebrow__hex" aria-hidden="true"></span> {a.f3Title}</h3>
+                <p class="asint-feature__desc">{a.f3Desc}</p>
+              </li>
+            </ul>
+
+            <div class="asint-actions">
+              <a href="https://www.asint.fr/" target="_blank" rel="noopener noreferrer" class="asint-btn">
+                <span>{a.asintBtn}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <figure class="asint-photo zoomable" tabindex="0"
+            data-caption={a.photoAsintCaption}
+            style="background-image: url('/imgs/guides/associative/asint-sei.jpg')">
+            <figcaption class="photo-card__caption">{a.photoAsintCaption}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ── Layout utilities ────────────────────────────── */
+  .container {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+  }
+
+  .band {
+    padding-block: var(--section-y);
+    position: relative;
+  }
+
+  .band--alt {
+    background-color: var(--cream-deep);
+    background-image: radial-gradient(rgba(41, 58, 85, 0.05) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .band--dark {
+    background-color: var(--navy);
+    color: var(--cream);
+  }
+
+  .band--asint {
+    background: linear-gradient(135deg, var(--cream-deep) 0%, #f5e8f0 100%);
+  }
+
+  .eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--honey-deep);
+    margin-bottom: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .eyebrow--light {
+    color: var(--honey);
+  }
+
+  .eyebrow__hex {
+    width: 13px;
+    height: 11px;
+    background: var(--honey);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .prose-header {
+    margin-bottom: var(--space-7);
+  }
+
+  .prose-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-top: var(--space-2);
+  }
+
+  .lede {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-top: var(--space-3);
+    max-width: 85ch;
+  }
+
+  /* ── Hero ──────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--honey);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    text-align: center;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-top: calc(var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9)));
+    padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
+  }
+
+  .hero__bee {
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__bee img {
+    width: clamp(64px, 10vw, 100px);
+    height: auto;
+    margin-inline: auto;
+    filter: drop-shadow(4px 6px 0 rgba(30, 42, 61, 0.15));
+    animation: beeBob 4s ease-in-out infinite;
+  }
+
+  @keyframes beeBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(1.5deg); }
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-accent);
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    margin-bottom: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    color: var(--cream);
+    -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 5px 5px 0px var(--ink);
+    margin-bottom: var(--space-4);
+    transform: rotate(-1.5deg);
+  }
+
+  .hero__lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3rem);
+    line-height: 1.7;
+    color: var(--ink);
+    font-weight: 600;
+    max-width: 58ch;
+    margin-inline: auto;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-7);
+  }
+
+  .stat-card {
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    padding: var(--space-4) var(--space-5);
+    text-align: center;
+    transform: rotate(-1deg);
+    transition: transform 0.2s ease;
+  }
+
+  .stat-card:nth-child(2) { transform: rotate(1deg); }
+  .stat-card:hover { transform: translateY(-3px) scale(1.02); }
+
+  .stat-card__num {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.75rem);
+    color: var(--honey-deep);
+    line-height: 1.1;
+    display: block;
+  }
+
+  .stat-card__label {
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .hero-bde-link {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .hero-bde-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-button);
+    padding: 0.65em 1.2em;
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    color: var(--navy);
+    text-decoration: none;
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .hero-bde-btn:hover {
+    background: var(--cream-deep);
+    transform: translate(-2px, -2px);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+  }
+
+  .hero-bde-btn--primary {
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  .hero-bde-btn--primary:hover {
+    background: var(--ink);
+    color: var(--honey);
+  }
+
+  /* ── Timeline (pré-SEI / SEI / WEI) ──────────────── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--space-8);
+    padding-left: var(--space-3);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-4);
+    position: relative;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6px;
+  }
+
+  .timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--honey-deep);
+    border: 3px solid var(--navy);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-dot--honey { background: var(--honey); }
+  .timeline-dot--navy { background: var(--navy); }
+
+  .timeline-line {
+    width: 3px;
+    flex: 1;
+    background: var(--navy);
+    opacity: 0.2;
+    margin-block: 4px;
+    min-height: 40px;
+  }
+
+  .timeline-body {
+    padding-bottom: var(--space-7);
+  }
+
+  .timeline-tag {
+    font-family: var(--font-accent);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--honey-deep);
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline-tag--honey { color: var(--honey-deep); }
+  .timeline-tag--navy { color: var(--navy); }
+
+  .timeline-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--ink);
+    margin-bottom: var(--space-3);
+  }
+
+  .timeline-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    max-width: 65ch;
+  }
+
+  /* ── Photo components ─────────────────────────────── */
+  .photo-pair {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  .photo-card {
+    border-radius: var(--radius);
+    border: 3.5px solid var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 260px;
+  }
+
+  .photo-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 9px 9px 0 var(--navy);
+  }
+
+  .photo-card--tall { min-height: 340px; }
+  .photo-card--wide { min-height: 380px; }
+  .photo-card--cinema { min-height: 420px; }
+
+  .photo-card__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    color: #fff;
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    padding: var(--space-5) var(--space-4) var(--space-3);
+    margin: 0;
+  }
+
+  .photo-solo {
+    margin-top: var(--space-7);
+  }
+
+  /* ── Campaign Cards ─────────────────────────────────── */
+  .campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .campaign-card {
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    padding: var(--space-6);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .campaign-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--cc, var(--honey));
+  }
+
+  .campaign-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 1px var(--navy), 9px 9px 0 var(--navy);
+  }
+
+  .campaign-card__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: var(--space-3);
+  }
+
+  .campaign-card__desc {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--navy-soft);
+  }
+
+  /* ── Club B Section ─────────────────────────────────── */
+  .club-b-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .club-b-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: var(--honey);
+    margin-bottom: var(--space-3);
+  }
+
+  .club-b-lede {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--cream);
+    opacity: 0.95;
+    margin-bottom: var(--space-6);
+  }
+
+  .club-b-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .club-b-details li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 1rem;
+    color: var(--cream);
+  }
+
+  .club-b-details svg {
+    color: var(--honey);
+    flex-shrink: 0;
+  }
+
+  .club-b-photo {
+    border-radius: var(--radius);
+    border: 4px solid var(--cream);
+    box-shadow: 0 0 0 1px var(--cream), 8px 8px 0 rgba(0,0,0,0.4);
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  /* ── Soirées Hero & Grid ────────────────────────────── */
+  .soirees-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-7);
+    align-items: center;
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+    padding: var(--space-6);
+    margin-bottom: var(--space-7);
+  }
+
+  .soirees-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-block: var(--space-2);
+  }
+
+  .soirees-hero__meta {
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    color: var(--honey-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-4);
+  }
+
+  .soirees-hero__desc {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--navy-soft);
+  }
+
+  .soirees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .soiree-card {
+    background: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    padding: var(--space-5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .soiree-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+  }
+
+  .soiree-card--more {
+    background: var(--honey-wash);
+  }
+
+  .soiree-card__eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    color: var(--honey-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .soiree-card__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .soiree-card__who {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    color: var(--navy-soft);
+    margin-bottom: var(--space-3);
+  }
+
+  .soiree-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--navy-soft);
+  }
+
+  /* ── Formations Section ────────────────────────────── */
+  .formations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .formation-card {
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    overflow: hidden;
+
+  }
+
+  .formation-card__header {
+    background: var(--fc, var(--navy));
+    color: #fff;
+    padding: var(--space-3) var(--space-5);
+    border-bottom: 3px solid var(--navy);
+  }
+
+  .formation-card__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: #fff;
+    margin: 0;
+  }
+
+  .formation-list {
+    list-style: none;
+    padding: var(--space-4) var(--space-5);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .formation-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--navy);
+    position: relative;
+    padding-left: 1.2em;
+  }
+
+  .formation-list li::before {
+    content: "•";
+    color: var(--honey-deep);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .formations-banner {
+    grid-column: 1 / -1;
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    padding: var(--space-6);
+    margin-top: var(--space-3);
+  }
+
+  .formations-banner__title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .formations-banner__desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--navy-soft);
+    margin: 0;
+  }
+
+  .banner-link {
+    color: var(--honey-deep);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* ── ASINT Section ──────────────────────────────────── */
+  .asint-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .asint-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .asint-lede {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+    margin-bottom: var(--space-6);
+  }
+
+  .asint-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .asint-feature__title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .asint-feature__desc {
+    font-size: 0.95rem;
+    color: var(--navy-soft);
+    margin: 0;
+    padding-left: 21px;
+  }
+
+  .asint-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--navy);
+    color: var(--cream);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius-button);
+    padding: 0.75em 1.4em;
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .asint-btn:hover {
+    background: var(--ink);
+    color: var(--honey);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+  }
+
+  .asint-photo {
+    border-radius: var(--radius);
+    border: 4px solid var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  /* ── Responsive adjustments ──────────────────────────── */
+  @media (max-width: 900px) {
+    .photo-pair,
+    .club-b-layout,
+    .soirees-hero,
+    .asint-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .club-b-photo,
+    .asint-photo {
+      min-height: 280px;
+    }
+  }
+</style>

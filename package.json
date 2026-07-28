@@ -15,7 +15,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "audit:dead": "knip",
+    "audit:i18n": "node --experimental-strip-types scripts/i18n-audit.mjs",
+    "audit:css": "purgecss --css src/styles/global.css src/styles/tokens.css --content \"src/**/*.astro\" \"src/**/*.tsx\" \"src/**/*.ts\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -32,6 +35,9 @@
     "eslint": "^10.8.0",
     "eslint-plugin-astro": "^3.0.1",
     "globals": "^17.8.0",
+    "i18n-unused": "^0.19.0",
+    "knip": "^6.29.0",
+    "purgecss": "^8.0.0",
     "typescript-eslint": "^8.65.0"
   }
 }

@@ -1,16 +1,13 @@
-/* English copy: the canonical Translation shape every other locale must match.
-   {Term} placeholders resolve to glossary terms (keys in `lexicon`) via <RichText>. */
-
-export const presidentName = "Manuel";
-
-/** Current academic year, single source of truth across locales. */
-export const academicYear = "2026-2027";
-
 export const developerName = "Théo DARVOUX";
 export const developerLink = "https://github.com/Theo-Darvoux";
 
 export const en = {
   meta: {
+    guidesAssociative: {
+      "title": "Campus Life & Clubs | Guides | WELCOM’",
+      "description": "Discover over 60 student clubs and associations on the Évry campus (Télécom SudParis & IMT-BS): BDE, BDA, ASINT, MiNET, arts, sports, tech, and social projects."
+},
+
     home: {
       title: "WELCOM’ : BDI of Télécom SudParis and IMT Business-School",
       description: "WELCOM, the hive that helps international students settle in at Télécom SudParis & IMT-BS, Évry campus.",
@@ -64,7 +61,6 @@ export const en = {
     home: "Home",
     foyer: "Foyer",
     guides: "Guides",
-    team: "Team",
     events: "Events",
     contact: "Contact",
     brandHome: "Welcom’ home",
@@ -266,7 +262,6 @@ export const en = {
     dev: "Developed by {name}",
     backToTop: "Back to top",
     top: "Top",
-    legal: "Legal Mentions",
   },
   hive: {
     title: "GUIDES",
@@ -274,6 +269,15 @@ export const en = {
     ariaGrid: "Guides categories honeycomb",
     ariaList: "Guides categories list",
     categories: {
+      associative: {
+        "title": "Clubs & Assos",
+        "description": "BDE, BDA, ASINT, MiNET & 60+ clubs"
+},
+      "events-buddy": {
+        "title": "Clubs & Assos",
+        "description": "BDE, BDA, ASINT, MiNET & 60+ clubs"
+},
+
       "getting-here": {
         title: "Getting Here",
         description: "Airports, RER D train, and your first day",
@@ -1129,6 +1133,105 @@ export const en = {
     supportBody: "Drop by the WELCOM’ room in the Foyer! Our team can walk you through bank appointments, help you pick a mobile plan, or explain your French paperwork.",
     supportBtn: "Find the Welcom' Office"
   },
+
+    associative: {
+    "heroEyebrow": "Campus Life Guide",
+    "heroTitle": "Campus Student Life & Clubs",
+    "heroLede": "With <strong>over 64 associations and clubs</strong>, our Évry campus is one of the most vibrant and active in France. Unforgettable parties, strong friendships, and memorable welcome events await you.",
+    "stat1Num": "64+",
+    "stat1Label": "Clubs & Associations",
+    "stat2Num": "Every Wednesday",
+    "stat2Label": "Club B, free student party",
+    "stat3Num": "100+",
+    "stat3Label": "Events per year",
+    "alphaPdfBtn": "View Alpha Brochure (PDF)",
+    "bdeSiteBtn": "Association list on BDE website",
+    "integrationEyebrow": "Welcome week like you've never experienced",
+    "integrationH2": "pré-SEI, SEI & WEI: your campus integration",
+    "integrationLede": "Nobody knows anyone on day one, and that's precisely why it's the best time to meet people. These three events are your gateway to campus life.",
+    "preSeiTag": "August 24 – 29",
+    "preSeiTitle": "The {pré-SEI}",
+    "preSeiText": "An intense, optional, but <strong>strongly recommended</strong> week if you want to build a group of friends before classes even start. Activities, parties, social hangouts... pré-SEI is when shy newcomers become friends with everyone.",
+    "seiTag": "Orientation Week",
+    "seiTitle": "The {SEI}",
+    "seiText": "The <strong>Orientation Week</strong> (Semaine d'Intégration) is the heart of welcome month. Each day is organized by a major association (BDE, BDA, ASINT...) to showcase what they do. You'll enjoy live concerts, sports demos, artistic showcases... and discover what you want to join.",
+    "weiTag": "Weekend right after SEI",
+    "weiTitle": "The {WEI}",
+    "weiText": "The <strong>Integration Weekend</strong> (Week-End d'Intégration), fully organized by BDE, takes place at a private campsite with bungalows. Color run, themed parties, team activities... The following Monday has no classes, and you'll definitely need the rest!",
+    "photoPreSeiCaption": "Pré-SEI 2025 · First hours with your class",
+    "photoWeiCaption": "Color Run · WEI 2025",
+    "photoWeiDataCaption": "WEI Color Run: everyone ends up covered in colorful powder",
+    "campaignsEyebrow": "Getting involved behind the scenes",
+    "campaignsH2": "Campaigns: joining a student board",
+    "campaignsLede": "Each major association elects its board through a campaign. It's an adventure of its own: months of prep, posters, pitch nights, voting... and a unique way to forge lifelong bonds.",
+    "bdeTitle": "Bureau Des Élèves (BDE)",
+    "bdeDesc": "The largest campaign on campus. Each list includes about <strong>thirty 1st-year students</strong> across teams (events, communications, finance...). The campaign spans several months and ends with a vote by the entire class.",
+    "bdaTitle": "Bureau Des Arts (BDA)",
+    "bdaDesc": "The <strong>Arts Board (BDA)</strong> campaign lasts about a month in a creative atmosphere. BDA oversees all campus art clubs: music, drama, dance, photography, cooking, 3D modeling, and more.",
+    "minetTitle": "Network & IT Association (MiNET)",
+    "minetDesc": "The <strong>MiNET</strong> campaign lasts about a month and a half. It attracts tech-minded students and tech enthusiasts alike! MiNET manages the ultra-fast fiber network in student residences and runs clubs for cybersecurity, gaming, coding, astronomy, and more.",
+    "photoVoteCaption": "BDE ballot papers · each list has its own graphic universe",
+    "clubBEyebrow": "Every Wednesday night",
+    "clubBTitle": "Club B",
+    "clubBLede": "The {Club B} is the weekly free party on campus, organized by <strong>BPM</strong> (sound & light club) and {AbsINThe} (student bar). Held in the {GS} (Main Hall) or outdoors at {Espace T}.",
+    "clubBDetail1": "<strong>Free entrance</strong> (drinks available at the bar)",
+    "clubBDetail2": "Open to <strong>all campus students</strong>",
+    "clubBDetail3": "Every Wednesday night <strong>unless exceptional schedule</strong>",
+    "clubBDetail4": "In GS hall or Espace T outdoor area depending on the week",
+    "photoClubBCaption": "Hypnos list party 'Inception' · Foyer GS hall",
+    "soireesEyebrow": "Throughout the year",
+    "soireesH2": "Theme parties & major events",
+    "soireesLede": "Beyond Wednesday nights, student associations regularly organize <strong>ticketed theme parties</strong> in the main hall or student center, featuring impressive stage productions and lighting.",
+    "winterfestEyebrow": "Major annual event",
+    "winterfestTitle": "Winterfest",
+    "winterfestMeta": "Organized by BDE · December · School Main Hall",
+    "winterfestDesc": "The biggest party of the year. Massive stage, lighting shows, and 3 rooms with dedicated music styles (electro/dance, pop, techno): the main school hall transforms into a real professional nightclub.",
+    "photoWinterfestCaption": "Winterfest 2025 · School Main Hall · © Déclic Photo Club",
+    "parrainageTag": "Welcome season / Start of year",
+    "parrainageTitle": "Mentorship Party (Parrainage)",
+    "parrainageWho": "Organized by BDE",
+    "parrainageDesc": "The festive tradition where 1st-year and 2nd-year students meet. A great opportunity to join a student family tree and make friends in a high-energy atmosphere.",
+    "bdasintTag": "Spring",
+    "bdasintTitle": "BDASINT",
+    "bdasintWho": "Organized by BDA + ASINT",
+    "bdasintDesc": "The major joint party bringing together the Arts Board and the Sports Association. Arts, live music, performances, and sports under one roof.",
+    "halloweenTag": "End of October",
+    "halloweenTitle": "Halloween Party",
+    "halloweenWho": "Organized by ASINT",
+    "halloweenDesc": "The Halloween costume party, an absolute highlight of the autumn calendar. Immersive decors, costumes, and a spooky festive atmosphere.",
+    "moreSoireesTag": "All year round",
+    "moreSoireesTitle": "And many more…",
+    "moreSoireesWho": "BPM, Clubs & BDE campaign lists",
+    "moreSoireesDesc": "Annual club meetups, campaign theme nights, and special showcases: campus nightlife never stops.",
+    "formationsEyebrow": "Learning by doing",
+    "formationsH2": "Workshops & training all year round",
+    "formationsLede": "Student associations regularly host workshops open to all students, often <strong>free</strong>. Whether you want to boost your tech, artistic, or practical skills, there's always a workshop for you.",
+    "minetItem1": "System administration (Linux, servers)",
+    "minetItem2": "Networking (protocols, infrastructure)",
+    "minetItem3": "Web development & Calend'INT project",
+    "hackademintItem1": "OSINT & digital investigation",
+    "hackademintItem2": "Cryptography",
+    "hackademintItem3": "Ethical hacking & CTFs",
+    "codeItem1": "Competitive programming",
+    "codeItem2": "Software development",
+    "codeItem3": "Algorithm fundamentals",
+    "modelitItem1": "3D Modeling (Blender, CAD)",
+    "modelitItem2": "Product design",
+    "modelitItem3": "3D printing",
+    "bannerTitle": "And many more workshops…",
+    "bannerDesc": "Other clubs also run workshops throughout the year: photography (Déclic), cooking, music, robotics... Find all announcements on your class WhatsApp group, on <strong><a href=\"https://cal.minet.net\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"banner-link\">Calend'INT</a></strong> (campus calendar by MiNET), and association social channels!",
+    "asintEyebrow": "Campus Sports",
+    "asintH2": "ASINT: The Campus Sports Association",
+    "asintLede": "The <strong>ASINT</strong> (Sports Association) gives you access to <strong>all campus sports facilities and equipment</strong> through a simple annual membership fee. Football, basketball, badminton, table tennis, dance, climbing... there's something for everyone.",
+    "f1Title": "Gym & Weight Room",
+    "f1Desc": "A fully equipped weight room accessible directly on campus.",
+    "f2Title": "School Gymnasium",
+    "f2Desc": "Basketball, handball, badminton, volleyball, and sports events throughout the year.",
+    "f3Title": "Annual Membership",
+    "f3Desc": "A single annual fee to access all sports facilities and athletic clubs.",
+    "asintBtn": "Visit official ASINT website (asint.fr)",
+    "photoAsintCaption": "ASINT Mascot & Acrobatic Basketball · SEI 2025 · © Déclic Photo Club"
+},
 
   legalPage: {
     heroTitle: "Legal Mentions",

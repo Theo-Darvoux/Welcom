@@ -181,7 +181,7 @@ const { id, class: className = "" } = Astro.props;
   </svg>
 )}
 
-{id === "events-buddy" && (
+{(id === "events-buddy" || id === "associative") && (
   <svg class={`hive-icon ${className}`} viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <!-- Stinger (symmetrical at the bottom) -->
     <polygon points="32,53 29,46 35,46" fill="var(--navy)" stroke="var(--navy)" stroke-width="2" />

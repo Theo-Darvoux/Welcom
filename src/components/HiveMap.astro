@@ -17,7 +17,7 @@ const categories = [
   { id: "getting-around", color: "var(--hive-yellow)", href: "/guides/getting-around" },
   { id: "daily-life", color: "var(--hive-green)", href: "/guides/daily-life" },
   { id: "studies", color: "var(--hive-blue)", href: "/wip" },
-  { id: "events-buddy", color: "var(--hive-peach)", href: "/events" },
+  { id: "associative", color: "var(--hive-peach)", href: "/guides/associative" },
 ] as const;
 ---
 
@@ -204,7 +204,8 @@ const categories = [
     top: calc(var(--hex-h) + var(--hex-gap-y));
     animation-delay: 0.7s;
   }
-  .hive-cell--events-buddy {
+  .hive-cell--events-buddy,
+  .hive-cell--associative {
     left: calc(1.5 * var(--hex-w) + 2 * var(--hex-gap-x));
     top: calc(2 * (var(--hex-h) + var(--hex-gap-y)));
     animation-delay: 1.1s;

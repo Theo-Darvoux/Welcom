@@ -19,7 +19,7 @@ export interface Floor {
 
 const A = ["var(--hive-blue)", "var(--hive-yellow)", "var(--hive-green)", "var(--hive-peach)", "var(--honey-wash)", "var(--cream-deep)"];
 
-export const rdc: Floor = {
+const rdc: Floor = {
   id: "rdc",
   frame: [1200, 865],
   outline: [[100, 120], [600, 130], [600, 580], [760, 195], [1000, 245], [920, 550], [920, 780], [460, 780], [460, 680], [400, 680], [400, 600], [100, 600]],
@@ -51,7 +51,7 @@ export const rdc: Floor = {
   ],
 };
 
-export const ss: Floor = {
+const ss: Floor = {
   id: "ss1",
   frame: [1200, 865],
   outline: [

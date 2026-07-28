@@ -1,0 +1,10 @@
+---
+import AssociativeBody from "../../../components/pages/AssociativeBody.astro";
+import { prefixedLocales } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return prefixedLocales.map((lang) => ({ params: { lang } }));
+}
+---
+
+<AssociativeBody />
