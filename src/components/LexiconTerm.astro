@@ -14,7 +14,7 @@ const lexicon = useTranslations(lang).lexicon as Record<string, string>;
 const definition = lexicon[term] ?? lexicon.fallback;
 ---
 
-<span class="lexicon-term" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false"><slot /><span class="lexicon-popover" role="tooltip"><span class="lexicon-popover__card"></span><strong class="lexicon-popover__title">{term}</strong><span class="lexicon-popover__body">{definition}</span></span></span><script>
+<span class="lexicon-term" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false"><slot /><span class="lexicon-popover" role="tooltip" data-nosnippet><span class="lexicon-popover__card"></span><strong class="lexicon-popover__title">{term}</strong><span class="lexicon-popover__body">{definition}</span></span></span><script>
   function initLexicon() {
     const terms = document.querySelectorAll('.lexicon-term');
 
