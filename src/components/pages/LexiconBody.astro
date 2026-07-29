@@ -23,7 +23,7 @@ const lp = (t as any).lexiconPage ?? {
   termsCount: "terms cataloged",
 };
 
-const hiddenTerms = new Set(["evry-thing", "fallback"]);
+const hiddenTerms = new Set(["evry-thing", "fallback", "maisel"]);
 
 function getCategory(term: string): "places" | "associations" | "life" | "academic" {
   const lower = term.toLowerCase();
@@ -43,6 +43,7 @@ function getCategory(term: string): "places" | "associations" | "life" | "academ
     lower.includes("passifs") ||
     lower.includes("cf1") ||
     lower.includes("cf2") ||
+    lower.includes("gate") ||
     lower === "1a" ||
     lower === "1b"
   ) {

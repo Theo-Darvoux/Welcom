@@ -317,9 +317,9 @@ export const zhTW: LocaleTranslation = {
   lexicon: {
     shotgun: "校園常用詞，指「先到先得」的高速線上搶註/預約機制。",
     INT: "埃夫里校區的歷史名稱，如今由 Télécom SudParis 與 IMT-BS 共用。",
-    Maisel: "Maison des Élèves，校園裡的學生宿舍樓，你將住在這裡。",
-    "MAISEL SudParis": "Maison des Élèves，Télécom SudParis 與 IMT Business School 官方的非營利性學生宿舍管理協會。",
     "Maisel SudParis": "Maison des Élèves，Télécom SudParis 與 IMT Business School 官方的非營利性學生宿舍管理協會。",
+    Forum: "學校的主大廳（大型開放空間），設有10號和11號階梯教室，以及一台 ATM 自動提款機。現場還有零食自動售貨機。",
+    GATE: "大一的一個必修項目/課程模組，由許多 9 人組成的學生團隊構成，需為一個長達一年的項目籌集資金。Forum（大廳）裡經常有 GATE 攤位出售食物，主要是可麗餅。",
     "Le Bras de Fer": "位於埃夫里校區旁的 RER D 火車站。",
     "RER B": "連接戴高樂機場（CDG）與巴黎市中心直達的區域列車路線。",
     AbsINThe: "深受喜愛、由學生營運的校園酒吧，舉辦各種主題之夜和輕鬆的聚會。",

@@ -317,9 +317,9 @@ export const en = {
   },
   lexicon: {
     INT: "The historic name of the Évry campus, now shared by Télécom SudParis & IMT-BS.",
-    Maisel: "Maison des Élèves, the campus student residence blocks where you will live.",
-    "MAISEL SudParis": "Maison des Élèves, the official non-profit student housing association of Télécom SudParis and IMT Business School.",
     "Maisel SudParis": "Maison des Élèves, the official non-profit student housing association of Télécom SudParis and IMT Business School.",
+    Forum: "The main hall of the school (a large open space), featuring amphitheaters 10 and 11, and an ATM machine. There are also snack distributors.",
+    GATE: "A first-year academic module consisting of many 9-member student teams that need to raise funds for a year-long project. There are often GATE stands in the Forum selling food, mostly crêpes.",
     "Le Bras de Fer": "The RER D train station located right next to the Évry campus.",
     "RER B": "The regional train line connecting Charles de Gaulle airport (CDG) to central Paris.",
     AbsINThe: "The beloved student-run campus bar, host to theme nights and relaxed evenings.",

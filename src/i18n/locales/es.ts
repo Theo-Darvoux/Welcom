@@ -317,9 +317,9 @@ export const es: LocaleTranslation = {
   lexicon: {
     shotgun: "Término estudiantil para un proceso de reserva por orden de llegada donde la velocidad es clave.",
     INT: "El nombre histórico del campus de Évry, ahora compartido por Télécom SudParis e IMT-BS.",
-    Maisel: "La Maison des Élèves, los bloques de la residencia estudiantil del campus donde vivirás.",
-    "MAISEL SudParis": "Maison des Élèves, la asociación oficial sin ánimo de lucro de alojamiento estudiantil de Télécom SudParis e IMT Business School.",
     "Maisel SudParis": "Maison des Élèves, la asociación oficial sin ánimo de lucro de alojamiento estudiantil de Télécom SudParis e IMT Business School.",
+    Forum: "El hall principal de la escuela (un gran espacio abierto), con los anfiteatros 10 y 11 y un cajero automático. También hay distribuidores de snacks y bebidas.",
+    GATE: "Un módulo académico de primer año compuesto por numerosos equipos de 9 estudiantes que deben recaudar fondos para un proyecto anual. A menudo hay puestos de GATE en el Forum vendiendo comida, principalmente crepes.",
     "Le Bras de Fer": "La estación de tren RER D situada justo al lado del campus de Évry.",
     "RER B": "La línea de tren regional que conecta el aeropuerto Charles de Gaulle (CDG) con el centro de París.",
     AbsINThe: "El querido bar estudiantil del campus, sede de noches temáticas y veladas relajadas.",

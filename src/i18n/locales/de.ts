@@ -316,9 +316,9 @@ export const de: LocaleTranslation = {
   },
   lexicon: {
     INT: "Der historische Name des Évry-Campus, der jetzt von Télécom SudParis & IMT-BS geteilt wird.",
-    Maisel: "Maison des Élèves, die Studentenwohnheime des Campus, in denen Sie wohnen werden.",
-    "MAISEL SudParis": "Maison des Élèves, die offizielle gemeinnützige Studentenwohngemeinschaft von Télécom SudParis und der IMT Business School.",
     "Maisel SudParis": "Maison des Élèves, die offizielle gemeinnützige Studentenwohngemeinschaft von Télécom SudParis und der IMT Business School.",
+    Forum: "Die Haupthalle der Schule (ein großer offener Raum) mit den Hörsälen 10 und 11 sowie einem Geldautomaten. Außerdem gibt es dort Snack- und Getränkeautomaten.",
+    GATE: "Ein Studienmodul des ersten Jahres, das aus vielen Teams von jeweils 9 Studierenden besteht, die Spenden für ein ganzjähriges Projekt sammeln müssen. Im Forum gibt es oft GATE-Stände, die Essen (hauptsächlich Crepes) verkaufen.",
     "Le Bras de Fer": "Der RER D-Bahnhof liegt direkt neben dem Évry-Campus.",
     "RER B": "Die Region Zuglinie, die den Flughafen Charles de Gaulle (CDG) mit dem Zentrum von Paris verbindet.",
     AbsINThe: "Die beliebte, von Studenten geführte Campus-Bar, in der Themenabende und entspannte Abende stattfinden.",
