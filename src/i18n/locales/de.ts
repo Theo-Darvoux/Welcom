@@ -840,8 +840,8 @@ export const de: LocaleTranslation = {
       {
         name: "Lebara",
         badge: "Empfehlung Nr. 1 • Studentenangebot",
-        desc: "Unser empfohlener Anbieter Nr. 1: **ohne Vertrag** und supergünstig! Genießen Sie **50 % Rabatt für Ihre ersten 2 Monate** als Student mit dem Aktionscode **#####** (15 € pro Abonnement an den Verein gespendet).",
-        url: "https://www.lebara.fr"
+        desc: "Unser empfohlener Anbieter Nr. 1: **ohne Vertrag** und supergünstig! Genießen Sie **50 % Rabatt für Ihre ersten 2 Monate** als Student über den Link **<a href=\"https://aklam.io/mwC0WEdF\" target=\"_blank\" rel=\"noopener noreferrer\">aklam.io/mwC0WEdF</a>** (15 € pro Abonnement an den Verein gespendet).",
+        url: "https://aklam.io/mwC0WEdF"
       },
       {
         name: "Syma Mobile",

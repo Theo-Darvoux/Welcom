@@ -841,8 +841,8 @@ export const hi: LocaleTranslation = {
       {
         name: "Lebara",
         badge: "नंबर 1 पसंद • छात्र ऑफर",
-        desc: "हमारा नंबर 1 अनुशंसित ऑपरेटर: **बिना किसी अनुबंध (no-contract)** और बहुत किफायती! प्रोमो कोड **#####** का उपयोग करके छात्रों के लिए **पहले 2 महीनों पर 50% की छूट** पाएं (प्रति सब्स्क्रिप्शन एसोसिएशन को 15€ दान)।",
-        url: "https://www.lebara.fr"
+        desc: "हमारा नंबर 1 अनुशंसित ऑपरेटर: **बिना किसी अनुबंध (no-contract)** और बहुत किफायती! लिंक **<a href=\"https://aklam.io/mwC0WEdF\" target=\"_blank\" rel=\"noopener noreferrer\">aklam.io/mwC0WEdF</a>** के माध्यम से छात्रों के लिए **पहले 2 महीनों पर 50% की छूट** पाएं (प्रति सब्स्क्रिप्शन एसोसिएशन को 15€ दान)।",
+        url: "https://aklam.io/mwC0WEdF"
       },
       {
         name: "Syma Mobile",

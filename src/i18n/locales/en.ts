@@ -840,8 +840,8 @@ export const en = {
       {
         name: "Lebara",
         badge: "#1 Choice • Student Deal",
-        desc: "Our #1 recommended operator: **no-contract** and super affordable! Enjoy **50% off for your first 2 months** as a student using promo code **#####** (€15 donated to the association per subscription).",
-        url: "https://www.lebara.fr"
+        desc: "Our #1 recommended operator: **no-contract** and super affordable! Enjoy **50% off for your first 2 months** as a student via the link **<a href=\"https://aklam.io/mwC0WEdF\" target=\"_blank\" rel=\"noopener noreferrer\">aklam.io/mwC0WEdF</a>** (€15 donated to the association per subscription).",
+        url: "https://aklam.io/mwC0WEdF"
       },
       {
         name: "Syma Mobile",

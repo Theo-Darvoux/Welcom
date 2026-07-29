@@ -839,8 +839,8 @@ export const fr: LocaleTranslation = {
       {
         name: "Lebara",
         badge: "Choix N°1 • Offre Étudiante",
-        desc: "Opérateur recommandé n°1 : **sans engagement** et très économique ! **-50% pendant les 2 premiers mois** pour les étudiants avec le code promo **#####** (et 15€ reversés à l'association par souscription).",
-        url: "https://www.lebara.fr"
+        desc: "Opérateur recommandé n°1 : **sans engagement** et très économique ! **-50% pendant les 2 premiers mois** pour les étudiants via le lien **<a href=\"https://aklam.io/mwC0WEdF\" target=\"_blank\" rel=\"noopener noreferrer\">aklam.io/mwC0WEdF</a>** (et 15€ reversés à l'association par souscription).",
+        url: "https://aklam.io/mwC0WEdF"
       },
       {
         name: "Syma Mobile",

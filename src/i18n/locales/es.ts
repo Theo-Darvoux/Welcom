@@ -840,8 +840,8 @@ export const es: LocaleTranslation = {
       {
         name: "Lebara",
         badge: "Opción N°1 • Oferta Estudiantil",
-        desc: "¡Nuestro operador recomendado n°1: **sin permanencia** y muy económico! Consigue **un 50% de descuento durante los 2 primeros meses** para estudiantes con el código promo **#####** (¡y 15€ donados a la asociación por cada suscripción!).",
-        url: "https://www.lebara.fr"
+        desc: "¡Nuestro operador recomendado n°1: **sin permanencia** y muy económico! Consigue **un 50% de descuento durante los 2 primeros meses** para estudiantes a través del enlace **<a href=\"https://aklam.io/mwC0WEdF\" target=\"_blank\" rel=\"noopener noreferrer\">aklam.io/mwC0WEdF</a>** (¡y 15€ donados a la asociación por cada suscripción!).",
+        url: "https://aklam.io/mwC0WEdF"
       },
       {
         name: "Syma Mobile",

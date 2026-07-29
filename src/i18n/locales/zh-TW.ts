@@ -840,8 +840,8 @@ export const zhTW: LocaleTranslation = {
       {
         name: "Lebara",
         badge: "首選推薦 • 學生專屬優惠",
-        desc: "首選推薦電信業者：**無合約**且超值劃算！學生使用優惠碼 **#####** 可享**前2個月 50% 折扣**（每筆訂購將為協會帶來 15€ 贊助金）！",
-        url: "https://www.lebara.fr"
+        desc: "首選推薦電信業者：**無合約**且超值劃算！學生透過連結 **<a href=\"https://aklam.io/mwC0WEdF\" target=\"_blank\" rel=\"noopener noreferrer\">aklam.io/mwC0WEdF</a>** 可享**前2個月 50% 折扣**（每筆訂購將為協會帶來 15€ 贊助金）！",
+        url: "https://aklam.io/mwC0WEdF"
       },
       {
         name: "Syma Mobile",
