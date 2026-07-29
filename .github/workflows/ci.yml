@@ -73,10 +73,18 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
 
-      - name: Add known hosts
+      - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
+          cat > ~/.ssh/config << 'EOF'
+          Host *
+            BatchMode yes
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+            PasswordAuthentication no
+          EOF
+          chmod 600 ~/.ssh/config
           echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
@@ -85,10 +93,5 @@ jobs:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         run: |
-          rsync -a --delete \
-            -e "ssh -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o PasswordAuthentication=no" \
-            ./dist/ \
-            "$DEPLOY_USER@$DEPLOY_HOST:/var/www/welcom/"
-          ssh -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o PasswordAuthentication=no \
-            "$DEPLOY_USER@$DEPLOY_HOST" \
-            "sudo chown -R www-data:www-data /var/www/welcom && sudo systemctl reload nginx"
+          rsync -a --delete ./dist/ "$DEPLOY_USER@$DEPLOY_HOST:/var/www/welcom/"
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "sudo chown -R www-data:www-data /var/www/welcom && sudo systemctl reload nginx"
