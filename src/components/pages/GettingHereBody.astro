@@ -63,6 +63,34 @@ const g = t.gettingHere;
           </span>
         </a>
         <p class="note"><RichText text={g.addressNote} /></p>
+
+        <a
+          class="virtual-tour-card"
+          href="https://www.virtual-tour-360.online/visite-virtuelle/telecom-sudparis/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="virtual-tour-card__content">
+            <span class="virtual-tour-card__badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+              {g.virtualTourBadge ?? "Visite Virtuelle 360°"}
+            </span>
+            <strong class="virtual-tour-card__title">{g.virtualTourTitle ?? "Explorez le campus en 360°"}</strong>
+            <p class="virtual-tour-card__desc">{g.virtualTourDesc ?? "Une immersion complète et interactive à 360° pour visiter toutes les infrastructures du campus."}</p>
+          </div>
+          <span class="virtual-tour-card__cta">
+            {g.virtualTourCta ?? "Lancer la visite"}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </span>
+        </a>
       </div>
       <div class="container--wide">
         <div class="campus-figures">
@@ -348,6 +376,77 @@ const g = t.gettingHere;
     color: var(--navy); display: block; margin-bottom: var(--space-1);
   }
   .address-card__line { font-size: 1rem; color: var(--navy-soft); margin: 0; }
+
+  .virtual-tour-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+    background: var(--honey-wash);
+    border: 3px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
+                background 0.15s;
+  }
+  .virtual-tour-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+    background: #FFF2D1;
+  }
+  .virtual-tour-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 240px;
+  }
+  .virtual-tour-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .virtual-tour-card__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .virtual-tour-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--navy-soft);
+    margin: 0;
+  }
+  .virtual-tour-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: var(--space-2) var(--space-4);
+    background: var(--navy);
+    color: var(--cream);
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background 0.15s ease, transform 0.15s ease;
+    white-space: nowrap;
+  }
+  .virtual-tour-card:hover .virtual-tour-card__cta {
+    background: var(--honey-deep);
+    color: var(--ink);
+  }
 
   .route-block {
     margin: 0;

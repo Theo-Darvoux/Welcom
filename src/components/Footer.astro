@@ -115,6 +115,29 @@ const navLinks = [
               </svg>
               {t.contactPage.directEmail}
             </a>
+            <a
+              class="footer__social-pill"
+              href="https://www.virtual-tour-360.online/visite-virtuelle/telecom-sudparis/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={t.gettingHere?.virtualTourTitle ?? "Visite Virtuelle 360° du Campus"}
+            >
+              <svg
+                class="footer__social-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+              <span>{t.gettingHere?.virtualTourBadge ?? "Visite Virtuelle 360°"}</span>
+            </a>
           </div>
         </div>
 
