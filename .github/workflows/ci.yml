@@ -92,5 +92,5 @@ jobs:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         run: |
-          rsync -av -e 'ssh -v' --delete ./dist/ "$DEPLOY_USER@$DEPLOY_HOST:/var/www/welcom/"
-          ssh -v "$DEPLOY_USER@$DEPLOY_HOST" "sudo chown -R www-data:www-data /var/www/welcom && sudo systemctl reload nginx"
+          rsync -a --delete --rsync-path="sudo rsync" ./dist/ "$DEPLOY_USER@$DEPLOY_HOST:/var/www/welcom/"
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "sudo chown -R www-data:www-data /var/www/welcom && sudo systemctl reload nginx"
