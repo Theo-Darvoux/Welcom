@@ -325,6 +325,8 @@ export const zhTW: LocaleTranslation = {
     "Dinap'": "Di Napoli 的簡稱，學生經常用於指代從該披薩店訂餐。",
     Prev: "'Prévention' 的縮寫，學生口語中用來代指校園活動中的酒精飲料。",
     Tenture: "學生用來繪製 Logo、圖案和口號的大型床單/橫幅，在 BDE 學生會競選期間大量使用。",
+    Ubuntoutou: "MiNET 協會的吉祥物，是一隻毛絨狗玩偶。",
+    "L'ami Claude": "一隻大型企鵝毛絨玩偶，是 MiNET 協會的吉祥物之一。",
     "Le Bras de Fer": "位於埃夫里校區旁的 RER D 火車站。",
     "RER B": "連接戴高樂機場（CDG）與巴黎市中心直達的區域列車路線。",
     AbsINThe: "深受喜愛、由學生營運的校園酒吧，舉辦各種主題之夜和輕鬆的聚會。",

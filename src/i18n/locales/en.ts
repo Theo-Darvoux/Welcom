@@ -325,6 +325,8 @@ export const en = {
     "Dinap'": "Short for Di Napoli, commonly used by students when talking about ordering pizzas.",
     Prev: "Short for 'Prévention', used informally by students to refer to alcoholic beverages at campus events.",
     Tenture: "A large bedsheet or banner on which students paint logos, artwork, and slogans, heavily used during BDE student campaigns.",
+    Ubuntoutou: "Mascot of the MiNET student association, represented by a stuffed dog plushie.",
+    "L'ami Claude": "A large penguin plushie, one of the mascots of the MiNET student association.",
     "Le Bras de Fer": "The RER D train station located right next to the Évry campus.",
     "RER B": "The regional train line connecting Charles de Gaulle airport (CDG) to central Paris.",
     AbsINThe: "The beloved student-run campus bar, host to theme nights and relaxed evenings.",

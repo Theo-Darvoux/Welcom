@@ -325,6 +325,8 @@ export const es: LocaleTranslation = {
     "Dinap'": "Abreviatura de Di Napoli, utilizada frecuentemente por los estudiantes para hablar de pedir pizzas.",
     Prev: "Abreviatura de 'Prévention', utilizada informalmente por los estudiantes para referirse a las bebidas alcohólicas en los eventos.",
     Tenture: "Una sábana grande o pancarta donde los estudiantes pintan logos, dibujos y eslóganes, muy usada en las campañas del BDE.",
+    Ubuntoutou: "Mascota de la asociación MiNET, representada por un peluche de perro.",
+    "L'ami Claude": "Un gran peluche de pingüino, una de las mascotas de la asociación MiNET.",
     "Le Bras de Fer": "La estación de tren RER D situada justo al lado del campus de Évry.",
     "RER B": "La línea de tren regional que conecta el aeropuerto Charles de Gaulle (CDG) con el centro de París.",
     AbsINThe: "El querido bar estudiantil del campus, sede de noches temáticas y veladas relajadas.",

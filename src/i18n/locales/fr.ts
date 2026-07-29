@@ -324,6 +324,8 @@ export const fr: LocaleTranslation = {
     "Dinap'": "Raccourci pour Di Napoli, souvent utilisé par les étudiants pour parler d'y commander des pizzas.",
     Prev: "Diminutif de Prévention, désignant familièrement les boissons alcoolisées lors des événements et soirées du campus.",
     Tenture: "Grand drap suspendu sur lequel les étudiants peignent des logos, illustrations et slogans, notamment pendant les campagnes BDE.",
+    Ubuntoutou: "Mascotte de l'association MiNET, représentée par une peluche de chien.",
+    "L'ami Claude": "Grande peluche de pingouin, l'une des mascottes de l'association MiNET.",
     "Le Bras de Fer": "La gare du RER D située juste à côté du campus d'Évry.",
     "RER B": "La ligne de RER reliant l'aéroport Charles de Gaulle (CDG) au centre de Paris.",
     AbsINThe: "Le bar étudiant adoré du campus, hôte de moments détendus et conviviaux.",

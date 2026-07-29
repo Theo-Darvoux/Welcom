@@ -324,6 +324,8 @@ export const de: LocaleTranslation = {
     "Dinap'": "Kurzform für Di Napoli, oft von Studierenden verwendet, wenn sie über das Bestellen von Pizza sprechen.",
     Prev: "Kurzform für 'Prévention', von Studierenden als Bezeichnung für alkoholische Getränke bei Campus-Events verwendet.",
     Tenture: "Ein großes Laken oder Transparent, auf das Studierende Logos, Kunstwerke und Slogans malen (besonders beliebt bei BDE-Kampagnen).",
+    Ubuntoutou: "Maskottchen des MiNET-Vereins, dargestellt durch einen Plüschhund.",
+    "L'ami Claude": "Ein großes Pinguin-Plüschtier, eines der Maskottchen des MiNET-Vereins.",
     "Le Bras de Fer": "Der RER D-Bahnhof liegt direkt neben dem Évry-Campus.",
     "RER B": "Die Region Zuglinie, die den Flughafen Charles de Gaulle (CDG) mit dem Zentrum von Paris verbindet.",
     AbsINThe: "Die beliebte, von Studenten geführte Campus-Bar, in der Themenabende und entspannte Abende stattfinden.",

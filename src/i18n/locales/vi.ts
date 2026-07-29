@@ -325,6 +325,8 @@ export const vi: LocaleTranslation = {
     "Dinap'": "Tên gọi ngắn của Di Napoli, thường được sinh viên dùng khi nói về việc đặt bánh pizza.",
     Prev: "Từ viết tắt của 'Prévention', được sinh viên dùng để chỉ các loại đồ uống có cồn trong các sự kiện.",
     Tenture: "Một tấm ga giường hoặc băng rôn lớn mà sinh viên vẽ logo, tranh ảnh và khẩu hiệu lên đó, được dùng nhiều trong các chiến dịch BDE.",
+    Ubuntoutou: "Linh vật của hội sinh viên MiNET, là một chú chó nhồi bông.",
+    "L'ami Claude": "Một chú chim cánh cụt nhồi bông lớn, một trong những linh vật của hội MiNET.",
     "Le Bras de Fer": "Ga tàu RER D nằm ngay cạnh khuôn viên cơ sở Évry.",
     "RER B": "Tuyến tàu vùng kết nối sân bay Charles de Gaulle (CDG) với trung tâm Paris.",
     AbsINThe: "Quán bar sinh viên thân thương trong trường, nơi tổ chức các đêm theo chủ đề và những buổi tối thư giãn.",
