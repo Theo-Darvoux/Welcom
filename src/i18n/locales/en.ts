@@ -174,6 +174,12 @@ export const en = {
     teamTitle: "Welcom' Contacts",
     presidentRole: "President of Welcom’",
     respoAccueilRole: "Welcome Manager of Welcom’",
+    schoolAdminTitle: "School Administration Contacts",
+    schoolAdminDesc: "For official academic & administrative assistance from the school administration.",
+    ellyRole: "IMT Business School Administration",
+    ellyOffice: "Office DIR 011 (IMT BS)",
+    isabelleRole: "Télécom SudParis Administration",
+    isabelleOffice: "Office DIR 209 (TSP)",
     faqTitle: "Common questions",
     faq: [
       {
@@ -793,7 +799,14 @@ export const en = {
     supportEyebrow: "Need Help?",
     supportH2: "Come Visit Us at the Foyer!",
     supportBody: "Administrative portals and paperwork in a foreign language can be daunting. The WELCOM' team is available at our office in the Foyer to assist you step-by-step with your online applications.",
-    supportBtn: "Find the Welcom' Office"
+    supportBtn: "Find the Welcom' Office",
+    schoolAdminTitle: "School Administration Contacts",
+    schoolAdminSubtitle: "Need direct help from the school administration?",
+    schoolAdminLede: "For academic enrollment, certificates, or school administrative support, you can reach out directly to your school's administration contacts:",
+    ellyRole: "IMT Business School Administration",
+    ellyOffice: "Office DIR 011 (IMT BS)",
+    isabelleRole: "Télécom SudParis Administration",
+    isabelleOffice: "Office DIR 209 (TSP)",
   },
   moneyPhone: {
     heroTitle: "Money & Phone",

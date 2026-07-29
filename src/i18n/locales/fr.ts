@@ -173,6 +173,12 @@ export const fr: LocaleTranslation = {
     teamTitle: "Contacts Welcom'",
     presidentRole: "Président de Welcom’",
     respoAccueilRole: "Responsable Accueil de Welcom’",
+    schoolAdminTitle: "Administration de l'École",
+    schoolAdminDesc: "Pour vos démarches administratives et académiques auprès de l'école.",
+    ellyRole: "Administration IMT Business School",
+    ellyOffice: "Bureau DIR 011 (IMT BS)",
+    isabelleRole: "Administration Télécom SudParis",
+    isabelleOffice: "Bureau DIR 209 (TSP)",
     faqTitle: "Questions fréquentes",
     faq: [
       {
@@ -792,7 +798,14 @@ export const fr: LocaleTranslation = {
     supportEyebrow: "Besoin d'aide ?",
     supportH2: "Venez nous voir au Foyer !",
     supportBody: "Les démarches administratives dans une langue étrangère peuvent paraître complexes. L'équipe WELCOM' est disponible dans notre local du Foyer pour vous accompagner pas à pas dans vos démarches en ligne.",
-    supportBtn: "Trouver le local Welcom'"
+    supportBtn: "Trouver le local Welcom'",
+    schoolAdminTitle: "Contacts Administration de l'École",
+    schoolAdminSubtitle: "Besoin d'aide directe de l'administration de l'école ?",
+    schoolAdminLede: "Pour votre inscription académique, vos attestations ou un accompagnement administratif par l'école, vous pouvez contacter directement les responsables administratives :",
+    ellyRole: "Administration IMT Business School",
+    ellyOffice: "Bureau DIR 011 (IMT BS)",
+    isabelleRole: "Administration Télécom SudParis",
+    isabelleOffice: "Bureau DIR 209 (TSP)",
   },
   moneyPhone: {
     heroTitle: "Argent & Téléphone",

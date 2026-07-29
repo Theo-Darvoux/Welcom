@@ -173,6 +173,12 @@ export const ptBR: LocaleTranslation = {
     teamTitle: "Contatos da Welcom'",
     presidentRole: "Presidente da Welcom’",
     respoAccueilRole: "Responsável pela Acolhida da Welcom’",
+    schoolAdminTitle: "Administração da Escola",
+    schoolAdminDesc: "Para assistência acadêmica e administrativa oficial da escola.",
+    ellyRole: "Administração IMT Business School",
+    ellyOffice: "Gabinete DIR 011 (IMT BS)",
+    isabelleRole: "Administração Télécom SudParis",
+    isabelleOffice: "Gabinete DIR 209 (TSP)",
     faqTitle: "Perguntas frequentes",
     faq: [
       {
@@ -792,7 +798,14 @@ export const ptBR: LocaleTranslation = {
     supportEyebrow: "Need Help?",
     supportH2: "Venha nos Visitar no Foyer!",
     supportBody: "Portais administrativos e burocracia em um idioma estrangeiro podem ser assustadores. A equipe WELCOM' está disponível em nosso escritório no Foyer para ajudá-lo passo a passo com suas solicitações online.",
-    supportBtn: "Encontre o Escritório da Welcom'"
+    supportBtn: "Encontre o Escritório da Welcom'",
+    schoolAdminTitle: "Contatos da Administração da Escola",
+    schoolAdminSubtitle: "Precisa de ajuda direta da administração da escola?",
+    schoolAdminLede: "Para matrícula acadêmica, certificados ou suporte administrativo escolar, você pode entrar em contato com as representantes administrativas:",
+    ellyRole: "Administração IMT Business School",
+    ellyOffice: "Gabinete DIR 011 (IMT BS)",
+    isabelleRole: "Administração Télécom SudParis",
+    isabelleOffice: "Gabinete DIR 209 (TSP)",
   },
   moneyPhone: {
     heroTitle: "Dinheiro & Telefone",

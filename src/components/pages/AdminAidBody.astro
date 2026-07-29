@@ -234,6 +234,69 @@ const a = t.adminAid;
         </div>
       </div>
 
+      <HoneyDrip fill="var(--cream)" />
+    </section>
+
+    <!-- ── School Administration Contacts ───────────────── -->
+    <section class="band" id="school-admin">
+      <div class="container">
+        <div class="prose-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{a.schoolAdminTitle}</p>
+          <h2>{a.schoolAdminSubtitle}</h2>
+          <p class="lede">{a.schoolAdminLede}</p>
+        </div>
+
+        <div class="admin-contacts-grid">
+          <!-- Elly Hoek (IMT BS) -->
+          <div class="admin-card">
+            <h3 class="admin-card__name">Elly Hoek</h3>
+            <p class="admin-card__role">{a.ellyRole}</p>
+            <div class="admin-card__info">
+              <div class="admin-card__row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                  <path d="M3 21h18"></path>
+                  <path d="M9 8h1"></path><path d="M9 12h1"></path><path d="M9 16h1"></path>
+                  <path d="M14 8h1"></path><path d="M14 12h1"></path><path d="M14 16h1"></path>
+                  <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                </svg>
+                <span>{a.ellyOffice}</span>
+              </div>
+              <a href="mailto:elly.hoek@imt-bs.eu" class="admin-card__email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>elly.hoek@imt-bs.eu</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Isabelle TOUFFET (TSP) -->
+          <div class="admin-card">
+            <h3 class="admin-card__name">Isabelle TOUFFET</h3>
+            <p class="admin-card__role">{a.isabelleRole}</p>
+            <div class="admin-card__info">
+              <div class="admin-card__row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                  <path d="M3 21h18"></path>
+                  <path d="M9 8h1"></path><path d="M9 12h1"></path><path d="M9 16h1"></path>
+                  <path d="M14 8h1"></path><path d="M14 12h1"></path><path d="M14 16h1"></path>
+                  <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                </svg>
+                <span>{a.isabelleOffice}</span>
+              </div>
+              <a href="mailto:isabelle.touffet@telecom-sudparis.eu" class="admin-card__email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>isabelle.touffet@telecom-sudparis.eu</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
@@ -705,6 +768,90 @@ const a = t.adminAid;
   .support-box .action-wrap {
     display: flex;
     justify-content: center;
+  }
+
+  /* ── School Administration Contacts Grid ─────────────── */
+  .admin-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+
+  .admin-card {
+    background: var(--cream);
+    border: 3.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.25), box-shadow 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  }
+
+  .admin-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 1px var(--navy), 9px 9px 0 var(--navy);
+  }
+
+  .admin-card__name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .admin-card__role {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    color: var(--honey-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-4);
+  }
+
+  .admin-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 2px dashed var(--line);
+    margin-top: auto;
+  }
+
+  .admin-card__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .admin-card__row svg {
+    color: var(--honey-deep);
+    flex-shrink: 0;
+  }
+
+  .admin-card__email {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    word-break: break-all;
+  }
+
+  .admin-card__email:hover {
+    color: var(--honey-deep);
+  }
+
+  .admin-card__email svg {
+    color: var(--honey-deep);
+    flex-shrink: 0;
   }
 
   /* ── Mobile & Small Screens Responsiveness ───────────── */

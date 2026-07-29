@@ -173,6 +173,12 @@ export const zhTW: LocaleTranslation = {
     teamTitle: "Welcom' 聯絡方式",
     presidentRole: "Welcom’ 主席",
     respoAccueilRole: "Welcom’ 迎新負責人",
+    schoolAdminTitle: "學校行政部門聯絡方式",
+    schoolAdminDesc: "用於獲取學校官方學術與行政手續支援。",
+    ellyRole: "IMT Business School 行政部門",
+    ellyOffice: "DIR 011 辦公室 (IMT BS)",
+    isabelleRole: "Télécom SudParis 行政部門",
+    isabelleOffice: "DIR 209 辦公室 (TSP)",
     faqTitle: "常見問題",
     faq: [
       {
@@ -792,7 +798,14 @@ export const zhTW: LocaleTranslation = {
     supportEyebrow: "Need Help?",
     supportH2: "來 Foyer 找我們吧！",
     supportBody: "面對外語的行政入口網站和繁瑣文件可能會讓人感到頭疼。WELCOM' 團隊在 Foyer 的辦公室隨時準備著一步步協助您完成線上申請。",
-    supportBtn: "尋找 Welcom' 辦公室"
+    supportBtn: "尋找 Welcom' 辦公室",
+    schoolAdminTitle: "學校行政部門聯絡方式",
+    schoolAdminSubtitle: "需要學校行政部門的直接協助？",
+    schoolAdminLede: "如需辦理學籍註冊、開具證明或獲取學校行政支援，您可以直接聯絡相關負責人：",
+    ellyRole: "IMT Business School 行政部門",
+    ellyOffice: "DIR 011 辦公室 (IMT BS)",
+    isabelleRole: "Télécom SudParis 行政部門",
+    isabelleOffice: "DIR 209 辦公室 (TSP)",
   },
 
   moneyPhone: {

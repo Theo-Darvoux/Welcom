@@ -173,6 +173,12 @@ export const vi: LocaleTranslation = {
     teamTitle: "Liên hệ Welcom'",
     presidentRole: "Chủ tịch Welcom’",
     respoAccueilRole: "Trưởng ban Đón tiếp Welcom’",
+    schoolAdminTitle: "Liên hệ Ban Quản lý Nhà trường",
+    schoolAdminDesc: "Dành cho hỗ trợ thủ tục hành chính và học tập chính thức từ nhà trường.",
+    ellyRole: "Ban Quản lý IMT Business School",
+    ellyOffice: "Văn phòng DIR 011 (IMT BS)",
+    isabelleRole: "Ban Quản lý Télécom SudParis",
+    isabelleOffice: "Văn phòng DIR 209 (TSP)",
     faqTitle: "Câu hỏi thường gặp",
     faq: [
       {
@@ -792,7 +798,14 @@ export const vi: LocaleTranslation = {
     supportEyebrow: "Cần Hỗ trợ?",
     supportH2: "Hãy Đến Thăm Chúng Tôi tại Foyer!",
     supportBody: "Các cổng thông tin hành chính và giấy tờ bằng tiếng nước ngoài có thể khá rắc rối. Đội ngũ WELCOM' luôn có mặt tại văn phòng của chúng tôi ở Foyer để hỗ trợ bạn từng bước với các ứng dụng trực tuyến.",
-    supportBtn: "Tìm Văn phòng Welcom'"
+    supportBtn: "Tìm Văn phòng Welcom'",
+    schoolAdminTitle: "Liên hệ Ban Quản lý Nhà trường",
+    schoolAdminSubtitle: "Bạn cần hỗ trợ trực tiếp từ Ban Quản lý Nhà trường?",
+    schoolAdminLede: "Đối với nhập học, giấy xác nhận hoặc hỗ trợ hành chính từ nhà trường, bạn có thể liên hệ đại diện ban quản lý:",
+    ellyRole: "Ban Quản lý IMT Business School",
+    ellyOffice: "Văn phòng DIR 011 (IMT BS)",
+    isabelleRole: "Ban Quản lý Télécom SudParis",
+    isabelleOffice: "Văn phòng DIR 209 (TSP)",
   },
 
   moneyPhone: {

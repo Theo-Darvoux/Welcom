@@ -360,6 +360,99 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
               </div>
             </div>
           </div>
+
+          <!-- School Administration Contacts Card -->
+          <div class="team-contacts-card" id="school-admin-contacts-card">
+            <h3 class="team-contacts-card__title">{t.contactPage.schoolAdminTitle}</h3>
+
+            <div class="team-contacts-list">
+              <!-- Elly Hoek (IMT BS) -->
+              <div class="person-card">
+                <div class="person-card__avatar person-card__avatar--initials" aria-hidden="true">
+                  <span>EH</span>
+                </div>
+                <div class="person-card__info">
+                  <span class="person-card__name">Elly Hoek</span>
+                  <span class="person-card__role">{t.contactPage.ellyRole}</span>
+                  <span class="person-card__office">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="person-card__office-icon" aria-hidden="true">
+                      <path d="M3 21h18"></path>
+                      <path d="M9 8h1"></path><path d="M9 12h1"></path><path d="M9 16h1"></path>
+                      <path d="M14 8h1"></path><path d="M14 12h1"></path><path d="M14 16h1"></path>
+                      <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                    </svg>
+                    {t.contactPage.ellyOffice}
+                  </span>
+                  <a
+                    class="person-card__email"
+                    href="mailto:elly.hoek@imt-bs.eu"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="person-card__email-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span class="person-card__email-text"
+                      ><bdi>elly.hoek<wbr />@imt-bs.eu</bdi></span
+                    >
+                  </a>
+                </div>
+              </div>
+
+              <!-- Isabelle TOUFFET (TSP) -->
+              <div class="person-card">
+                <div class="person-card__avatar person-card__avatar--initials" aria-hidden="true">
+                  <span>IT</span>
+                </div>
+                <div class="person-card__info">
+                  <span class="person-card__name">Isabelle TOUFFET</span>
+                  <span class="person-card__role">{t.contactPage.isabelleRole}</span>
+                  <span class="person-card__office">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="person-card__office-icon" aria-hidden="true">
+                      <path d="M3 21h18"></path>
+                      <path d="M9 8h1"></path><path d="M9 12h1"></path><path d="M9 16h1"></path>
+                      <path d="M14 8h1"></path><path d="M14 12h1"></path><path d="M14 16h1"></path>
+                      <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                    </svg>
+                    {t.contactPage.isabelleOffice}
+                  </span>
+                  <a
+                    class="person-card__email"
+                    href="mailto:isabelle.touffet@telecom-sudparis.eu"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="person-card__email-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span class="person-card__email-text"
+                      ><bdi>isabelle.touffet<wbr />@telecom-<wbr />sudparis.eu</bdi></span
+                    >
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </aside>
       </div>
 
@@ -905,6 +998,35 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     color: var(--honey-deep);
     text-transform: uppercase;
     margin-bottom: var(--space-2);
+  }
+
+  .person-card__office {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--navy-soft);
+    margin-bottom: var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .person-card__office-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--honey-deep);
+  }
+
+  .person-card__avatar--initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-accent);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--navy);
+    background: var(--honey);
   }
 
   .person-card__email {

@@ -173,6 +173,12 @@ export const ar: LocaleTranslation = {
     teamTitle: "جهات اتصال Welcom'",
     presidentRole: "رئيس Welcom’",
     respoAccueilRole: "مسؤول الاستقبال في Welcom’",
+    schoolAdminTitle: "جهات اتصال إدارة المدرسة",
+    schoolAdminDesc: "للحصول على المساعدة الأكاديمية والإدارية الرسمية من إدارة المدرسة.",
+    ellyRole: "إدارة IMT Business School",
+    ellyOffice: "المكتب DIR 011 (IMT BS)",
+    isabelleRole: "إدارة Télécom SudParis",
+    isabelleOffice: "المكتب DIR 209 (TSP)",
     faqTitle: "أسئلة شائعة",
     faq: [
       {
@@ -792,7 +798,14 @@ export const ar: LocaleTranslation = {
     supportEyebrow: "Need Help?",
     supportH2: "تفضل بزيارتنا في الفوايه (Foyer)!",
     supportBody: "قد تكون البوابات الإدارية والمعاملات الورقية بلغة أجنبية مربكة. يتواجد فريق WELCOM' في مكتبنا في الفوايه لمساعدتك خطوة بخطوة في تقديم طلباتك عبر الإنترنت.",
-    supportBtn: "ابحث عن مكتب Welcom'"
+    supportBtn: "ابحث عن مكتب Welcom'",
+    schoolAdminTitle: "جهات اتصال إدارة المدرسة",
+    schoolAdminSubtitle: "هل تحتاج إلى مساعدة مباشرة من إدارة المدرسة؟",
+    schoolAdminLede: "للتسجيل الأكاديمي، أو الشهادات، أو الدعم الإداري من المدرسة، يمكنك الاتصال بممثلي الإدارة:",
+    ellyRole: "إدارة IMT Business School",
+    ellyOffice: "المكتب DIR 011 (IMT BS)",
+    isabelleRole: "إدارة Télécom SudParis",
+    isabelleOffice: "المكتب DIR 209 (TSP)",
   },
 
   moneyPhone: {

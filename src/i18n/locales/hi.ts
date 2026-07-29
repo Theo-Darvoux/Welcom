@@ -173,6 +173,12 @@ export const hi: LocaleTranslation = {
     teamTitle: "Welcom' संपर्क",
     presidentRole: "Welcom’ के अध्यक्ष",
     respoAccueilRole: "Welcom’ के स्वागत प्रबंधक",
+    schoolAdminTitle: "स्कूल प्रशासन संपर्क",
+    schoolAdminDesc: "स्कूल प्रशासन से आधिकारिक शैक्षणिक और प्रशासनिक सहायता के लिए।",
+    ellyRole: "IMT Business School प्रशासन",
+    ellyOffice: "कार्यालय DIR 011 (IMT BS)",
+    isabelleRole: "Télécom SudParis प्रशासन",
+    isabelleOffice: "कार्यालय DIR 209 (TSP)",
     faqTitle: "आम सवाल",
     faq: [
       {
@@ -793,7 +799,14 @@ export const hi: LocaleTranslation = {
     supportEyebrow: "Need Help?",
     supportH2: "Foyer में हमसे मिलने आएँ!",
     supportBody: "विदेशी भाषा में प्रशासनिक पोर्टल और कागजी कार्रवाई डराने वाली हो सकती है। WELCOM' टीम Foyer में हमारे कार्यालय में आपके ऑनलाइन आवेदनों के साथ कदम दर कदम आपकी सहायता करने के लिए उपलब्ध है।",
-    supportBtn: "Welcom' कार्यालय खोजें"
+    supportBtn: "Welcom' कार्यालय खोजें",
+    schoolAdminTitle: "स्कूल प्रशासन संपर्क",
+    schoolAdminSubtitle: "क्या आपको स्कूल प्रशासन से सीधे सहायता की आवश्यकता है?",
+    schoolAdminLede: "शैक्षणिक नामांकन, प्रमाणपत्र या स्कूल प्रशासनिक सहायता के लिए, आप प्रशासनिक प्रतिनिधियों से संपर्क कर सकते हैं:",
+    ellyRole: "IMT Business School प्रशासन",
+    ellyOffice: "कार्यालय DIR 011 (IMT BS)",
+    isabelleRole: "Télécom SudParis प्रशासन",
+    isabelleOffice: "कार्यालय DIR 209 (TSP)",
   },
 
   moneyPhone: {
