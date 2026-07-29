@@ -1,0 +1,671 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteHeader from "../SiteHeader.astro";
+import HexBg from "../HexBg.astro";
+import HoneyDrip from "../HoneyDrip.astro";
+import Footer from "../Footer.astro";
+import { getLangFromUrl } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const lp = (t as any).lexiconPage ?? {
+  title: "Campus Lexicon",
+  subtitle: "Every campus acronym, place, association, and piece of student jargon explained in plain language.",
+  searchPlaceholder: "Search a term, acronym, or definition...",
+  filterAll: "All Terms",
+  filterPlaces: "Places & Campus",
+  filterAssociations: "Clubs & Associations",
+  filterLife: "Student Life & Traditions",
+  filterAcademic: "Academic & Admin",
+  noResultsTitle: "No matching terms found",
+  noResultsText: "Try searching for another keyword like RER, Foyer, or MiNET.",
+  termsCount: "terms cataloged",
+};
+
+// Words/slugs to hide from the public lexicon catalog
+const hiddenTerms = new Set(["evry-thing", "fallback"]);
+
+// Categorization helper for terms
+function getCategory(term: string): "places" | "associations" | "life" | "academic" {
+  const lower = term.toLowerCase();
+  if (
+    lower.includes("minet") ||
+    lower.includes("déclic") ||
+    lower.includes("declic") ||
+    lower.includes("welcom") ||
+    lower.includes("tijet")
+  ) {
+    return "associations";
+  }
+  if (
+    lower.includes("apl") ||
+    lower.includes("caf") ||
+    lower.includes("ects") ||
+    lower.includes("passifs") ||
+    lower.includes("cf1") ||
+    lower.includes("cf2") ||
+    lower === "1a" ||
+    lower === "1b"
+  ) {
+    return "academic";
+  }
+  if (
+    lower.includes("aco") ||
+    lower.includes("club b") ||
+    lower.includes("global village") ||
+    lower.includes("ritz") ||
+    lower.includes("shotgun") ||
+    lower.includes("wei") ||
+    lower.includes("sei") ||
+    lower.includes("wes") ||
+    lower.includes("lister") ||
+    lower.includes("rtc") ||
+    lower.includes("youyou") ||
+    lower.includes("boris")
+  ) {
+    return "life";
+  }
+  return "places";
+}
+
+function getCategoryLabel(cat: string): string {
+  switch (cat) {
+    case "places":
+      return lp.filterPlaces;
+    case "associations":
+      return lp.filterAssociations;
+    case "life":
+      return lp.filterLife;
+    case "academic":
+      return lp.filterAcademic;
+    default:
+      return lp.filterAll;
+  }
+}
+
+// Convert term to URL-safe anchor ID
+function slugify(term: string): string {
+  return term
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+const lexiconDict = t.lexicon as Record<string, string>;
+
+// Extract and filter terms (excluding 'fallback' and hidden terms)
+const rawEntries = Object.entries(lexiconDict);
+
+const seenSlug = new Set<string>();
+const termsList = rawEntries
+  .filter(([term]) => {
+    const slug = slugify(term);
+    if (hiddenTerms.has(slug)) return false;
+    if (seenSlug.has(slug)) return false;
+    seenSlug.add(slug);
+    return true;
+  })
+  .map(([term, definition]) => {
+    const category = getCategory(term);
+    const slug = slugify(term);
+    return {
+      term,
+      slug,
+      definition,
+      category,
+      categoryLabel: getCategoryLabel(category),
+    };
+  })
+  .sort((a, b) => a.term.localeCompare(b.term, lang, { sensitivity: "base" }));
+---
+
+<Base title={t.meta.lexicon?.title ?? "Campus Lexicon | WELCOM’"} description={t.meta.lexicon?.description}>
+  <span id="top"></span>
+  <SiteHeader />
+
+  <main class="lexicon-page">
+    <!-- ── Hero Banner (Guides-Style Display Title) ────────────────── -->
+    <section class="hero">
+      <HexBg
+        radius={46}
+        gap={6}
+        opacity={0.1}
+        color="var(--navy)"
+        strokeWidth={2}
+        hexagons={[]}
+        maskImage="radial-gradient(ellipse 120% 100% at 50% 45%, white 30%, transparent 85%)"
+      />
+      <div class="container hero__inner">
+        <div class="hero__bee" aria-hidden="true">
+          <img src="/imgs/bee.svg" alt="" width="120" height="120" />
+        </div>
+        <h1 class="hero__title">{lp.title}</h1>
+        <p class="hero__lede">{lp.subtitle}</p>
+      </div>
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Navigation, Search & Category Filters ───────────────────── -->
+    <section class="band band--controls">
+      <div class="container">
+        <div class="lexicon-controls-wrap">
+          <!-- Search Bar -->
+          <div class="lexicon-search">
+            <div class="lexicon-search__field">
+              <svg class="lexicon-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="search"
+                id="lexicon-search-input"
+                class="lexicon-search__input"
+                placeholder={lp.searchPlaceholder}
+                aria-label={lp.searchPlaceholder}
+                autocomplete="off"
+              />
+              <button
+                type="button"
+                id="lexicon-search-clear"
+                class="lexicon-search__clear"
+                aria-label="Clear search"
+                hidden
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="lexicon-tabs" role="tablist" aria-label="Category tabs">
+            <button type="button" class="tab-btn is-active" data-category="all" role="tab" aria-selected="true">
+              {lp.filterAll}
+            </button>
+            <button type="button" class="tab-btn" data-category="places" role="tab" aria-selected="false">
+              {lp.filterPlaces}
+            </button>
+            <button type="button" class="tab-btn" data-category="associations" role="tab" aria-selected="false">
+              {lp.filterAssociations}
+            </button>
+            <button type="button" class="tab-btn" data-category="life" role="tab" aria-selected="false">
+              {lp.filterLife}
+            </button>
+            <button type="button" class="tab-btn" data-category="academic" role="tab" aria-selected="false">
+              {lp.filterAcademic}
+            </button>
+          </div>
+
+          <!-- Terms Count -->
+          <div class="lexicon-count" aria-live="polite">
+            <span id="lexicon-count-num">{termsList.length}</span> {lp.termsCount}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Terms Catalog Section ──────────────────────────────── -->
+    <section class="band band--terms">
+      <div class="container">
+        <div class="lexicon-list" id="lexicon-list">
+          {termsList.map((item) => (
+            <article
+              class="lexicon-item"
+              id={item.slug}
+              data-term={item.term.toLowerCase()}
+              data-definition={item.definition.toLowerCase()}
+              data-category={item.category}
+            >
+              <div class="lexicon-item__header">
+                <h2 class="lexicon-item__title">
+                  <a href={`#${item.slug}`} class="lexicon-item__link">
+                    {item.term}
+                  </a>
+                </h2>
+                <span class="lexicon-item__cat">
+                  {item.categoryLabel}
+                </span>
+              </div>
+
+              <p class="lexicon-item__def">{item.definition}</p>
+            </article>
+          ))}
+        </div>
+
+        <!-- Empty State -->
+        <div class="lexicon-empty hidden" id="lexicon-empty">
+          <div class="lexicon-empty__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <h3 class="lexicon-empty__title">{lp.noResultsTitle}</h3>
+          <p class="lexicon-empty__text">{lp.noResultsText}</p>
+          <button type="button" class="btn btn--secondary" id="lexicon-reset-btn">
+            {lp.filterAll}
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  function initLexiconPage() {
+    const searchInput = document.getElementById('lexicon-search-input') as HTMLInputElement | null;
+    const clearBtn = document.getElementById('lexicon-search-clear') as HTMLButtonElement | null;
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+    const items = document.querySelectorAll<HTMLElement>('.lexicon-item');
+    const emptyState = document.getElementById('lexicon-empty');
+    const countDisplay = document.getElementById('lexicon-count-num');
+    const resetBtn = document.getElementById('lexicon-reset-btn');
+
+    if (!items.length) return;
+
+    let currentQuery = '';
+    let currentCategory = 'all';
+
+    function filterCatalog() {
+      let count = 0;
+
+      items.forEach((item) => {
+        const term = item.dataset.term || '';
+        const def = item.dataset.definition || '';
+        const cat = item.dataset.category || '';
+
+        const matchesQuery =
+          !currentQuery || term.includes(currentQuery) || def.includes(currentQuery);
+        const matchesCategory = currentCategory === 'all' || cat === currentCategory;
+
+        if (matchesQuery && matchesCategory) {
+          item.classList.remove('hidden');
+          count++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      if (countDisplay) countDisplay.textContent = String(count);
+
+      if (emptyState) {
+        if (count === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // Search Input
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+        if (clearBtn) clearBtn.hidden = !currentQuery;
+        filterCatalog();
+      });
+    }
+
+    if (clearBtn && searchInput) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        currentQuery = '';
+        clearBtn.hidden = true;
+        searchInput.focus();
+        filterCatalog();
+      });
+    }
+
+    // Category Tabs
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+
+        currentCategory = btn.dataset.category || 'all';
+        filterCatalog();
+      });
+    });
+
+    // Reset Button
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        if (clearBtn) clearBtn.hidden = true;
+        currentQuery = '';
+        currentCategory = 'all';
+
+        tabBtns.forEach((b, i) => {
+          if (i === 0) {
+            b.classList.add('is-active');
+            b.setAttribute('aria-selected', 'true');
+          } else {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          }
+        });
+
+        filterCatalog();
+      });
+    }
+
+    // Hash Navigation Highlight
+    function highlightHash() {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+      const target = document.getElementById(hash);
+      if (target) {
+        items.forEach((i) => i.classList.remove('is-target'));
+        target.classList.add('is-target');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    highlightHash();
+    window.addEventListener('hashchange', highlightHash);
+  }
+
+  initLexiconPage();
+  document.addEventListener('astro:after-swap', initLexiconPage);
+</script>
+
+<style>
+  .lexicon-page {
+    background: var(--cream-deep);
+    color: var(--navy);
+  }
+
+  .container {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+  }
+
+  /* ── Hero Banner ─────────────────────────────────────────── */
+  .hero {
+    background: var(--honey);
+    --nav-h: 96px;
+    margin-top: calc(-1 * var(--nav-h));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-top: calc(var(--nav-h) + clamp(var(--space-8), 10vw, var(--space-9)));
+    padding-bottom: clamp(var(--space-7), 8vw, var(--space-9));
+    max-width: 780px;
+    margin-inline: auto;
+  }
+  .hero__bee {
+    margin-bottom: var(--space-3);
+    animation: heroBeeFloat 4s ease-in-out infinite alternate;
+  }
+  .hero__bee img {
+    width: clamp(70px, 10vw, 110px);
+    height: auto;
+    margin-inline: auto;
+    filter: drop-shadow(4px 6px 0px rgba(30, 42, 61, 0.15));
+  }
+
+  @keyframes heroBeeFloat {
+    0% { transform: translateY(0) rotate(-3deg); }
+    100% { transform: translateY(-8px) rotate(5deg); }
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    color: var(--cream);
+    -webkit-text-stroke: 5px var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 5px 5px 0px var(--ink);
+    margin-bottom: var(--space-4);
+    transform: rotate(-1.5deg);
+  }
+  .hero__lede {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 1.5vw, 1.3rem);
+    line-height: 1.7;
+    color: var(--ink);
+    font-weight: 600;
+    margin: 0 auto;
+    max-width: 58ch;
+  }
+
+  @media (max-width: 979px) {
+    .hero {
+      --nav-h: 78px;
+    }
+    .hero__inner {
+      padding-top: calc(var(--nav-h) + clamp(60px, 12vw, 90px));
+    }
+  }
+
+  /* ── Controls Band ────────────────────────────────────────── */
+  .band--controls {
+    background: var(--cream-deep);
+    padding: var(--space-6) 0 var(--space-5);
+  }
+  .lexicon-controls-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* Search Input */
+  .lexicon-search {
+    width: 100%;
+    max-width: 520px;
+  }
+  .lexicon-search__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .lexicon-search__field:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px var(--navy), 6px 6px 0 var(--navy);
+  }
+  .lexicon-search__icon {
+    position: absolute;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+    color: var(--navy-soft);
+    pointer-events: none;
+  }
+  .lexicon-search__input {
+    width: 100%;
+    padding: 0.85em 2.5em 0.85em 2.75em;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--navy);
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  .lexicon-search__input::placeholder {
+    color: var(--navy-soft);
+    opacity: 0.75;
+  }
+  .lexicon-search__clear {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--navy-soft);
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+    border-radius: 4px;
+  }
+  .lexicon-search__clear:hover {
+    color: var(--navy);
+    background: var(--honey-wash);
+  }
+
+  /* Category Tabs */
+  .lexicon-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3) var(--space-5);
+  }
+  .tab-btn {
+    font-family: var(--font-accent);
+    font-size: 1.05rem;
+    line-height: 1.2;
+    color: var(--navy-soft);
+    background: transparent;
+    border: none;
+    border-bottom: 3.5px solid transparent;
+    padding: 0.3em 0.2em;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab-btn:hover {
+    color: var(--navy);
+  }
+  .tab-btn.is-active {
+    color: var(--ink);
+    border-bottom-color: var(--honey);
+  }
+
+  .lexicon-count {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy-soft);
+  }
+
+  /* ── Terms Section ────────────────────────────────────────── */
+  .band--terms {
+    background: var(--cream-deep);
+    padding: 0 0 var(--space-8);
+  }
+  .lexicon-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .lexicon-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--cream);
+    border-bottom: 2px dashed var(--line);
+    padding: var(--space-4) var(--space-5);
+    border-radius: 8px;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .lexicon-item:hover {
+    background: #FFFBF2;
+    border-bottom-color: var(--honey);
+  }
+  .lexicon-item.is-target {
+    background: var(--honey-wash);
+    border-bottom: 2.5px solid var(--navy);
+  }
+
+  .lexicon-item__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  .lexicon-item__title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin: 0;
+  }
+  .lexicon-item__link {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .lexicon-item__link:hover {
+    color: var(--honey-deep);
+  }
+
+  .lexicon-item__cat {
+    font-family: var(--font-accent);
+    font-size: 0.78rem;
+    line-height: 1;
+    color: var(--navy-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .lexicon-item__def {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--navy);
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  /* Empty State */
+  .lexicon-empty {
+    text-align: center;
+    padding: var(--space-8) var(--space-4);
+    background: var(--cream);
+    border: 2px dashed var(--line);
+    border-radius: var(--radius);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .lexicon-empty__icon {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto var(--space-3);
+    color: var(--navy-soft);
+  }
+  .lexicon-empty__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 var(--space-2) 0;
+  }
+  .lexicon-empty__text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--navy-soft);
+    margin: 0 0 var(--space-4) 0;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  @media (max-width: 640px) {
+    .lexicon-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

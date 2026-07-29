@@ -5,7 +5,7 @@ import Footer from "../Footer.astro";
 import HoneyDrip from "../HoneyDrip.astro";
 import HexBg from "../HexBg.astro";
 import RichText from "../RichText.astro";
-import { getLangFromUrl } from "../../i18n/utils";
+import { getLangFromUrl, localizedPath } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
@@ -15,6 +15,10 @@ const meta = (t.meta as any).guidesAssociative ?? (t.meta as any).guidesAssociat
   description: "Découvrez les événements phares, les campagnes, les soirées et la vie associative du campus d'Évry (Télécom SudParis & IMT-BS)."
 };
 const a = (t as any).associative ?? (t as any).associatif;
+const lp = (t as any).lexiconPage ?? {
+  title: "Campus Lexicon",
+  subtitle: "Every campus acronym, place, association, and piece of student jargon explained in plain language.",
+};
 ---
 
 <Base title={meta.title} description={meta.description}>
@@ -427,6 +431,25 @@ const a = (t as any).associative ?? (t as any).associatif;
             style="background-image: url('/imgs/guides/associative/asint-sei.jpg')">
             <figcaption class="photo-card__caption">{a.photoAsintCaption}</figcaption>
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Lexicon Callout Band ────────────────────────────── -->
+    <section class="band band--lexicon-cta">
+      <div class="container">
+        <div class="lexicon-cta__box">
+          <div class="lexicon-cta__content">
+            <h3 class="lexicon-cta__title">{lp.title}</h3>
+            <p class="lexicon-cta__text">{lp.subtitle}</p>
+          </div>
+          <a href={localizedPath("/lexicon", lang)} class="asint-btn lexicon-cta__btn">
+            <span>{lp.title}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -1177,6 +1200,44 @@ const a = (t as any).associative ?? (t as any).associatif;
     position: relative;
     overflow: hidden;
     cursor: zoom-in;
+  }
+
+  /* ── Lexicon Callout ─────────────────────────────────── */
+  .band--lexicon-cta {
+    background: var(--cream-deep);
+    padding: var(--space-6) 0 var(--space-8);
+  }
+  .lexicon-cta__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    background: var(--cream);
+    border: 2.5px solid var(--navy);
+    border-radius: var(--radius);
+    padding: var(--space-5) var(--space-6);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+  }
+  .lexicon-cta__title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin: 0 0 var(--space-1) 0;
+  }
+  .lexicon-cta__text {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin: 0;
+  }
+  .lexicon-cta__btn {
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .lexicon-cta__box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   /* ── Responsive adjustments ──────────────────────────── */

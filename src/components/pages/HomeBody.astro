@@ -141,6 +141,26 @@ const partners = [
                 <line x1="16" y1="6" x2="16" y2="22"></line>
               </svg>
             </a>
+            <a
+              class="btn btn--lexicon hero__foyer-btn hero__lexicon-btn"
+              id="hero-lexicon-btn"
+              href={localizedPath("/lexicon", lang)}
+            >
+              {t.nav.lexicon}
+              <svg
+                class="btn__arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -1707,6 +1727,24 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
   }
   .hero .btn--green:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
+  }
+
+  /* Lexicon = terracotta / warm peach background, cream text */
+  .hero .btn--lexicon {
+    background: #D96B43;
+    color: var(--cream);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink), 5px 5px 0 var(--ink);
+  }
+  .hero .btn--lexicon:hover {
+    background: #C45A32;
+    color: var(--cream);
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
+  }
+  .hero .btn--lexicon:active {
     transform: translate(5px, 5px);
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }

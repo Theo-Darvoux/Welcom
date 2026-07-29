@@ -11,6 +11,10 @@ import { useTranslations } from "../../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const g = t.guidesPage;
+const lp = (t as any).lexiconPage ?? {
+  title: "Campus Lexicon",
+  subtitle: "Every campus acronym, place, association, and piece of student jargon explained in plain language.",
+};
 
 const guideCards = [
   {
@@ -141,6 +145,26 @@ const guideCards = [
         </div>
       </div>
 
+      <HoneyDrip fill="var(--cream-deep)" />
+    </section>
+
+    <!-- ── Lexicon Banner ─────────────────────────────────── -->
+    <section class="band band--lexicon-banner">
+      <div class="container lexicon-banner__inner">
+        <div class="lexicon-banner__text">
+          <h2 class="lexicon-banner__title">{lp.title}</h2>
+          <p class="lexicon-banner__lede">{lp.subtitle}</p>
+        </div>
+        <div class="lexicon-banner__action">
+          <a href={localizedPath("/lexicon", lang)} class="btn btn--primary">
+            <span>{lp.title}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
       <HoneyDrip fill="var(--navy)" />
     </section>
 
@@ -549,6 +573,39 @@ const guideCards = [
   .btn--primary:active {
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
     transform: translate(5px, 5px);
+  }
+
+  /* ── Lexicon Banner ─────────────────────────────────── */
+  .band--lexicon-banner {
+    background: var(--cream-deep);
+    padding: var(--space-8) 0 var(--space-9);
+    position: relative;
+  }
+  .lexicon-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+  .lexicon-banner__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    color: var(--ink);
+    margin: 0 0 var(--space-2) 0;
+  }
+  .lexicon-banner__lede {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--navy);
+    max-width: 54ch;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .lexicon-banner__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
