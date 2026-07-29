@@ -269,6 +269,7 @@ export const zhTW: LocaleTranslation = {
   footer: {
     tagline: "我們在 Télécom SudParis 與 IMT-BS（埃夫里）迎接國際學生。",
     credits: "© Association Welcom’ 2026-2027 · 由 {MiNET} 提供主機代管 · 照片：Club {Déclic}",
+    sourceCode: "原始碼",
     dev: "由 {name} 開發",
     backToTop: "回到頂部",
     top: "頂部"

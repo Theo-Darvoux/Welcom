@@ -271,6 +271,7 @@ export const en = {
     tagline: "Welcoming international students at Télécom SudParis & IMT-BS, Évry.",
     credits: "© Association Welcom’ 2026-2027 · hosted by {MiNET} · photos: Club {Déclic}",
     dev: "Developed by {name}",
+    sourceCode: "Source code",
     backToTop: "Back to top",
     top: "Top",
   },

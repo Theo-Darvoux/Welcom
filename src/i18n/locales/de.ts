@@ -269,6 +269,7 @@ export const de: LocaleTranslation = {
   footer: {
     tagline: "Begrüßung internationaler Studierender bei Télécom SudParis & IMT-BS, Évry.",
     credits: "© Association Welcom’ 2026-2027 · veranstaltet von {MiNET} · Fotos: Club {Déclic}",
+    sourceCode: "Quellcode",
     dev: "Entwickelt von {name}",
     backToTop: "Zurück nach oben",
     top: "Oben",

@@ -269,6 +269,7 @@ export const vi: LocaleTranslation = {
   footer: {
     tagline: "Chào đón sinh viên quốc tế tại Télécom SudParis & IMT-BS, Évry.",
     credits: "© Association Welcom’ 2026-2027 · được lưu trữ bởi {MiNET} · ảnh: Club {Déclic}",
+    sourceCode: "Mã nguồn",
     dev: "Được phát triển bởi {name}",
     backToTop: "Quay lại đầu trang",
     top: "Đầu trang",

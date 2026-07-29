@@ -269,6 +269,7 @@ export const ptBR: LocaleTranslation = {
   footer: {
     tagline: "Acolhendo estudantes internacionais na Télécom SudParis e IMT-BS, Évry.",
     credits: "© Association Welcom’ 2026-2027 · hospedado por {MiNET} · fotos: Club {Déclic}",
+    sourceCode: "Código-fonte",
     dev: "Desenvolvido por {name}",
     backToTop: "Voltar ao topo",
     top: "Topo",

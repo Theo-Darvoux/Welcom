@@ -269,6 +269,7 @@ export const hi: LocaleTranslation = {
   footer: {
     tagline: "हम Télécom SudParis और IMT-BS, Évry में अंतरराष्ट्रीय छात्रों का स्वागत करते हैं।",
     credits: "© Association Welcom’ 2026-2027 · होस्टिंग {MiNET} द्वारा · तस्वीरें: Club {Déclic}",
+    sourceCode: "सोर्स कोड",
     dev: "{name} द्वारा विकसित",
     backToTop: "ऊपर वापस जाएँ",
     top: "ऊपर",
