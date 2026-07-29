@@ -580,16 +580,19 @@ const termsList = rawEntries
 
   .lexicon-item__header {
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: var(--space-3);
-    margin-bottom: var(--space-2);
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-bottom: var(--space-3);
   }
   .lexicon-item__title {
     font-family: var(--font-display);
-    font-size: 1.6rem;
-    line-height: 1.1;
+    font-size: 1.5rem;
+    line-height: 1.15;
     margin: 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
   .lexicon-item__link {
     color: var(--ink);
@@ -602,12 +605,17 @@ const termsList = rawEntries
 
   .lexicon-item__cat {
     font-family: var(--font-accent);
-    font-size: 0.78rem;
-    line-height: 1;
+    font-size: 0.72rem;
+    line-height: 1.2;
     color: var(--navy-soft);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
+    letter-spacing: 0.04em;
+    background: color-mix(in srgb, var(--navy) 6%, transparent);
+    padding: 3px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+    max-width: 100%;
+    word-break: break-word;
   }
 
   .lexicon-item__def {
