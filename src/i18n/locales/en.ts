@@ -1119,6 +1119,13 @@ export const en = {
       tag: "G20 & Le Spot • Laveries U1–U7 • Trash sorting",
       btn: "Read Daily Life Guide"
     },
+    associative: {
+      title: "Campus Life & Clubs",
+      badge: "Student Associations",
+      desc: "Discover 64+ student clubs and associations: BDE, BDA, ASINT, MiNET, sports, arts, tech projects, and unforgettable campus events.",
+      tag: "BDE • BDA • ASINT • 64+ Clubs • SEI & WEI",
+      btn: "Read Campus Life Guide"
+    },
     supportEyebrow: "Need Personal Help?",
     supportTitle: "Have Questions About Admin or Housing?",
     supportBody: "Drop by the WELCOM’ room in the Foyer! Our team can walk you through bank appointments, help you pick a mobile plan, or explain your French paperwork.",

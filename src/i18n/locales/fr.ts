@@ -1116,6 +1116,13 @@ export const fr: LocaleTranslation = {
       tag: "G20 & Le Spot • Laveries U1–U7 • Tri sélectif",
       btn: "Consulter le guide Vie Quotidienne"
     },
+    associative: {
+      title: "Vie Associative & Clubs",
+      badge: "Associations étudiantes",
+      desc: "Découvrez plus de 64 clubs et associations : BDE, BDA, ASINT, MiNET, sports, arts, projets tech, et les événements inoubliables du campus.",
+      tag: "BDE • BDA • ASINT • 64+ Clubs • SEI & WEI",
+      btn: "Consulter le guide Vie Associative"
+    },
     supportEyebrow: "Besoin d'aide ?",
     supportTitle: "Des questions sur vos démarches ?",
     supportBody: "Passez nous voir au bureau Welcom’ situé au Foyer ! Notre équipe vous aide pour vos rendez-vous bancaires, forfaits mobiles ou dossiers administratifs.",

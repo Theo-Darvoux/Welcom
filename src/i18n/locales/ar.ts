@@ -1110,6 +1110,13 @@ export const ar: LocaleTranslation = {
       tag: "تأشيرة ANEF • مساعدات CAF • التأمين الصحي Ameli",
       btn: "اقرأ دليل الإجراءات"
     },
+    associative: {
+      title: "حياة الطلاب والأندية",
+      badge: "الجمعيات الطلابية",
+      desc: "اكتشف أكثر من 64 ناديًا وجمعية طلابية: BDE، BDA، ASINT، MiNET، الرياضة، الفن، المشاريع التقنية، وفعات الحرم الجامعي لا تنسى.",
+      tag: "BDE • BDA • ASINT • 64+ نادي • SEI & WEI",
+      btn: "اقرأ دليل حياة الطلاب"
+    },
     /* Obsolete duplicate of the guide-card data below.
     adminAid: {
     heroTitle: "Admin & Aid",

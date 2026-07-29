@@ -1119,6 +1119,13 @@ export const de: LocaleTranslation = {
       tag: "G20 & Le Spot • Laveries U1–U7 • Müllsortierung",
       btn: "Leitfaden zum täglichen Leben lesen"
     },
+    associative: {
+      title: "Campusleben & Clubs",
+      badge: "Studentenvereinigungen",
+      desc: "Entdecken Sie über 64 Studentenclubs und -vereinigungen: BDE, BDA, ASINT, MiNET, Sport, Kunst, Technikprojekte und unvergessliche Campusveranstaltungen.",
+      tag: "BDE • BDA • ASINT • 64+ Clubs • SEI & WEI",
+      btn: "Campusleben-Leitfaden lesen"
+    },
     supportEyebrow: "Benötigen Sie persönliche Hilfe?",
     supportTitle: "Haben Sie Fragen zu Verwaltung oder Wohnen?",
     supportBody: "Schauen Sie im WELCOM‘-Raum im Foyer vorbei! Unser Team kann Sie durch Banktermine begleiten, Ihnen bei der Auswahl eines Mobilfunktarifs helfen oder Ihnen Ihre französischen Unterlagen erklären.",

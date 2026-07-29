@@ -1117,6 +1117,13 @@ export const vi: LocaleTranslation = {
       tag: "SIM Pháp • RIB & Ngân hàng • Mẹo tài chính",
       btn: "Xem cẩm nang Tiền & SIM"
     },
+    associative: {
+      title: "Đời sống Sinh viên & CLB",
+      badge: "Câu lạc bộ sinh viên",
+      desc: "Khám phá 64+ câu lạc bộ sinh viên: BDE, BDA, ASINT, MiNET, thể thao, nghệ thuật, dự án công nghệ và những sự kiện đáng nhớ trên campus.",
+      tag: "BDE • BDA • ASINT • 64+ CLB • SEI & WEI",
+      btn: "Xem cẩm nang Đời sống Sinh viên"
+    },
     supportEyebrow: "Bạn Cần Hỗ Trợ Trực Tiếp?",
     supportTitle: "Bạn Có Thắc Mắc Về Thủ Tục Hay Nhà Ở?",
     supportBody: "Hãy ghé qua phòng Welcom’ tại Foyer! Đội ngũ của chúng tôi sẵn sàng giúp bạn đặt lịch hẹn ngân hàng, chọn gói cước điện thoại và làm giấy tờ.",

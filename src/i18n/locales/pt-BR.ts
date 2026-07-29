@@ -1116,6 +1116,13 @@ export const ptBR: LocaleTranslation = {
       tag: "SIM francês • RIB & Banco • Dicas financeiras",
       btn: "Ler Guia Dinheiro & Chip"
     },
+    associative: {
+      title: "Vida Associativa e Clubes",
+      badge: "Associações estudantis",
+      desc: "Descubra mais de 64 clubes e associações: BDE, BDA, ASINT, MiNET, esporte, arte, projetos de tecnologia e eventos inesquecíveis do campus.",
+      tag: "BDE • BDA • ASINT • 64+ Clubes • SEI & WEI",
+      btn: "Ler Guia de Vida Associativa"
+    },
     supportEyebrow: "Precisa de Ajuda Pessoal?",
     supportTitle: "Dúvidas Sobre Documentos ou Moradia?",
     supportBody: "Venha até a sala da Welcom’ no Foyer! Nossa equipe pode ajudar você com agendamentos no banco, planos de celular e documentos franceses.",

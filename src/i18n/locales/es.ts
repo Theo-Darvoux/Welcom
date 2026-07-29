@@ -1110,6 +1110,13 @@ export const es: LocaleTranslation = {
       tag: "Visado ANEF • CAF APL • Salud Ameli",
       btn: "Ver guía de Trámites"
     },
+    associative: {
+      title: "Vida Asociativa y Clubs",
+      badge: "Asociaciones estudiantiles",
+      desc: "Descubre más de 64 clubs y asociaciones: BDE, BDA, ASINT, MiNET, deportes, arte, proyectos técnicos y eventos inolvidables del campus.",
+      tag: "BDE • BDA • ASINT • 64+ Clubs • SEI & WEI",
+      btn: "Leer Guía de Vida Asociativa"
+    },
     /* Obsolete duplicate of the guide-card data below.
     adminAid: {
     heroTitle: "Trámites Administrativos y Ayudas Estudiantiles",

@@ -134,24 +134,30 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     }
 
     // Retrieve caption text based on target element's markup container
-    function getCaption(img: HTMLImageElement): string {
-      if (img.closest('.orga')) {
-        const captionEl = img.closest('.orga')!.querySelector('figcaption');
+    function getCaption(el: HTMLElement): string {
+      // Handle figure elements with data-caption attribute
+      if (el.tagName === 'FIGURE' && el.hasAttribute('data-caption')) {
+        return el.getAttribute('data-caption') || '';
+      }
+      
+      if (el.closest('.orga')) {
+        const captionEl = el.closest('.orga')!.querySelector('figcaption');
         return captionEl ? extractTextWithoutPopovers(captionEl) : '';
       }
-      if (img.closest('.president__polaroid')) {
-        const labelEl = img.closest('.president__polaroid')!.querySelector('.president__polaroid-label');
+      if (el.closest('.president__polaroid')) {
+        const labelEl = el.closest('.president__polaroid')!.querySelector('.president__polaroid-label');
         return labelEl ? extractTextWithoutPopovers(labelEl) : '';
       }
-      if (img.closest('.photo-strip__polaroid')) {
-        const captionEl = img.closest('.photo-strip__polaroid')!.querySelector('.photo-strip__caption');
+      if (el.closest('.photo-strip__polaroid')) {
+        const captionEl = el.closest('.photo-strip__polaroid')!.querySelector('.photo-strip__caption');
         return captionEl ? extractTextWithoutPopovers(captionEl) : '';
       }
-      const figureEl = img.closest('.feature__photo') || img.closest('figure');
+      const figureEl = el.closest('.feature__photo') || el.closest('figure');
       if (figureEl) {
         const captionEl = figureEl.querySelector('figcaption');
         return captionEl ? extractTextWithoutPopovers(captionEl) : '';
       }
+      const img = el as HTMLImageElement;
       return img.alt || '';
     }
 
@@ -174,11 +180,28 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       updateTransform();
     }
 
-    function openLightbox(img: HTMLImageElement) {
+    function openLightbox(el: HTMLElement) {
       if (!lightbox || !lightboxImg || !lightboxCaption) return;
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightboxCaption.textContent = getCaption(img);
+      
+      // Handle figure elements with background-image
+      if (el.tagName === 'FIGURE') {
+        const bgImage = el.style.backgroundImage;
+        // Extract URL from background-image: url('...')
+        const match = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
+        if (match && match[1]) {
+          lightboxImg.src = match[1];
+        } else {
+          lightboxImg.src = '';
+        }
+        lightboxImg.alt = getCaption(el);
+      } else {
+        // Handle regular img elements
+        const img = el as HTMLImageElement;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      }
+      
+      lightboxCaption.textContent = getCaption(el);
       
       resetZoom(false); // Reset coordinates without smooth transition for immediate setup
 
@@ -201,7 +224,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     function setupTriggers() {
       selectors.forEach(selector => {
         document.querySelectorAll(selector).forEach(element => {
-          const img = element as HTMLImageElement;
+          const img = element as HTMLElement;
           img.style.cursor = 'zoom-in';
           
           // Add click trigger

@@ -1118,6 +1118,13 @@ export const zhCN: LocaleTranslation = {
       tag: "法国手机卡 • RIB 与银行 • 理财技巧",
       btn: "查看通讯理财指南"
     },
+    associative: {
+      title: "学生社团与校园生活",
+      badge: "学生社团",
+      desc: "发现 64+ 个学生社团和俱乐部：BDE、BDA、ASINT、MiNET、体育、艺术、技术项目以及难忘的校园活动。",
+      tag: "BDE • BDA • ASINT • 64+ 社团 • SEI & WEI",
+      btn: "阅读社团生活指南"
+    },
     supportEyebrow: "需要面对面帮助？",
     supportTitle: "关于手续或住宿还有疑问？",
     supportBody: "欢迎来到 Foyer 的 Welcom’ 办公室！我们的团队可以协助你预约银行开户、选择手机套餐或解答法国行政表格。",

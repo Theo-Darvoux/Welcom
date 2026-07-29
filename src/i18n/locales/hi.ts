@@ -1111,6 +1111,13 @@ export const hi: LocaleTranslation = {
       tag: "ANEF वीज़ा • CAF APL • Ameli स्वास्थ्य बीमा",
       btn: "प्रशासनिक गाइड पढ़ें"
     },
+    associative: {
+      title: "छात्र जीवन और क्लब",
+      badge: "छात्र संघ",
+      desc: "64+ छात्र क्लबों और संगठनों की खोज करें: BDE, BDA, ASINT, MiNET, खेल, कला, तकनीकी परियोजनाएं और कैंपस के अविस्मरणीय आयोजन।",
+      tag: "BDE • BDA • ASINT • 64+ क्लब • SEI & WEI",
+      btn: "छात्र जीवन गाइड पढ़ें"
+    },
     /* Obsolete duplicate of the guide-card data below.
     adminAid: {
     heroTitle: "Admin & Aid",

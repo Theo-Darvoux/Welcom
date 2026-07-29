@@ -1117,6 +1117,13 @@ export const zhTW: LocaleTranslation = {
       tag: "法國手機卡 • RIB 與銀行 • 理財技巧",
       btn: "檢視通訊理財指南"
     },
+    associative: {
+      title: "學生社團與校園生活",
+      badge: "學生社團",
+      desc: "發現 64+ 個學生社團和俱樂部：BDE、BDA、ASINT、MiNET、體育、藝術、技術專案以及難忘的校園活動。",
+      tag: "BDE • BDA • ASINT • 64+ 社團 • SEI & WEI",
+      btn: "閱讀社團生活指南"
+    },
     supportEyebrow: "需要面對面幫助？",
     supportTitle: "關於手續或住宿還有疑問？",
     supportBody: "歡迎來到 Foyer 的 Welcom’ 辦公室！我們的團隊可以協助你預約銀行開戶、選擇手機套餐或解答法國行政表格。",

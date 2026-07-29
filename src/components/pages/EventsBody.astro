@@ -7,6 +7,7 @@ import RichText from "../RichText.astro";
 import Footer from "../Footer.astro";
 import { getLangFromUrl, localizedPath } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/ui";
+import { getCalendarEvents } from "../../data/calendarEvents";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -14,42 +15,8 @@ const t = useTranslations(lang);
 const e = t.eventsPage;
 
 // ── Campus calendar (build-time fetch → client-side week navigation) ────
-interface CalEvent {
-  id: string;
-  title: string;
-  start_time: string;
-  location: string;
-  org_name: string;
-  org_color: string;
-}
-
-let calEvents: CalEvent[] = [];
-try {
-  const now = new Date();
-  // Start from Monday of the current week so in-progress-week events show
-  const day = now.getDay();
-  const weekStart = new Date(now);
-  weekStart.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
-  weekStart.setHours(0, 0, 0, 0);
-  const end = new Date(weekStart);
-  end.setDate(weekStart.getDate() + 91); // ~13 weeks
-  const res = await fetch(
-    `https://cal.minet.net/api/events/?size=500&start_date=${weekStart.toISOString()}&end_date=${end.toISOString()}&upcoming=false`,
-  );
-  if (res.ok) {
-    const raw: { items: any[] } = await res.json();
-    calEvents = (raw.items ?? []).map((ev) => ({
-      id: ev.id ?? '',
-      title: ev.title ?? '',
-      start_time: ev.start_time ?? '',
-      location: ev.location ?? '',
-      org_name: ev.organization?.name ?? '',
-      org_color: ev.organization?.color_primary ?? '',
-    }));
-  }
-} catch {
-  // degrades gracefully — calendar shows empty state
-}
+// Fetch calendar events once and cache for all language versions
+const calEvents = await getCalendarEvents();
 
 // Year-round line-up, in display order. Keys map to e.yearRound entries.
 const yearRound = [
