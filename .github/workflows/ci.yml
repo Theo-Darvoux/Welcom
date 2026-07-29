@@ -80,7 +80,6 @@ jobs:
           cat > ~/.ssh/config << 'EOF'
           Host *
             BatchMode yes
-            IdentitiesOnly yes
             StrictHostKeyChecking yes
             PasswordAuthentication no
           EOF
