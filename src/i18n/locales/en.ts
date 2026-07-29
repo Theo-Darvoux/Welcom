@@ -326,6 +326,11 @@ export const en = {
     "Global Village": "An evening where students set up stands in the colors of their countries, cook traditional specialties, and share their cultures at the school forum.",
     ritz: "The name given to the free food offered during events, named after the school's restaurant, the Rits, with a cheeky nod to the famous Parisian hotel, the Ritz.",
     shotgun: "A campus term for a first-come, first-served registration process where speed is key.",
+    WEI: "Weekend of Integration, a festive weekend right after the SEI to bond the class together.",
+    SEI: "Semaine d'Intégration (Integration Week), an intense week of activities, meetings, and parties to integrate new students.",
+    "pré-SEI": "Pre-Integration Week, an optional but highly recommended week before classes start to get to know your class.",
+    "Club B": "The weekly free student party on campus, organized by BPM and AbsINThe.",
+    WES: "Week-End Ski, the big promo ski weekend organized by ASINT for the entire class.",
     fallback: "A campus slang word.",
   },
   foyer: {
@@ -974,6 +979,10 @@ export const en = {
         name: "Le Spot Évry (Carrefour)",
         desc: "The major shopping mall in Évry-Courcouronnes (10–12 min walk / 1 stop RER D). Features a massive Carrefour hypermarket for lower prices, cookware, electronics, clothing, plus 150+ stores.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      },
+      {
+        name: "Épicer'INT",
+        desc: "The campus' social and solidarity grocery store that collects unsold food and hygiene products to redistribute them to students. <strong>€2 per distribution (+€5 once during the first distribution to get membership).</strong>"
       }
     ],
     groceriesRestaurantsTitle: "Campus & Student Restaurants (Restos U)",
@@ -1162,12 +1171,13 @@ export const en = {
     "campaignsEyebrow": "Getting involved behind the scenes",
     "campaignsH2": "Campaigns: joining a student board",
     "campaignsLede": "Each major association elects its board through a campaign. It's an adventure of its own: months of prep, posters, pitch nights, voting... and a unique way to forge lifelong bonds.",
+    "campaignBtnText": "Visit website",
     "bdeTitle": "Bureau Des Élèves (BDE)",
-    "bdeDesc": "The largest campaign on campus. Each list includes about <strong>thirty 1st-year students</strong> across teams (events, communications, finance...). The campaign spans several months and ends with a vote by the entire class.",
+    "bdeDesc": "The largest campaign on campus. Each list includes about <strong>thirty 1st-year students</strong> across teams (events, communications, finance...). The campaign spans several months and ends with a vote by BDE members.",
     "bdaTitle": "Bureau Des Arts (BDA)",
     "bdaDesc": "The <strong>Arts Board (BDA)</strong> campaign lasts about a month in a creative atmosphere. BDA oversees all campus art clubs: music, drama, dance, photography, cooking, 3D modeling, and more.",
-    "minetTitle": "Network & IT Association (MiNET)",
-    "minetDesc": "The <strong>MiNET</strong> campaign lasts about a month and a half. It attracts tech-minded students and tech enthusiasts alike! MiNET manages the ultra-fast fiber network in student residences and runs clubs for cybersecurity, gaming, coding, astronomy, and more.",
+    "asintTitle": "Sports Association of INT (ASINT)",
+    "asintCampaignDesc": "The <strong>ASINT</strong> campaign lasts several months. It attracts sports enthusiasts. ASINT organizes tournaments, training sessions, and competitions for all levels. The campaign ends with a vote by ASINT members.",
     "photoVoteCaption": "BDE ballot papers · each list has its own graphic universe",
     "clubBEyebrow": "Every Wednesday night",
     "clubBTitle": "Club B",
@@ -1227,6 +1237,8 @@ export const en = {
     "f2Desc": "Basketball, handball, badminton, volleyball, and sports events throughout the year.",
     "f3Title": "Annual Membership",
     "f3Desc": "A single annual fee to access all sports facilities and athletic clubs.",
+    "wesTitle": "{WES}",
+    "wesDesc": "The {WES} (Week-End Ski) is the big promo ski weekend organized by ASINT. A must-do winter adventure for all skiing enthusiasts!",
     "asintBtn": "Visit official ASINT website (asint.fr)",
     "photoAsintCaption": "ASINT Mascot & Acrobatic Basketball · SEI 2025 · © Déclic Photo Club"
 },

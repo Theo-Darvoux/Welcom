@@ -325,6 +325,11 @@ export const fr: LocaleTranslation = {
     "Global Village": "Une soirée où les étudiants tiennent des stands aux couleurs de leur pays, cuisinent leurs spécialités et partagent leur culture au forum de l'école.",
     ritz: "Nom donné à la nourriture gratuite proposée lors des événements. Il tire son nom du Rits, le restaurant de l'école, et fait un clin d'œil au Ritz, le célèbre palace parisien.",
     shotgun: "Un terme étudiant désignant une réservation « premier arrivé, premier servi » où la rapidité est essentielle.",
+    WEI: "Le Week-End d'Intégration, un week-end festif et convivial organisé juste après la SEI pour souder la promotion.",
+    SEI: "La Semaine d'Intégration, une semaine intense d'activités, de rencontres et de soirées pour intégrer les nouveaux étudiants.",
+    "pré-SEI": "La pré-Semaine d'Intégration, une semaine optionnelle mais fortement recommandée avant la rentrée pour faire connaissance avec sa promotion.",
+    "Club B": "La soirée hebdomadaire gratuite du campus, organisée par BPM et AbsINThe.",
+    WES: "Le Week-End Ski, le grand week-end de ski organisé par l'ASINT pour toute la promotion.",
     fallback: "Un mot d’argot du campus.",
   },
   foyer: {
@@ -973,6 +978,10 @@ export const fr: LocaleTranslation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "Le grand centre commercial d'Évry-Courcouronnes (10–12 min à pied / 1 station de RER D). Abrite un immense Carrefour avec des prix plus bas, vaisselle, vêtements, multimédia et +150 boutiques.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      },
+      {
+        name: "Épicer'INT",
+        desc: "L'épicerie sociale et solidaire du campus qui récupère les invendus alimentaires et produits d'hygiène pour les redistribuer aux étudiants. <strong>2€ par distribution (+5€ une fois lors de la première distribution pour obtenir l'adhésion).</strong>"
       }
     ],
     groceriesRestaurantsTitle: "Restaurants Universitaires & Restos U",
@@ -1158,13 +1167,14 @@ export const fr: LocaleTranslation = {
     "photoWeiDataCaption": "Color Run du WEI : tout le monde finit couvert de poudre colorée",
     "campaignsEyebrow": "S'engager côté coulisses",
     "campaignsH2": "Les Campagnes : rejoindre une liste",
-    "campaignsLede": "Chaque grande association élit ses membres via une campagne. C'est une aventure en soi : mois de préparation, affiches, soirées de présentation, vote... et une façon unique de forger des liens solides.",
+    "campaignsLede": "Chaque grande association élit ses membres via une campagne. C'est une aventure en soi : mois de préparation, affiches, soirées, vote... et une façon unique de forger des liens solides.",
+    "campaignBtnText": "Visiter le site",
     "bdeTitle": "Bureau Des Élèves",
-    "bdeDesc": "La plus grande campagne du campus. Chaque liste compte une <strong>trentaine d'étudiants de 1A</strong>, répartis en pôles (événementiel, communication, trésorerie...). La campagne dure plusieurs mois et se conclut par un vote de toute la promo. Un engagement intense, mais qui offre une expérience unique de gestion et d'organisation.",
+    "bdeDesc": "La plus grande campagne du campus. Chaque liste compte une <strong>trentaine d'étudiants de 1A</strong>, répartis en pôles (événementiel, communication, trésorerie...). La campagne dure plusieurs mois et se conclut par un vote des cotisants BDE. Un engagement intense, mais qui offre une expérience unique de gestion et d'organisation.",
     "bdaTitle": "Bureau Des Arts",
     "bdaDesc": "La campagne du <strong>Bureau Des Arts</strong> dure environ un mois et se déroule dans une ambiance plus créative et moins intense que le BDE. Le BDA encadre tous les clubs artistiques du campus : musique, théâtre, danse, photo, cuisine, modélisation 3D et bien d'autres.",
-    "minetTitle": "Association Réseau & Informatique",
-    "minetDesc": "La campagne <strong>MiNET</strong> dure environ un mois et demi. Elle attire les étudiants branchés tech, mais pas que ! MiNET gère le réseau fibre ultra-rapide de la résidence et anime une constellation de clubs : cybersécurité, jeux vidéo, programmation, astronomie...",
+    "asintTitle": "Association Sportive de l'INT",
+    "asintCampaignDesc": "La campagne <strong>ASINT</strong> dure plusieurs mois. Elle attire les étudiants passionnés de sport. ASINT organise des tournois, des entraînements et des compétitions pour tous les niveaux. La campagne se conclut par un vote des cotisants ASINT.",
     "photoVoteCaption": "Bulletins de vote BDE · chaque liste a son univers graphique",
     "clubBEyebrow": "Tous les mercredis soirs",
     "clubBTitle": "Club B",
@@ -1224,6 +1234,8 @@ export const fr: LocaleTranslation = {
     "f2Desc": "Basket, handball, badminton, volley et événements sportifs tout au long de l'année.",
     "f3Title": "Cotisation annuelle",
     "f3Desc": "Un seul abonnement pour accéder à l'ensemble des installations et des clubs sportifs.",
+    "wesTitle": "{WES}",
+    "wesDesc": "Le {WES} (Week-End Ski) est le grand week-end de ski de la promo organisé par l'ASINT. Une aventure hivernale incontournable pour tous les amateurs de glisse !",
     "asintBtn": "Accéder au site officiel de l'ASINT (asint.fr)",
     "photoAsintCaption": "Mascotte ASINT & Basket Acrobatique · SEI 2025 · © Déclic Club Photo"
 },

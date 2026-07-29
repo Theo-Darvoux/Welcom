@@ -325,6 +325,11 @@ export const zhTW: LocaleTranslation = {
     Foyer: "學生社團活動中心 (Foyer) 匯集了校園各學生社團的辦公室，位於 U1、U4 教學樓與學校主樓之間。",
     "Global Village": "在這場晚會上，同學們搭建展現自己國家色彩的攤位，烹飪傳統美食並分享他們的文化。",
     ritz: "活動期間提供的免費食物的別稱，得名於學校的餐廳 Rits，同時也巧妙地致敬了巴黎著名的麗茲酒店（Ritz）。",
+    WEI: "融合週末（Weekend of Integration），在 SEI 之後舉行的一個節日週末，旨在加強同學之間的聯繫。",
+    SEI: "融合週（Semaine d'Intégration），為期一週的緊密活動、見面和派對，幫助新生融入校園生活。",
+    "pré-SEI": "融合預週（Pre-Integration Week），在開學前可選但強烈建議參加的一週，讓你提前認識你的同學。",
+    "Club B": "校園每週免費學生派對，由 BPM 和 AbsINThe 組織。",
+    WES: "滑雪週末，由 ASINT 組織的全年級滑雪大活動。",
     fallback: "一個校園俚語。",
   },
   foyer: {
@@ -974,6 +979,10 @@ export const zhTW: LocaleTranslation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "埃夫里-庫爾庫羅訥的主要購物中心（步行 10-12 分鐘 / 搭乘 RER D 線 1 站）。內有超大型家樂福超市，商品價格實惠，提供廚具、電子產品、服裝以及 150 多家門市。",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      },
+      {
+        name: "Épicer'INT",
+        desc: "校園的社會團結雜貨店，回收未售出的食品和衛生用品，分發給學生。<strong>每次發放€2（首次發放時一次性支付額外的€5獲得會員資格）。</strong>"
       }
     ],
     groceriesRestaurantsTitle: "學生餐廳與校園餐廳 (Restos U)",
@@ -1160,12 +1169,13 @@ export const zhTW: LocaleTranslation = {
     "campaignsEyebrow": "幕後參與與競選",
     "campaignsH2": "社團競選：加入競選隊伍",
     "campaignsLede": "各大主要協會均通過競選投票產生新一屆內閣。這是一段獨特的冒險：數月的籌備、海報宣傳、競選晚會與投票，建立無比緊密的絆腳石。",
+    "campaignBtnText": "造訪網站",
     "bdeTitle": "學生會 (BDE)",
-    "bdeDesc": "校區最大的競選活動。每支競選隊伍包含約<strong>30名一年級學生</strong>，分為活動、外聯、財務等部門。競選歷時數月，最終由全校同學投票表決。",
+    "bdeDesc": "校區最大的競選活動。每支競選隊伍包含約<strong>30名一年級學生</strong>，分為活動、外聯、財務等部門。競選歷時數月，最終由BDE繳費成員投票表決。",
     "bdaTitle": "藝術委員會 (BDA)",
     "bdaDesc": "<strong>藝術委員會 (BDA)</strong> 的競選持續約一個月，氛圍極具創意。BDA 管理校區所有藝術社團：音樂、戲劇、舞蹈、攝影、烹飪、3D建模等。",
-    "minetTitle": "網絡與IT協會 (MiNET)",
-    "minetDesc": "<strong>MiNET</strong> 競選持續約一個半月。MiNET 管理學生宿舍的高速光網，並下設網絡安全、電子遊戲、編程、天文等多個科技社團。",
+    "asintTitle": "INT 體育協會 (ASINT)",
+    "asintCampaignDesc": "<strong>ASINT</strong> 競選活動持續數個月之久。吸引熱愛運動的同學們加入。ASINT 組織各類錦標賽、訓練課和比賽，面向所有水平的參與者。競選最終由 ASINT 繳費會員投票表決。",
     "photoVoteCaption": "BDE 競選選票 · 每支隊伍都有獨特設計風格",
     "clubBEyebrow": "每週三夜晚",
     "clubBTitle": "Club B 週三夜派對",
@@ -1225,6 +1235,8 @@ export const zhTW: LocaleTranslation = {
     "f2Desc": "籃球、手球、羽毛球、排球場地及全年體育賽事。",
     "f3Title": "年度會費",
     "f3Desc": "一次性繳納年費即可使用所有體育設施並參加各類體育俱樂部。",
+    "wesTitle": "{WES}",
+    "wesDesc": "{WES}（滑雪週末）是由 ASINT 組織的全年級滑雪大活動。這是所有滑雪愛好者都不容錯過的冬季冒險！",
     "asintBtn": "訪問 ASINT 官方網站 (asint.fr)",
     "photoAsintCaption": "ASINT 吉祥物與花式籃球表演 · SEI 2025 · © Déclic 攝影社"
 },

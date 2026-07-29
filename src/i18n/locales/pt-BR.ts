@@ -325,6 +325,11 @@ export const ptBR: LocaleTranslation = {
     Foyer: "O centro estudantil (foyer) abriga os escritórios das associações estudantis do campus. Está localizado entre os edifícios U1, U4 e a escola.",
     "Global Village": "Uma noite onde os estudantes montam estandes com as cores de seus países, cozinham especialidades tradicionais e compartilham suas culturas no fórum da escola.",
     ritz: "Nome dado à comida gratuita oferecida durante os eventos, batizado em homenagem ao restaurante da escola, o Rits, com uma piscadela para o famoso hotel parisiense Ritz.",
+    WEI: "Final de Semana de Integração, um final de semana festivo logo após a SEI para unificar a turma.",
+    SEI: "Semana de Integração, uma semana intensa de atividades, encontros e festas para integrar os novos estudantes.",
+    "pré-SEI": "Pré-Semana de Integração, uma semana opcional mas muito recomendada antes do início das aulas para conhecer sua turma.",
+    "Club B": "A festa semanal gratuita do campus, organizada pelo BPM e AbsINThe.",
+    WES: "Final de Semana de Esqui, o grande final de semana de esqui da turma organizado pela ASINT.",
     fallback: "Uma gíria do campus.",
   },
   foyer: {
@@ -973,6 +978,10 @@ export const ptBR: LocaleTranslation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "O principal shopping em Évry-Courcouronnes (10–12 min de caminhada / 1 estação de RER D). Possui um enorme hipermercado Carrefour para preços mais baixos, utensílio de cozinha, eletrônicos, roupas, além de mais de 150 lojas.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      },
+      {
+        name: "Épicer'INT",
+        desc: "A mercearia social e solidária do campus que recupera alimentos não vendidos e produtos de higiene para redistribuí-los aos estudantes. <strong>2€ por distribuição (+5€ uma vez durante a primeira distribuição para obter a adesão).</strong>"
       }
     ],
     groceriesRestaurantsTitle: "Restaurantes Universitários (Restos U)",
@@ -1158,13 +1167,14 @@ export const ptBR: LocaleTranslation = {
     "photoWeiDataCaption": "Color Run do WEI: todo mundo termina coberto de pó colorido",
     "campaignsEyebrow": "Engaje-se nos bastidores",
     "campaignsH2": "As Campanhas: juntar-se a uma chapa",
-    "campaignsLede": "Cada grande associação elege seus membros através de uma campanha. É uma aventura por si só: meses de preparação, cartazes, festas de apresentação, votação e laços duradouros.",
+    "campaignsLede": "Cada grande associação elege seus membros através de uma campanha. É uma aventura por si só: meses de preparação, cartazes, festas, votação e laços duradouros.",
+    "campaignBtnText": "Visitar o site",
     "bdeTitle": "Bureau Des Élèves (BDE)",
-    "bdeDesc": "A maior campanha do campus. Cada chapa conta com cerca de <strong>trinta estudantes do 1º ano</strong> divididos em áreas (eventos, comunicação, tesouraria...). Culmina com o voto de toda a turma.",
+    "bdeDesc": "A maior campanha do campus. Cada chapa conta com cerca de <strong>trinta estudantes do 1º ano</strong> divididos em áreas (eventos, comunicação, tesouraria...). Culmina com o voto dos membros cotizantes do BDE.",
     "bdaTitle": "Bureau Des Arts (BDA)",
     "bdaDesc": "A campanha do <strong>Bureau Des Arts</strong> dura cerca de um mês em um clima criativo. O BDA coordena os clubes artísticos: música, teatro, dança, fotografia, culinária, modelagem 3D e mais.",
-    "minetTitle": "Associação de Redes e Informática (MiNET)",
-    "minetDesc": "A campanha da <strong>MiNET</strong> dura cerca de um mês e meio. Gerencia a rede de fibra ultra rápida da residência e coordena clubes de cibersegurança, jogos, programação, astronomia e mais.",
+    "asintTitle": "Associação Esportiva da INT (ASINT)",
+    "asintCampaignDesc": "A campanha da <strong>ASINT</strong> dura vários meses. Atraí estudantes apaixonados por esportes. ASINT organiza torneios, treinos e competições para todos os níveis. A campanha culmina com o voto dos membros cotizantes da ASINT.",
     "photoVoteCaption": "Cédulas de votação BDE · cada chapa tem seu próprio universo gráfico",
     "clubBEyebrow": "Toda quarta-feira à noite",
     "clubBTitle": "Club B",
@@ -1224,6 +1234,8 @@ export const ptBR: LocaleTranslation = {
     "f2Desc": "Basquete, handebol, vôlei, badminton e eventos esportivos.",
     "f3Title": "Taxa anual",
     "f3Desc": "Uma única assinatura para acessar todas as instalações e clubes esportivos.",
+    "wesTitle": "{WES}",
+    "wesDesc": "O {WES} (Final de Semana de Esqui) é o grande final de semana de esqui da turma organizado pela ASINT. Uma aventura de inverno imperdível para todos os amantes do esqui!",
     "asintBtn": "Visitar site oficial da ASINT (asint.fr)",
     "photoAsintCaption": "Mascote ASINT e Basquete Acrobático · SEI 2025 · © Déclic Club Foto"
 },

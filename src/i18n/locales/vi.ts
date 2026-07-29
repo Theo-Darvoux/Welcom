@@ -325,6 +325,11 @@ export const vi: LocaleTranslation = {
     Foyer: "Nhà chung hội sinh viên (foyer) là nơi đặt văn phòng của các hội nhóm trong khuôn viên trường. Nó nằm giữa các tòa nhà U1, U4 và trường học.",
     "Global Village": "Một buổi tối nơi sinh viên dựng các gian hàng mang màu sắc quốc gia của mình, nấu món ăn truyền thống và chia sẻ văn hóa của họ tại diễn đàn trường.",
     ritz: "Tên gọi dành cho đồ ăn miễn phí được phục vụ tại các sự kiện, đặt theo tên nhà ăn của trường là Rits, đồng thời là cách chơi chữ hướng đến khách sạn Ritz nổi tiếng ở Paris.",
+    WEI: "Cuối Tuần Hoà Nhập, một cuối tuần vui vẻ diễn ra ngay sau SEI để gắn kết khóa sinh viên.",
+    SEI: "Tuần Hoà Nhập, một tuần căng thẳng với các hoạt động, gặp gỡ và tiệc tùng nhằm hoà nhập sinh viên mới.",
+    "pré-SEI": "Tuần Trước Hoà Nhập, một tuần tùy chọn nhưng được khuyến khích mạnh mẽ trước khi bắt đầu học để làm quen với khóa của mình.",
+    "Club B": "Bữa tiệc sinh viên miễn phí hàng tuần tại campus, do BPM và AbsINThe tổ chức.",
+    WES: "Cuối Tuần Trượt Tuyết, chuyến đi trượt tuyết lớn của khóa do ASINT tổ chức.",
     fallback: "Một từ lóng trong khuôn viên trường.",
   },
   foyer: {
@@ -974,6 +979,10 @@ export const vi: LocaleTranslation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "Trung tâm mua sắm lớn tại Évry-Courcouronnes (10–12 phút đi bộ / 1 trạm RER D). Có đại siêu thị Carrefour rộng lớn với giá rẻ hơn, đồ dùng nhà bếp, đồ điện tử, quần áo, cộng với hơn 150 cửa hàng khác.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      },
+      {
+        name: "Épicer'INT",
+        desc: "Cửa hàng tạp hóa xã hội và đoàn kết của trường thu gom thực phẩm và sản phẩm vệ sinh chưa bán được để phân phối cho sinh viên. <strong>2€ mỗi lần phân phối (+5€ một lần trong lần phân phối đầu tiên để nhận thư thành viên).</strong>"
       }
     ],
     groceriesRestaurantsTitle: "Nhà hàng Sinh viên & Quán ăn Campus (Restos U)",
@@ -1159,13 +1168,14 @@ export const vi: LocaleTranslation = {
     "photoWeiDataCaption": "WEI Color Run: Mọi người đều phủ đầy bột màu rực rỡ",
     "campaignsEyebrow": "Tham gia phía sau hậu trường",
     "campaignsH2": "Chiến dịch tranh cử: Tham gia một danh sách",
-    "campaignsLede": "Mỗi hiệp hội lớn bầu ban quản trị thông qua chiến dịch tranh cử. Đây là một hành trình chuẩn bị hàng tháng trời với áp phích, tiệc trình diễn và bỏ phiếu.",
+    "campaignsLede": "Mỗi hiệp hội lớn bầu ban quản trị thông qua chiến dịch tranh cử. Đây là một hành trình chuẩn bị hàng tháng trời với áp phích, tiệc và bỏ phiếu.",
+    "campaignBtnText": "Truy cập trang web",
     "bdeTitle": "Hội Sinh viên (BDE)",
-    "bdeDesc": "Chiến dịch lớn nhất campus. Mỗi danh sách gồm khoảng <strong>30 sinh viên năm nhất</strong> chia thành các ban. Kết thúc bằng cuộc bỏ phiếu toàn khóa.",
+    "bdeDesc": "Chiến dịch lớn nhất campus. Mỗi danh sách gồm khoảng <strong>30 sinh viên năm nhất</strong> chia thành các ban. Kết thúc bằng cuộc bỏ phiếu của các thành viên đóng phí BDE.",
     "bdaTitle": "Ban Nghệ thuật (BDA)",
     "bdaDesc": "Chiến dịch <strong>Ban Nghệ thuật (BDA)</strong> kéo dài khoảng một tháng trong không gian sáng tạo. BDA quản lý các CLB âm nhạc, kịch, nhảy, nhiếp ảnh, nấu ăn...",
-    "minetTitle": "Hiệp hội Mạng & IT (MiNET)",
-    "minetDesc": "Chiến dịch <strong>MiNET</strong> thu hút sinh viên đam mê công nghệ. MiNET quản lý mạng cáp quang ký túc xá và các CLB an ninh mạng, game, lập trình...",
+    "asintTitle": "Hiệp hội Thể thao INT (ASINT)",
+    "asintCampaignDesc": "Chiến dịch <strong>ASINT</strong> kéo dài nhiều tháng. Thu hút sinh viên đam mê thể thao. ASINT tổ chức các giải đấu, buổi tập luyện và thi đấu dành cho mọi trình độ. Chiến dịch kết thúc bằng cuộc bỏ phiếu của các thành viên đóng phí ASINT.",
     "photoVoteCaption": "Phiếu bầu BDE · Mỗi danh sách có phong cách thiết kế riêng",
     "clubBEyebrow": "Mỗi tối thứ Tư",
     "clubBTitle": "Club B",
@@ -1225,6 +1235,8 @@ export const vi: LocaleTranslation = {
     "f2Desc": "Sân bóng rổ, bóng ném, cầu lông, bóng chuyền và các giải đấu.",
     "f3Title": "Phí thành viên hàng năm",
     "f3Desc": "Chỉ một lần đóng phí để truy cập toàn bộ câu lạc bộ và sân tập thể thao.",
+    "wesTitle": "{WES}",
+    "wesDesc": "{WES} (Cuối Tuần Trượt Tuyết) là chuyến đi trượt tuyết lớn của khóa do ASINT tổ chức. Một cuộc phiêu lưu mùa đông không thể bỏ lỡ dành cho những ai yêu thích trượt tuyết!",
     "asintBtn": "Truy cập trang chủ chính thức ASINT (asint.fr)",
     "photoAsintCaption": "Linh vật ASINT & Bóng rổ biểu diễn · SEI 2025 · © Déclic Photo Club"
 },

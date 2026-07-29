@@ -170,24 +170,42 @@ const a = (t as any).associative ?? (t as any).associatif;
         <div class="campaign-grid">
 
           <article class="campaign-card" style="--cc: #005177;">
-            <h3 class="campaign-card__title">{a.bdeTitle}</h3>
-            <p class="campaign-card__desc">
-              <RichText text={a.bdeDesc} />
-            </p>
+            <div class="campaign-card__content">
+              <h3 class="campaign-card__title">{a.bdeTitle}</h3>
+              <p class="campaign-card__desc">
+                <RichText text={a.bdeDesc} />
+              </p>
+            </div>
+            <a href="https://bde-imtbs-tsp.fr/en/" target="_blank" rel="noopener noreferrer" class="campaign-card__btn">
+              <span>{a.campaignBtnText ?? "Visit website"}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
           </article>
 
           <article class="campaign-card" style="--cc: #9B1D1D;">
-            <h3 class="campaign-card__title">{a.bdaTitle}</h3>
-            <p class="campaign-card__desc">
-              <RichText text={a.bdaDesc} />
-            </p>
+            <div class="campaign-card__content">
+              <h3 class="campaign-card__title">{a.bdaTitle}</h3>
+              <p class="campaign-card__desc">
+                <RichText text={a.bdaDesc} />
+              </p>
+            </div>
+            <a href="https://bda-imtbs-tsp.fr/" target="_blank" rel="noopener noreferrer" class="campaign-card__btn">
+              <span>{a.campaignBtnText ?? "Visit website"}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
           </article>
 
-          <article class="campaign-card" style="--cc: #6FA3E8;">
-            <h3 class="campaign-card__title">{a.minetTitle}</h3>
-            <p class="campaign-card__desc">
-              <RichText text={a.minetDesc} />
-            </p>
+          <article class="campaign-card" style="--cc: #E91E63;">
+            <div class="campaign-card__content">
+              <h3 class="campaign-card__title">{a.asintTitle}</h3>
+              <p class="campaign-card__desc">
+                <RichText text={a.asintCampaignDesc} />
+              </p>
+            </div>
+            <a href="https://www.asint.fr/" target="_blank" rel="noopener noreferrer" class="campaign-card__btn">
+              <span>{a.campaignBtnText ?? "Visit website"}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
           </article>
 
         </div>
@@ -389,6 +407,10 @@ const a = (t as any).associative ?? (t as any).associatif;
               <li class="asint-feature">
                 <h3 class="asint-feature__title"><span class="eyebrow__hex" aria-hidden="true"></span> {a.f3Title}</h3>
                 <p class="asint-feature__desc">{a.f3Desc}</p>
+              </li>
+              <li class="asint-feature">
+                <h3 class="asint-feature__title"><span class="eyebrow__hex" aria-hidden="true"></span> <RichText text={a.wesTitle} /></h3>
+                <p class="asint-feature__desc"><RichText text={a.wesDesc} /></p>
               </li>
             </ul>
 
@@ -770,6 +792,8 @@ const a = (t as any).associative ?? (t as any).associatif;
     position: relative;
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
   }
 
   .campaign-card::before {
@@ -794,10 +818,44 @@ const a = (t as any).associative ?? (t as any).associatif;
     margin-bottom: var(--space-3);
   }
 
+  .campaign-card__content {
+    margin-bottom: var(--space-4);
+  }
+
   .campaign-card__desc {
     font-size: 0.98rem;
     line-height: 1.65;
     color: var(--navy-soft);
+  }
+
+  .campaign-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background: var(--cc, var(--honey));
+    color: var(--cream);
+    border: 2px solid var(--navy);
+    border-radius: var(--radius-button);
+    padding: 0.6em 1.1em;
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .campaign-card__btn:hover {
+    background: var(--navy);
+    color: var(--cream);
+    transform: translate(-2px, -2px);
+    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+  }
+
+  .campaign-card__btn svg {
+    flex-shrink: 0;
   }
 
   /* ── Club B Section ─────────────────────────────────── */

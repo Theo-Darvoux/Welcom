@@ -326,6 +326,11 @@ export const de: LocaleTranslation = {
     "Global Village": "Ein Abend, an dem Schüler Stände in den Farben ihrer Länder aufbauen, traditionelle Spezialitäten kochen und ihre Kulturen im Schulforum teilen.",
     ritz: "Der Name für das kostenlose Essen, das bei Veranstaltungen angeboten wird, ist nach dem Restaurant der Schule, dem Rits, benannt, mit einer frechen Anspielung auf das berühmte Pariser Hotel, dem Ritz.",
     shotgun: "Ein Campus-Begriff für einen Registrierungsprozess nach dem Prinzip „Wer zuerst kommt, mahlt zuerst“, bei dem es auf Geschwindigkeit ankommt.",
+    WEI: "Wochenende der Integration, ein festliches Wochenende gleich nach der SEI, um den Jahrgang zu einen.",
+    SEI: "Semaine d'Intégration (Integrationswoche), eine intensive Woche mit Aktivitäten, Treffen und Partys zur Integration neuer Studierender.",
+    "pré-SEI": "Vor-Integrationswoche, eine optionale, aber sehr empfohlene Woche vor Vorlesungsbeginn, um deine Kommilitonen kennenzulernen.",
+    "Club B": "Die wöchentliche kostenlose Studentenparty auf dem Campus, organisiert von BPM und AbsINThe.",
+    WES: "Skifahren Wochenende, das große Ski-Wochenende der Abschlussklasse, das von ASINT organisiert wird.",
     fallback: "Ein Campus-Slangwort.",
   },
   foyer: {
@@ -974,6 +979,10 @@ export const de: LocaleTranslation = {
         name: "Le Spot Évry (Carrefour)",
         desc: "Das größte Einkaufszentrum in Évry-Courcouronnes (10–12 Minuten zu Fuß / 1 Haltestelle RER D). Verfügt über einen riesigen Carrefour-Hypermarkt für günstigere Preise, Kochgeschirr, Elektronik, Kleidung sowie über 150 Geschäfte.",
         url: "https://maps.app.goo.gl/TUzAd1ArDuUzNWdK8"
+      },
+      {
+        name: "Épicer'INT",
+        desc: "Der soziale und solidarische Lebensmittelladen des Campus, der unverkaufte Lebensmittel und Hygieneartikel sammelt, um sie an Studierende zu verteilen. <strong>2€ pro Verteilung (+5€ einmalig bei der ersten Verteilung für die Mitgliedschaft).</strong>"
       }
     ],
     groceriesRestaurantsTitle: "Campus & Student Restaurants (Restos U)",
@@ -1162,12 +1171,13 @@ export const de: LocaleTranslation = {
     "campaignsEyebrow": "Hinter den Kulissen mitwirken",
     "campaignsH2": "Die Kampagnen: Einer Liste beitreten",
     "campaignsLede": "Jeder große Verein wählt seinen Vorstand über Kampagnen-Listen. Ein Abenteuer mit Monaten Vorbereitung, Plakaten, Partys und Auszählungsnacht.",
+    "campaignBtnText": "Website besuchen",
     "bdeTitle": "Studentenvertretung (BDE)",
-    "bdeDesc": "Die größte Kampagne des Campus. Jede Liste umfasst ca. <strong>30 Erstemester-Studierende</strong> in verschiedenen Teams (Events, Kommunikation, Finanzen...).",
+    "bdeDesc": "Die größte Kampagne des Campus. Jede Liste umfasst ca. <strong>30 Erstemester-Studierende</strong> in verschiedenen Teams (Events, Kommunikation, Finanzen...). Die Kampagne dauert mehrere Monate und endet mit einer Abstimmung der BDE-Mitglieder.",
     "bdaTitle": "Kulturausschuss (BDA)",
     "bdaDesc": "Die Kampagne des <strong>Bureau Des Arts</strong> dauert ca. einen Monat in kreativer Atmosphäre. Der BDA betreut Musik, Theater, Tanz, Foto, Kochen, 3D-Modellierung u.v.m.",
-    "minetTitle": "Netzwerk- & IT-Verein (MiNET)",
-    "minetDesc": "Die <strong>MiNET</strong>-Kampagne dauert anderthalb Monate. MiNET betreibt das superschnelle Glasfasernetz im Wohnheim und betreut Tech-, Gaming- und Coding-Clubs.",
+    "asintTitle": "Sportverein der INT (ASINT)",
+    "asintCampaignDesc": "Die <strong>ASINT</strong>-Kampagne dauert mehrere Monate. Sie zieht sportbegeisterte Studierende an. ASINT organisiert Turniere, Trainings und Wettbewerbe für alle Niveaus. Die Kampagne endet mit einer Abstimmung der ASINT-Mitglieder.",
     "photoVoteCaption": "BDE-Stimmzettel · Jede Liste hat ihr eigenes Design",
     "clubBEyebrow": "Jeden Mittwochabend",
     "clubBTitle": "Club B",
@@ -1227,6 +1237,8 @@ export const de: LocaleTranslation = {
     "f2Desc": "Basketball, Handball, Badminton, Volleyball und Sportevents.",
     "f3Title": "Jahresbeitrag",
     "f3Desc": "Ein einziger Beitrag für den Zugang zu allen Sportanlagen und Clubs.",
+    "wesTitle": "{WES}",
+    "wesDesc": "Das {WES} (Skifahren Wochenende) ist das große Ski-Wochenende der Abschlussklasse, das von ASINT organisiert wird. Ein absolutes Muss für alle Skibegeisterten!",
     "asintBtn": "Offizielle ASINT-Website besuchen (asint.fr)",
     "photoAsintCaption": "ASINT Maskottchen & Akrobatik-Basketball · SEI 2025 · © Déclic Fotoclub"
 },
