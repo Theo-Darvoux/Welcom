@@ -79,9 +79,16 @@ jobs:
           chmod 700 ~/.ssh
           cat > ~/.ssh/config << 'EOF'
           Host *
+            AddressFamily inet
+            ConnectTimeout 15
+            ServerAliveInterval 15
+            ServerAliveCountMax 3
             BatchMode yes
             StrictHostKeyChecking yes
             PasswordAuthentication no
+            ControlMaster auto
+            ControlPath ~/.ssh/cm-%r@%h:%p
+            ControlPersist 60s
           EOF
           chmod 600 ~/.ssh/config
           echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
