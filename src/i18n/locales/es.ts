@@ -316,7 +316,7 @@ export const es: LocaleTranslation = {
   },
   lexicon: {
     shotgun: "Término estudiantil para un proceso de reserva por orden de llegada donde la velocidad es clave.",
-    INT: "El nombre histórico del campus de Évry, ahora compartido por Télécom SudParis e IMT-BS.",
+    INT: "El nombre histórico del campus de Évry (que significaba en su momento Institut National des Télécommunications), ahora compartido por Télécom SudParis e IMT-BS.",
     "Maisel SudParis": "Maison des Élèves, la asociación oficial sin ánimo de lucro de alojamiento estudiantil de Télécom SudParis e IMT Business School.",
     Forum: "El hall principal de la escuela (un gran espacio abierto), con los anfiteatros 10 y 11 y un cajero automático. También hay distribuidores de snacks y bebidas.",
     GATE: "Un módulo académico de primer año compuesto por numerosos equipos de 9 estudiantes que deben recaudar fondos para un proyecto anual. A menudo hay puestos de GATE en el Forum vendiendo comida, principalmente crepes.",

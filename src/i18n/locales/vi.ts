@@ -316,7 +316,7 @@ export const vi: LocaleTranslation = {
   },
   lexicon: {
     shotgun: "Thuật ngữ sinh viên chỉ hệ thống đăng ký/đặt chỗ theo nguyên tắc 'ai đến trước được trước' đòi hỏi sự nhanh tay.",
-    INT: "Tên gọi lịch sử của cơ sở Évry, nay được Télécom SudParis & IMT-BS dùng chung.",
+    INT: "Tên gọi lịch sử của cơ sở Évry (từng là viết tắt của Institut National des Télécommunications), nay được Télécom SudParis & IMT-BS dùng chung.",
     "Maisel SudParis": "Maison des Élèves, tổ chức nhà ở sinh viên phi lợi nhuận chính thức của Télécom SudParis và IMT Business School.",
     Forum: "Sảnh chính của trường (một không gian mở rộng lớn), gồm có các giảng đường 10 và 11 cùng cây ATM. Tại đây cũng có các máy bán đồ ăn vặt và nước uống tự động.",
     GATE: "Một học phần năm nhất gồm nhiều nhóm sinh viên 9 thành viên cần gây quỹ cho một dự án kéo dài cả năm. Tại Forum thường có các gian hàng GATE bán đồ ăn, chủ yếu là bánh crêpe.",

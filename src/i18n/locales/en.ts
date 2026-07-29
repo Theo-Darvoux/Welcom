@@ -316,7 +316,7 @@ export const en = {
     },
   },
   lexicon: {
-    INT: "The historic name of the Évry campus, now shared by Télécom SudParis & IMT-BS.",
+    INT: "The historic name of the Évry campus (which stood for Institut National des Télécommunications at the time), now shared by Télécom SudParis & IMT-BS.",
     "Maisel SudParis": "Maison des Élèves, the official non-profit student housing association of Télécom SudParis and IMT Business School.",
     Forum: "The main hall of the school (a large open space), featuring amphitheaters 10 and 11, and an ATM machine. There are also snack distributors.",
     GATE: "A first-year academic module consisting of many 9-member student teams that need to raise funds for a year-long project. There are often GATE stands in the Forum selling food, mostly crêpes.",

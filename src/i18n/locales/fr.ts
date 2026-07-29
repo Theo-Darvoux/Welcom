@@ -315,7 +315,7 @@ export const fr: LocaleTranslation = {
     },
   },
   lexicon: {
-    INT: "Le nom historique du campus d’Évry, désormais partagé par Télécom SudParis & IMT-BS.",
+    INT: "Le nom historique du campus d’Évry (qui signifiait à l'époque Institut National des Télécommunications), désormais partagé par Télécom SudParis & IMT-BS.",
     "Maisel SudParis": "Maison des Élèves, l'association à but non lucratif de logement étudiant officielle de Télécom SudParis et IMT Business School.",
     Forum: "Le hall principal de l'école (grand espace ouvert), accueillant les amphithéâtres 10 et 11, ainsi qu'un distributeur automatique de billets (DAB). On y trouve également des distributeurs de snacks et boissons.",
     GATE: "Un module de première année constitué de nombreuses équipes de 9 étudiants qui doivent récolter des fonds pour un projet annuel. Il y a souvent des stands GATE au forum qui vendent de la nourriture, principalement des crêpes.",

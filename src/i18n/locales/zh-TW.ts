@@ -316,7 +316,7 @@ export const zhTW: LocaleTranslation = {
   },
   lexicon: {
     shotgun: "校園常用詞，指「先到先得」的高速線上搶註/預約機制。",
-    INT: "埃夫里校區的歷史名稱，如今由 Télécom SudParis 與 IMT-BS 共用。",
+    INT: "埃夫里校區的歷史名稱（當時代表 Institut National des Télécommunications，國家電信學院），如今由 Télécom SudParis 與 IMT-BS 共用。",
     "Maisel SudParis": "Maison des Élèves，Télécom SudParis 與 IMT Business School 官方的非營利性學生宿舍管理協會。",
     Forum: "學校的主大廳（大型開放空間），設有10號和11號階梯教室，以及一台 ATM 自動提款機。現場還有零食自動售貨機。",
     GATE: "大一的一個必修項目/課程模組，由許多 9 人組成的學生團隊構成，需為一個長達一年的項目籌集資金。Forum（大廳）裡經常有 GATE 攤位出售食物，主要是可麗餅。",
