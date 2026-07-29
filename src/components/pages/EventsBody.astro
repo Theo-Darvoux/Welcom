@@ -14,11 +14,8 @@ const t = useTranslations(lang);
 
 const e = t.eventsPage;
 
-// ── Campus calendar (build-time fetch → client-side week navigation) ────
-// Fetch calendar events once and cache for all language versions
 const calEvents = await getCalendarEvents();
 
-// Year-round line-up, in display order. Keys map to e.yearRound entries.
 const yearRound = [
   e.yearRound.bbq,
   e.yearRound.oktoberfest,
@@ -31,7 +28,7 @@ const yearRound = [
   <span id="top"></span>
   <SiteHeader />
   <main>
-    <!-- ── Hero: a year of good buzz ─────────────────────────── -->
+    
     <section class="hero">
       <HexBg
         radius={46}
@@ -52,13 +49,11 @@ const yearRound = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Featured (flagship) events ────────────────────────── -->
     <section class="band band--featured">
       <div class="container">
         <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{e.featuredEyebrow}</p>
         <h2>{e.featuredTitle}</h2>
 
-        <!-- Global Village -->
         <article class="feature">
           <figure class="feature__photo">
             <img
@@ -77,7 +72,6 @@ const yearRound = [
           </div>
         </article>
 
-        <!-- Global Village aftermovie -->
         <div class="aftermovie">
           <h4 class="aftermovie__title">{e.globalVillage.aftermovieTitle}</h4>
           <div class="aftermovie__frame">
@@ -92,7 +86,6 @@ const yearRound = [
           </div>
         </div>
 
-        <!-- Annual trip to Amsterdam -->
         <article class="feature feature--reverse">
           <figure class="feature__photo">
             <img
@@ -111,7 +104,6 @@ const yearRound = [
           </div>
         </article>
 
-        <!-- Valentine's party -->
         <article class="feature">
           <figure class="feature__photo">
             <img
@@ -134,7 +126,6 @@ const yearRound = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── All year round: the recurring line-up ─────────────── -->
     <section class="band band--year">
       <div class="container">
         <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{e.yearRoundEyebrow}</p>
@@ -151,7 +142,6 @@ const yearRound = [
           ))}
         </ul>
 
-        <!-- ── Suggest your cultural event ───────────────────── -->
         <div class="suggest">
           <p class="eyebrow suggest__eyebrow">
             <span class="eyebrow__hex" aria-hidden="true"></span>
@@ -182,7 +172,6 @@ const yearRound = [
       </div>
     </section>
 
-    <!-- ── Closing CTA (honey-on-navy) ───────────────────────── -->
     <section class="band band--cta">
       <HoneyDrip fill="var(--cream-deep)" stroke="var(--honey-deep)" anchor="top-inside" />
       <HexBg
@@ -394,7 +383,7 @@ const yearRound = [
 </Base>
 
 <style>
-  /* ── Shared ─────────────────────────────────────────────── */
+  
   .container {
     max-width: var(--container);
     margin-inline: auto;
@@ -442,7 +431,6 @@ const yearRound = [
     max-width: 20ch;
   }
 
-  /* ── Hero ──────────────────────────────────────────────── */
   .hero {
     position: relative;
     overflow: hidden;
@@ -505,7 +493,6 @@ const yearRound = [
     }
   }
 
-  /* ── Featured events: alternating photo + text ─────────── */
   .feature {
     display: grid;
     grid-template-columns: 1fr;
@@ -518,13 +505,12 @@ const yearRound = [
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: var(--space-8);
     }
-    /* Reversed rows: photo sits on the right. */
+    
     .feature--reverse .feature__photo {
       order: 2;
     }
   }
 
-  /* Polaroid frame (matches the home photo-strip treatment). */
   .feature__photo {
     margin: 0;
     background: var(--cream);
@@ -578,7 +564,6 @@ const yearRound = [
     max-width: 52ch;
   }
 
-  /* ── Aftermovie video ──────────────────────────────────── */
   .aftermovie {
     margin-top: var(--space-8);
     text-align: center;
@@ -620,7 +605,6 @@ const yearRound = [
     display: block;
   }
 
-  /* ── All year round ────────────────────────────────────── */
   .band--year {
     position: relative;
     background-color: var(--cream-deep);
@@ -638,7 +622,7 @@ const yearRound = [
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--space-7) var(--space-6);
   }
-  /* No card boxes: a chunky hex marker + type carry each entry. */
+  
   .year-item {
     position: relative;
     padding-top: var(--space-4);
@@ -675,7 +659,6 @@ const yearRound = [
     color: var(--navy-soft);
   }
 
-  /* ── Suggest your event ───────────────────────────────── */
   .suggest {
     margin-top: var(--space-9);
     padding-top: var(--space-8);
@@ -720,7 +703,6 @@ const yearRound = [
     box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
   }
 
-  /* ── Buttons (shared) ──────────────────────────────────── */
   .btn {
     position: relative;
     display: inline-flex;
@@ -748,7 +730,6 @@ const yearRound = [
     transform: scale(1.18) rotate(-8deg);
   }
 
-  /* ── Closing CTA band (honey-on-navy) ──────────────────── */
   .band--cta {
     position: relative;
     overflow: hidden;
@@ -860,7 +841,6 @@ const yearRound = [
     --lex-cue: var(--honey);
   }
 
-  /* ── Campus calendar widget ────────────────────────────── */
   .cal-widget {
     width: 100%;
     max-width: 900px;
@@ -908,7 +888,6 @@ const yearRound = [
     outline-offset: 2px;
   }
 
-  /* Flip chevrons for RTL */
   :global([dir="rtl"]) .cal-nav-btn svg {
     transform: scaleX(-1);
   }
@@ -933,7 +912,6 @@ const yearRound = [
     padding: 12px 16px 24px 12px;
   }
 
-  /* Custom scrollbar for Webkit browsers */
   .cal-grid-wrap::-webkit-scrollbar {
     height: 12px;
   }
@@ -1032,7 +1010,6 @@ const yearRound = [
     flex-grow: 1;
   }
 
-  /* ── Event card ─────────────────────────────────────────── */
   :global(.cal-card) {
     border: 2.5px solid var(--ink);
     border-left: 6px solid var(--border, var(--honey));
@@ -1118,7 +1095,6 @@ const yearRound = [
     margin: var(--space-4) auto;
   }
 
-  /* ── Reduced motion ────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .hero__bee,
     .feature__photo,

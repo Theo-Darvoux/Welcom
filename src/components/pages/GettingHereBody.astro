@@ -17,7 +17,7 @@ const g = t.gettingHere;
   <span id="top"></span>
   <SiteHeader />
   <main>
-    <!-- ── Hero ──────────────────────────────────────────── -->
+    
     <section class="hero">
       <HexBg
         radius={46} gap={6} opacity={0.1} color="var(--navy)"
@@ -35,7 +35,6 @@ const g = t.gettingHere;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Campus address ────────────────────────────────── -->
     <section class="band">
       <div class="container prose">
         <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.addressEyebrow}</p>
@@ -85,7 +84,6 @@ const g = t.gettingHere;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── From the airports ─────────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose">
@@ -131,7 +129,6 @@ const g = t.gettingHere;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── RER D ─────────────────────────────────────────── -->
     <section class="band">
       <div class="container two-col-layout">
         <div class="prose">
@@ -157,7 +154,6 @@ const g = t.gettingHere;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Walking from station ──────────────────────────── -->
     <section class="band band--alt">
       <div class="container two-col-layout">
         <div class="prose">
@@ -217,7 +213,6 @@ const g = t.gettingHere;
       </script>
     </section>
 
-    <!-- ── Getting around guide link ─────────────────────── -->
     <section class="band">
       <div class="container prose">
         <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.naviGoEyebrow}</p>
@@ -239,10 +234,8 @@ const g = t.gettingHere;
   </main>
 </Base>
 
-
-
 <style>
-  /* ── Shared ─────────────────────────────────────────── */
+  
   .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
   .band { padding-block: var(--section-y); position: relative; }
   .band--alt {
@@ -272,7 +265,6 @@ const g = t.gettingHere;
   .body-text { font-size: 1.0625rem; line-height: 1.7; color: var(--navy-soft); margin-top: var(--space-4); }
   .note { font-size: 1rem; line-height: 1.7; color: var(--navy-soft); margin-top: var(--space-4); }
 
-  /* ── Hero ──────────────────────────────────────────── */
   .hero {
     position: relative; overflow: hidden; background: var(--honey);
     --nav-h: 96px; margin-top: calc(-1 * var(--nav-h)); text-align: center;
@@ -309,7 +301,6 @@ const g = t.gettingHere;
     .hero__inner { padding-top: calc(var(--nav-h) + clamp(72px, 14vw, 110px)); }
   }
 
-  /* ── Address card ──────────────────────────────────── */
   .address-card {
     position: relative;
     display: flex; align-items: flex-start; gap: var(--space-4);
@@ -358,7 +349,6 @@ const g = t.gettingHere;
   }
   .address-card__line { font-size: 1rem; color: var(--navy-soft); margin: 0; }
 
-  /* ── Route blocks ──────────────────────────────────── */
   .route-block {
     margin: 0;
     padding: 0;
@@ -376,7 +366,7 @@ const g = t.gettingHere;
     justify-content: center;
     width: 3rem;
     height: 3rem;
-    margin-left: -0.5rem; /* Centering aligning it perfectly with the 2rem step hexagons below */
+    margin-left: -0.5rem; 
     background: var(--honey);
     color: var(--ink);
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
@@ -404,7 +394,6 @@ const g = t.gettingHere;
     margin: 0;
   }
 
-  /* ── Airports Grid ─────────────────────────────────── */
   .airports-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -432,7 +421,6 @@ const g = t.gettingHere;
     }
   }
 
-  /* ── Steps ─────────────────────────────────────────── */
   .steps {
     margin: var(--space-5) 0; padding: 0;
     list-style: none; counter-reset: step;
@@ -488,7 +476,6 @@ const g = t.gettingHere;
     }
   }
 
-  /* ── Duration badge ────────────────────────────────── */
   .duration {
     font-family: var(--font-accent); font-size: 0.9rem;
     color: var(--navy); background: var(--cream-deep);
@@ -501,18 +488,16 @@ const g = t.gettingHere;
     content: "⏱"; font-size: 1.05rem;
   }
 
-  /* ── Warning callout ───────────────────────────────── */
   .warning {
     margin-top: var(--space-6); padding: var(--space-4) var(--space-5);
-    background: #fdf3f2; /* soft warm red wash */
-    border-left: 4px solid #e05a47; /* curated warm warning red */
+    background: #fdf3f2; 
+    border-left: 4px solid #e05a47; 
     border-radius: 4px var(--radius) var(--radius) 4px;
   }
   .warning p {
     font-size: 0.95rem; line-height: 1.6; color: var(--navy); margin: 0;
   }
 
-  /* ── Campus figures side-by-side ──────────────────── */
   .container--wide {
     width: 100%;
     max-width: 1400px;
@@ -539,7 +524,6 @@ const g = t.gettingHere;
     }
   }
 
-  /* ── Guide Images ──────────────────────────────────── */
   .guide-figure {
     margin-block: var(--space-6) var(--space-5);
   }
@@ -572,7 +556,6 @@ const g = t.gettingHere;
     transform: scale(1.05);
   }
 
-  /* ── Map selector tabs ─────────────────────────────── */
   .map-selector {
     display: flex;
     gap: var(--space-2);
@@ -616,7 +599,6 @@ const g = t.gettingHere;
     font-style: italic;
   }
 
-  /* ── Buttons ───────────────────────────────────────── */
   .guide-actions {
     display: flex;
     justify-content: center;
@@ -654,14 +636,11 @@ const g = t.gettingHere;
   }
   .btn--ghost:active { transform: translate(4px,4px); box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy); }
 
-
-
-  /* ── Two Column Layout ─────────────────────────────── */
   .two-col-layout {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: var(--space-7);
-    align-items: center; /* center image vertically with content on desktop */
+    align-items: center; 
   }
   .two-col-layout .prose {
     margin-inline: 0;
@@ -675,7 +654,7 @@ const g = t.gettingHere;
   }
   @media (min-width: 980px) {
     .two-col-layout .media-col .guide-figure {
-      margin-block: 0; /* clean margins for perfect vertical centering */
+      margin-block: 0; 
     }
   }
   @media (max-width: 979px) {

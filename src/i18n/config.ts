@@ -1,4 +1,4 @@
-/* i18n locale registry: which locales exist, plus their label, flag, direction, and BCP-47 tag. */
+
 
 export const defaultLang = "en" as const;
 
@@ -18,13 +18,13 @@ export const locales = [
 export type Locale = (typeof locales)[number];
 
 export interface LocaleMeta {
-  /** Endonym shown in the selector (the language's own name). */
+  
   label: string;
-  /** Flag file stem in public/imgs/flags/ (ISO 3166-1 alpha-2). */
+  
   flag: string;
-  /** Writing direction. */
+  
   dir: "ltr" | "rtl";
-  /** BCP-47 tag for <html lang>. */
+  
   htmlLang: string;
 }
 
@@ -38,11 +38,10 @@ export const localeMeta: Record<Locale, LocaleMeta> = {
   "zh-TW": { label: "繁體中文", flag: "tw", dir: "ltr", htmlLang: "zh-TW" },
   hi: { label: "हिन्दी", flag: "in", dir: "ltr", htmlLang: "hi" },
   vi: { label: "Tiếng Việt", flag: "vn", dir: "ltr", htmlLang: "vi" },
-  // No single country owns Arabic; the Saudi flag is the conventional pick.
+
   ar: { label: "العربية", flag: "sa", dir: "rtl", htmlLang: "ar" },
 };
 
-/** Locales other than the default (these get a /<lang>/ path prefix). */
 export const prefixedLocales = locales.filter(
   (l): l is Exclude<Locale, typeof defaultLang> => l !== defaultLang,
 );

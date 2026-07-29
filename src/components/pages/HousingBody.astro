@@ -18,7 +18,7 @@ const g = t.housing;
   <SiteHeader />
 
   <main class="housing-page">
-    <!-- ── Hero ─────────────────────────────────────────── -->
+    
     <section class="hero-band">
       <HexBg
         radius={56}
@@ -49,7 +49,6 @@ const g = t.housing;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Overview ────────────────────────────────────── -->
     <section class="band band--alt">
       <div class="container prose">
         <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.overviewEyebrow}</p>
@@ -60,7 +59,6 @@ const g = t.housing;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Room Types ───────────────────────────────────── -->
     <section class="band">
       <div class="container">
         <div class="prose">
@@ -107,7 +105,6 @@ const g = t.housing;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Booking & Check-in ────────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose">
@@ -132,7 +129,6 @@ const g = t.housing;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── CAF Subsidies (APL vs ALS) ───────────────────── -->
     <section class="band">
       <div class="container">
         <div class="prose">
@@ -178,7 +174,6 @@ const g = t.housing;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Services & Amenities ─────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose">
@@ -200,7 +195,6 @@ const g = t.housing;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Palaiseau Campus External Housing ───────────── -->
     {g.palaiseauItems && (
       <section class="band">
         <div class="container">
@@ -242,14 +236,13 @@ const g = t.housing;
 </Base>
 
 <style>
-  /* ── Shared ─────────────────────────────────────────── */
+  
   .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
   .band { padding-block: var(--section-y); position: relative; }
   .band--alt { background-color: var(--cream-deep); }
   .prose h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--ink); margin-bottom: var(--space-3); line-height: 1.15; }
   .prose .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
 
-  /* ── Eyebrow ────────────────────────────────────────── */
   .eyebrow {
     font-family: var(--font-accent);
     font-size: 0.8125rem;
@@ -270,7 +263,6 @@ const g = t.housing;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
-  /* ── Hero ───────────────────────────────────────────── */
   .hero-band {
     background-color: var(--ink);
     color: var(--cream);
@@ -372,7 +364,6 @@ const g = t.housing;
     }
   }
 
-  /* ── Room Cards Grid ────────────────────────────────── */
   .rooms-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -443,7 +434,6 @@ const g = t.housing;
     margin: 0;
   }
 
-  /* ── Booking Steps ──────────────────────────────────── */
   .booking-steps {
     list-style: none;
     padding: 0;
@@ -464,7 +454,6 @@ const g = t.housing;
     box-shadow: 3px 3px 0 var(--navy);
   }
 
-  /* ── CAF Cards ──────────────────────────────────────── */
   .caf-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -514,7 +503,6 @@ const g = t.housing;
     margin: 0;
   }
 
-  /* ── Rates Callout Card ─────────────────────────────── */
   .rates-card {
     background: #FFFBEB;
     border: 2.5px solid var(--navy);
@@ -589,7 +577,6 @@ const g = t.housing;
     color: #ffffff;
   }
 
-  /* ── CAF Guide Callout Card ─────────────────────────── */
   .caf-guide-card {
     background: #FFFBEB;
     border: 2.5px solid var(--navy);
@@ -664,7 +651,6 @@ const g = t.housing;
     color: #ffffff;
   }
 
-  /* ── Warning & Tip Boxes ────────────────────────────── */
   .warning-box {
     background: #FFF4E5;
     border: 3px solid #E08A00;
@@ -710,7 +696,6 @@ const g = t.housing;
     max-width: none !important;
   }
 
-  /* ── Services Grid ──────────────────────────────────── */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -746,7 +731,6 @@ const g = t.housing;
     margin: 0;
   }
 
-  /* ── Rules List ─────────────────────────────────────── */
   .rules-list {
     margin-block: var(--space-6);
     padding-left: var(--space-5);
@@ -761,7 +745,6 @@ const g = t.housing;
     color: var(--navy);
   }
 
-  /* ── Guide Nav CTA ───────────────────────────────────── */
   .guide-nav-cta {
     background: var(--cream-deep);
     border: 3.5px solid var(--navy);
@@ -805,7 +788,6 @@ const g = t.housing;
     background: var(--honey-deep);
   }
 
-  /* ── Palaiseau Housing Grid ─────────────────────────── */
   .palaiseau-grid {
     display: grid;
     grid-template-columns: 1fr;

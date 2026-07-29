@@ -23,7 +23,7 @@ const navLinks = [
   <CloudTransition class="footer-clouds" />
 
   <div class="footer__inner-wrap">
-    <!-- Subtle hex texture over the dark ink background -->
+    
     <HexBg
       radius={52}
       gap={4}
@@ -34,10 +34,9 @@ const navLinks = [
       maskImage="linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0.4) 70%, transparent 100%)"
     />
 
-    <!-- ── Main grid ─────────────────────────────────────────── -->
     <div class="footer__body">
       <div class="container footer__grid">
-        <!-- Col 1 · Brand ────────────────────────────────────── -->
+        
         <div class="footer__col footer__col--brand">
           <a
             class="footer__brand-link"
@@ -106,7 +105,6 @@ const navLinks = [
           </div>
         </div>
 
-        <!-- Col 2 · Navigation ───────────────────────────────── -->
         <div class="footer__col footer__col--nav">
           <div class="footer__col-label">
             <svg class="footer__col-hex" viewBox="0 0 12 11" aria-hidden="true"
@@ -143,7 +141,6 @@ const navLinks = [
           </ul>
         </div>
 
-        <!-- Col 3 · Contact ──────────────────────────────────── -->
         <div class="footer__col footer__col--contact">
           <div class="footer__col-label">
             <svg class="footer__col-hex" viewBox="0 0 12 11" aria-hidden="true"
@@ -200,7 +197,6 @@ const navLinks = [
       </div>
     </div>
 
-    <!-- ── Divider ───────────────────────────────────────────── -->
     <div class="footer__rule-wrap" aria-hidden="true">
       <div class="container">
         <div class="footer__rule">
@@ -229,7 +225,6 @@ const navLinks = [
       </div>
     </div>
 
-    <!-- ── Bottom bar ────────────────────────────────────────── -->
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <p class="footer__credits"><RichText text={t.footer.credits} /></p>
@@ -254,7 +249,7 @@ const navLinks = [
 </footer>
 
 <style>
-  /* ── Shell ───────────────────────────────────────────────── */
+  
   .site-footer {
     position: relative;
     z-index: 10;
@@ -283,7 +278,6 @@ const navLinks = [
     padding-inline: clamp(var(--space-5), 4vw, var(--space-7));
   }
 
-  /* ── Body grid ───────────────────────────────────────────── */
   .footer__body {
     position: relative;
     z-index: 2;
@@ -322,7 +316,6 @@ const navLinks = [
     gap: var(--space-4);
   }
 
-  /* ── Brand ───────────────────────────────────────────────── */
   .footer__brand-link {
     display: inline-flex;
     align-items: center;
@@ -363,7 +356,6 @@ const navLinks = [
     margin: 0;
   }
 
-  /* Social pills */
   .footer__socials {
     display: flex;
     flex-wrap: wrap;
@@ -400,7 +392,6 @@ const navLinks = [
     flex-shrink: 0;
   }
 
-  /* ── Column labels ───────────────────────────────────────── */
   .footer__col-label {
     font-family: var(--font-accent);
     font-size: 0.75rem;
@@ -421,7 +412,6 @@ const navLinks = [
     flex-shrink: 0;
   }
 
-  /* ── Nav links ───────────────────────────────────────────── */
   .footer__nav-list {
     list-style: none;
     padding: 0;
@@ -474,7 +464,6 @@ const navLinks = [
     transform: translateX(0);
   }
 
-  /* ── Contact ─────────────────────────────────────────────── */
   .footer__address {
     font-style: normal;
     display: flex;
@@ -533,7 +522,6 @@ const navLinks = [
     border-color: var(--cream);
   }
 
-  /* ── Rule / divider ──────────────────────────────────────── */
   .footer__rule-wrap {
     position: relative;
     z-index: 2;
@@ -587,7 +575,6 @@ const navLinks = [
     }
   }
 
-  /* ── Bottom bar ──────────────────────────────────────────── */
   .footer__bottom {
     position: relative;
     z-index: 2;
@@ -620,7 +607,6 @@ const navLinks = [
     border-bottom-color: var(--honey);
   }
 
-  /* Back to top */
   .footer__top-btn {
     display: inline-flex;
     align-items: center;
@@ -657,7 +643,6 @@ const navLinks = [
     box-shadow: 1px 2px 0 rgba(30, 42, 61, 0.4);
   }
 
-  /* ── Mobile ──────────────────────────────────────────────── */
   @media (max-width: 679px) {
     .footer__bottom-inner {
       flex-direction: column-reverse;
@@ -669,7 +654,6 @@ const navLinks = [
     }
   }
 
-  /* ── Reduced motion ──────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .footer__logo-img,
     .footer__social-pill,

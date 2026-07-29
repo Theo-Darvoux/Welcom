@@ -1,13 +1,5 @@
 ---
-/* Isometric foyer map with elevator-style floor selection.
- *
- * Each traced room footprint (2D floor-plan polygon) is projected into a 2:1
- * isometric view and extruded into a low prism: a lit "top" face plus the
- * front-facing wall quads. Rooms are painted back-to-front so they occlude
- * correctly. Hovering / focusing / tapping a room reveals its info card.
- *
- * See src/data/foyer.ts for the geometry.
- */
+
 import type { Floor, Room } from "../data/foyer";
 import { getLangFromUrl, localizedPath } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
@@ -23,13 +15,11 @@ const floorList: Floor[] = propFloors ?? (floor ? [floor] : []);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// ── Isometric projection ──────────────────────────────────────────────
-const ISO_COS = Math.cos(Math.PI / 6); // 30°
+const ISO_COS = Math.cos(Math.PI / 6);
 const ISO_SIN = Math.sin(Math.PI / 6);
-const WALL = 34; // wall height, in floor-plan units — uniform across every room
-const SLAB_DROP = 12; // thickness of the unifying floor slab below the rooms
+const WALL = 34;
+const SLAB_DROP = 12;
 
-// Camera yaw about the vertical axis. Positive = counter-clockwise on screen.
 const YAW = Math.PI / 7;
 const COS_Y = Math.cos(YAW),
   SIN_Y = Math.sin(YAW);
@@ -614,7 +604,6 @@ const floorModels = floorList.map((fl) => {
     margin-inline: auto;
   }
 
-  /* ── Elevator-Style Floor Selector ──────────────────────────────────── */
   .foyer__elevator-panel {
     position: relative;
     z-index: 25;
@@ -731,7 +720,6 @@ const floorModels = floorList.map((fl) => {
     display: none;
   }
 
-  /* Fade indicators for horizontal scroll on mobile */
   .foyer::before,
   .foyer::after {
     content: "";
@@ -882,7 +870,6 @@ const floorModels = floorList.map((fl) => {
     stroke-linejoin: round;
   }
 
-  /* ── Highlighted WELCOM' Room ─────────────────────────────────────── */
   .room--welcom .room__top {
     fill: var(--hive-green) !important;
     stroke: var(--ink);

@@ -23,10 +23,8 @@ const lp = (t as any).lexiconPage ?? {
   termsCount: "terms cataloged",
 };
 
-// Words/slugs to hide from the public lexicon catalog
 const hiddenTerms = new Set(["evry-thing", "fallback"]);
 
-// Categorization helper for terms
 function getCategory(term: string): "places" | "associations" | "life" | "academic" {
   const lower = term.toLowerCase();
   if (
@@ -84,7 +82,6 @@ function getCategoryLabel(cat: string): string {
   }
 }
 
-// Convert term to URL-safe anchor ID
 function slugify(term: string): string {
   return term
     .normalize("NFD")
@@ -96,7 +93,6 @@ function slugify(term: string): string {
 
 const lexiconDict = t.lexicon as Record<string, string>;
 
-// Extract and filter terms (excluding 'fallback' and hidden terms)
 const rawEntries = Object.entries(lexiconDict);
 
 const seenSlug = new Set<string>();
@@ -127,7 +123,7 @@ const termsList = rawEntries
   <SiteHeader />
 
   <main class="lexicon-page">
-    <!-- ── Hero Banner (Guides-Style Display Title) ────────────────── -->
+    
     <section class="hero">
       <HexBg
         radius={46}
@@ -148,11 +144,10 @@ const termsList = rawEntries
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Navigation, Search & Category Filters ───────────────────── -->
     <section class="band band--controls">
       <div class="container">
         <div class="lexicon-controls-wrap">
-          <!-- Search Bar -->
+          
           <div class="lexicon-search">
             <div class="lexicon-search__field">
               <svg class="lexicon-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -179,7 +174,6 @@ const termsList = rawEntries
             </div>
           </div>
 
-          <!-- Category Tabs -->
           <div class="lexicon-tabs" role="tablist" aria-label="Category tabs">
             <button type="button" class="tab-btn is-active" data-category="all" role="tab" aria-selected="true">
               {lp.filterAll}
@@ -198,7 +192,6 @@ const termsList = rawEntries
             </button>
           </div>
 
-          <!-- Terms Count -->
           <div class="lexicon-count" aria-live="polite">
             <span id="lexicon-count-num">{termsList.length}</span> {lp.termsCount}
           </div>
@@ -206,7 +199,6 @@ const termsList = rawEntries
       </div>
     </section>
 
-    <!-- ── Terms Catalog Section ──────────────────────────────── -->
     <section class="band band--terms">
       <div class="container">
         <div class="lexicon-list" id="lexicon-list">
@@ -234,7 +226,6 @@ const termsList = rawEntries
           ))}
         </div>
 
-        <!-- Empty State -->
         <div class="lexicon-empty hidden" id="lexicon-empty">
           <div class="lexicon-empty__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -302,7 +293,6 @@ const termsList = rawEntries
       }
     }
 
-    // Search Input
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         currentQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
@@ -321,7 +311,6 @@ const termsList = rawEntries
       });
     }
 
-    // Category Tabs
     tabBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         tabBtns.forEach((b) => {
@@ -336,7 +325,6 @@ const termsList = rawEntries
       });
     });
 
-    // Reset Button
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         if (searchInput) searchInput.value = '';
@@ -358,7 +346,6 @@ const termsList = rawEntries
       });
     }
 
-    // Hash Navigation Highlight
     function highlightHash() {
       const hash = window.location.hash.replace('#', '');
       if (!hash) return;
@@ -390,7 +377,6 @@ const termsList = rawEntries
     padding-inline: var(--space-5);
   }
 
-  /* ── Hero Banner ─────────────────────────────────────────── */
   .hero {
     background: var(--honey);
     --nav-h: 96px;
@@ -453,7 +439,6 @@ const termsList = rawEntries
     }
   }
 
-  /* ── Controls Band ────────────────────────────────────────── */
   .band--controls {
     background: var(--cream-deep);
     padding: var(--space-6) 0 var(--space-5);
@@ -467,7 +452,6 @@ const termsList = rawEntries
     margin: 0 auto;
   }
 
-  /* Search Input */
   .lexicon-search {
     width: 100%;
     max-width: 520px;
@@ -525,7 +509,6 @@ const termsList = rawEntries
     background: var(--honey-wash);
   }
 
-  /* Category Tabs */
   .lexicon-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -559,7 +542,6 @@ const termsList = rawEntries
     color: var(--navy-soft);
   }
 
-  /* ── Terms Section ────────────────────────────────────────── */
   .band--terms {
     background: var(--cream-deep);
     padding: 0 0 var(--space-8);
@@ -630,7 +612,6 @@ const termsList = rawEntries
     flex-grow: 1;
   }
 
-  /* Empty State */
   .lexicon-empty {
     text-align: center;
     padding: var(--space-8) var(--space-4);

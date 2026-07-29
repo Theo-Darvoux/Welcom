@@ -1,4 +1,4 @@
-/* Locale registry: maps each Locale to its string table (one file per locale under ./locales/). */
+
 
 import { defaultLang, type Locale } from "./config";
 import { en, developerName, developerLink, type LocaleTranslation, type Translation } from "./locales/en";
@@ -52,7 +52,6 @@ function deepMerge<T>(target: T, source: any): T {
   return result;
 }
 
-/** Get the full string table for a locale (falls back to the default for missing keys). */
 export function useTranslations(lang: Locale): Translation {
   const dict = dictionaries[lang];
   if (lang === defaultLang || !dict) return en;

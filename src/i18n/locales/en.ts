@@ -1350,5 +1350,4 @@ type DeepPartial<T> = T extends readonly (infer Item)[]
     ? { [Key in keyof T]?: DeepPartial<T[Key]> }
     : T;
 
-/** A locale may omit copy that is supplied by the English fallback at runtime. */
 export type LocaleTranslation = DeepPartial<Translation>;

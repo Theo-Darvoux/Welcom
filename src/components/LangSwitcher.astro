@@ -1,5 +1,5 @@
 ---
-/* Language selector: a pill that opens a dropdown linking to the same page in each locale. */
+
 import { locales, localeMeta } from "../i18n/config";
 import { getLangFromUrl, stripLocale, localizedPath } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
@@ -69,7 +69,6 @@ const current = localeMeta[lang];
     flex-shrink: 0;
   }
 
-  /* ── Trigger pill (echoes the old CTA: cream, chunky border, hard shadow) ── */
   .langsel__btn {
     display: inline-flex;
     align-items: center;
@@ -84,8 +83,7 @@ const current = localeMeta[lang];
     border-radius: var(--radius-pill);
     border: 2.5px solid var(--navy);
     box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
-    /* Kill the ~300ms touch double-tap delay so rapid taps register instantly,
-       and stop mashing the pill from selecting its label text. */
+    
     touch-action: manipulation;
     -webkit-user-select: none;
     user-select: none;
@@ -111,7 +109,7 @@ const current = localeMeta[lang];
     }
   }
   .langsel__current {
-    padding-top: 0.08em; /* optical centring against the flag box */
+    padding-top: 0.08em; 
   }
   .langsel__chev {
     width: 15px;
@@ -123,7 +121,6 @@ const current = localeMeta[lang];
     transform: rotate(180deg);
   }
 
-  /* ── Dropdown comb-block ──────────────────────────────────────── */
   .langsel__menu {
     position: absolute;
     top: calc(100% + var(--space-2));
@@ -168,7 +165,6 @@ const current = localeMeta[lang];
     outline: none;
   }
 
-  /* Active locale: the signature honey-filled hexagon cell */
   .langsel__cell {
     width: 13px;
     height: 11px;
@@ -195,10 +191,6 @@ const current = localeMeta[lang];
     }
   }
 
-  /* Inside the mobile nav column the menu is `align-items: stretch`, so without
-     this the pill keeps its content width on the inline-start while the dropdown
-     (right-aligned to the stretched container) detaches to the far side. Hug the
-     pill and open the panel from the start edge, directly under it. */
   @media (max-width: 720px) {
     .langsel {
       align-self: flex-start;
@@ -222,15 +214,12 @@ const current = localeMeta[lang];
 </style>
 
 <script>
-  /* Preserve scroll across a locale switch: anchor to the content block at the
-     viewport top (locales differ in height), then re-find it by structural selector. */
+  
   const SCROLL_KEY = "welcom:locale-scroll";
 
-  // Block-level anchors present identically across locales.
   const ANCHOR_SELECTOR =
     "#top, main, main section, main figure, main img, main h1, main h2, main h3, main p, main li, footer";
 
-  /** Document-relative top of an element, or null if it isn't rendered (zero-rect). */
   const renderedTop = (el: Element): number | null => {
     const rect = el.getBoundingClientRect();
     if (rect.width === 0 && rect.height === 0) return null;
@@ -243,7 +232,6 @@ const current = localeMeta[lang];
       document.documentElement.scrollHeight - window.innerHeight,
     );
 
-  /** A structural selector stable across locales (prefers a nearby id). */
   function buildSelector(el: Element): string {
     if (el.id) return "#" + CSS.escape(el.id);
     const parts: string[] = [];
@@ -267,16 +255,15 @@ const current = localeMeta[lang];
     return parts.join(" > ");
   }
 
-  /** Record the block at the viewport top + offset within it, before nav. */
   function captureScroll() {
     const y = window.scrollY;
-    const probe = y + 4; // a hair below the viewport's top edge
+    const probe = y + 4;
     let anchor: Element | null = null;
     let anchorTop = -Infinity;
     document.querySelectorAll(ANCHOR_SELECTOR).forEach((el) => {
       const top = renderedTop(el);
-      if (top === null) return; // not rendered at this breakpoint
-      // The lowest block whose top is still at/above the viewport top.
+      if (top === null) return;
+
       if (top <= probe && top > anchorTop) {
         anchor = el;
         anchorTop = top;
@@ -285,16 +272,15 @@ const current = localeMeta[lang];
     const payload = {
       selector: anchor ? buildSelector(anchor) : null,
       offset: anchor ? y - anchorTop : 0,
-      fraction: y / Math.max(1, maxScroll()), // coarse fallback
+      fraction: y / Math.max(1, maxScroll()),
     };
     try {
       sessionStorage.setItem(SCROLL_KEY, JSON.stringify(payload));
     } catch {
-      /* storage unavailable; fall back to top-of-page */
+      void 0;
     }
   }
 
-  /** Re-apply the saved position on the freshly loaded translated page. */
   function restoreScroll() {
     let raw: string | null;
     try {
@@ -303,13 +289,13 @@ const current = localeMeta[lang];
       return;
     }
     if (!raw) return;
-    // Consume immediately: a manual refresh must not re-trigger this.
+
     try {
       sessionStorage.removeItem(SCROLL_KEY);
     } catch {
-      // Storage is unavailable; the saved scroll position will naturally expire.
+      void 0;
     }
-    // An explicit in-page #hash target wins over restoration.
+
     if (location.hash && document.querySelector(location.hash)) return;
 
     let data: { selector: string | null; offset: number; fraction: number };
@@ -331,7 +317,7 @@ const current = localeMeta[lang];
     };
 
     const jumpTo = (target: number) => {
-      // Force an instant jump despite the global `scroll-behavior: smooth`.
+
       const root = document.documentElement;
       const prev = root.style.scrollBehavior;
       root.style.scrollBehavior = "auto";
@@ -339,13 +325,10 @@ const current = localeMeta[lang];
       root.style.scrollBehavior = prev;
     };
 
-    // Override the browser's own scroll restoration.
     const hist = window.history;
     const prevRestore = hist.scrollRestoration;
     if (prevRestore) hist.scrollRestoration = "manual";
 
-    // Layout keeps shifting after load (font swap, lazy images), so re-anchor
-    // each frame for a short window, but bail the instant the user scrolls.
     let done = false;
     const finish = () => {
       if (done) return;
@@ -366,7 +349,7 @@ const current = localeMeta[lang];
       if (done) return;
       const target = targetFor();
       jumpTo(target);
-      // Settled once the spot holds for several frames; hard-cap at 1.5s.
+
       stable = Math.abs(window.scrollY - target) <= 1 ? stable + 1 : 0;
       if (stable >= 10 || performance.now() - start > 1500) finish();
       else requestAnimationFrame(tick);
@@ -392,10 +375,9 @@ const current = localeMeta[lang];
         setOpen(!root.classList.contains("is-open"));
       });
 
-      // Remember scroll position right before the locale link navigates away.
       root.querySelectorAll<HTMLAnchorElement>(".langsel__item").forEach((link) => {
         link.addEventListener("click", (e) => {
-          // Only for a plain same-tab navigation.
+
           if (
             e.defaultPrevented ||
             e.button !== 0 ||
@@ -406,14 +388,13 @@ const current = localeMeta[lang];
           ) {
             return;
           }
-          // Remember the explicit choice so the auto-detect redirect on the
-          // default-locale pages honours it (incl. an explicit "English").
+
           try {
             if (link.dataset.locale) {
               localStorage.setItem("welcom:lang", link.dataset.locale);
             }
           } catch {
-            // Language preference cannot be persisted in this browser context.
+            void 0;
           }
           captureScroll();
         });

@@ -66,40 +66,33 @@
 }
 
 :root {
-  /* Backgrounds */
-  --cream:        #fbf4e6; /* primary reading field */
-  --cream-deep:   #f5e9ce; /* subtle raised surface / alt rows */
-  --honey-wash:   #fbe3b0; /* soft comb tints */
+  
+  --cream:        #fbf4e6; 
+  --cream-deep:   #f5e9ce; 
+  --honey-wash:   #fbe3b0; 
 
-  /* Hive map specific pastel fills for high-contrast & visual rhythm */
-  --hive-blue:    #b4cde6; /* soft periwinkle sky blue */
-  --hive-yellow:  #fcd797; /* warm sunny honey yellow */
-  --hive-green:   #c7e0c0; /* clean sage green */
-  --hive-peach:   #f8c0ad; /* friendly pastel coral/peach */
+  --hive-blue:    #b4cde6; 
+  --hive-yellow:  #fcd797; 
+  --hive-green:   #c7e0c0; 
+  --hive-peach:   #f8c0ad; 
 
-  /* Brand fields (hero & section bands only) */
-  --honey: #efab43; /* SIGNATURE accent */
-  --honey-deep: #db8d28; /* depth / hover / active */
+  --honey: #efab43; 
+  --honey-deep: #db8d28; 
 
-  /* Text & structure */
-  --navy: #293a55; /* primary text + structure (NOT pure black) */
-  --navy-soft: #4c5c75; /* secondary text */
-  --ink: #1e2a3d; /* max-contrast text where needed */
+  --navy: #293a55; 
+  --navy-soft: #4c5c75; 
+  --ink: #1e2a3d; 
 
-  /* World / action + calm */
-  --green:        #3ab54a; /* CTAs, success, "world" moments */
-  --green-deep:   #2b9338; /* green hover */
-  --sky: #91b0cc; /* calm info, soft accents, links on navy */
+  --green:        #3ab54a; 
+  --green-deep:   #2b9338; 
+  --sky: #91b0cc; 
 
-  /* Lines */
-  --line: #e6d5ac; /* warm divider on cream */
+  --line: #e6d5ac; 
 
-  /* Type families */
   --font-display: "Informal 011 BT", "Noto Sans SC", "Noto Sans TC", sans-serif;
   --font-accent: "Lilita One", "Noto Sans SC", "Noto Sans TC", sans-serif;
   --font-body: "Nunito", "Noto Sans SC", "Noto Sans TC", sans-serif;
 
-  /* Spacing scale (base 8px) */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -111,26 +104,19 @@
   --space-9: 96px;
   --space-10: 128px;
 
-  /* Layout */
   --container: 1200px;
   --measure: 68ch;
   --section-y: clamp(4rem, 8vw, 7rem);
 
-  /* Radius (interactive containers only) */
   --radius: 16px;
   --radius-pill: 999px;
   --radius-button: 12px;
 }
 
-/* ── Per-locale type families ──────────────────────────────────
-   Vietnamese headings render entirely in Baloo 2 (mixing Informal for
-   plain letters + a fallback for accented ones looks broken). Arabic keeps
-   the Latin brand word in Informal/Lilita and renders Arabic glyphs in the
-   Baloo Arabic / Cairo faces via per-glyph fallback. */
 :root:lang(vi) {
   --font-display: "Baloo 2", sans-serif;
   --font-accent: "Baloo 2", sans-serif;
-  /* body stays Nunito; it already covers Vietnamese */
+  
 }
 :root:lang(ar) {
   --font-display: "Informal 011 BT", "Baloo Bhaijaan 2", sans-serif;

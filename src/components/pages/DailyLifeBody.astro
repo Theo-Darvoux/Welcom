@@ -24,7 +24,7 @@ const storeLogos = [
   <SiteHeader />
 
   <main class="daily-page">
-    <!-- ── Hero ─────────────────────────────────────────── -->
+    
     <section class="hero-band">
       <HexBg
         radius={56}
@@ -44,7 +44,6 @@ const storeLogos = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Roadmap Timeline ────────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose-header">
@@ -78,7 +77,6 @@ const storeLogos = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 1: Groceries & Supermarkets ───────────── -->
     <section class="band" id="step-groceries">
       <div class="container">
         <div class="prose-header">
@@ -178,7 +176,6 @@ const storeLogos = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Step 2: Laundry Facilities (Laveries) ───────── -->
     <section class="band band--alt" id="step-laundry">
       <div class="container">
         <div class="prose-header">
@@ -238,7 +235,6 @@ const storeLogos = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 3: Garbage Bins & Recycling ───────────── -->
     <section class="band" id="step-garbage">
       <div class="container">
         <div class="prose-header">
@@ -283,7 +279,6 @@ const storeLogos = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Step 4: Pharmacies, Mail & Emergency ────────── -->
     <section class="band band--alt" id="step-services">
       <div class="container">
         <div class="prose-header">
@@ -305,7 +300,6 @@ const storeLogos = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Support & Office Hours ────────────────────────── -->
     <section class="band">
       <div class="container">
         <div class="prose-header support-box">
@@ -330,7 +324,7 @@ const storeLogos = [
 </Base>
 
 <style>
-  /* ── Shared Layout ──────────────────────────────────── */
+  
   .daily-page {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -342,7 +336,6 @@ const storeLogos = [
   .prose-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--ink); margin-bottom: var(--space-3); line-height: 1.15; }
   .prose-header .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
 
-  /* ── Eyebrow ────────────────────────────────────────── */
   .eyebrow {
     font-family: var(--font-accent);
     font-size: 0.8125rem;
@@ -363,7 +356,6 @@ const storeLogos = [
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
-  /* ── Hero ───────────────────────────────────────────── */
   .hero-band {
     background-color: var(--ink);
     color: var(--cream);
@@ -396,7 +388,6 @@ const storeLogos = [
     color: var(--cream);
   }
 
-  /* ── Roadmap Cards ─────────────────────────────────── */
   .roadmap-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -505,7 +496,6 @@ const storeLogos = [
     margin: 0;
   }
 
-  /* ── Subsections & Stores Grid ─────────────────────── */
   .subsection-heading {
     font-family: var(--font-accent);
     font-size: 1.25rem;
@@ -591,7 +581,6 @@ const storeLogos = [
     transform: translateY(-2px);
   }
 
-  /* ── Step Lists & Info Cards ────────────────────────── */
   .step-list {
     list-style: none;
     padding: 0;
@@ -615,7 +604,6 @@ const storeLogos = [
     box-sizing: border-box;
   }
 
-  /* ── Laundry Grid ───────────────────────────────────── */
   .laundry-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -728,7 +716,6 @@ const storeLogos = [
     }
   }
 
-  /* ── Garbage & Sorting Grids ────────────────────────── */
   .garbage-locations-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -814,7 +801,6 @@ const storeLogos = [
     margin: 0;
   }
 
-  /* ── Tip Boxes ──────────────────────────────────────── */
   .tip-box {
     background: rgba(239, 171, 67, 0.15);
     border: 2.5px dashed var(--honey-deep);
@@ -832,7 +818,6 @@ const storeLogos = [
     color: var(--navy);
   }
 
-  /* ── Services Grid ──────────────────────────────────── */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -874,7 +859,6 @@ const storeLogos = [
     margin: 0;
   }
 
-  /* ── Action Buttons & Support ────────────────────────── */
   .action-wrap {
     margin-top: var(--space-5);
   }
@@ -926,7 +910,6 @@ const storeLogos = [
     justify-content: center;
   }
 
-  /* ── Responsive adjustments ──────────────────────────── */
   @media (max-width: 640px) {
     .container {
       padding-inline: var(--space-4);

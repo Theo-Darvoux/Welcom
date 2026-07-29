@@ -1,44 +1,40 @@
 ---
-/* Static dual-layered cartoon cloud border between sections. */
+
 interface Props {
-  /** Front cloud layer fill color. Matches the section below (the footer). */
+  
   fillFront?: string;
-  /** Back cloud layer fill color. */
+  
   fillBack?: string;
-  /** Outline stroke color for the clouds. */
+  
   stroke?: string;
-  /** Thickness of the cartoon outline stroke. */
+  
   strokeWidth?: number;
-  /** Extra class name. */
+  
   class?: string;
 }
 
 const {
   fillFront = "var(--ink)",
-  fillBack = "rgba(41, 58, 85, 0.4)", // Translucent navy-soft blend
+  fillBack = "rgba(41, 58, 85, 0.4)",
   stroke = "var(--ink)",
   strokeWidth = 3,
   class: className = "",
 } = Astro.props;
 
-// Front wave: baseline y = 55
 const waveFront = "M 0,55 C 40,25 100,25 140,55 C 180,15 260,15 300,55 C 330,35 370,35 400,55 C 450,5 530,5 580,55 C 620,30 680,30 720,55 C 770,20 850,20 900,55 C 940,35 980,35 1020,55 C 1070,5 1170,5 1220,55 C 1260,30 1320,30 1360,55 C 1390,35 1420,35 1440,55";
 const fillPathFront = `${waveFront} L1440,80 L0,80 Z`;
 
-// Back wave: offset left by 30px, raised up by 7px (y = 48) to peek behind
 const waveBack = "M -50,48 C 0,18 70,18 110,48 C 150,8 230,8 270,48 C 300,28 340,28 370,48 C 420,0 500,0 550,48 C 590,23 650,23 690,48 C 740,13 820,13 870,48 C 910,28 950,28 990,48 C 1040,0 1140,0 1190,48 C 1230,23 1290,23 1330,48 C 1370,28 1410,28 1490,48";
 const fillPathBack = `${waveBack} L1490,80 L-50,80 Z`;
 ---
 
 <div class:list={["cloud-transition", className]} aria-hidden="true">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <!-- Back Cloud Layer -->
+    
     <path fill={fillBack} d={fillPathBack}></path>
-    
-    <!-- Front Cloud Layer Fill -->
+
     <path fill={fillFront} d={fillPathFront}></path>
-    
-    <!-- Front Cloud Cartoon Stroke -->
+
     <path
       fill="none"
       stroke={stroke}

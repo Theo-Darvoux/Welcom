@@ -38,9 +38,9 @@ const partners = [
   <span id="top"></span>
   <SiteHeader />
   <main>
-    <!-- ── Hero: the hive that has everything you need ──────────── -->
+    
     <section class="hero">
-      <!-- Honeycomb hive-wall texture, low-opacity navy lines -->
+      
       <HexBg
         radius={46}
         gap={6}
@@ -50,7 +50,7 @@ const partners = [
         hexagons={[]}
         maskImage="radial-gradient(ellipse 120% 100% at 70% 35%, white 30%, transparent 85%)"
       />
-      <!-- Bee mascot: warm 3D character flying in on a dashed pollen path -->
+      
       <div class="hero__bee" aria-hidden="true">
         <svg
           class="hero__bee-path"
@@ -169,11 +169,9 @@ const partners = [
         </div>
       </div>
 
-      <!-- Signature: honey pouring into the cream page -->
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── About the association ─────────────────────────────────── -->
     <section id="about" class="band band--about">
       <div class="container split">
         <div class="split__text">
@@ -216,11 +214,9 @@ const partners = [
         <figcaption>{t.about.orgaCaption}</figcaption>
       </figure>
 
-      <!-- Transition drip: cream pouring into the cream-deep president page -->
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Word of the president ─────────────────────────────────── -->
     <section class="band band--president">
       <div class="container president">
         <figure class="president__photo">
@@ -247,11 +243,9 @@ const partners = [
         </div>
       </div>
 
-      <!-- Transition drip: cream-deep pouring back into the cream events page -->
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Events ────────────────────────────────────────────────── -->
     <section id="events" class="band band--events">
       <div class="container">
         <p class="eyebrow">{t.events.eyebrow}</p>
@@ -309,11 +303,9 @@ const partners = [
         </div>
       </div>
 
-      <!-- Transition drip: cream pouring into the cream-deep partners page -->
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Partners ──────────────────────────────────────────────── -->
     <section class="band band--partners">
       <div class="container">
         <p class="eyebrow">{t.partners.eyebrow}</p>
@@ -345,13 +337,11 @@ const partners = [
         </div>
       </div>
 
-      <!-- Transition drip into the navy contact band (honey-deep line for contrast). -->
     </section>
 
-    <!-- ── Contact / closing band ────────────────────────────────── -->
     <section id="say-hi" class="band band--contact">
       <HoneyDrip fill="var(--cream-deep)" stroke="var(--honey-deep)" anchor="top-inside" />
-      <!-- Desktop comb: wide, short band → radial-masked, full opacity. -->
+      
       <HexBg
         radius={44}
         gap={2}
@@ -386,8 +376,7 @@ const partners = [
         class="contact-hex-bg contact-hex-bg--desktop"
         maskImage="radial-gradient(ellipse clamp(300px, 88vw, 1100px) clamp(260px, 65vh, 560px) at center, white, transparent)"
       />
-      <!-- Mobile comb: tall, narrow band → smaller hexes, no mask (edge-to-edge),
-           lighter. Fills the band natively like desktop, so no transform hacks. -->
+      
       <HexBg
         radius={24}
         gap={2}
@@ -503,7 +492,7 @@ const partners = [
 </Base>
 
 <style>
-  /* ── Shared bits ───────────────────────────────────────────── */
+  
   .container {
     max-width: var(--container);
     margin-inline: auto;
@@ -514,7 +503,6 @@ const partners = [
     padding-block: var(--section-y);
   }
 
-  /* Anchors the HoneyDrip pouring down into the next section. */
   .band--about,
   .band--events {
     position: relative;
@@ -552,7 +540,6 @@ const partners = [
     max-width: 20ch;
   }
 
-  /* ── Buttons ───────────────────────────────────────────────── */
   .btn {
     position: relative;
     display: inline-flex;
@@ -659,12 +646,11 @@ const partners = [
     box-shadow: 0 0 0 1px var(--navy), 0px 0px 0 var(--navy);
   }
 
-  /* ── Hero ──────────────────────────────────────────────────── */
   .hero {
     position: relative;
     overflow: hidden;
     background: var(--honey);
-    /* Pull the honey up behind the floating nav so the bar floats on it. */
+    
     --nav-h: 96px;
     margin-top: calc(-1 * var(--nav-h));
   }
@@ -677,7 +663,7 @@ const partners = [
     gap: var(--space-7);
     align-items: center;
     min-height: calc(100svh - 60px);
-    /* Original top padding + the nav overlap, so content clears the bar. */
+    
     padding-top: calc(
       var(--nav-h) + clamp(var(--space-6), 6vh, var(--space-9))
     );
@@ -704,7 +690,6 @@ const partners = [
     margin-bottom: 0;
   }
 
-  /* "hive." rotated sticker: deliberate, cartoony, hand-placed */
   .hero__title-accent {
     display: inline-block;
     background: var(--cream);
@@ -735,7 +720,6 @@ const partners = [
     margin-top: var(--space-6);
   }
 
-  /* Right column: the hive itself */
   .hero__map {
     align-self: center;
     display: flex;
@@ -743,7 +727,6 @@ const partners = [
     align-items: center;
   }
 
-  /* Bee mascot: warm 3D character flying in on a dashed pollen path */
   .hero__bee {
     position: absolute;
     top: clamp(60px, 8vw, 110px);
@@ -824,8 +807,6 @@ const partners = [
     }
   }
 
-
-  /* ── About: split text + media ─────────────────────────────── */
   .split {
     display: grid;
     grid-template-columns: 1fr;
@@ -987,7 +968,6 @@ const partners = [
     margin-top: var(--space-4);
   }
 
-  /* ── President ─────────────────────────────────────────────── */
   .band--president {
     position: relative;
     background-color: var(--cream-deep);
@@ -1047,7 +1027,6 @@ const partners = [
     transform: scale(1.05) rotate(0deg);
   }
 
-  /* Cartoony Speech Bubble */
   .president__words {
     position: relative;
     z-index: 1;
@@ -1077,7 +1056,6 @@ const partners = [
     left: var(--space-5);
   }
 
-  /* Desktop pointer tail */
   @media (min-width: 760px) {
     .president__words::after {
       content: "";
@@ -1107,7 +1085,6 @@ const partners = [
     }
   }
 
-  /* Mobile pointer tail pointing up */
   @media (max-width: 759px) {
     .president__words::after {
       content: "";
@@ -1157,7 +1134,6 @@ const partners = [
     z-index: 1;
   }
 
-  /* RTL: mirror the speech-bubble tail to point right. */
   @media (min-width: 760px) {
     :global([dir="rtl"]) .president__words::after {
       left: auto;
@@ -1173,8 +1149,6 @@ const partners = [
     }
   }
 
-  /* ── Events ────────────────────────────────────────────────── */
-  /* ── Comb tiles: the quieter, secondary tier of events ──────── */
   .events {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1198,7 +1172,7 @@ const partners = [
     text-decoration: none;
     color: var(--navy);
   }
-  /* Chunky hex marker carries the only colour: the comb DNA */
+  
   .events__item-hex {
     display: block;
     width: 26px;
@@ -1274,7 +1248,6 @@ const partners = [
     transform: translateX(0);
   }
 
-  /* ── Featured photos: lead the section ──────────────────────── */
   .photo-strip {
     display: grid;
     grid-template-columns: 1fr;
@@ -1326,7 +1299,6 @@ const partners = [
     z-index: 3;
   }
 
-  /* ── Partners ──────────────────────────────────────────────── */
   .band--partners {
     position: relative;
     background-color: var(--cream-deep);
@@ -1397,7 +1369,7 @@ const partners = [
     width: auto;
     object-fit: contain;
   }
-  /* TSP & IMT-BS logos are wide and text-dense, so let them fill the plate so fine print stays legible. */
+  
   .partners__item:nth-child(1) .partners__logo img {
     max-height: 80px;
   }
@@ -1437,7 +1409,6 @@ const partners = [
     transform: translate(0, 0);
   }
 
-  /* ── Contact band (honey-on-navy) ──────────────────────────── */
   .band--contact {
     position: relative;
     overflow: hidden;
@@ -1447,8 +1418,6 @@ const partners = [
     padding-bottom: calc(var(--section-y) + clamp(35px, 4.5vw, 55px) + 8px);
   }
 
-  /* Two combs, one per breakpoint — each fills the band natively (no scaling,
-     which is what was clipping the coverage box on mobile). */
   :global(.contact-hex-bg--mobile) {
     display: none;
   }
@@ -1460,7 +1429,6 @@ const partners = [
       display: block;
     }
   }
-
 
   .band--contact .container {
     position: relative;
@@ -1567,7 +1535,6 @@ const partners = [
     text-underline-offset: 4px;
   }
 
-  /* Desktop: split the band into two columns (message left, contacts right). */
   @media (min-width: 900px) {
     .contact {
       display: grid;
@@ -1649,7 +1616,7 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }
   .band--contact .btn--green {
-    /* Deeper pine green, warmer next to honey than the global --green CTA. */
+    
     background: #2e8b57;
     color: var(--cream);
     border-color: var(--ink);
@@ -1669,15 +1636,12 @@ const partners = [
     --lex-cue: var(--honey);
   }
 
-  /* ── Hero: buttons on honey background ──────────────────────── */
-  /* Chunkier, solid, comic-shadow pair: Navy / Ink + Cream */
   .hero .btn {
     font-size: 1.05rem;
     padding: 0.8em 1.25em;
     border-width: 3px;
   }
 
-  /* Primary = cream background, ink text (dominant, bright button) */
   .hero .btn--primary {
     background: var(--cream);
     color: var(--ink);
@@ -1695,7 +1659,6 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }
 
-  /* Secondary = solid navy background, cream text (solid, high contrast) */
   .hero .btn--ghost {
     background: var(--navy);
     color: var(--cream);
@@ -1713,7 +1676,6 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }
 
-  /* Green = pine green background, cream text */
   .hero .btn--green {
     background: #2e8b57;
     color: var(--cream);
@@ -1731,7 +1693,6 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }
 
-  /* Lexicon = terracotta / warm peach background, cream text */
   .hero .btn--lexicon {
     background: #D96B43;
     color: var(--cream);
@@ -1749,13 +1710,11 @@ const partners = [
     box-shadow: 0 0 0 1px var(--ink), 0px 0px 0 var(--ink);
   }
 
-  /* ── Hero: hive-cell hover on honey bg needs cream, not honey ── */
   :global(.hero .hive-cell:hover .hive-cell__bg-main),
   :global(.hero .hive-cell:focus-visible .hive-cell__bg-main) {
     fill: var(--cream) !important;
   }
 
-  /* ── Hero: mobile hive-list on honey ────────────────────────── */
   :global(.hero .hive-list-item) {
     background-color: rgba(251, 244, 230, 0.55);
     border-color: var(--navy);

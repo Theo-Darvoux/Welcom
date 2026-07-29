@@ -17,27 +17,22 @@ const {
   image = "/imgs/logo.webp",
 } = Astro.props;
 
-// Writing direction and BCP-47 tag come from the active locale.
 const lang = getLangFromUrl(Astro.url);
 const { htmlLang, dir } = localeMeta[lang];
 
-// Canonical URL & localized path calculations
 const siteOrigin = Astro.site ? Astro.site.origin : Astro.url.origin;
 const canonicalPath = stripLocale(Astro.url.pathname);
 const currentLocalizedPath = localizedPath(canonicalPath, lang);
 const canonicalUrl = new URL(currentLocalizedPath, siteOrigin).href;
 const ogImageUrl = new URL(image, siteOrigin).href;
 
-// Multi-lingual alternate links (hreflang)
 const alternateLinks = locales.map((l) => ({
   hreflang: localeMeta[l].htmlLang,
   href: new URL(localizedPath(canonicalPath, l), siteOrigin).href,
 }));
 
-// x-default hreflang (points to default locale path)
 const xDefaultUrl = new URL(localizedPath(canonicalPath, defaultLang), siteOrigin).href;
 
-// JSON-LD Structured Data for Organization / Educational Association
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
@@ -62,19 +57,12 @@ const jsonLd = {
 <html lang={htmlLang} dir={dir}>
   <head>
     {
-      /* On the default-locale (unprefixed) pages only: redirect first-time
-         visitors to the localized path that best matches their browser
-         language. A manual choice in the language switcher (stored in
-         localStorage) always wins — including an explicit "English", so a
-         visitor on a French browser who picks English is not bounced back.
-         Runs inline before paint to minimise flash; replace() leaves no
-         history entry, so there is no back-button trap. */
       lang === defaultLang && (
         <script is:inline define:vars={{ locales, defaultLang }}>
           (function () {
   try {
     var path = location.pathname.split("/").filter(Boolean);
-    // Safety: never run if we are somehow already on a locale-prefixed path.
+
     if (path[0] && locales.indexOf(path[0]) !== -1) return;
 
     function pick(prefs) {
@@ -93,7 +81,7 @@ const jsonLd = {
             parts.indexOf("mo") !== -1;
           return trad ? "zh-TW" : "zh-CN";
         }
-        if (primary === "pt") return "pt-BR"; // only Brazilian Portuguese is offered
+        if (primary === "pt") return "pt-BR";
         for (var j = 0; j < locales.length; j++) {
           if (locales[j].toLowerCase().split("-")[0] === primary) return locales[j];
         }
@@ -130,16 +118,13 @@ const jsonLd = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <title>{title}</title>
 
-    <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Multi-lingual hreflang links -->
     {alternateLinks.map((alt) => (
       <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
     ))}
     <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Welcom'INT" />
     <meta property="og:url" content={canonicalUrl} />
@@ -148,14 +133,12 @@ const jsonLd = {
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content={htmlLang} />
 
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <!-- JSON-LD Structured Data -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>

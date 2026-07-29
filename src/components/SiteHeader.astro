@@ -1,5 +1,4 @@
 ---
-/* "The comb shelf": floating cream nav bar; the active page's link gets a honey-filled hexagon. */
 
 import { getLangFromUrl, localizedPath, stripLocale } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
@@ -15,7 +14,6 @@ const links = [
   { label: t.nav.contact, path: "/contact" },
 ];
 
-// Active page, compared on the locale-stripped (canonical) path.
 const current = stripLocale(Astro.url.pathname).replace(/\/+$/, "") || "/";
 const isActive = (path: string) =>
   path === "/" ? current === "/" : current === path || current.startsWith(path + "/");
@@ -88,7 +86,6 @@ const isActive = (path: string) =>
     box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
   }
 
-  /* ── Brand ─────────────────────────────────────────────────── */
   .nav__brand {
     display: flex;
     align-items: center;
@@ -102,7 +99,7 @@ const isActive = (path: string) =>
     filter: drop-shadow(2px 2px 0 rgba(30, 42, 61, 0.12));
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  /* The world turns when you reach for home */
+  
   .nav__brand:hover .nav__mark {
     transform: rotate(-10deg) scale(1.06);
   }
@@ -111,10 +108,9 @@ const isActive = (path: string) =>
     font-size: 1.8rem;
     line-height: 1;
     color: var(--ink);
-    padding-top: 0.08em; /* optical centring against the globe */
+    padding-top: 0.08em; 
   }
 
-  /* ── Desktop menu ──────────────────────────────────────────── */
   .nav__menu {
     display: flex;
     align-items: center;
@@ -140,7 +136,7 @@ const isActive = (path: string) =>
     padding: 0.45em 0.15em 0.5em 0.95em;
     transition: color 0.18s ease;
   }
-  /* Signature: honey-filled hexagon marker = "this comb cell is yours" */
+  
   .nav__link::after {
     content: "";
     position: absolute;
@@ -167,7 +163,6 @@ const isActive = (path: string) =>
     transform: translate(-2px, -50%) scale(1);
   }
 
-  /* ── CTA pill (matches the hero's chunky honey actions) ────── */
   .nav__cta {
     flex-shrink: 0;
     font-family: var(--font-accent);
@@ -196,7 +191,6 @@ const isActive = (path: string) =>
     box-shadow: 0 0 0 1px var(--navy), 0 0 0 var(--navy);
   }
 
-  /* ── Mobile toggle (hidden on desktop) ─────────────────────── */
   .nav__toggle {
     display: none;
     align-items: center;
@@ -256,7 +250,6 @@ const isActive = (path: string) =>
     transform: translateY(50%) rotate(-45deg);
   }
 
-  /* ── Responsive: collapse into a comb dropdown ─────────────── */
   @media (max-width: 720px) {
     .nav {
       top: var(--space-2);
@@ -305,7 +298,7 @@ const isActive = (path: string) =>
       padding: 0.7em 0.6em;
       border-radius: 10px;
     }
-    /* On mobile the centred marker reads oddly, so use a comb-cell fill instead */
+    
     .nav__link::after {
       display: none;
     }
@@ -361,7 +354,6 @@ const isActive = (path: string) =>
       setOpen(!header.classList.contains("is-open"));
     });
 
-    // Close when a link is tapped, on Escape, or when clicking away.
     header.querySelectorAll(".nav__link").forEach((link) =>
       link.addEventListener("click", () => setOpen(false))
     );
@@ -379,7 +371,7 @@ const isActive = (path: string) =>
         setOpen(false);
       }
     });
-    // Reset to desktop layout cleanly.
+
     const mq = window.matchMedia("(min-width: 721px)");
     mq.addEventListener("change", (e) => {
       if (e.matches) setOpen(false);

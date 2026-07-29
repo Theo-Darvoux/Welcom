@@ -27,7 +27,6 @@ const lp = (t as any).lexiconPage ?? {
 
   <main class="assoc-page">
 
-    <!-- ── Hero ─────────────────────────────────────────── -->
     <section class="hero">
       <HexBg
         radius={46}
@@ -85,7 +84,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── pré-SEI / SEI / WEI ──────────────────────────── -->
     <section class="band band--alt" id="integration">
       <div class="container">
         <div class="prose-header">
@@ -145,7 +143,6 @@ const lp = (t as any).lexiconPage ?? {
 
         </div>
 
-        <!-- Photo strip : pré-SEI + WEI color run -->
         <div class="photo-pair">
           <figure class="photo-card photo-card--tall zoomable" tabindex="0"
             data-caption={a.photoPreSeiCaption}
@@ -162,7 +159,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Les Campagnes ─────────────────────────────────── -->
     <section class="band" id="campagnes">
       <div class="container">
         <div class="prose-header">
@@ -214,7 +210,6 @@ const lp = (t as any).lexiconPage ?? {
 
         </div>
 
-        <!-- Photo vote / bulletins -->
         <div class="photo-solo">
           <figure class="photo-card photo-card--wide zoomable" tabindex="0"
             data-caption={a.photoVoteCaption}
@@ -226,7 +221,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--navy)" />
     </section>
 
-    <!-- ── Club B ─────────────────────────────────────────── -->
     <section class="band band--dark" id="club-b">
       <div class="container">
         <div class="club-b-layout">
@@ -265,7 +259,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Soirées à thème ──────────────────────────────── -->
     <section class="band band--alt" id="soirees">
       <div class="container">
         <div class="prose-header">
@@ -274,7 +267,6 @@ const lp = (t as any).lexiconPage ?? {
           <p class="lede"><RichText text={a.soireesLede} /></p>
         </div>
 
-        <!-- ── Feature Showcase: Winterfest ── -->
         <div class="soirees-hero">
           <div class="soirees-hero__content">
             <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.winterfestEyebrow}</p>
@@ -289,7 +281,6 @@ const lp = (t as any).lexiconPage ?? {
           </figure>
         </div>
 
-        <!-- ── Grid of Major Theme Events ── -->
         <div class="soirees-grid">
           <div class="soiree-card">
             <p class="soiree-card__eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span> {a.parrainageTag}</p>
@@ -323,7 +314,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Formations ────────────────────────────────────── -->
     <section class="band" id="formations">
       <div class="container">
         <div class="prose-header">
@@ -388,7 +378,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── ASINT ──────────────────────────────────────────── -->
     <section class="band band--asint" id="asint">
       <div class="container">
         <div class="asint-layout">
@@ -436,7 +425,6 @@ const lp = (t as any).lexiconPage ?? {
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Lexicon Callout Band (Unboxed Layout) ────────────────── -->
     <section class="band band--lexicon-cta">
       <div class="container lexicon-cta__inner">
         <div class="lexicon-cta__text">
@@ -465,7 +453,7 @@ const lp = (t as any).lexiconPage ?? {
 </Base>
 
 <style>
-  /* ── Layout utilities ────────────────────────────── */
+  
   .container {
     max-width: var(--container);
     margin-inline: auto;
@@ -536,7 +524,6 @@ const lp = (t as any).lexiconPage ?? {
     max-width: 85ch;
   }
 
-  /* ── Hero ──────────────────────────────────────────── */
   .hero {
     position: relative;
     overflow: hidden;
@@ -682,7 +669,6 @@ const lp = (t as any).lexiconPage ?? {
     color: var(--honey);
   }
 
-  /* ── Timeline (pré-SEI / SEI / WEI) ──────────────── */
   .timeline {
     display: flex;
     flex-direction: column;
@@ -757,7 +743,6 @@ const lp = (t as any).lexiconPage ?? {
     max-width: 65ch;
   }
 
-  /* ── Photo components ─────────────────────────────── */
   .photo-pair {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
@@ -804,7 +789,6 @@ const lp = (t as any).lexiconPage ?? {
     margin-top: var(--space-7);
   }
 
-  /* ── Campaign Cards ─────────────────────────────────── */
   .campaign-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -886,7 +870,6 @@ const lp = (t as any).lexiconPage ?? {
     flex-shrink: 0;
   }
 
-  /* ── Club B Section ─────────────────────────────────── */
   .club-b-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -943,7 +926,6 @@ const lp = (t as any).lexiconPage ?? {
     cursor: zoom-in;
   }
 
-  /* ── Soirées Hero & Grid ────────────────────────────── */
   .soirees-hero {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -1035,7 +1017,6 @@ const lp = (t as any).lexiconPage ?? {
     color: var(--navy-soft);
   }
 
-  /* ── Formations Section ────────────────────────────── */
   .formations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1123,7 +1104,6 @@ const lp = (t as any).lexiconPage ?? {
     text-decoration: underline;
   }
 
-  /* ── ASINT Section ──────────────────────────────────── */
   .asint-layout {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -1207,7 +1187,6 @@ const lp = (t as any).lexiconPage ?? {
     cursor: zoom-in;
   }
 
-  /* ── Lexicon Callout (Unboxed, Clean Band) ────────────── */
   .band--lexicon-cta {
     background: var(--cream-deep);
     padding: var(--space-8) 0 var(--space-9);
@@ -1242,7 +1221,6 @@ const lp = (t as any).lexiconPage ?? {
     }
   }
 
-  /* ── Responsive adjustments ──────────────────────────── */
   @media (max-width: 900px) {
     .photo-pair,
     .club-b-layout,

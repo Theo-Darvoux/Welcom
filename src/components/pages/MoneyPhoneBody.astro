@@ -25,7 +25,7 @@ const operatorLogos = [
   <SiteHeader />
 
   <main class="money-page">
-    <!-- ── Hero ─────────────────────────────────────────── -->
+    
     <section class="hero-band">
       <HexBg
         radius={56}
@@ -45,7 +45,6 @@ const operatorLogos = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Roadmap Timeline ────────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose-header">
@@ -85,7 +84,6 @@ const operatorLogos = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 1: Mobile Operators & SIM Cards ────────── -->
     <section class="band" id="step-phone">
       <div class="container">
         <div class="prose-header">
@@ -140,7 +138,6 @@ const operatorLogos = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Step 2: Bank Account (Société Générale) ─────── -->
     <section class="band band--alt" id="step-bank">
       <div class="container">
         <div class="prose-header">
@@ -187,7 +184,6 @@ const operatorLogos = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 3: Understanding the RIB & Payment Methods ─ -->
     <section class="band" id="step-rib">
       <div class="container">
         <div class="prose-header">
@@ -209,7 +205,6 @@ const operatorLogos = [
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Step 4: Smart Budgeting & Student Perks ─────── -->
     <section class="band band--alt" id="step-budget">
       <div class="container">
         <div class="prose-header">
@@ -231,7 +226,6 @@ const operatorLogos = [
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Support & Office Hours ────────────────────────── -->
     <section class="band">
       <div class="container">
         <div class="prose-header support-box">
@@ -256,7 +250,7 @@ const operatorLogos = [
 </Base>
 
 <style>
-  /* ── Shared Layout ──────────────────────────────────── */
+  
   .money-page {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -268,7 +262,6 @@ const operatorLogos = [
   .prose-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.75rem); color: var(--ink); margin-bottom: var(--space-3); line-height: 1.15; }
   .prose-header .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
 
-  /* ── Eyebrow ────────────────────────────────────────── */
   .eyebrow {
     font-family: var(--font-accent);
     font-size: 0.8125rem;
@@ -289,7 +282,6 @@ const operatorLogos = [
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
-  /* ── Hero ───────────────────────────────────────────── */
   .hero-band {
     background-color: var(--ink);
     color: var(--cream);
@@ -322,7 +314,6 @@ const operatorLogos = [
     color: var(--cream);
   }
 
-  /* ── Roadmap Cards ─────────────────────────────────── */
   .roadmap-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -431,7 +422,6 @@ const operatorLogos = [
     margin: 0;
   }
 
-  /* ── Subsections & Operators Grid ───────────────────── */
   .subsection-heading {
     font-family: var(--font-accent);
     font-size: 1.25rem;
@@ -564,7 +554,6 @@ const operatorLogos = [
     transform: translateY(-2px);
   }
 
-  /* ── Step Lists & Info Cards ────────────────────────── */
   .step-list {
     list-style: none;
     padding: 0;
@@ -613,7 +602,6 @@ const operatorLogos = [
     margin: 0;
   }
 
-  /* ── Partner Card (Société Générale) ─────────────────── */
   .partner-card {
     background: #FFFBEB;
     border: 3px solid var(--navy);
@@ -669,7 +657,6 @@ const operatorLogos = [
     margin: 0;
   }
 
-  /* ── Docs List ──────────────────────────────────────── */
   .docs-list {
     list-style: none;
     padding: 0;
@@ -700,7 +687,6 @@ const operatorLogos = [
     flex-shrink: 0;
   }
 
-  /* ── Tip Boxes ──────────────────────────────────────── */
   .tip-box {
     background: rgba(239, 171, 67, 0.15);
     border: 2.5px dashed var(--honey-deep);
@@ -718,7 +704,6 @@ const operatorLogos = [
     color: var(--navy);
   }
 
-  /* ── RIB Grid & Budget Grid ─────────────────────────── */
   .rib-grid,
   .budget-grid {
     display: grid;
@@ -765,7 +750,6 @@ const operatorLogos = [
     margin: 0;
   }
 
-  /* ── Action Buttons & Support ────────────────────────── */
   .action-wrap {
     margin-top: var(--space-5);
   }
@@ -817,7 +801,6 @@ const operatorLogos = [
     justify-content: center;
   }
 
-  /* ── Responsive adjustments ──────────────────────────── */
   @media (max-width: 640px) {
     .container {
       padding-inline: var(--space-4);

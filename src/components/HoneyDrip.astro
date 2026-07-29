@@ -1,17 +1,17 @@
 ---
-/* Wavy "honey pouring between sections" edge. Place in a relative section; `fill` is the colour it pours into. */
+
 interface Props {
-  /** Colour filling below (or above) the wave, i.e. the adjacent section's color. */
+  
   fill?: string;
-  /** Drip line colour. */
+  
   stroke?: string;
-  /** Drip line thickness. */
+  
   strokeWidth?: number;
-  /** Which edge of the relative parent to attach to. */
+  
   anchor?: "bottom" | "top" | "top-inside";
-  /** Whether to fill above the wave instead of below it. */
+  
   fillAbove?: boolean;
-  /** Extra classes for sizing/overrides. */
+  
   class?: string;
 }
 
@@ -33,9 +33,9 @@ const fillPath = fillAbove ? `${wave} L1440,0 L0,0 Z` : `${wave} L1440,80 L0,80 
 
 <div class:list={["honey-drip", `honey-drip--${anchor}`, className]} aria-hidden="true">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <!-- Fill below/above the wave, blending into the adjacent section -->
+    
     <path fill={fill} stroke="none" d={fillPath}></path>
-    <!-- The drip line itself -->
+    
     <path
       fill="none"
       stroke={stroke}

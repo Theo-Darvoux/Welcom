@@ -18,7 +18,7 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
   <span id="top"></span>
   <SiteHeader />
   <main>
-    <!-- ── Hero: contact header ──────────────────────────────── -->
+    
     <section class="hero">
       <HexBg
         radius={46}
@@ -39,10 +39,9 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Form + Direct contact split ───────────────────────── -->
     <section class="band band--form">
       <div class="container contact-split">
-        <!-- Left: Contact form -->
+        
         <div class="form-card" id="contact-form-card">
           <h2 class="form-card__title">{t.contactPage.formTitle}</h2>
 
@@ -134,13 +133,12 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
           </form>
         </div>
 
-        <!-- Right: Direct contact info -->
         <aside class="direct">
           <div class="direct-card" id="direct-contact-card">
             <h2 class="direct-card__title">{t.contactPage.directTitle}</h2>
 
             <div class="direct-list">
-              <!-- Email -->
+              
               <a
                 class="direct-item"
                 href="mailto:association.welcom@imtbs-tsp.eu"
@@ -171,7 +169,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
                 </div>
               </a>
 
-              <!-- Instagram -->
               <a
                 class="direct-item"
                 href="https://www.instagram.com/welcom_int"
@@ -203,7 +200,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
                 </div>
               </a>
 
-              <!-- Address -->
               <a
                 class="direct-item"
                 href="https://maps.app.goo.gl/BkE7fHqtwXX4cz4FA"
@@ -268,7 +264,7 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
             <h3 class="team-contacts-card__title">{t.contactPage.teamTitle}</h3>
 
             <div class="team-contacts-list">
-              <!-- Manuel Brillantes Tavares -->
+              
               <div class="person-card">
                 <div class="person-card__avatar">
                   <img
@@ -315,7 +311,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
                 </div>
               </div>
 
-              <!-- Javier Caniz -->
               <div class="person-card">
                 <div class="person-card__avatar">
                   <img
@@ -361,12 +356,11 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
             </div>
           </div>
 
-          <!-- School Administration Contacts Card -->
           <div class="team-contacts-card" id="school-admin-contacts-card">
             <h3 class="team-contacts-card__title">{t.contactPage.schoolAdminTitle}</h3>
 
             <div class="team-contacts-list">
-              <!-- Elly Hoek (IMT BS) -->
+              
               <div class="person-card">
                 <div class="person-card__avatar person-card__avatar--initials" aria-hidden="true">
                   <span>EH</span>
@@ -409,7 +403,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
                 </div>
               </div>
 
-              <!-- Isabelle TOUFFET (TSP) -->
               <div class="person-card">
                 <div class="person-card__avatar person-card__avatar--initials" aria-hidden="true">
                   <span>IT</span>
@@ -459,7 +452,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── FAQ accordion ─────────────────────────────────────── -->
     <section class="band band--faq">
       <div class="container faq-section">
         <h2 class="faq-section__title">{t.contactPage.faqTitle}</h2>
@@ -532,7 +524,7 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
 </script>
 
 <style>
-  /* ── Shared ─────────────────────────────────────────────── */
+  
   .container {
     max-width: var(--container);
     margin-inline: auto;
@@ -543,7 +535,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     padding-block: var(--section-y);
   }
 
-  /* ── Hero ──────────────────────────────────────────────── */
   .hero {
     position: relative;
     overflow: hidden;
@@ -612,7 +603,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     }
   }
 
-  /* ── Form + Direct split ───────────────────────────────── */
   .band--form {
     position: relative;
   }
@@ -643,7 +633,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     }
   }
 
-  /* ── Form card ──────────────────────────────────────────── */
   .form-card {
     background: var(--cream);
     border: 4px solid var(--navy);
@@ -760,7 +749,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     margin-top: var(--space-3);
   }
 
-  /* ── Buttons (same as home) ─────────────────────────────── */
   .btn {
     position: relative;
     display: inline-flex;
@@ -801,7 +789,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
       0px 0px 0 var(--navy);
   }
 
-  /* ── Direct contact cards ───────────────────────────────── */
   .direct-card {
     background: var(--cream);
     border: 4px solid var(--navy);
@@ -927,7 +914,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     height: 20px;
   }
 
-  /* ── Team contacts card ─────────────────────────────────── */
   .team-contacts-card {
     background: var(--cream);
     border: 4px solid var(--navy);
@@ -1051,7 +1037,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     flex-shrink: 0;
   }
 
-  /* ── FAQ section ────────────────────────────────────────── */
   .band--faq {
     position: relative;
     background-color: var(--cream-deep);
@@ -1162,7 +1147,6 @@ const topicOptions = Object.entries(t.contactPage.formTopicOptions);
     margin: 0;
   }
 
-  /* ── Reduced motion ─────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .hero__bee,
     .faq-item__hex,

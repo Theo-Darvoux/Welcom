@@ -1,6 +1,5 @@
 import type { LocaleTranslation } from "./en";
 
-/** Complete German translation of the canonical English dictionary. */
 export const de: LocaleTranslation = {
   meta: {
     guidesAssociative: {

@@ -5,7 +5,6 @@ import { useTranslations } from "../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Control labels kept local rather than in the global i18n dictionary.
 const lightboxTranslations = {
   en: { zoomIn: "Zoom in", zoomOut: "Zoom out", reset: "Reset zoom" },
   fr: { zoomIn: "Zoomer", zoomOut: "Dézoomer", reset: "Réinitialiser le zoom" },
@@ -20,32 +19,29 @@ const lightboxTranslations = {
 };
 
 const keys = lightboxTranslations[lang] || lightboxTranslations.en;
-const closeText = t.nav.closeMenu; // Reusing "Close menu"
+const closeText = t.nav.closeMenu;
 ---
 
 <div id="image-lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="lightbox__backdrop" data-close-lightbox></div>
   
   <div class="lightbox__container">
-    <!-- Close button -->
+    
     <button class="lightbox__close-btn" aria-label={closeText} data-close-lightbox>
       <svg class="lightbox__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
-    
-    <!-- Image frame -->
+
     <div class="lightbox__frame">
       <div class="lightbox__view-wrapper" id="lightbox-wrapper">
         <img id="lightbox-img" class="lightbox__image" src="" alt="" draggable="false" />
       </div>
     </div>
-    
-    <!-- Caption below -->
+
     <div id="lightbox-caption" class="lightbox__caption"></div>
-    
-    <!-- Zoom Control Toolbar -->
+
     <div class="lightbox__toolbar">
       <button class="lightbox__tool-btn" id="lightbox-zoom-out" aria-label={keys.zoomOut}>
         <svg class="lightbox__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -102,8 +98,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     let wasDragging = false;
     let startX = 0;
     let startY = 0;
-    
-    // Pinch / zoom state
+
     let isPinching = false;
     let initialTouchDist = 0;
     let initialScale = 1;
@@ -112,8 +107,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     let initialTranslateX = 0;
     let initialTranslateY = 0;
 
-    // Scroll lock — overflow:hidden on both html+body is enough to block scroll
-    // without shifting the body (which would displace the sticky navbar).
     function lockScroll() {
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
@@ -133,9 +126,8 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       return (clone.textContent || '').trim();
     }
 
-    // Retrieve caption text based on target element's markup container
     function getCaption(el: HTMLElement): string {
-      // Handle figure elements with data-caption attribute
+
       if (el.tagName === 'FIGURE' && el.hasAttribute('data-caption')) {
         return el.getAttribute('data-caption') || '';
       }
@@ -182,11 +174,10 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
 
     function openLightbox(el: HTMLElement) {
       if (!lightbox || !lightboxImg || !lightboxCaption) return;
-      
-      // Handle figure elements with background-image
+
       if (el.tagName === 'FIGURE') {
         const bgImage = el.style.backgroundImage;
-        // Extract URL from background-image: url('...')
+
         const match = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
         if (match && match[1]) {
           lightboxImg.src = match[1];
@@ -195,7 +186,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
         }
         lightboxImg.alt = getCaption(el);
       } else {
-        // Handle regular img elements
+
         const img = el as HTMLImageElement;
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
@@ -203,12 +194,11 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       
       lightboxCaption.textContent = getCaption(el);
       
-      resetZoom(false); // Reset coordinates without smooth transition for immediate setup
+      resetZoom(false);
 
       lightbox.setAttribute('aria-hidden', 'false');
-      lockScroll(); // Stop background scrolling (works on iOS Safari too)
+      lockScroll();
 
-      // Add smooth transition class shortly after opening so setup is instant
       setTimeout(() => {
         if (lightboxImg) lightboxImg.classList.add('lightbox__image--smooth');
       }, 50);
@@ -220,14 +210,12 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       unlockScroll();
     }
 
-    // Set interactive hover states and click events on source photos
     function setupTriggers() {
       selectors.forEach(selector => {
         document.querySelectorAll(selector).forEach(element => {
           const img = element as HTMLElement;
           img.style.cursor = 'zoom-in';
-          
-          // Add click trigger
+
           img.addEventListener('click', (e) => {
             e.preventDefault();
             openLightbox(img);
@@ -238,12 +226,10 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
 
     setupTriggers();
 
-    // Bind close handlers
     closeElements.forEach(el => {
       el.addEventListener('click', closeLightbox);
     });
 
-    // Close lightbox on click outside the image / controls
     lightbox.addEventListener('click', (e) => {
       if (wasDragging) {
         wasDragging = false;
@@ -259,14 +245,12 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       }
     });
 
-    // Escape key closes lightbox
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
         closeLightbox();
       }
     });
 
-    // --- BTN CONTROLS ---
     zoomInBtn.addEventListener('click', () => {
       if (!lightboxImg) return;
       lightboxImg.classList.add('lightbox__image--smooth');
@@ -289,7 +273,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       resetZoom(true);
     });
 
-    // --- MOUSE WHEEL ZOOM ---
     wrapper.addEventListener('wheel', (e) => {
       e.preventDefault();
       if (!lightboxImg) return;
@@ -306,7 +289,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       const factor = delta > 0 ? 1.25 : 1 / 1.25;
       const newScale = Math.min(Math.max(scale * factor, minScale), maxScale);
 
-      // Zoom centered on the cursor
       translateX = mouseX - (mouseX - translateX) * (newScale / scale);
       translateY = mouseY - (mouseY - translateY) * (newScale / scale);
 
@@ -319,9 +301,8 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       updateTransform();
     }, { passive: false });
 
-    // --- MOUSE DRAG TO PAN ---
     wrapper.addEventListener('mousedown', (e) => {
-      if (e.button !== 0 || scale === 1) return; // Only left click and when zoomed
+      if (e.button !== 0 || scale === 1) return;
       e.preventDefault();
       
       if (!lightboxImg) return;
@@ -344,7 +325,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       isDragging = false;
     });
 
-    // --- TOUCH MULTI-GESTURE (PINCH & PAN) ---
     wrapper.addEventListener('touchstart', (e) => {
       if (!lightboxImg) return;
       lightboxImg.classList.remove('lightbox__image--smooth');
@@ -380,7 +360,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
         translateY = e.touches[0].clientY - startY;
         updateTransform();
       } else if (isPinching && e.touches.length === 2) {
-        e.preventDefault(); // Prevent native zoom/scroll
+        e.preventDefault();
         wasDragging = true;
         
         const currentDist = Math.hypot(
@@ -419,14 +399,12 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       if (e.touches.length < 2) {
         isPinching = false;
       }
-      
-      // Auto-snap back to default scale if user pinched smaller than scale 1
+
       if (scale < 1.05) {
         resetZoom(true);
       }
     });
 
-    // --- DOUBLE CLICK / TAP TO QUICK-ZOOM ---
     let lastTap = 0;
     wrapper.addEventListener('click', (e) => {
       const now = Date.now();
@@ -440,7 +418,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
         if (scale > 1.5) {
           resetZoom(true);
         } else {
-          // Zoom in directly to 2.5x at click coordinates
+
           const rect = wrapper.getBoundingClientRect();
           const originX = rect.left + rect.width / 2;
           const originY = rect.top + rect.height / 2;
@@ -457,7 +435,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     });
   }
 
-  // Handle standard loading and Astro View Transitions
   document.addEventListener('DOMContentLoaded', initLightbox);
   document.addEventListener('astro:after-swap', initLightbox);
 
@@ -468,7 +445,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     const lightboxCaption = document.getElementById('lightbox-caption');
     if (!lightboxImg || !lightboxCaption) return;
 
-    // Fix: Type 'e' as a standard Event, then cast it inside the function
     window.addEventListener('open-lightbox', (e: Event) => {
       const customEvent = e as CustomEvent<{ src: string; caption: string }>;
       const { src, caption } = customEvent.detail;
@@ -477,7 +453,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
       lightboxImg.alt = caption;
       lightboxCaption.textContent = caption;
 
-      // Reset zoom state
       lightboxImg.classList.remove('lightbox__image--smooth');
       lightboxImg.style.transform = 'translate(0px, 0px) scale(1)';
       const zoomVal = document.getElementById('lightbox-zoom-val');
@@ -498,9 +473,7 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
 </script>
 
 <style>
-  /* Wrapper: visibility and pointer-events only — no opacity transition here.
-     Transitions are on the children so the backdrop blur is never muted by a
-     parent opacity, and pointer-events are released the moment the overlay closes. */
+  
   .lightbox {
     position: fixed;
     inset: 0;
@@ -594,7 +567,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Close button */
   .lightbox__close-btn {
     position: absolute;
     top: var(--space-5);
@@ -635,7 +607,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     pointer-events: none;
   }
 
-  /* Caption */
   .lightbox__caption {
     font-family: var(--font-accent);
     font-size: 1.2rem;
@@ -649,7 +620,6 @@ const closeText = t.nav.closeMenu; // Reusing "Close menu"
     max-width: 80%;
   }
 
-  /* Toolbar */
   .lightbox__toolbar {
     display: flex;
     align-items: center;

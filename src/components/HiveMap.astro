@@ -1,5 +1,4 @@
 ---
-/* The 8 guide categories as a honeycomb grid on desktop, a card list on mobile. */
 
 import HiveIcon from "./HiveIcon.astro";
 import { getLangFromUrl, localizedPath } from "../i18n/utils";
@@ -8,7 +7,6 @@ import { useTranslations } from "../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Layout-only data; title + description come from the dictionary by id.
 const categories = [
   { id: "getting-here", color: "var(--hive-blue)", href: "/guides/getting-here" },
   { id: "housing", color: "var(--hive-yellow)", href: "/guides/housing" },
@@ -23,7 +21,7 @@ const categories = [
 
 <div class="hive-container" id="hive-map">
   <h2 class="hive-map-title">{t.hive.title}</h2>
-  <!-- Desktop Honeycomb Grid -->
+  
   <div class="hive-grid" aria-label={t.hive.ariaGrid}>
     {
       categories.map((cat, idx) => {
@@ -37,7 +35,7 @@ const categories = [
             style={`animation-delay: ${idx * 0.15}s; --cell-bg: ${cat.color};`}
           >
             <svg class="hive-cell__bg" viewBox="0 0 120 104" preserveAspectRatio="none" aria-hidden="true">
-              <!-- Main solid/thick wobbly border -->
+              
               <path class="hive-cell__bg-main" d="
                 M 30,3 
                 Q 60,1 90,3 
@@ -47,7 +45,7 @@ const categories = [
                 Q 16,77 3,52 
                 Q 16,27 30,3 Z
               " />
-              <!-- Sketch outline overlay -->
+              
               <path class="hive-cell__bg-sketch" d="
                 M 29,4 
                 Q 59,2 91,4 
@@ -69,7 +67,6 @@ const categories = [
     }
   </div>
 
-  <!-- Mobile List (degrades gracefully) -->
   <div class="hive-list" aria-label={t.hive.ariaList}>
     {
       categories.map((cat) => {
@@ -115,25 +112,21 @@ const categories = [
     line-height: 1;
     padding-block: var(--space-2);
     transform: rotate(-3deg);
-    
-    /* Clean outline that doesn't eat into the fill */
+
     -webkit-text-stroke: 8px var(--navy);
     paint-order: stroke fill;
-    
-    /* Offset solid drop shadow */
+
     text-shadow: 6px 6px 0 var(--navy);
   }
 
-  /* ── Desktop Honeycomb ─────────────────────────────────────── */
   .hive-grid {
-    display: none; /* hidden on mobile */
+    display: none; 
     position: relative;
     --hex-w: 185px;
     --hex-h: 162px;
     --hex-gap-x: 10px;
     --hex-gap-y: 14px;
-    
-    /* Sized for the 3-2-3 hex structure. */
+
     width: calc(2.5 * var(--hex-w) + 2 * var(--hex-gap-x));
     height: calc(3 * var(--hex-h) + 2 * var(--hex-gap-y));
     margin: 0 auto;
@@ -145,7 +138,6 @@ const categories = [
     }
   }
 
-  /* Cell Positioning logic (3-2-3 Layout) */
   .hive-cell {
     position: absolute;
     width: var(--hex-w);
@@ -163,8 +155,6 @@ const categories = [
     animation: sway 6s ease-in-out infinite alternate;
   }
 
-  /* Specific column offsets */
-  /* Column 1 (Left): cells 0, 2, 4 */
   .hive-cell--getting-here {
     left: 0;
     top: 0;
@@ -181,7 +171,6 @@ const categories = [
     animation-delay: 0.8s;
   }
 
-  /* Column 2 (Middle, staggered down by 50%): cells 1, 3 */
   .hive-cell--housing {
     left: calc(0.75 * var(--hex-w) + var(--hex-gap-x));
     top: calc(0.5 * var(--hex-h) + 0.5 * var(--hex-gap-y));
@@ -193,7 +182,6 @@ const categories = [
     animation-delay: 0.6s;
   }
 
-  /* Column 3 (Right): cells 5, 6, 7 */
   .hive-cell--daily-life {
     left: calc(1.5 * var(--hex-w) + 2 * var(--hex-gap-x));
     top: 0;
@@ -211,7 +199,6 @@ const categories = [
     animation-delay: 1.1s;
   }
 
-  /* SVG hexagon rendering */
   .hive-cell__bg {
     position: absolute;
     top: 0;
@@ -241,7 +228,6 @@ const categories = [
     transition: stroke 0.25s ease;
   }
 
-  /* Cell Content overlay */
   .hive-cell__content {
     position: relative;
     z-index: 2;
@@ -252,7 +238,7 @@ const categories = [
     width: 100%;
     height: 100%;
     padding-inline: var(--space-4);
-    padding-bottom: 22px; /* Prevent text from falling into the bottom tapered zone */
+    padding-bottom: 22px; 
     padding-top: 10px;
     text-align: center;
     box-sizing: border-box;
@@ -292,7 +278,6 @@ const categories = [
       transform 0.2s ease;
   }
 
-  /* Interactive States (Comic-style Solid Shadow Lift-off) */
   .hive-cell:hover,
   .hive-cell:focus-visible {
     z-index: 10;
@@ -328,7 +313,6 @@ const categories = [
     transform: translateY(0);
   }
 
-  /* Accessible outline matching the hex shape */
   .hive-cell:focus-visible {
     outline: none;
   }
@@ -337,7 +321,6 @@ const categories = [
     stroke-width: 6;
   }
 
-  /* Swaying Honeycomb Animation */
   @keyframes sway {
     0% {
       transform: translateY(0) rotate(0deg);
@@ -350,7 +333,6 @@ const categories = [
     }
   }
 
-  /* ── Mobile List (Tactile comic-style cards) ───────────────── */
   .hive-list {
     display: flex;
     flex-direction: column;
@@ -429,7 +411,6 @@ const categories = [
     transition: transform 0.2s ease-out;
   }
 
-  /* Mobile Interactive States */
   .hive-list-item:hover,
   .hive-list-item:focus-visible {
     transform: translate(-3px, -3px);
@@ -448,7 +429,6 @@ const categories = [
     transform: translateX(4px);
   }
 
-  /* ── Reduced Motion ────────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .hive-cell {
       animation: none !important;

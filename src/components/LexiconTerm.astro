@@ -8,7 +8,6 @@ interface Props {
 
 const { term } = Astro.props;
 
-// Definitions live in the i18n dictionary, keyed by the active locale.
 const lang = getLangFromUrl(Astro.url);
 const lexicon = useTranslations(lang).lexicon as Record<string, string>;
 const definition = lexicon[term] ?? lexicon.fallback;
@@ -18,21 +17,14 @@ const definition = lexicon[term] ?? lexicon.fallback;
   function initLexicon() {
     const terms = document.querySelectorAll('.lexicon-term');
 
-    // Keep an open popover within the viewport: shift it horizontally so it
-    // never clips off-screen on narrow phones, and nudge the arrow the other
-    // way so it still points at the term.
     function positionPopover(term: Element) {
       const popover = term.querySelector('.lexicon-popover') as HTMLElement | null;
       if (!popover) return;
 
-      // Derive the shift from the term's on-screen position and the popover's
-      // untransformed layout width. We must NOT read the popover's own
-      // getBoundingClientRect here: `transform` is transitioned, so it would
-      // report a mid-animation position and the shift would drift on reopen.
       const margin = 12;
       const termRect = term.getBoundingClientRect();
       const popWidth = popover.offsetWidth;
-      // When un-shifted, the popover is centred on the term.
+
       const center = termRect.left + termRect.width / 2;
       const naturalLeft = center - popWidth / 2;
       const naturalRight = center + popWidth / 2;
@@ -47,13 +39,12 @@ const definition = lexicon[term] ?? lexicon.fallback;
     }
 
     terms.forEach((term) => {
-      // Toggle tooltip on click/tap
+
       term.addEventListener('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
         const isActive = term.classList.contains('is-active');
 
-        // Close all other tooltips first
         document.querySelectorAll('.lexicon-term.is-active').forEach((other) => {
           if (other !== term) {
             other.classList.remove('is-active');
@@ -71,11 +62,9 @@ const definition = lexicon[term] ?? lexicon.fallback;
         }
       });
 
-      // Desktop hover/focus also benefits from staying on-screen.
       term.addEventListener('mouseenter', () => positionPopover(term));
       term.addEventListener('focus', () => positionPopover(term));
 
-      // Handle keyboard accessibility
       term.addEventListener('keydown', (e: any) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -88,7 +77,6 @@ const definition = lexicon[term] ?? lexicon.fallback;
       });
     });
 
-    // Close tooltips when clicking anywhere else
     document.addEventListener('click', () => {
       document.querySelectorAll('.lexicon-term.is-active').forEach((term) => {
         term.classList.remove('is-active');
@@ -96,20 +84,16 @@ const definition = lexicon[term] ?? lexicon.fallback;
       });
     });
 
-    // The shift is viewport-relative, so recompute it for any open popover
-    // whenever the viewport changes (resize / orientation / zoom).
     window.addEventListener('resize', () => {
       document.querySelectorAll('.lexicon-term.is-active').forEach(positionPopover);
     });
   }
 
-  // Run on page load
   initLexicon();
-  
-  // Re-run on View Transitions navigation if present
+
   document.addEventListener('astro:after-swap', initLexicon);
 </script><style>
-  /* Glossary term: inherits surrounding colour, cued only by a dotted underline (--lex-cue, tuned per surface below). */
+  
   .lexicon-term {
     --lex-cue: var(--honey-deep);
 
@@ -139,17 +123,14 @@ const definition = lexicon[term] ?? lexicon.fallback;
     text-underline-offset: 0.14em;
   }
 
-  /* Honey hero: faint ink dots read cleanly on the honey field. */
   :global(.hero) .lexicon-term {
     --lex-cue: color-mix(in srgb, var(--ink) 50%, transparent);
   }
 
-  /* Dark footer: honey dots against the dark ground. */
   :global(.site-footer) .lexicon-term {
     --lex-cue: var(--honey);
   }
 
-  /* Comic speech bubble container */
   .lexicon-popover {
     --lex-shift: 0px;
     position: absolute;
@@ -160,7 +141,7 @@ const definition = lexicon[term] ?? lexicon.fallback;
     padding: var(--space-3) var(--space-4);
     font-size: 0.9rem;
     line-height: 1.45;
-    /* Highest layer: must sit above everything, incl. the image lightbox (1002) */
+    
     z-index: 2000;
     opacity: 0;
     visibility: hidden;
@@ -172,8 +153,7 @@ const definition = lexicon[term] ?? lexicon.fallback;
     text-align: left;
     font-family: var(--font-body);
     font-weight: 600;
-    /* Reset any text-stroke or case transforms inherited from surfaces like
-       the contact band or polaroid captions, so the popover text reads clean. */
+    
     -webkit-text-stroke: 0;
     text-shadow: none;
     paint-order: normal;
@@ -181,7 +161,6 @@ const definition = lexicon[term] ?? lexicon.fallback;
     letter-spacing: normal;
   }
 
-  /* Separate background card layer to control border stacking */
   .lexicon-popover__card {
     position: absolute;
     top: 0;
@@ -215,24 +194,22 @@ const definition = lexicon[term] ?? lexicon.fallback;
     color: var(--navy);
   }
 
-  /* Hover bridge to keep popover open when mouse moves across the gap */
   .lexicon-popover::before {
     content: "";
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: 35px; /* covers the gap between the term and the popover */
+    height: 35px; 
     background: transparent;
     z-index: 0;
   }
 
-  /* Speech bubble pointer arrow with navy borders */
   .lexicon-popover::after {
     content: "";
     position: absolute;
     top: 100%;
-    /* Counter the popover's shift so the arrow stays under the term. */
+    
     left: calc(50% - var(--lex-shift));
     transform: translateX(-50%) translateY(-4px) rotate(45deg);
     width: 16px;
@@ -240,10 +217,9 @@ const definition = lexicon[term] ?? lexicon.fallback;
     background: var(--cream);
     border-bottom: 3px solid var(--navy);
     border-right: 3px solid var(--navy);
-    z-index: 2; /* overlays the card's border to create an open connector */
+    z-index: 2; 
   }
 
-  /* Interactive States */
   .lexicon-term:hover .lexicon-popover,
   .lexicon-term:focus-visible .lexicon-popover,
   .lexicon-term.is-active .lexicon-popover {

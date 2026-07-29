@@ -10,7 +10,6 @@ import { localizedPath } from "../../i18n/utils";
 
 type PageSlug = "guides" | "events" | "contact" | "foyer" | "wip" | "legal" | "lexicon";
 
-// Each page per non-default locale: /fr/guides, /es/contact, …
 export function getStaticPaths() {
   const pages: PageSlug[] = ["guides", "events", "contact", "foyer", "wip", "legal", "lexicon"];
   return prefixedLocales.flatMap((lang) =>

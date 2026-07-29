@@ -18,7 +18,7 @@ const a = t.adminAid;
   <SiteHeader />
 
   <main class="admin-page">
-    <!-- ── Hero ─────────────────────────────────────────── -->
+    
     <section class="hero-band">
       <HexBg
         radius={56}
@@ -38,7 +38,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Roadmap Timeline ────────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose-header">
@@ -78,7 +77,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 1: CVEC & School Certificate ────────────── -->
     <section class="band" id="step-cvec">
       <div class="container">
         <div class="prose-header">
@@ -109,7 +107,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Step 2: Bank Account (Société Générale) ───────── -->
     <section class="band band--alt" id="step-bank">
       <div class="container">
         <div class="prose-header">
@@ -156,7 +153,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 3: Visa Validation (ANEF) ───────────────── -->
     <section class="band" id="step-visa">
       <div class="container">
         <div class="prose-header">
@@ -178,7 +174,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Step 4: Healthcare (Social Security & Mutuelle) ── -->
     <section class="band band--alt" id="step-health">
       <div class="container">
         <div class="prose-header">
@@ -213,7 +208,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── Step 5: Housing Aid (CAF) ────────────────────── -->
     <section class="band" id="step-caf">
       <div class="container">
         <div class="prose-header">
@@ -237,7 +231,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream)" />
     </section>
 
-    <!-- ── School Administration Contacts ───────────────── -->
     <section class="band" id="school-admin">
       <div class="container">
         <div class="prose-header">
@@ -247,7 +240,7 @@ const a = t.adminAid;
         </div>
 
         <div class="admin-contacts-grid">
-          <!-- Elly Hoek (IMT BS) -->
+          
           <div class="admin-card">
             <h3 class="admin-card__name">Elly Hoek</h3>
             <p class="admin-card__role">{a.ellyRole}</p>
@@ -271,7 +264,6 @@ const a = t.adminAid;
             </div>
           </div>
 
-          <!-- Isabelle TOUFFET (TSP) -->
           <div class="admin-card">
             <h3 class="admin-card__name">Isabelle TOUFFET</h3>
             <p class="admin-card__role">{a.isabelleRole}</p>
@@ -300,7 +292,6 @@ const a = t.adminAid;
       <HoneyDrip fill="var(--cream-deep)" />
     </section>
 
-    <!-- ── Support & Office Hours ────────────────────────── -->
     <section class="band band--alt">
       <div class="container">
         <div class="prose-header support-box">
@@ -325,7 +316,7 @@ const a = t.adminAid;
 </Base>
 
 <style>
-  /* ── Shared Layout ──────────────────────────────────── */
+  
   .admin-page {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -338,7 +329,6 @@ const a = t.adminAid;
   .prose-header .lede { font-size: 1.125rem; line-height: 1.6; color: var(--navy); margin-bottom: var(--space-6); max-width: 65ch; }
   .body-text { font-size: 1.0625rem; line-height: 1.7; color: var(--navy); margin-bottom: var(--space-5); }
 
-  /* ── Eyebrow ────────────────────────────────────────── */
   .eyebrow {
     font-family: var(--font-accent);
     font-size: 0.8125rem;
@@ -359,7 +349,6 @@ const a = t.adminAid;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
-  /* ── Hero ───────────────────────────────────────────── */
   .hero-band {
     background-color: var(--ink);
     color: var(--cream);
@@ -392,7 +381,6 @@ const a = t.adminAid;
     color: var(--cream);
   }
 
-  /* ── Roadmap Cards ─────────────────────────────────── */
   .roadmap-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -503,7 +491,6 @@ const a = t.adminAid;
     max-width: none !important;
   }
 
-  /* ── Subsections & Lists ────────────────────────────── */
   .subsection-heading {
     font-family: var(--font-accent);
     font-size: 1.25rem;
@@ -562,7 +549,6 @@ const a = t.adminAid;
     max-width: none !important;
   }
 
-  /* ── Partner Card (Société Générale) ─────────────────── */
   .partner-card {
     background: #FFFBEB;
     border: 3px solid var(--navy);
@@ -619,7 +605,6 @@ const a = t.adminAid;
     max-width: none !important;
   }
 
-  /* ── Docs List ──────────────────────────────────────── */
   .docs-list {
     list-style: none;
     padding: 0;
@@ -650,7 +635,6 @@ const a = t.adminAid;
     flex-shrink: 0;
   }
 
-  /* ── Tip Boxes ────────────────────────────── */
   .tip-box {
     background: rgba(239, 171, 67, 0.15);
     border: 2.5px dashed var(--honey-deep);
@@ -669,7 +653,6 @@ const a = t.adminAid;
     max-width: none !important;
   }
 
-  /* ── Health Grid ───────────────────────────────────── */
   .health-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -718,7 +701,6 @@ const a = t.adminAid;
     max-width: none !important;
   }
 
-  /* ── Action Buttons ─────────────────────────────────── */
   .action-wrap {
     margin-top: var(--space-5);
   }
@@ -770,7 +752,6 @@ const a = t.adminAid;
     justify-content: center;
   }
 
-  /* ── School Administration Contacts Grid ─────────────── */
   .admin-contacts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -854,7 +835,6 @@ const a = t.adminAid;
     flex-shrink: 0;
   }
 
-  /* ── Mobile & Small Screens Responsiveness ───────────── */
   @media (max-width: 640px) {
     .container {
       padding-inline: var(--space-4);
