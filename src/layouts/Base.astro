@@ -2,22 +2,60 @@
 import "../styles/tokens.css";
 import "../styles/global.css";
 import { localeMeta, locales, defaultLang } from "../i18n/config";
-import { getLangFromUrl } from "../i18n/utils";
+import { getLangFromUrl, stripLocale, localizedPath } from "../i18n/utils";
 import ImageLightbox from "../components/ImageLightbox.astro";
 
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title,
   description = "WELCOM, the hive that helps international students settle in at Télécom SudParis & IMT-BS, Évry campus.",
+  image = "/imgs/logo.webp",
 } = Astro.props;
 
 // Writing direction and BCP-47 tag come from the active locale.
 const lang = getLangFromUrl(Astro.url);
 const { htmlLang, dir } = localeMeta[lang];
+
+// Canonical URL & localized path calculations
+const siteOrigin = Astro.site ? Astro.site.origin : Astro.url.origin;
+const canonicalPath = stripLocale(Astro.url.pathname);
+const currentLocalizedPath = localizedPath(canonicalPath, lang);
+const canonicalUrl = new URL(currentLocalizedPath, siteOrigin).href;
+const ogImageUrl = new URL(image, siteOrigin).href;
+
+// Multi-lingual alternate links (hreflang)
+const alternateLinks = locales.map((l) => ({
+  hreflang: localeMeta[l].htmlLang,
+  href: new URL(localizedPath(canonicalPath, l), siteOrigin).href,
+}));
+
+// x-default hreflang (points to default locale path)
+const xDefaultUrl = new URL(localizedPath(canonicalPath, defaultLang), siteOrigin).href;
+
+// JSON-LD Structured Data for Organization / Educational Association
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Welcom'INT",
+  "alternateName": "WELCOM",
+  "url": siteOrigin,
+  "logo": new URL("/imgs/logo.webp", siteOrigin).href,
+  "description": description,
+  "sameAs": [
+    "https://www.telecom-sudparis.eu/",
+    "https://www.imt-bs.eu/"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Évry-Courcouronnes",
+    "addressCountry": "FR"
+  }
+};
 ---
 
 <!doctype html>
@@ -85,6 +123,34 @@ const { htmlLang, dir } = localeMeta[lang];
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/imgs/bee.svg" />
     <title>{title}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Multi-lingual hreflang links -->
+    {alternateLinks.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Welcom'INT" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={htmlLang} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- JSON-LD Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <slot />

@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  site: "https://welcom-int.fr",
+  integrations: [react(), sitemap()],
   i18n: {
     defaultLocale: "en",
     // Order here = display order in the language selector.
