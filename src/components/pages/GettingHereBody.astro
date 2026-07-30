@@ -36,63 +36,90 @@ const g = t.gettingHere;
     </section>
 
     <section class="band">
-      <div class="container prose">
-        <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.addressEyebrow}</p>
-        <h2>{g.addressH2}</h2>
-        <a
-          class="address-card"
-          href="https://maps.app.goo.gl/RhREJFX3VDkjYMP4A"
-          target="_blank" rel="noopener noreferrer"
-        >
-          <div class="address-card__pin" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <div>
-            <strong class="address-card__name">{g.addressName}</strong>
-            <p class="address-card__line">{g.addressLine}</p>
-          </div>
-          <span class="address-card__maps-badge" aria-label="Open in Google Maps">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </span>
-        </a>
-        <p class="note"><RichText text={g.addressNote} /></p>
-
-        <a
-          class="virtual-tour-card"
-          href="https://www.virtual-tour-360.online/visite-virtuelle/telecom-sudparis/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class="virtual-tour-card__content">
-            <span class="virtual-tour-card__badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                <path d="M2 12h20"></path>
-              </svg>
-              {g.virtualTourBadge ?? "Visite Virtuelle 360°"}
-            </span>
-            <strong class="virtual-tour-card__title">{g.virtualTourTitle ?? "Explorez le campus en 360°"}</strong>
-            <p class="virtual-tour-card__desc">{g.virtualTourDesc ?? "Une immersion complète et interactive à 360° pour visiter toutes les infrastructures du campus."}</p>
-          </div>
-          <span class="virtual-tour-card__cta">
-            {g.virtualTourCta ?? "Lancer la visite"}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </span>
-        </a>
-      </div>
       <div class="container--wide">
+        <div class="location-section-header">
+          <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>{g.addressEyebrow}</p>
+          <h2 class="location-title">{g.addressH2}</h2>
+        </div>
+
+        <div class="campus-cards-grid">
+          <a
+            class="address-card"
+            href="https://maps.app.goo.gl/RhREJFX3VDkjYMP4A"
+            target="_blank" rel="noopener noreferrer"
+          >
+            <div class="address-card__top">
+              <div class="address-card__pin-wrapper">
+                <div class="address-card__pin" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+              </div>
+              <div class="address-card__header-text">
+                <strong class="address-card__name">{g.addressName}</strong>
+              </div>
+            </div>
+
+            <div class="address-card__content">
+              <p class="address-card__line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="address-icon" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                {g.addressLine}
+              </p>
+            </div>
+
+            <div class="address-card__footer">
+              <span class="address-card__cta">
+                <span>Google Maps</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <a
+            class="virtual-tour-card"
+            href="https://www.virtual-tour-360.online/visite-virtuelle/telecom-sudparis/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="virtual-tour-card__top">
+              <div class="virtual-tour-card__icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="tour-icon" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </div>
+              <span class="virtual-tour-card__badge-text">
+                {g.virtualTourBadge ?? "Visite Virtuelle 360°"}
+              </span>
+            </div>
+
+            <div class="virtual-tour-card__content">
+              <strong class="virtual-tour-card__title">{g.virtualTourTitle ?? "Explorez le campus en 360°"}</strong>
+            </div>
+
+            <div class="virtual-tour-card__footer">
+              <span class="virtual-tour-card__cta">
+                {g.virtualTourCta ?? "Lancer la visite"}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+
         <div class="campus-figures">
           <figure class="guide-figure">
             <div class="guide-image-container">
@@ -329,123 +356,273 @@ const g = t.gettingHere;
     .hero__inner { padding-top: calc(var(--nav-h) + clamp(72px, 14vw, 110px)); }
   }
 
-  .address-card {
-    position: relative;
-    display: flex; align-items: flex-start; gap: var(--space-4);
-    margin-top: var(--space-6); padding: var(--space-5);
-    background: var(--cream-deep); border: 3px solid var(--navy);
-    border-radius: var(--radius);
-    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
-                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
-                background 0.15s;
+  /* Location Section Header */
+  .location-section-header {
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+    margin-bottom: var(--space-6);
   }
-  .address-card:hover {
-    transform: translate(-3px,-3px);
-    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
-    background: #fff8ee;
+  .location-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    color: var(--ink);
+    line-height: 1.1;
+    margin-top: var(--space-2);
   }
-  .address-card:active {
-    transform: translate(0,0);
-    box-shadow: 0 0 0 1px var(--navy), 3px 3px 0 var(--navy);
-  }
-  .address-card__maps-badge {
-    margin-left: auto;
-    flex-shrink: 0;
-    align-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #4285F4;
-    color: white;
-    opacity: 0.85;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .address-card:hover .address-card__maps-badge {
-    opacity: 1;
-    transform: scale(1.12);
-  }
-  .address-card__pin { color: var(--honey-deep); flex-shrink: 0; margin-top: 2px; }
-  .address-card__name {
-    font-family: var(--font-accent); font-size: 1.15rem;
-    color: var(--navy); display: block; margin-bottom: var(--space-1);
-  }
-  .address-card__line { font-size: 1rem; color: var(--navy-soft); margin: 0; }
 
+  /* Grid Layout for Cards */
+  .campus-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    max-width: 900px;
+    margin-inline: auto;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Base Shared Card Styles */
+  .address-card,
   .virtual-tour-card {
     position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-5);
-    padding: var(--space-5);
-    background: var(--honey-wash);
+    padding: var(--space-4) var(--space-5);
     border: 3px solid var(--navy);
     border-radius: var(--radius);
-    box-shadow: 0 0 0 1px var(--navy), 5px 5px 0 var(--navy);
+    box-shadow: 0 0 0 1px var(--navy), 4px 4px 0 var(--navy);
     text-decoration: none;
-    transition: transform 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
-                box-shadow 0.2s cubic-bezier(0.175,0.885,0.32,1.25),
-                background 0.15s;
+    cursor: pointer;
+    transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+                box-shadow 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.25),
+                background 0.2s ease;
+    overflow: hidden;
   }
+
+  .address-card:hover,
   .virtual-tour-card:hover {
-    transform: translate(-3px,-3px);
-    box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
-    background: #FFF2D1;
+    transform: translate(-3px, -3px);
+    box-shadow: 0 0 0 1px var(--navy), 7px 7px 0 var(--navy);
   }
-  .virtual-tour-card__content {
+  .address-card:active,
+  .virtual-tour-card:active {
+    transform: translate(1px, 1px);
+    box-shadow: 0 0 0 1px var(--navy), 2px 2px 0 var(--navy);
+  }
+
+  /* Address Card Specifics */
+  .address-card {
+    background: var(--cream-deep);
+    background-image: radial-gradient(var(--line) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+  }
+  .address-card:hover {
+    background-color: #fff9ee;
+  }
+
+  .address-card__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .address-card__pin-wrapper {
+    width: 38px;
+    height: 38px;
+    background: var(--honey);
+    border: 2px solid var(--navy);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0 var(--navy);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25), background 0.2s ease;
+  }
+  .address-card:hover .address-card__pin-wrapper {
+    transform: scale(1.08) rotate(-4deg);
+    background: var(--honey-deep);
+  }
+  .address-card__pin {
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .address-card__pin svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .address-card__header-text {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    flex: 1 1 240px;
+    gap: 2px;
   }
-  .virtual-tour-card__badge {
+
+  .address-card__badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-family: var(--font-accent);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--honey-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--honey-deep);
+    border-radius: 50%;
+  }
+
+  .address-card__name {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+
+  .address-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .address-card__line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.925rem;
+    font-weight: 600;
+    color: var(--navy-soft);
+    line-height: 1.4;
+    margin: 0;
+  }
+  .address-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--honey-deep);
+    flex-shrink: 0;
+  }
+
+  .address-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+  .address-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.45em 1em;
+    background: var(--navy);
+    color: var(--cream);
+    font-family: var(--font-accent);
+    font-size: 0.875rem;
+    border-radius: var(--radius-button);
+    border: 2px solid var(--navy);
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+  .address-card:hover .address-card__cta {
+    background: var(--honey);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  /* Virtual Tour Card Specifics */
+  .virtual-tour-card {
+    background: var(--honey-wash);
+    background-image: radial-gradient(rgba(41, 58, 85, 0.05) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+  }
+  .virtual-tour-card:hover {
+    background-color: #fff1cc;
+  }
+
+  .virtual-tour-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+
+  .virtual-tour-card__icon-wrapper {
+    width: 38px;
+    height: 38px;
+    background: var(--navy);
+    border: 2px solid var(--navy);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: var(--cream);
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.25), background 0.2s ease;
+  }
+  .virtual-tour-card:hover .virtual-tour-card__icon-wrapper {
+    transform: scale(1.08) rotate(4deg);
+    background: var(--honey-deep);
+    color: var(--ink);
+  }
+  .tour-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .virtual-tour-card__badge-text {
+    font-family: var(--font-accent);
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--navy);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
+
+  .virtual-tour-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: var(--space-3);
+  }
+
   .virtual-tour-card__title {
     font-family: var(--font-display);
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     color: var(--ink);
-    line-height: 1.2;
+    line-height: 1.25;
   }
-  .virtual-tour-card__desc {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--navy-soft);
-    margin: 0;
+
+  .virtual-tour-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
   }
+
   .virtual-tour-card__cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: var(--space-2) var(--space-4);
+    gap: 6px;
+    padding: 0.45em 1.05em;
     background: var(--navy);
     color: var(--cream);
     font-family: var(--font-accent);
-    font-size: 0.9rem;
-    font-weight: 700;
-    border-radius: 6px;
-    transition: background 0.15s ease, transform 0.15s ease;
+    font-size: 0.875rem;
+    border-radius: var(--radius-button);
+    border: 2px solid var(--navy);
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     white-space: nowrap;
   }
   .virtual-tour-card:hover .virtual-tour-card__cta {
     background: var(--honey-deep);
     color: var(--ink);
+    transform: translateY(-2px);
   }
 
   .route-block {
@@ -644,6 +821,30 @@ const g = t.gettingHere;
   .guide-image-container:hover {
     transform: translate(-3px,-3px);
     box-shadow: 0 0 0 1px var(--navy), 8px 8px 0 var(--navy);
+  }
+  .image-tag-badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.4em 0.85em;
+    background: rgba(30, 42, 61, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    color: var(--cream);
+    font-family: var(--font-accent);
+    font-size: 0.8rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .guide-image-container:hover .image-tag-badge {
+    transform: scale(1.05);
+    background: var(--navy);
   }
   .guide-image {
     width: 100%;
