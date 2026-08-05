@@ -262,9 +262,12 @@ export const hi: LocaleTranslation = {
     ctaTitle: "अगला आयोजन न चूकें।",
     ctaLede: "हम सभी आयोजन कैंपस कैलेंडर पर प्रकाशित करते हैं। उसे देखें और कुछ भी न चूकें।",
     ctaMinet: "कैंपस कैलेंडर",
+    calLoading: "कार्यक्रम लोड हो रहे हैं...",
+    calError: "कार्यक्रम लोड करने में असमर्थ।",
     calNoEvents: "इस सप्ताह कोई कार्यक्रम नहीं।",
     calPrevWeek: "पिछला सप्ताह",
     calNextWeek: "अगला सप्ताह",
+    calRefresh: "कार्यक्रम रिफ्रेश करें",
   },
   footer: {
     tagline: "हम Télécom SudParis और IMT-BS, Évry में अंतरराष्ट्रीय छात्रों का स्वागत करते हैं।",

@@ -262,9 +262,12 @@ export const ptBR: LocaleTranslation = {
     ctaTitle: "Não perca a próxima.",
     ctaLede: "Publicamos todos os eventos no calendário do campus. Consulte-o e não perca nada.",
     ctaMinet: "Calendário do campus",
+    calLoading: "Carregando eventos...",
+    calError: "Não foi possível carregar os eventos.",
     calNoEvents: "Sem eventos esta semana.",
     calPrevWeek: "Semana anterior",
     calNextWeek: "Próxima semana",
+    calRefresh: "Atualizar eventos",
   },
   footer: {
     tagline: "Acolhendo estudantes internacionais na Télécom SudParis e IMT-BS, Évry.",

@@ -262,9 +262,12 @@ export const zhCN: LocaleTranslation = {
     ctaTitle: "别错过下一场。",
     ctaLede: "我们将所有活动发布在校园日历上。查看日历，一场都不会错过。",
     ctaMinet: "校园日历",
+    calLoading: "正在加载活动...",
+    calError: "无法加载活动。",
     calNoEvents: "本周没有活动。",
     calPrevWeek: "上一周",
     calNextWeek: "下一周",
+    calRefresh: "刷新活动",
   },
   footer: {
     tagline: "我们在 Télécom SudParis 与 IMT-BS（埃夫里）迎接国际学生。",

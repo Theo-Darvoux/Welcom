@@ -7,14 +7,11 @@ import RichText from "../RichText.astro";
 import Footer from "../Footer.astro";
 import { getLangFromUrl, localizedPath } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/ui";
-import { getCalendarEvents } from "../../data/calendarEvents";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const e = t.eventsPage;
-
-const calEvents = await getCalendarEvents();
 
 const yearRound = [
   e.yearRound.bbq,
@@ -233,6 +230,11 @@ const yearRound = [
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>
+            <button class="cal-nav-btn" id="cal-refresh" aria-label={e.calRefresh}>
+              <svg class="cal-refresh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"></path>
+              </svg>
+            </button>
           </div>
           <div class="cal-grid-wrap">
             <div class="cal-grid" id="cal-grid" aria-live="polite" aria-label="Weekly campus events"></div>
@@ -268,15 +270,19 @@ const yearRound = [
     </section>
 
     <Footer />
-    <script is:inline define:vars={{ calEvents, lang, noEventsMsg: e.calNoEvents }}>
+    <script is:inline define:vars={{ lang, noEventsMsg: e.calNoEvents, loadingMsg: e.calLoading, errorMsg: e.calError }}>
       (function () {
         const grid = document.getElementById('cal-grid');
         const rangeEl = document.getElementById('cal-range');
         const prevBtn = document.getElementById('cal-prev');
         const nextBtn = document.getElementById('cal-next');
+        const refreshBtn = document.getElementById('cal-refresh');
         if (!grid || !rangeEl) return;
 
         let weekOffset = 0;
+        const eventsById = new Map();
+        const loadedRanges = [];
+        let activeFetchId = 0;
 
         function getWeekDays(offset) {
           const now = new Date();
@@ -309,74 +315,241 @@ const yearRound = [
           return d.innerHTML;
         }
 
-        function render() {
+        function isRangeLoaded(start, end) {
+          const startTime = start.getTime();
+          const endTime = end.getTime();
+          return loadedRanges.some((r) => startTime >= r.start && endTime <= r.end);
+        }
+
+        async function fetchRange(queryStart, queryEnd) {
+          const currentId = ++activeFetchId;
+          try {
+            const res = await fetch(
+              'https://cal.minet.net/api/events/?size=1000&start_date=' +
+                encodeURIComponent(queryStart.toISOString()) +
+                '&end_date=' +
+                encodeURIComponent(queryEnd.toISOString()) +
+                '&upcoming=false'
+            );
+
+            if (!res.ok) throw new Error('API error');
+
+            const raw = await res.json();
+            if (currentId !== activeFetchId) return false;
+
+            (raw.items || []).forEach((ev) => {
+              eventsById.set(ev.id, {
+                id: ev.id || '',
+                title: ev.title || '',
+                start_time: ev.start_time || '',
+                location: ev.location || '',
+                org_name: (ev.organization && ev.organization.name) || '',
+                org_color: (ev.organization && ev.organization.color_primary) || '',
+              });
+            });
+
+            loadedRanges.push({
+              start: queryStart.getTime(),
+              end: queryEnd.getTime(),
+            });
+
+            return true;
+          } catch (err) {
+            if (currentId !== activeFetchId) return false;
+            throw err;
+          }
+        }
+
+        async function loadEventsForWeek(days, force = false) {
+          const firstDay = new Date(days[0]);
+          // Calculate start of current month (minus 7 days for padding)
+          const queryStart = new Date(firstDay.getFullYear(), firstDay.getMonth(), 1);
+          queryStart.setDate(queryStart.getDate() - 7);
+          queryStart.setHours(0, 0, 0, 0);
+
+          // Calculate end of next month (plus 7 days for padding)
+          const queryEnd = new Date(firstDay.getFullYear(), firstDay.getMonth() + 2, 0);
+          queryEnd.setDate(queryEnd.getDate() + 7);
+          queryEnd.setHours(23, 59, 59, 999);
+
+          const weekStart = new Date(days[0]);
+          weekStart.setHours(0, 0, 0, 0);
+          const weekEnd = new Date(days[6]);
+          weekEnd.setHours(23, 59, 59, 999);
+
+          const weekIsLoaded = isRangeLoaded(weekStart, weekEnd);
+          const windowIsLoaded = isRangeLoaded(queryStart, queryEnd);
+
+          if (force) {
+            if (refreshBtn) refreshBtn.classList.add('cal-nav-btn--loading');
+            try {
+              await fetchRange(queryStart, queryEnd);
+            } finally {
+              if (refreshBtn) refreshBtn.classList.remove('cal-nav-btn--loading');
+            }
+            return true;
+          }
+
+          if (weekIsLoaded) {
+            // Render immediately! If full 2-month rolling window isn't cached yet, fetch in background
+            if (!windowIsLoaded) {
+              fetchRange(queryStart, queryEnd)
+                .then(() => renderEvents())
+                .catch(() => {});
+            }
+            return true;
+          }
+
+          // Week is not in memory at all (e.g. initial load or large jump)
+          if (refreshBtn) refreshBtn.classList.add('cal-nav-btn--loading');
+          try {
+            await fetchRange(queryStart, queryEnd);
+          } finally {
+            if (refreshBtn) refreshBtn.classList.remove('cal-nav-btn--loading');
+          }
+          return true;
+        }
+
+        function renderEvents() {
           const days = getWeekDays(weekOffset);
           const today = new Date();
-
-          const rangeFmt = new Intl.DateTimeFormat(lang, { month: 'long', day: 'numeric' });
-          rangeEl.textContent = rangeFmt.format(days[0]) + ' – ' + rangeFmt.format(days[6]);
-
           const dayFmt = new Intl.DateTimeFormat(lang, { weekday: 'short' });
           const timeFmt = new Intl.DateTimeFormat(lang, { hour: '2-digit', minute: '2-digit' });
 
-          const hasEvents = days.some((day) =>
-            calEvents.some((ev) => isSameDay(new Date(ev.start_time), day))
+          const allEvents = Array.from(eventsById.values());
+
+          const weekEvents = allEvents.filter((ev) =>
+            days.some((day) => isSameDay(new Date(ev.start_time), day))
           );
 
-          if (!hasEvents) {
+          if (!weekEvents.length) {
             grid.innerHTML = '<p class="cal-empty">' + esc(noEventsMsg) + '</p>';
             return;
           }
 
-          grid.innerHTML = days
-            .map((day) => {
-              const isToday = isSameDay(day, today);
-              const dayEvents = calEvents
-                .filter((ev) => isSameDay(new Date(ev.start_time), day))
-                .sort((a, b) => +new Date(a.start_time) - +new Date(b.start_time));
+          // Group by unique start times sorted chronologically
+          const timeSlotMap = new Map();
+          weekEvents.forEach((ev) => {
+            const d = new Date(ev.start_time);
+            const key = timeFmt.format(d);
+            const mins = d.getHours() * 60 + d.getMinutes();
+            if (!timeSlotMap.has(key)) {
+              timeSlotMap.set(key, mins);
+            }
+          });
 
-              const cards = dayEvents
-                .map((ev) => {
-                  const color = safeColor(ev.org_color);
-                  const time = timeFmt.format(new Date(ev.start_time));
-                  return (
-                    '<a class="cal-card" href="https://cal.minet.net/events/' + encodeURIComponent(ev.id) + '" target="_blank" rel="noopener noreferrer" style="--border:' + color + '">' +
-                    (ev.org_name
-                      ? '<span class="cal-card__org" style="color:' + color + '">' + esc(ev.org_name) + '</span>'
-                      : '') +
-                    '<strong class="cal-card__title">' + esc(ev.title) + '</strong>' +
-                    '<span class="cal-card__time">' +
-                      '<svg class="cal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="12" height="12"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>' +
-                      esc(time) +
-                    '</span>' +
-                    (ev.location
-                      ? '<span class="cal-card__loc">' +
-                          '<svg class="cal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="12" height="12"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>' +
-                          esc(ev.location) +
-                        '</span>'
-                      : '') +
-                    '</a>'
-                  );
-                })
-                .join('');
+          const timeSlots = Array.from(timeSlotMap.keys()).sort(
+            (a, b) => timeSlotMap.get(a) - timeSlotMap.get(b)
+          );
+
+          // Render column headers in row 1
+          const headersHtml = days
+            .map((day, colIdx) => {
+              const isToday = isSameDay(day, today);
+              const isLastCol = colIdx === 6;
+              const classes = [
+                'cal-col__header',
+                isToday ? 'cal-col__header--today' : '',
+                !isLastCol ? 'cal-border-end' : '',
+              ].filter(Boolean).join(' ');
 
               return (
-                '<div class="cal-col' + (isToday ? ' cal-col--today' : '') + '">' +
-                '<div class="cal-col__header">' +
+                '<div class="' + classes + '" style="grid-column: ' + (colIdx + 1) + '; grid-row: 1;">' +
                 '<span class="cal-col__weekday">' + esc(dayFmt.format(day)) + '</span>' +
                 '<span class="cal-col__num' + (isToday ? ' cal-col__num--today' : '') + '">' + day.getDate() + '</span>' +
-                '</div>' +
-                '<div class="cal-col__body">' + cards + '</div>' +
                 '</div>'
               );
             })
             .join('');
+
+          // Render time slots in grid rows 2..(timeSlots.length + 1)
+          const slotsHtml = timeSlots
+            .map((slotTime, slotIdx) => {
+              const isLastRow = slotIdx === timeSlots.length - 1;
+              return days
+                .map((day, colIdx) => {
+                  const isToday = isSameDay(day, today);
+                  const isLastCol = colIdx === 6;
+                  const daySlotEvents = weekEvents
+                    .filter(
+                      (ev) =>
+                        isSameDay(new Date(ev.start_time), day) &&
+                        timeFmt.format(new Date(ev.start_time)) === slotTime
+                    )
+                    .sort((a, b) => +new Date(a.start_time) - +new Date(b.start_time));
+
+                  const cards = daySlotEvents
+                    .map((ev) => {
+                      const color = safeColor(ev.org_color);
+                      const time = timeFmt.format(new Date(ev.start_time));
+                      return (
+                        '<a class="cal-card" href="https://cal.minet.net/events/' + encodeURIComponent(ev.id) + '" target="_blank" rel="noopener noreferrer" style="--border:' + color + '">' +
+                        (ev.org_name
+                          ? '<span class="cal-card__org" style="color:' + color + '">' + esc(ev.org_name) + '</span>'
+                          : '') +
+                        '<strong class="cal-card__title">' + esc(ev.title) + '</strong>' +
+                        '<span class="cal-card__time">' +
+                          '<svg class="cal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="12" height="12"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>' +
+                          esc(time) +
+                        '</span>' +
+                        (ev.location
+                          ? '<span class="cal-card__loc">' +
+                              '<svg class="cal-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="12" height="12"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>' +
+                              esc(ev.location) +
+                            '</span>'
+                          : '') +
+                        '</a>'
+                      );
+                    })
+                    .join('');
+
+                  const classes = [
+                    'cal-slot',
+                    isToday ? 'cal-slot--today' : '',
+                    !isLastCol ? 'cal-border-end' : '',
+                    !isLastRow ? 'cal-border-bottom' : '',
+                  ].filter(Boolean).join(' ');
+
+                  return (
+                    '<div class="' + classes + '" style="grid-column: ' + (colIdx + 1) + '; grid-row: ' + (slotIdx + 2) + ';">' +
+                    cards +
+                    '</div>'
+                  );
+                })
+                .join('');
+            })
+            .join('');
+
+          grid.innerHTML = headersHtml + slotsHtml;
         }
 
-        if (prevBtn) prevBtn.addEventListener('click', () => { weekOffset--; render(); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { weekOffset++; render(); });
+        async function updateView(force = false) {
+          const days = getWeekDays(weekOffset);
+          const rangeFmt = new Intl.DateTimeFormat(lang, { month: 'long', day: 'numeric' });
+          rangeEl.textContent = rangeFmt.format(days[0]) + ' – ' + rangeFmt.format(days[6]);
 
-        render();
+          const weekStart = new Date(days[0]);
+          weekStart.setHours(0, 0, 0, 0);
+          const weekEnd = new Date(days[6]);
+          weekEnd.setHours(23, 59, 59, 999);
+
+          if (force || !isRangeLoaded(weekStart, weekEnd)) {
+            grid.innerHTML = '<p class="cal-empty cal-loading">' + esc(loadingMsg) + '</p>';
+          }
+
+          try {
+            await loadEventsForWeek(days, force);
+            renderEvents();
+          } catch {
+            grid.innerHTML = '<p class="cal-empty cal-error">' + esc(errorMsg) + '</p>';
+          }
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => { weekOffset--; updateView(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { weekOffset++; updateView(); });
+        if (refreshBtn) refreshBtn.addEventListener('click', () => { updateView(true); });
+
+        updateView();
       })();
     </script>
   </main>
@@ -843,7 +1016,7 @@ const yearRound = [
 
   .cal-widget {
     width: 100%;
-    max-width: 900px;
+    max-width: 1120px;
     margin: var(--space-7) auto var(--space-6);
   }
 
@@ -888,7 +1061,18 @@ const yearRound = [
     outline-offset: 2px;
   }
 
-  :global([dir="rtl"]) .cal-nav-btn svg {
+  .cal-refresh-icon {
+    transition: transform 0.3s ease;
+  }
+  .cal-nav-btn--loading .cal-refresh-icon {
+    animation: calSpin 0.75s linear infinite;
+  }
+  @keyframes calSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  :global([dir="rtl"]) .cal-nav-btn:not(#cal-refresh) svg {
     transform: scaleX(-1);
   }
 
@@ -931,28 +1115,14 @@ const yearRound = [
 
   .cal-grid {
     display: grid;
-    grid-template-columns: repeat(7, minmax(110px, 1fr));
-    min-width: 800px;
+    grid-template-columns: repeat(7, minmax(135px, 1fr));
+    min-width: 980px;
     gap: 0;
     background: var(--cream);
     border: 4px solid var(--ink);
     border-radius: 20px;
     box-shadow: 0 0 0 1px var(--ink), 8px 8px 0 var(--ink);
     overflow: hidden;
-  }
-
-  :global(.cal-col) {
-    background: var(--cream);
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    transition: background-color 0.2s ease;
-  }
-  :global(.cal-col:not(:last-child)) {
-    border-inline-end: 3px dashed var(--line);
-  }
-  :global(.cal-col--today) {
-    background: var(--honey-wash);
   }
 
   :global(.cal-col__header) {
@@ -965,8 +1135,8 @@ const yearRound = [
     gap: var(--space-2);
     background: rgba(30, 42, 61, 0.02);
   }
-  :global(.cal-col--today .cal-col__header) {
-    background: rgba(239, 171, 67, 0.08);
+  :global(.cal-col__header--today) {
+    background: rgba(239, 171, 67, 0.12);
   }
 
   :global(.cal-col__weekday) {
@@ -978,7 +1148,7 @@ const yearRound = [
     color: var(--navy-soft);
     margin-bottom: 2px;
   }
-  :global(.cal-col--today .cal-col__weekday) {
+  :global(.cal-col__header--today .cal-col__weekday) {
     color: var(--ink);
   }
 
@@ -1002,12 +1172,23 @@ const yearRound = [
     box-shadow: 2px 2px 0 var(--ink);
   }
 
-  :global(.cal-col__body) {
+  :global(.cal-slot) {
     padding: var(--space-3) var(--space-2);
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    flex-grow: 1;
+    background: var(--cream);
+    transition: background-color 0.2s ease;
+  }
+  :global(.cal-slot--today) {
+    background: var(--honey-wash);
+  }
+
+  :global(.cal-border-end) {
+    border-inline-end: 3px dashed var(--line);
+  }
+  :global(.cal-border-bottom) {
+    border-bottom: 2px dashed var(--line);
   }
 
   :global(.cal-card) {
@@ -1026,6 +1207,10 @@ const yearRound = [
     gap: 4px;
     text-align: left;
     text-decoration: none;
+    min-width: 0;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   :global(.cal-card:hover) {
     transform: translate(-2px, -2px);
@@ -1055,22 +1240,25 @@ const yearRound = [
     color: var(--ink);
     line-height: 1.3;
     margin-bottom: 2px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
   :global(.cal-card__time),
   :global(.cal-card__loc) {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 6px;
     font-family: var(--font-body);
     font-weight: 700;
     font-size: 0.725rem;
     color: var(--navy-soft);
+    line-height: 1.35;
   }
   :global(.cal-card__loc) {
     margin-top: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   :global(.cal-card__icon) {
     width: 13px;
@@ -1078,6 +1266,7 @@ const yearRound = [
     flex-shrink: 0;
     stroke: currentColor;
     stroke-width: 2.5;
+    margin-top: 1px;
   }
 
   :global(.cal-empty) {

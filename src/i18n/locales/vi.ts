@@ -262,9 +262,12 @@ export const vi: LocaleTranslation = {
     ctaTitle: "Đừng bỏ lỡ lần tới.",
     ctaLede: "Chúng tôi đăng tất cả sự kiện lên lịch của campus. Kiểm tra thường xuyên để không bỏ lỡ gì.",
     ctaMinet: "Lịch campus",
+    calLoading: "Đang tải sự kiện...",
+    calError: "Không thể tải sự kiện.",
     calNoEvents: "Không có sự kiện tuần này.",
     calPrevWeek: "Tuần trước",
     calNextWeek: "Tuần tiếp theo",
+    calRefresh: "Làm mới sự kiện",
   },
   footer: {
     tagline: "Chào đón sinh viên quốc tế tại Télécom SudParis & IMT-BS, Évry.",

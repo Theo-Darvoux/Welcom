@@ -263,9 +263,12 @@ export const en = {
     ctaTitle: "Don't miss the next one.",
     ctaLede: "We publish every event on the campus calendar. Check it and you won't miss a thing.",
     ctaMinet: "Campus calendar",
+    calLoading: "Loading events...",
+    calError: "Unable to load events.",
     calNoEvents: "No events this week.",
     calPrevWeek: "Previous week",
     calNextWeek: "Next week",
+    calRefresh: "Refresh events",
   },
   footer: {
     tagline: "Welcoming international students at Télécom SudParis & IMT-BS, Évry.",

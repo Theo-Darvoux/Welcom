@@ -262,9 +262,12 @@ export const fr: LocaleTranslation = {
     ctaTitle: "Ne ratez pas la prochaine.",
     ctaLede: "Tous nos événements sont publiés sur le calendrier du campus. Consultez-le et ne ratez plus rien.",
     ctaMinet: "Calendrier du campus",
+    calLoading: "Chargement des événements...",
+    calError: "Impossible de charger les événements.",
     calNoEvents: "Aucun événement cette semaine.",
     calPrevWeek: "Semaine précédente",
     calNextWeek: "Semaine suivante",
+    calRefresh: "Actualiser les événements",
   },
   footer: {
     tagline: "Nous accueillons les étudiants internationaux à Télécom SudParis & IMT-BS, Évry.",

@@ -262,9 +262,12 @@ export const ar: LocaleTranslation = {
     ctaTitle: "لا تفوّت الفعالية القادمة.",
     ctaLede: "ننشر جميع فعالياتنا على تقويم الحرم الجامعي. تابعه ولن يفوتك شيء.",
     ctaMinet: "تقويم الحرم الجامعي",
+    calLoading: "جاري تحميل الفعاليات...",
+    calError: "تعذر تحميل الفعاليات.",
     calNoEvents: "لا توجد فعاليات هذا الأسبوع.",
     calPrevWeek: "الأسبوع السابق",
     calNextWeek: "الأسبوع التالي",
+    calRefresh: "تحديث الفعاليات",
   },
   footer: {
     tagline: "نرحّب بالطلاب الدوليين في ⁨Télécom SudParis⁩ و⁨IMT‑BS⁩، ⁨Évry⁩.",
