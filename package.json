@@ -34,11 +34,11 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "eslint": "^10.8.0",
-    "eslint-plugin-astro": "^3.0.1",
-    "globals": "^17.8.0",
-    "i18n-unused": "^0.19.0",
-    "knip": "^6.29.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "globals": "^17.9.0",
+    "i18n-unused": "^0.20.0",
+    "knip": "^6.32.0",
     "purgecss": "^8.0.0",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.66.0"
   }
 }
