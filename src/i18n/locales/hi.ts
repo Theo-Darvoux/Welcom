@@ -1259,7 +1259,7 @@ export const hi: LocaleTranslation = {
     "parrainageTitle": "मेंटरशिप पार्टी (Parrainage)",
     "parrainageWho": "BDE द्वारा आयोजित",
     "parrainageDesc": "1st और 2nd ईयर के छात्रों का पारंपरिक मिलन समारोह।",
-    "bdasintTag": "बसंत",
+    "bdasintTag": "सितंबर का पहला सप्ताह (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "BDA + ASINT द्वारा आयोजित",
     "bdasintDesc": "आर्ट्स बोर्ड और स्पोर्ट्स एसोसिएशन की बड़ी संयुक्त पार्टी।",

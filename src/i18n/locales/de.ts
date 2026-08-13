@@ -1258,7 +1258,7 @@ export const de: LocaleTranslation = {
     "parrainageTitle": "Patenschafts-Party",
     "parrainageWho": "Organisiert vom BDE",
     "parrainageDesc": "Traditionelles Treffen zwischen Erst- und Zweitsemestlern zum Kennenlernen und Finden der Patenfamilie.",
-    "bdasintTag": "Frühling",
+    "bdasintTag": "Erste Septemberwoche (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "Organisiert von BDA + ASINT",
     "bdasintDesc": "Die große gemeinsame Party von Kulturausschuss und Sportverein. Kunst, Live-Musik und Sport unter einem Dach.",

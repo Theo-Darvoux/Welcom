@@ -1259,7 +1259,7 @@ export const en = {
     "parrainageTitle": "Mentorship Party (Parrainage)",
     "parrainageWho": "Organized by BDE",
     "parrainageDesc": "The festive tradition where 1st-year and 2nd-year students meet. A great opportunity to join a student family tree and make friends in a high-energy atmosphere.",
-    "bdasintTag": "Spring",
+    "bdasintTag": "First week of September (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "Organized by BDA + ASINT",
     "bdasintDesc": "The major joint party bringing together the Arts Board and the Sports Association. Arts, live music, performances, and sports under one roof.",

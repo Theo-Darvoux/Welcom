@@ -1257,7 +1257,7 @@ export const zhTW: LocaleTranslation = {
     "parrainageTitle": "迎新結對派對 (Parrainage)",
     "parrainageWho": "BDE 主辦",
     "parrainageDesc": "一年級與二年級學生結對認領直系學長學姐的傳統節日派對，在熱烈氛圍中融入大家庭。",
-    "bdasintTag": "春季",
+    "bdasintTag": "9月第一週 (SEI)",
     "bdasintTitle": "BDASINT 聯合晚會",
     "bdasintWho": "BDA + ASINT 聯合主辦",
     "bdasintDesc": "藝術委員會與體育協會聯合舉辦的大型晚會。藝術、現場音樂、表演與體育在同一屋簷下碰撞出火花。",

@@ -1256,7 +1256,7 @@ export const ptBR: LocaleTranslation = {
     "parrainageTitle": "Festa de apadrinhamento",
     "parrainageWho": "Organizado pelo BDE",
     "parrainageDesc": "Tradição festiva de integração entre alunos do 1º e 2º ano. Oportunidade perfeita para entrar para uma família de apadrinhamento.",
-    "bdasintTag": "Primavera",
+    "bdasintTag": "Primeira semana de setembro (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "Organizado por BDA + ASINT",
     "bdasintDesc": "A grande festa conjunta reunindo o Bureau des Arts e a associação esportiva. Arte, música ao vivo e esporte sob o mesmo teto.",

@@ -1258,7 +1258,7 @@ export const ar: LocaleTranslation = {
     "parrainageTitle": "حفلة العراب (Parrainage)",
     "parrainageWho": "من تنظيم BDE",
     "parrainageDesc": "تقليد احتفالي للتعارف بين طلاب السنة الأولى والثانية وتشكيل العائلات الطلابية.",
-    "bdasintTag": "الربيع",
+    "bdasintTag": "الأسبوع الأول من سبتمبر (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "من تنظيم BDA + ASINT",
     "bdasintDesc": "الحفلة المشتركة الكبرى التي تجمع بين مكتب الفنون والجمعية الرياضية.",

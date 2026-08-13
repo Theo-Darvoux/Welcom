@@ -1257,7 +1257,7 @@ export const vi: LocaleTranslation = {
     "parrainageTitle": "Tiệc Nhận Anh/Chị đỡ đầu (Parrainage)",
     "parrainageWho": "BDE tổ chức",
     "parrainageDesc": "Truyền thống gặp gỡ giao lưu giữa sinh viên năm nhất và năm hai.",
-    "bdasintTag": "Mùa xuân",
+    "bdasintTag": "Tuần đầu tháng 9 (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "BDA + ASINT phối hợp tổ chức",
     "bdasintDesc": "Đêm hội chung giữa Ban Nghệ thuật và Hiệp hội Thể thao.",

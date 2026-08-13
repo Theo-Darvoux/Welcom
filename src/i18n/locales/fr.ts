@@ -1256,7 +1256,7 @@ export const fr: LocaleTranslation = {
     "parrainageTitle": "Soirée parrainage",
     "parrainageWho": "Organisé par le BDE",
     "parrainageDesc": "Le rituel festif incontournable de rencontre entre 1A et 2A. C'est l'occasion d'intégrer la famille de promotion et de faire connaissance dans une ambiance survoltée.",
-    "bdasintTag": "Printemps",
+    "bdasintTag": "1ère semaine de septembre (SEI)",
     "bdasintTitle": "BDASINT",
     "bdasintWho": "Organisé par BDA + ASINT",
     "bdasintDesc": "La grande soirée commune réunissant le Bureau des Arts et l'association sportive. Arts, musique live, performances et sport rassemblés sous le même toit.",
