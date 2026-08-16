@@ -333,7 +333,7 @@ export const en = {
     "Le Bras de Fer": "The RER D train station located right next to the Évry campus.",
     "RER B": "The regional train line connecting Charles de Gaulle airport (CDG) to central Paris.",
     AbsINThe: "The campus student bar, located in the foyer's main hall and open every evening from 10 p.m. to 1 a.m. with music, food, and drinks!",
-    ACO: "Absinthe Chill Out, themed events organized by AbsINThe, often around 6 p.m., during which the bar is open at Espace T.",
+    ACO: "AbsINThe Chill Out, themed events organized by AbsINThe, often around 6 p.m., during which the bar is open at Espace T.",
     Ecocup: "Reusable plastic cups with a special design printed on them, distributed by Clubs, GATEs, and campaign Lists. Some students collect them.",
     CAF: "Caisse d’Allocations Familiales, the French government agency that pays you monthly housing aid (APL).",
     "RER D": "The regional train line connecting Évry to the centre of Paris in 40 minutes.",

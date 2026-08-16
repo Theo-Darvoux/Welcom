@@ -333,7 +333,7 @@ export const vi: LocaleTranslation = {
     "Le Bras de Fer": "Ga tàu RER D nằm ngay cạnh khuôn viên cơ sở Évry.",
     "RER B": "Tuyến tàu vùng kết nối sân bay Charles de Gaulle (CDG) với trung tâm Paris.",
     AbsINThe: "Quán bar sinh viên của campus, nằm ở hội trường lớn foyer và mở cửa mỗi tối từ 22h đến 1h với âm nhạc, đồ ăn và thức uống!",
-    ACO: "Absinthe Chill Out, các hoạt động theo chủ đề do AbsINThe tổ chức, thường vào khoảng 18h, trong thời gian đó quán bar mở cửa tại Espace T.",
+    ACO: "AbsINThe Chill Out, các hoạt động theo chủ đề do AbsINThe tổ chức, thường vào khoảng 18h, trong thời gian đó quán bar mở cửa tại Espace T.",
     Ecocup: "Các cốc nhựa tái sử dụng có in thiết kế đặc biệt, được phân phối bởi các Câu lạc bộ, GATE và Danh sách (Listes). Một số sinh viên có sở thích sưu tầm chúng.",
     CAF: "Caisse d’Allocations Familiales, cơ quan nhà nước Pháp trả cho bạn trợ cấp nhà ở hằng tháng (APL).",
     "RER D": "Tuyến tàu vùng nối Évry với trung tâm Paris trong 40 phút.",

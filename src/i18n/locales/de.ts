@@ -332,7 +332,7 @@ export const de: LocaleTranslation = {
     "Le Bras de Fer": "Der RER D-Bahnhof liegt direkt neben dem Évry-Campus.",
     "RER B": "Die Region Zuglinie, die den Flughafen Charles de Gaulle (CDG) mit dem Zentrum von Paris verbindet.",
     AbsINThe: "Die Studentenbar auf dem Campus, gelegen im großen Saal des Foyers und jeden Abend von 22:00 bis 01:00 Uhr mit Musik, Essen und Getränken geöffnet!",
-    ACO: "Absinthe Chill Out, von AbsINThe organisierte Themenveranstaltungen, meist gegen 18:00 Uhr, bei denen die Bar im Espace T geöffnet ist.",
+    ACO: "AbsINThe Chill Out, von AbsINThe organisierte Themenveranstaltungen, meist gegen 18:00 Uhr, bei denen die Bar im Espace T geöffnet ist.",
     Ecocup: "Wiederverwendbare Plastikbecher mit einem speziellen aufgedruckten Design, die von Clubs, GATEs und Listen verteilt werden. Manche Leute sammeln sie.",
     CAF: "Caisse d’Allocations Familiales, die französische Regierungsbehörde, die Sie monatlich bezahlt Wohnbeihilfe (APL).",
     "RER D": "Die Regionalbahnlinie verbindet Évry in 40 Minuten mit dem Zentrum von Paris.",

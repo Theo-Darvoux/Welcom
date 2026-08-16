@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160" fill="none" preserveAspectRatio="none">
+  <path
+    d="M6 150 C 54 150, 70 92, 122 74"
+    stroke="#293A55"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-dasharray="1 13"
+    opacity="0.5"
+  />
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#293A55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 12,48 C 16,44 28,44 32,48 C 36,44 48,44 52,48 L 52,32 C 48,28 36,28 32,32 C 28,28 16,28 12,32 Z" fill="#EFAB43" stroke="#293A55" stroke-width="3" />
+  <path d="M 14,46 C 18,42 29,42 32,46 C 35,42 46,42 50,46 L 50,30 C 46,26 35,26 32,30 C 29,26 18,26 14,30 Z" fill="#FBF4E6" stroke="#293A55" stroke-width="2.5" />
+  <path d="M 18,34 L 28,34 M 18,39 L 26,39 M 36,34 L 46,34 M 38,39 L 46,39" stroke="#4C5C75" stroke-width="2" />
+  <g transform="translate(0, -5)">
+    <path d="M 22,22 L 22,27 C 22,31 42,31 42,27 L 42,22" fill="#293A55" stroke="#293A55" stroke-width="3" />
+    <polygon points="32,11 52,17 32,23 12,17" fill="#293A55" stroke="#293A55" stroke-width="3" />
+    <path d="M 32,17 L 46,21 L 46,27" stroke="#EFAB43" stroke-width="2" />
+    <circle cx="46" cy="28" r="1.2" fill="#EFAB43" stroke="none" />
+  </g>
+</svg>

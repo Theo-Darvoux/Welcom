@@ -333,7 +333,7 @@ export const zhTW: LocaleTranslation = {
     "Le Bras de Fer": "位於埃夫里校區旁的 RER D 火車站。",
     "RER B": "連接戴高樂機場（CDG）與巴黎市中心直達的區域列車路線。",
     AbsINThe: "校園學生酒吧，位於Foyer的大廳內，每晚22:00至次日1:00營業，提供音樂、美食和飲料！",
-    ACO: "Absinthe Chill Out，由AbsINThe舉辦的主題活動，通常在18:00左右，在此期間酒吧在Espace T營業。",
+    ACO: "AbsINThe Chill Out，由AbsINThe舉辦的主題活動，通常在18:00左右，在此期間酒吧在Espace T營業。",
     Ecocup: "印有特殊設計的可重複使用塑膠杯，由各社團（Clubs）、GATE專案和競選列表（Listes）發放。有些人專門收集它們。",
     CAF: "Caisse d’Allocations Familiales，按月發放住房補助（APL）給你的法國政府機構。",
     "RER D": "把埃夫里與巴黎市中心相連的區域列車路線，約 40 分鐘可達。",
