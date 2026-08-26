@@ -22,9 +22,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/react": "^6.0.2",
+    "@astrojs/react": "^6.0.4",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.0",
+    "astro": "^7.2.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "typescript": "^6.0.3"
@@ -33,12 +33,12 @@
     "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "eslint": "^10.8.0",
+    "eslint": "^10.8.1",
     "eslint-plugin-astro": "^3.1.0",
-    "globals": "^17.9.0",
+    "globals": "^17.11.0",
     "i18n-unused": "^0.20.0",
-    "knip": "^6.32.0",
+    "knip": "^6.32.2",
     "purgecss": "^8.0.0",
-    "typescript-eslint": "^8.66.0"
+    "typescript-eslint": "^8.67.0"
   }
 }
