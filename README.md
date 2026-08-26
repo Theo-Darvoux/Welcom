@@ -89,3 +89,4 @@ The CI workflow deploys a successful push to `main` over SSH. It fetches and fas
 ## License
 
 This project is released under the [MIT License](LICENSE).
+
